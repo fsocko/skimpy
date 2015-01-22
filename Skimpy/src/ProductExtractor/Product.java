@@ -1,3 +1,4 @@
+package ProductExtractor;
 class Product
 {
 	public String name;
