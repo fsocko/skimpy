@@ -1,5 +1,7 @@
 package ProductExtractor;
 
+import java.util.List;
+
 import org.jsoup.nodes.Document;
 
 class ProductExtractor
@@ -17,6 +19,13 @@ class ProductExtractor
 		// Connect to Tesco
 		Document tescoRootPage = tesco.getHTML(tesco.rootPageURL);
 		System.out.println(tesco.getDocumentTitle(tescoRootPage) + System.lineSeparator());
+		
+		List<Department> tescoDepartments = tesco.listDepartments();
+		for (Department t : tescoDepartments)
+		{
+			System.out.println(t.toString());
+		}
+		System.out.println(System.lineSeparator());
 		
 		// Connect to Sainsbury's
 		Document snsbryRootPage = snsbry.getHTML(snsbry.rootPageURL);

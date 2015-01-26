@@ -3,11 +3,12 @@ package ProductExtractor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import java.util.List;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
-public class WebSpider
+public abstract class WebSpider
 {
 	public String rootPageURL;
 
@@ -59,4 +60,6 @@ public class WebSpider
 	{
 		return html.select("title").text();
 	}
+	
+	public abstract List<Department> listDepartments();
 }
