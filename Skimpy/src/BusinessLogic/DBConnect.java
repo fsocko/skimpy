@@ -1,7 +1,9 @@
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+package BusinessLogic;
 
-import com.mysql.jdbc.*;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 
 public class DBConnect {
