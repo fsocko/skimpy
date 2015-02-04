@@ -39,7 +39,7 @@ public class Main{
     	//FoodDB
     	
     	DBConnect fget = new DBConnect("food_db");
-    	fget.getFoodData("food_db");
+    	fget.getFoodData("fooditems");
     	
 
     }

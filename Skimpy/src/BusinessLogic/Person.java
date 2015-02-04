@@ -49,8 +49,9 @@ public class Person {
 		this.exercise = exercise;	
 		this.plan = null;
 		
-		DBConnect connect = new DBConnect("User");
-    	connect.setData(this);
+		//TODO: Uncomment this after SQL error Fixed
+		//DBConnect connect = new DBConnect("User");
+    	//connect.setData(this);
 	}
 	
 	public void addMealplan(MealPlanner meals){

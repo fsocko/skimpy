@@ -26,26 +26,29 @@ public class DBConnect {
 		
 	}
 
-	public void getFoodData(String db){
+	public void getFoodData(String table){
 		try{
-			String query = "select * " + db + ";";
+			String query = "select * FROM " + table + ";";
+			System.out.println(query);
 			rs = st.executeQuery(query);
 			System.out.println("Records from Database");
 			while (rs.next()){
 				int ID = rs.getInt("ID");
 				String name = rs.getString("Name");
-				int units = rs.getInt("Units");
+				String units = rs.getString("Units");
 				int amount = rs.getInt("Amount");
 				double serving = rs.getDouble("Serving");
 				double price = rs.getDouble("Price");
 				double calories = rs.getDouble("Calories");
-				double protien = rs.getDouble("Protien");
-				double carbohydrates = rs.getDouble("Carbohydrates");
+				double protein = rs.getDouble("Protein");
+				double carbs = rs.getDouble("Carbs");
 				double sugars = rs.getDouble("Sugars");
-				double fats = rs.getDouble("Fats");
+				double fats = rs.getDouble("Fat");
 				double saturates = rs.getDouble("Saturates");
 				double fibre = rs.getDouble("Fibre");
 				double salt = rs.getDouble("Salt");
+				
+				System.out.println(name + units + amount + serving + price + calories + protein + carbs + sugars + fats + saturates + fibre + salt);
 			}
 					
 			
@@ -55,7 +58,7 @@ public class DBConnect {
 	}
 	
 	
-	public void setData(Person user){
+/*	public void setData(Person user){
 		try{
 			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
 							user.getID() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
@@ -63,17 +66,17 @@ public class DBConnect {
 							user.getExercise() + ");";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
-			/*
+			
 			while (rs.next()){
 				String name = rs.getString("UserName");
 				String age = rs.getString("Age");
 				String email = rs.getString("UserEmail");
 				System.out.println("User name: "+ name+ ", User age: "+age+", User e-mail: "+email);
 			}
-			*/		
+					
 			
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
-	}
+	}*/
 }
