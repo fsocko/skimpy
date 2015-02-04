@@ -21,15 +21,9 @@ public class DBConnect {
 		}
 	}
 
-	private void createStatement() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void getFoodData(String table){
 		try{
 			String query = "select * FROM " + table + ";";
-			System.out.println(query);
 			rs = st.executeQuery(query);
 			System.out.println("Records from Database");
 			while (rs.next()){
@@ -48,17 +42,41 @@ public class DBConnect {
 				double fibre = rs.getDouble("Fibre");
 				double salt = rs.getDouble("Salt");
 				
-				System.out.println(name + units + amount + serving + price + calories + protein + carbs + sugars + fats + saturates + fibre + salt);
+				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Price " + price + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
 			}
-					
-			
+	
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
 	}
 	
 	
-/*	public void setData(Person user){
+	public void getUserData(String table){
+		try{
+			String query = "select * FROM " + table + ";";
+			System.out.println("Records from Database");
+			rs = st.executeQuery(query);
+			while (rs.next()){
+			
+				String ID = rs.getString("userID");
+				String userName = rs.getString("UserName");
+				String userEmail = rs.getString("UserEmail");
+				int age = rs.getInt("Age");
+				float weight = rs.getFloat("Weight");
+				String gender = rs.getString("Gender");
+				float exercise = rs.getFloat("Exercise");
+				
+				System.out.println(ID + userName + userEmail + age + weight + gender + exercise);
+			}
+	
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
+	
+/*	
+public void setData(Person user){
 		try{
 			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
 							user.getID() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
@@ -78,5 +96,5 @@ public class DBConnect {
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
-	}*/
+	} */
 }
