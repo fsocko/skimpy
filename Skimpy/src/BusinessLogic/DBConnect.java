@@ -14,7 +14,7 @@ public class DBConnect {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, "root", "");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ db, "root", "");
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
@@ -26,9 +26,9 @@ public class DBConnect {
 		
 	}
 
-	public void getFoodData(){
+	public void getFoodData(String db){
 		try{
-			String query = "select * from Food";
+			String query = "select * " + db + ";";
 			rs = st.executeQuery(query);
 			System.out.println("Records from Database");
 			while (rs.next()){
