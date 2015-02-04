@@ -12,7 +12,7 @@ public class Person {
 	/**
 	 * This class will add users to the database or create person objects from the database.
 	 */
-	private int ID;
+	private String ID;
 	private String name; 
 	private String email;
 	private int age;
@@ -73,7 +73,7 @@ public class Person {
 				"\nExercise: " + exercise; 
 		return s;
 	}
-	public int getID(){
+	public String getID(){
 		return this.ID;
 	}
 	public String getEmail(){
