@@ -6,7 +6,7 @@ package BusinessLogic;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
+//Alina was here
 /**
  * FILIP! CAN YOU DOCUMENT THE BLUE SECTIONS IN THIS FILE
  * A representation of a date.
