@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 
 import com.mysql.jdbc.*;
 
-
+//Change
 public class DBConnect {
 	private Connection con;
 	private Statement st;
