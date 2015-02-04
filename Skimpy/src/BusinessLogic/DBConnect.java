@@ -1,3 +1,5 @@
+//author: Ruaraidh, FPS
+
 package BusinessLogic;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -10,7 +12,8 @@ public class DBConnect {
 	private Statement st;
 	private ResultSet rs;
 	
-	public DBConnect(String db){
+	public DBConnect(String db) //db is the name of the database.
+	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -21,7 +24,7 @@ public class DBConnect {
 		}
 	}
 
-	public void getFoodData(String table){
+	public void getFoodData(String table){ //table is the name of the table within the database db
 		try{
 			String query = "select * FROM " + table + ";";
 			rs = st.executeQuery(query);
@@ -74,12 +77,11 @@ public class DBConnect {
 		}
 	}
 	
-	
-/*	
+		
 public void setData(Person user){
 		try{
 			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
-							user.getID() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
+							user.getName() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
 							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", '" + user.getGender() + "', " + 
 							user.getExercise() + ");";
 			st.executeUpdate(query);
@@ -96,5 +98,5 @@ public void setData(Person user){
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
-	} */
+	}
 }
