@@ -1,7 +1,5 @@
 package BusinessLogic;
 import java.util.ArrayList;
-import java.util.Scanner;
-//Ade was here
 /**
  * 
  * @author ruaraidh
@@ -9,7 +7,7 @@ import java.util.Scanner;
  */
 /**
  * 
- * Main class that brings all the other classes together. Clutch up!
+ * Main class that brings all the other classes together.
  *
  */
 public class Main{
@@ -21,39 +19,9 @@ public class Main{
 	
 	public static void main(String[] args) {
 		
-		/********************************************************************************************************************************
-		 * 																																*
-		 * 														USER SET UP																*
-		 *																																* 
-		 *******************************************************************************************************************************/
-		
-		Scanner sc = new Scanner(System.in);
-		
-//		int ID = 2;
-//		System.out.println("Please enter your name:");
-//		String userName = sc.nextLine();
-//		System.out.println("Please enter your email:");
-//		String email = sc.nextLine();
-//		System.out.println("Please enter your age:");
-//    	int age = Integer.parseInt(sc.nextLine());
-//    	System.out.println("Please enter your height:");
-//    	double height = Double.parseDouble(sc.nextLine());
-//    	System.out.println("Please enter your weight:");
-//    	double weight = Double.parseDouble(sc.nextLine());
-//    	System.out.println("Please enter your gender:");
-//    	char gender = sc.nextLine().charAt(0);
-//    	System.out.println("Please enter your exercise:");
-//    	int exercise = Integer.parseInt(sc.nextLine());
-//    	
-//    	Person user = new Person(ID, userName, email, age, height, weight, gender, exercise, null);
-    	Person user = new Person(5, "TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
-		/********************************************************************************************************************************
-		 * 																																*
-		 * 													  		MEALS																*
-		 *																																* 
-		 ********************************************************************************************************************************/
-    	System.out.println("Hey " + user.getName() + "! Let's create a MealPlan.");
-
+		//User
+		Person user = new Person(5, "TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
+		//Person
     	MealPlanner plan = CreateMealPlan.create();
     	
 		user.setPlan(plan);
@@ -68,7 +36,6 @@ public class Main{
     	String price = String.format("%.2f", priceD);
     	System.out.println("Price: £" + price);
     	
-
     	ArrayList<Food> food = new ArrayList<Food>();
     	for (int i = 0; i < plan.getShoppingList().size(); i++) {
     		for (Food f: plan.getShoppingList().get(i)) {

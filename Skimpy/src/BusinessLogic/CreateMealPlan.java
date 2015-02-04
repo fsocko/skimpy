@@ -3,7 +3,6 @@ package BusinessLogic;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//testing git lalalalala
 public class CreateMealPlan {
 	
 	
@@ -26,8 +25,6 @@ public class CreateMealPlan {
     	ArrayList<Food> ing1D = new ArrayList<Food>();
     	ArrayList<Food> ing2D = new ArrayList<Food>();
     	ArrayList<Food> ing3D = new ArrayList<Food>();
-    	
-
     	
     	//Breakfast
     	ing1B.add(ID1);
@@ -52,27 +49,9 @@ public class CreateMealPlan {
     	Meal meal1D	= new Meal("Chicken Dinner", ing1D);
     	Meal meal2D = new Meal("Pizza Dinner", ing2D);
     	Meal meal3D = new Meal("Salmon Dinner", ing3D);      
-    	
-    	Meal[] mealList = {meal1B, meal1L, meal1D, meal2D, meal3D};
-    	
+    		
     	MealPlanner plan = new MealPlanner();
-    	
-    	Scanner sc = new Scanner(System.in);
-    	
-//    	for(int i = 0; i < 7; i++){
-//    		for(int j = 0; j < 3; j++){
-//    			System.out.println("What do you want to eat on " + MealPlanner.getDay(i) + " for " + MealPlanner.getTime(j));
-//    			String request = sc.nextLine();
-//    			int k = 0;
-//    			while(k < mealList.length){
-//    				if(request == mealList[k++].getName()){
-//    					plan.add(mealList[k], MealPlanner.getDay(i), MealPlanner.getTime(j));
-//    					break;
-//    				}
-//    			}
-//    		}
-//    	}
-    	
+    		
     	plan.add(meal1B, "Mon", "Breakfast");
     	plan.add(meal1B, "Tue", "Breakfast");
     	plan.add(meal1B, "Wed", "Breakfast");
