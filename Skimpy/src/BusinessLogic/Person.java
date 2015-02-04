@@ -38,7 +38,7 @@ public class Person {
 	 * 4 = 7-21hrs/week of strenuous exercise/work
 	*/
 	
-	public Person(int ID, String name, String email, int age, double height, double weight, char gender, int exercise, MealPlanner plan){
+	public Person(String name, String email, int age, double height, double weight, char gender, int exercise, MealPlanner plan){
 		this.ID = ID;
 		this.name = name;
 		this.email = email;
@@ -49,9 +49,10 @@ public class Person {
 		this.exercise = exercise;	
 		this.plan = null;
 		
-		//TODO: Uncomment this after SQL error Fixed
-		//DBConnect connect = new DBConnect("User");
-    	//connect.setData(this);
+
+		//Uncomment when ready to set users
+		DBConnect connect = new DBConnect("User");
+    	connect.setData(this);
 	}
 	
 	public void addMealplan(MealPlanner meals){

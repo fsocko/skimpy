@@ -30,7 +30,7 @@ public class Main{
 		Scanner sc = new Scanner(System.in);
   	
 //    	Person user = new Person(ID, userName, email, age, height, weight, gender, exercise, null);
-    	Person user = new Person(5, "TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
+    	Person user = new Person("FPSTeste", "teste123@teste.com", 16, 162, 21, 'M', 1, null);
 		/********************************************************************************************************************************
 		 * 																																*
 		 * 													  		MEALS																*
@@ -41,6 +41,8 @@ public class Main{
     	DBConnect fget = new DBConnect("food_db");
     	fget.getFoodData("fooditems");
     	
+    	fget = new DBConnect("user");
+    	fget.getUserData("user_info");
 
     }
 }
