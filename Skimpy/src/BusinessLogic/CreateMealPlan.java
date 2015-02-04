@@ -1,10 +1,8 @@
 package BusinessLogic;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CreateMealPlan {
-	
 	
 	public static MealPlanner create(){
 

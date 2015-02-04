@@ -21,6 +21,7 @@ public class Main{
 		
 		//User
 		Person user = new Person(5, "TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
+		System.out.println(user.toString());
 		//Person
     	MealPlanner plan = CreateMealPlan.create();
     	
@@ -34,7 +35,7 @@ public class Main{
     	
     	double priceD = plan.getPrice();
     	String price = String.format("%.2f", priceD);
-    	System.out.println("Price: Â£" + price);
+    	System.out.println("Price: £" + price);
     	
     	ArrayList<Food> food = new ArrayList<Food>();
     	for (int i = 0; i < plan.getShoppingList().size(); i++) {

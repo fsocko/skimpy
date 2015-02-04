@@ -94,7 +94,7 @@ public class Food{
     public String toString(){
     	String s = "The item's name is: " + name + 
     			"\n" +
-    			"\nThe price is: Â£" + price +
+    			"\nThe price is: £" + price +
     			"\nThe amount is: " + amount +
     			"\nThe units of item are: " + units +
     			"\nThe serving size is" + serving +
