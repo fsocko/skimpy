@@ -7,6 +7,13 @@ public class CreateMealPlan {
 	
 	
 	public static MealPlanner create(){
+		
+		//moved this here for now so that we can make meals from database
+		DBConnect fget = new DBConnect("food_db");
+    	fget.getFoodData("fooditems");
+    	
+    	fget = new DBConnect("user");
+    	fget.getUserData("user_info");
 
 		Food ID1 = new Food(1, "Coco Pops", "g", 800, 30, 1.92, 175.0, 6.0, 32.0, 17.0, 3.0, 1.5, 0.6, 0.35);
 		Food ID2 = new Food(2, "Tesco Pure British Semi Skimmed Milk", "l", 1, 0.125, 1.00, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);

@@ -1,11 +1,10 @@
-//author: Ruaraidh, FPS
-
+/**
+ * @author Ruaraidh, FPS
+ */
 package BusinessLogic;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-
 import com.mysql.jdbc.*;
-
 
 public class DBConnect {
 	private Connection con;
@@ -52,8 +51,7 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
-	
-	
+		
 	public void getUserData(String table){
 		try{
 			String query = "select * FROM " + table + ";";
@@ -76,7 +74,6 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
-	
 		
 	public void pushUser(Person user){
 		try{
@@ -92,9 +89,7 @@ public class DBConnect {
 				String age = rs.getString("Age");
 				String email = rs.getString("UserEmail");
 				System.out.println("User name: "+ name+ ", User age: "+age+", User e-mail: "+email);
-			}
-					
-			
+			}	
 		}catch(Exception ex){
 			System.out.println(ex);
 		}

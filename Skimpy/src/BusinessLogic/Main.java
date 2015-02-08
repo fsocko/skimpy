@@ -1,31 +1,25 @@
 package BusinessLogic;
 import java.util.ArrayList;
 /**
- * 
  * @author ruaraidh
- *
  */
 /**
- * 
  * Main class that brings all the other classes together.
- *
  */
 public class Main{
 	/**
 	 * Will create a Person object, Food and the create a MealPlanner and add the Food.
-	 * TODO: add a MealPlanner to the Person that will associate with. 
 	 * @param args
 	 */
 	
 	public static void main(String[] args) {
 		
-
-		//User
-		Person user = new Person("TestUser", "test123@test.com", 14, 165, 60, 'F', 1);
-		//Person
+		//user creation
+		Person user = new Person("Ruaraidh Macfarlane", "ruaraidh2@gmail.com", 20, 182, 60, 'M', 0);
+		
+		//create test meal plan
     	MealPlanner plan = CreateMealPlan.create();
-    	
-		user.setPlan(plan);
+		user.setMealplan(plan);
 		
 		String dayResult = NutritionOptimisation.compareCalories(user, plan);
     	String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);
@@ -53,29 +47,6 @@ public class Main{
     		System.out.println(s);
     	}
     	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
-
-		/********************************************************************************************************************************
-		 * 																																*
-		 * 														USER SET UP																*
-		 *																																* 
-		 *******************************************************************************************************************************/
-		
-	
-  	
-//    	Person user = new Person(ID, userName, email, age, height, weight, gender, exercise, null);
-    	Person user1 = new Person("FPSTeste", "teste123@teste.com", 16, 162, 21, 'M', 1);
-		/********************************************************************************************************************************
-		 * 																																*
-		 * 													  		MEALS																*
-		 *																																* 
-		 ********************************************************************************************************************************/
-    	//FoodDB
     	
-    	DBConnect fget = new DBConnect("food_db");
-    	fget.getFoodData("fooditems");
-    	
-    	fget = new DBConnect("user");
-    	fget.getUserData("user_info");
-
     }
 }
