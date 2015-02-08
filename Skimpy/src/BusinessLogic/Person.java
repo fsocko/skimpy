@@ -1,14 +1,9 @@
 package BusinessLogic;
 /**
- *  
- *  @author ruaraidh
+ *  @author Ruaraidh
  */
-/**
- * Each person object represent attributes of a user. 
- *
- */
+
 public class Person {
-	
 	/**
 	 * This class will add users to the database or create person objects from the database.
 	 */
@@ -20,8 +15,7 @@ public class Person {
 	private double weight;
 	private char gender;
 	private int exercise;
-	private MealPlanner plan;
-	//TODO: Meal plan
+	private MealPlanner mealplan;
 	
 	/**
 	 * Creates a Person with the desired attributes.
@@ -38,8 +32,8 @@ public class Person {
 	 * 4 = 7-21hrs/week of strenuous exercise/work
 	*/
 	
-	public Person(String name, String email, int age, double height, double weight, char gender, int exercise, MealPlanner plan){
-		this.ID = ID;
+	public Person(String name, String email, int age, double height, double weight, char gender, int exercise){
+		
 		this.name = name;
 		this.email = email;
 		this.age = age;
@@ -47,23 +41,15 @@ public class Person {
 		this.weight = weight;
 		this.gender = gender;
 		this.exercise = exercise;	
-		this.plan = null;
 		
-
-		//Uncomment when ready to set users
 		DBConnect connect = new DBConnect("User");
-    	connect.setData(this);
+    	connect.pushUser(this);
 	}
 	
-	public void addMealplan(MealPlanner meals){
-		this.plan = meals;
+	public void setMealplan(MealPlanner mealplan){
+		this.mealplan = mealplan;
 	}
-	
-	
 
-	/**
-	 * A toString function to display a person object.
-	 */
 	public String toString(){
 		String s ="Name: " + name +
 				"\nAge: " + age + 
@@ -73,104 +59,54 @@ public class Person {
 				"\nExercise: " + exercise; 
 		return s;
 	}
+	
+	//getters: might not need all of them? ID?
 	public String getID(){
 		return this.ID;
 	}
 	public String getEmail(){
 		return this.email;
 	}
-	/**
-	 * Get the user's name.
-	 * @return User's name.
-	 */
 	public String getName(){
 		return name;
 	}
-	/**
-	 * Get the user's age.
-	 * @return User's age.
-	 */
 	public int getAge(){
 		return age;
 	}
-	/**
-	 * Get the user's height in cm.
-	 * @return User's height in cm.
-	 */
 	public double getHeight(){
 		return height;
 	}
-	/**
-	 * Get the user's weight in kg.
-	 * @return User's weight in kg.
-	 */
 	public double getWeight(){
 		return weight;
 	}
-	/**
-	 * Get the user's gender. 
-	 * @return User's gender.
-	 */
 	public char getGender(){
 		return gender;
 	}
-	/**
-	 * Get the user's name.
-	 * @return User's exercise per week.
-	 */
 	public int getExercise(){
 		return exercise;
 	}
-	
 	public MealPlanner getMealplan(){
-		return plan;
+		return mealplan;
 	}
 
-	/**
-	 * Sets the user's name. If the user wishes to change it.
-	 * @param name The user's new name.
-	 */
 	//use these setters if user changes age weight etc.
 	public void setName(String name){
 		this.name = name;
 	}
-	
-	/**
-	 * Sets the user's age. If the user wishes to change it.
-	 * @param age The user's new age.
-	 */
 	public void setAge(int age){
 		this.age = age;
 	}
-	/**
-	 * Sets the user's height. If the user wishes to change it.
-	 * @param height The user's new height.
-	 */
 	public void setHeight(double height){
 		this.height = height;
 	}
-	/**
-	 * Sets the user's weight. If the user wishes to change it.
-	 * @param weight The user's new weight.
-	 */
 	public void setWeight(double weight){
 		this.weight = weight;
 	}
-	/**
-	 * Sets the user's gender. If the user wishes to change it.
-	 * @param gender The user's new gender.
-	 */
 	public void setGender(char gender){
 		this.gender = gender;
 	}
-	/**
-	 * Sets the user's exercise level. If the user wishes to change it.
-	 * @param exercise The user's new exercise level.
-	 */
 	public void setExercise(int exercise){
 		this.exercise = exercise;
 	}
-	public void setPlan(MealPlanner plan){
-		this.plan = plan;
-	}
+	
 }
