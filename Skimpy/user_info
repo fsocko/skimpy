@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE IF NOT EXISTS `user_info` (
-  `UserID` varchar(10) NOT NULL,
+  `UserID` varchar(10) NOT NULL AUTO_INCREMENT,
   `UserName` text NOT NULL,
   `UserEmail` varchar(20) NOT NULL,
   `Age` int(3) NOT NULL,
