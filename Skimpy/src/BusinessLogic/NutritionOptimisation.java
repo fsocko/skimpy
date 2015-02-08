@@ -75,7 +75,7 @@ public class NutritionOptimisation {
 		if (total < min)
 			result = "According to the GDA, You are not eating enough in a week. You might have to spend more money. You are eating " + total + " and you should try and eat at least " + String.format("%.2f",min) + ".";
 		
-		else if(total > min)
+		else if(total > max)
 			result = "According to the GDA, You are eating too much in a week. You could save money. You are eating " + total + " and you should try to cut down to at least " + String.format("%.2f",min) + "." +
 					"\nBy cutting down you could save up to " + String.format("%.2f",save) + "% in price.";
 		else

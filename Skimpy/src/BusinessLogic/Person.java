@@ -50,7 +50,7 @@ public class Person {
 		this.plan = null;
 		
 		DBConnect connect = new DBConnect("User");
-    	connect.setData(this);
+    	connect.pushUser(this);
 	}
 	
 	public void addMealplan(MealPlanner meals){

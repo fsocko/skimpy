@@ -55,7 +55,7 @@ public class DBConnect {
 	}
 	
 	
-	public void setData(Person user){
+	public void pushUser(Person user){
 		try{
 			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
 							user.getID() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
