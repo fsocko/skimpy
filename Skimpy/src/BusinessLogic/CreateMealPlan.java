@@ -9,24 +9,34 @@ public class CreateMealPlan {
 	public static MealPlanner create(){
 		
 		//moved this here for now so that we can make meals from database
-		DBConnect fget = new DBConnect("food_db");
-    	fget.getFoodData("fooditems");
+		DBConnect connection = new DBConnect();
+    	connection.getFoodData();
     	
-    	fget = new DBConnect("user");
-    	fget.getUserData("user_info");
 
-		Food ID1 = new Food(1, "Coco Pops", "g", 800, 30, 1.92, 175.0, 6.0, 32.0, 17.0, 3.0, 1.5, 0.6, 0.35);
-		Food ID2 = new Food(2, "Tesco Pure British Semi Skimmed Milk", "l", 1, 0.125, 1.00, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-		Food ID3 = new Food(3, "Tesco British Chicken Breast", "breasts", 3, 3, 3.33, 510, 0.0, 90.0, 0.0, 5.4, 1.5, 0.0, 0.9);
-		Food ID4 = new Food(4, "Tesco Brocoli", "g", 335, 100, 0.49, 38, 2.8, 7, 0, 1.8, 0.5, 2.6, 0.3);
-		Food ID5 = new Food(5, "Brown Rice", "g", 1000, 75, 1.75, 265, 2.2, 17.25, 1.0, 2.1, 0.6, 1.35, 0);
-		Food ID6 = new Food(6, "Tesco 2 Boneless Salmon Fillets", "fillets", 2, 2, 3.33, 430, 40, 0, 0, 28.8, 2.6, 0, 0.3);
-		Food ID7 = new Food(7, "Tesco Baby Spinach", "g", 240, 50, 1.5, 11.5, 1.45, 1.8, 0.8, 0.4, 0, 1.1, 0.1);
-		Food ID8 = new Food(8, "Tesco Finest Wood Fired 12\" Ham Mushroom & Mascarpone Pizza", "pizza", 1, 1, 5.00, 1012, 49.2, 119, 11.8, 35.4, 16.6, 10, 5.6);
-		Food ID9 = new Food(9, "Tesco Tomatoes On The Vine Loose", "Tomatoes", 7, 1, 0.77, 16, 0.6, 2.5, 2.5, 0.2, 0, 0.8, 0.1);
-		Food ID10 = new Food(10, "Bread", "Slices", 20, 2, 1.00, 176, 8, 30.2, 3.2, 1.4, 0.4, 5.4, 0.72);
-		Food ID11 = new Food(11, "Cathedral City Mature Cheddar", "g", 350, 50, 4.00, 208, 12.7, 0.05, 0.05, 17.45, 10.85, 0, 0.35);
-		
+//		Food ID1 = new Food(1, "Coco Pops", "g", 800, 30, 1.92, 175.0, 6.0, 32.0, 17.0, 3.0, 1.5, 0.6, 0.35);
+//		Food ID2 = new Food(2, "Tesco Pure British Semi Skimmed Milk", "l", 1, 0.125, 1.00, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+//		Food ID3 = new Food(3, "Tesco British Chicken Breast", "breasts", 3, 3, 3.33, 510, 0.0, 90.0, 0.0, 5.4, 1.5, 0.0, 0.9);
+//		Food ID4 = new Food(4, "Tesco Brocoli", "g", 335, 100, 0.49, 38, 2.8, 7, 0, 1.8, 0.5, 2.6, 0.3);
+//		Food ID5 = new Food(5, "Brown Rice", "g", 1000, 75, 1.75, 265, 2.2, 17.25, 1.0, 2.1, 0.6, 1.35, 0);
+//		Food ID6 = new Food(6, "Tesco 2 Boneless Salmon Fillets", "fillets", 2, 2, 3.33, 430, 40, 0, 0, 28.8, 2.6, 0, 0.3);
+//		Food ID7 = new Food(7, "Tesco Baby Spinach", "g", 240, 50, 1.5, 11.5, 1.45, 1.8, 0.8, 0.4, 0, 1.1, 0.1);
+//		Food ID8 = new Food(8, "Tesco Finest Wood Fired 12\" Ham Mushroom & Mascarpone Pizza", "pizza", 1, 1, 5.00, 1012, 49.2, 119, 11.8, 35.4, 16.6, 10, 5.6);
+//		Food ID9 = new Food(9, "Tesco Tomatoes On The Vine Loose", "Tomatoes", 7, 1, 0.77, 16, 0.6, 2.5, 2.5, 0.2, 0, 0.8, 0.1);
+//		Food ID10 = new Food(10, "Bread", "Slices", 20, 2, 1.00, 176, 8, 30.2, 3.2, 1.4, 0.4, 5.4, 0.72);
+//		Food ID11 = new Food(11, "Cathedral City Mature Cheddar", "g", 350, 50, 4.00, 208, 12.7, 0.05, 0.05, 17.45, 10.85, 0, 0.35);
+//		
+//    	Food ID1 = 
+//		Food ID2 = 
+//		Food ID3 = 
+//		Food ID4 = 
+//		Food ID5 = 
+//		Food ID6 = 
+//		Food ID7 = 
+//		Food ID8 =
+//		Food ID9 = 
+//		Food ID10 = 
+//		Food ID11 = 
+    	
 		ArrayList<Food> ing1B = new ArrayList<Food>();
     	ArrayList<Food> ing1L = new ArrayList<Food>();
     	ArrayList<Food> ing1D = new ArrayList<Food>();
@@ -34,22 +44,22 @@ public class CreateMealPlan {
     	ArrayList<Food> ing3D = new ArrayList<Food>();
     	
     	//Breakfast
-    	ing1B.add(ID1);
-    	ing1B.add(ID2);
-    	//Lunch
-    	ing1L.add(ID9);
-    	ing1L.add(ID10);
-    	ing1L.add(ID11);
-    	//Chicken Dinner
-    	ing1D.add(ID3);
-    	ing1D.add(ID4);
-    	ing1D.add(ID5);
-    	//Pizza Dinner
-    	ing2D.add(ID8);
-    	//Salmon Dinner
-    	ing3D.add(ID6);
-    	ing3D.add(ID7);
-    	ing3D.add(ID5);
+//    	ing1B.add(ID1);
+//    	ing1B.add(ID2);
+//    	//Lunch
+//    	ing1L.add(ID9);
+//    	ing1L.add(ID10);
+//    	ing1L.add(ID11);
+//    	//Chicken Dinner
+//    	ing1D.add(ID3);
+//    	ing1D.add(ID4);
+//    	ing1D.add(ID5);
+//    	//Pizza Dinner
+//    	ing2D.add(ID8);
+//    	//Salmon Dinner
+//    	ing3D.add(ID6);
+//    	ing3D.add(ID7);
+//    	ing3D.add(ID5);
     	
     	Meal meal1B = new Meal("Coco Pops", ing1B);
        	Meal meal1L = new Meal("Cheese and Tomato Sandwich", ing1L);

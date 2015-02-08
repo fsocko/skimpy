@@ -42,7 +42,7 @@ public class Person {
 		this.gender = gender;
 		this.exercise = exercise;	
 		
-		DBConnect connect = new DBConnect("User");
+		DBConnect connect = new DBConnect();
     	connect.pushUser(this);
 	}
 	

@@ -11,30 +11,29 @@ public class DBConnect {
 	private Statement st;
 	private ResultSet rs;
 	
-	public DBConnect(String db) //db is the name of the database.
+	public DBConnect() //db is the name of the database.
 	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ db, "root", "");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
 		}
 	}
 
-	public void getFoodData(String table){ //table is the name of the table within the database db
+	public void getFoodData(){ //table is the name of the table within the database db
 		try{
-			String query = "select * FROM " + table + ";";
-			rs = st.executeQuery(query);
+			rs = st.executeQuery("select * FROM fooditems;");
 			System.out.println("Records from Database");
 			while (rs.next()){
-				int ID = rs.getInt("ID");
+//				int ID = rs.getInt("ID");
 				String name = rs.getString("Name");
 				String units = rs.getString("Units");
 				int amount = rs.getInt("Amount");
 				double serving = rs.getDouble("Serving");
-				double price = rs.getDouble("Price");
+//				double price = rs.getDouble("Price");
 				double calories = rs.getDouble("Calories");
 				double protein = rs.getDouble("Protein");
 				double carbs = rs.getDouble("Carbs");
@@ -44,7 +43,7 @@ public class DBConnect {
 				double fibre = rs.getDouble("Fibre");
 				double salt = rs.getDouble("Salt");
 				
-				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Price " + price + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
+				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
 			}
 	
 		}catch(Exception ex){
@@ -52,11 +51,10 @@ public class DBConnect {
 		}
 	}
 		
-	public void getUserData(String table){
+	public void getUserData(){
 		try{
-			String query = "select * FROM " + table + ";";
 			System.out.println("Records from Database");
-			rs = st.executeQuery(query);
+			rs = st.executeQuery("select * FROM user_info;");
 			while (rs.next()){
 			
 				String ID = rs.getString("userID");
