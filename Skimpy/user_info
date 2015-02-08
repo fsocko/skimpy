@@ -1,0 +1,36 @@
+--
+-- Table structure for table `user_info`
+--
+
+CREATE TABLE IF NOT EXISTS `user_info` (
+  `UserID` varchar(10) NOT NULL,
+  `UserName` text NOT NULL,
+  `UserEmail` varchar(20) NOT NULL,
+  `Age` int(3) NOT NULL,
+  `Height` float NOT NULL,
+  `Weight` float NOT NULL,
+  `Gender` text NOT NULL,
+  `Exercise` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_info`
+--
+
+INSERT INTO `user_info` (`UserID`, `UserName`, `UserEmail`, `Age`, `Height`, `Weight`, `Gender`, `Exercise`) VALUES
+('5', 'TestUser', 'test123@test.com', 14, 165, 60, 'F', 1),
+('U001', 'Harry', 'harry@hotmail.com', 18, 189, 88, 'M', 3),
+('U002', 'Jacob', 'jake@yahoo.com', 20, 178, 97, 'M', 5),
+('U003', 'Mathias', 'mathias@yahoo.co.uk', 45, 195, 100, 'M', 1),
+('U004', 'Jerry', 'jerrymc@hotmail.com', 23, 170, 67, 'M', 2),
+('U005', 'Jane', 'jane@yahoo.com', 35, 155, 45, 'F', 4);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user_info`
+--
+ALTER TABLE `user_info`
+ ADD PRIMARY KEY (`UserID`);
