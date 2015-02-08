@@ -19,8 +19,9 @@ public class Main{
 	
 	public static void main(String[] args) {
 		
+
 		//User
-		Person user = new Person(1, "TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
+		Person user = new Person("TestUser", "test123@test.com", 14, 165, 60, 'F', 1, null);
 		//Person
     	MealPlanner plan = CreateMealPlan.create();
     	
@@ -52,5 +53,29 @@ public class Main{
     		System.out.println(s);
     	}
     	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
+
+		/********************************************************************************************************************************
+		 * 																																*
+		 * 														USER SET UP																*
+		 *																																* 
+		 *******************************************************************************************************************************/
+		
+	
+  	
+//    	Person user = new Person(ID, userName, email, age, height, weight, gender, exercise, null);
+    	Person user1 = new Person("FPSTeste", "teste123@teste.com", 16, 162, 21, 'M', 1, null);
+		/********************************************************************************************************************************
+		 * 																																*
+		 * 													  		MEALS																*
+		 *																																* 
+		 ********************************************************************************************************************************/
+    	//FoodDB
+    	
+    	DBConnect fget = new DBConnect("food_db");
+    	fget.getFoodData("fooditems");
+    	
+    	fget = new DBConnect("user");
+    	fget.getUserData("user_info");
+
     }
 }

@@ -12,7 +12,7 @@ public class Person {
 	/**
 	 * This class will add users to the database or create person objects from the database.
 	 */
-	private int ID;
+	private String ID;
 	private String name; 
 	private String email;
 	private int age;
@@ -38,7 +38,7 @@ public class Person {
 	 * 4 = 7-21hrs/week of strenuous exercise/work
 	*/
 	
-	public Person(int ID, String name, String email, int age, double height, double weight, char gender, int exercise, MealPlanner plan){
+	public Person(String name, String email, int age, double height, double weight, char gender, int exercise, MealPlanner plan){
 		this.ID = ID;
 		this.name = name;
 		this.email = email;
@@ -49,8 +49,10 @@ public class Person {
 		this.exercise = exercise;	
 		this.plan = null;
 		
+
+		//Uncomment when ready to set users
 		DBConnect connect = new DBConnect("User");
-    	connect.pushUser(this);
+    	connect.setData(this);
 	}
 	
 	public void addMealplan(MealPlanner meals){
@@ -71,7 +73,7 @@ public class Person {
 				"\nExercise: " + exercise; 
 		return s;
 	}
-	public int getID(){
+	public String getID(){
 		return this.ID;
 	}
 	public String getEmail(){
