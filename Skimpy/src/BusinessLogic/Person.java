@@ -44,8 +44,8 @@ public class Person {
 		this.gender = gender;
 		this.exercise = exercise;	
 		
-		DBConnect connect = new DBConnect();
-    	connect.pushUser(this);
+//		DBConnect connect = new DBConnect();
+//    	connect.pushUser(this);
 	}
 	
 	public void setMealplan(MealPlanner mealplan){

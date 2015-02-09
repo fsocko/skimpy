@@ -20,7 +20,8 @@ public class Food{
 	private String units;
 	private int amount;
 	private double serving;
-	private double price;
+	private double tescoPrice;
+	private double asdaPrice;
 	private double[] prices;
 	private double tescoprice;
 	private double asdaprice;
@@ -57,17 +58,14 @@ public class Food{
      * @param fbr The fibre in the food.
      * @param slt The salt in the food.
      */
-	public Food(int ID, String name, String unts, int amnt, double serving, double pric, double cal, double prot, double crbs, double sgrs, double ft, double sats, double fbr, double slt){
-//		String record = fDb.getRecordByID(key);
-//        name = fDb.getNameFromRec(record);
-		
-		this.ID = ID;
+	public Food(String name, String unts, int amnt, double serving, double tescoPrc, double asdaPrc, double cal, double prot, double crbs, double sgrs, double ft, double sats, double fbr, double slt){
+
 		this.name = name;
 		
         units = unts;
         amount = amnt;
-        price = pric;
-
+        tescoPrice = tescoPrc;
+        asdaPrice = asdaPrc;
         calories = cal;
         protein = prot;
         saturates = sats;
@@ -94,7 +92,8 @@ public class Food{
     public String toString(){
     	String s = "The item's name is: " + name + 
     			"\n" +
-    			"\nThe price is: Â£" + price +
+    			"\nThe price at Tesco is: £" + tescoPrice +
+    			"\nThe price at ASDA is: £" + asdaPrice +
     			"\nThe amount is: " + amount +
     			"\nThe units of item are: " + units +
     			"\nThe serving size is" + serving +
@@ -137,8 +136,11 @@ public class Food{
 	public double getServing() {
 		return serving;
 	}
-	public double getPrice() {
-		return price;
+	public double getTescoPrice() {
+		return tescoPrice;
+	}
+	public double getAsdaPrice() {
+		return asdaPrice;
 	}
 	public double[] getPrices() {
 		return prices;

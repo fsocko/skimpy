@@ -49,10 +49,17 @@ public class Meal {
 	public void add(Food f){
 		ingredients.add(f);
 	}
-	public double mealPrice(){
+	public double mealTescoPrice(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getPrice();
+			result += f.getTescoPrice();
+		}
+		return result;
+	}
+	public double mealAsdaPrice(){
+		double result = 0;
+		for(Food f : ingredients){
+			result += f.getAsdaPrice();
 		}
 		return result;
 	}

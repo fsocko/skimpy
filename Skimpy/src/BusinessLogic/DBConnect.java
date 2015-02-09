@@ -23,42 +23,38 @@ public class DBConnect {
 		}
 	}
 
-	public void getFoodData(String ID){ //table is the name of the table within the database db
+	public Food getFoodData(String ID){ //table is the name of the table within the database db
 		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=1;");
+			rs = st.executeQuery("select * FROM fooditems WHERE ID=" +  ID);
 			System.out.println("Records from Database");
-			while (rs.next()){
-////				int ID = rs.getInt("ID");
-				String name = rs.getString("Name");
-				System.out.println("Name: " + name);
-////				String units = rs.getString("Units");
-////				int amount = rs.getInt("Amount");
-////				double serving = rs.getDouble("Serving");
-////				double price = rs.getDouble("Price");
-////				double calories = rs.getDouble("Calories");
-////				double protein = rs.getDouble("Protein");
-////				double carbs = rs.getDouble("Carbs");
-////				double sugars = rs.getDouble("Sugars");
-////				double fats = rs.getDouble("Fat");
-////				double saturates = rs.getDouble("Saturates");
-////				double fibre = rs.getDouble("Fibre");
-////				double salt = rs.getDouble("Salt");
-//				
-//				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
-			}
-	
+
+			Food item = new Food(rs.getString("Name"),
+									rs.getString("Units"),
+									rs.getInt("Amount"),
+									rs.getDouble("Serving"),
+									rs.getDouble("tesco_price"),
+									rs.getDouble("asda_price"),
+									rs.getDouble("Calories"),
+									rs.getDouble("Protein"),
+									rs.getDouble("Carbs"),
+									rs.getDouble("Sugars"),
+									rs.getDouble("Fat"),
+									rs.getDouble("Saturates"),
+									rs.getDouble("Fibre"),
+									rs.getDouble("Salt"));
+			return item;
+			
 		}catch(Exception ex){
 			System.out.println(ex);
+			return null;
 		}
 	}
 		
-	public void getUserData(){
+	public void getUserData(String ID){
 		try{
 			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info;");
+			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
 			while (rs.next()){
-			
-				String ID = rs.getString("userID");
 				String userName = rs.getString("UserName");
 				String userEmail = rs.getString("UserEmail");
 				int age = rs.getInt("Age");
