@@ -76,19 +76,13 @@ public class DBConnect {
 		
 	public void pushUser(Person user){
 		try{
-			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
+			String query = "INSERT INTO `user_info`(`UserName`, `UserEmail`, `Age`, `Height`, `Weight`, `Gender`, `Exercise`) VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', "  +
 							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", '" + user.getGender() + "', " + 
-							user.getExercise() + ");";
+							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
-			while (rs.next()){
-				String name = rs.getString("UserName");
-				String age = rs.getString("Age");
-				String email = rs.getString("UserEmail");
-				System.out.println("User name: "+ name+ ", User age: "+age+", User e-mail: "+email);
-			}	
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
