@@ -25,25 +25,40 @@ public class DBConnect {
 
 	public Food getFoodData(String ID){ //table is the name of the table within the database db
 		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=" +  ID);
+			rs = st.executeQuery("select * FROM fooditems WHERE ID=1");
 			System.out.println("Records from Database");
-
-			Food item = new Food(rs.getString("Name"),
-									rs.getString("Units"),
-									rs.getInt("Amount"),
-									rs.getDouble("Serving"),
-									rs.getDouble("tesco_price"),
-									rs.getDouble("asda_price"),
-									rs.getDouble("Calories"),
-									rs.getDouble("Protein"),
-									rs.getDouble("Carbs"),
-									rs.getDouble("Sugars"),
-									rs.getDouble("Fat"),
-									rs.getDouble("Saturates"),
-									rs.getDouble("Fibre"),
-									rs.getDouble("Salt"));
-			return item;
 			
+			String name = null;
+			String units = null;
+			int amount = 0;
+			double serving = 0;
+			double calories = 0;
+			double protein = 0;
+			double carbs = 0;
+			double sugars = 0;
+			double fats = 0;
+			double saturates = 0;
+			double fibre = 0;
+			double salt = 0;	
+			
+			while (rs.next()){
+				name = rs.getString("Name");
+				units = rs.getString("Units");
+				amount = rs.getInt("Amount");
+				serving = rs.getDouble("Serving");
+				calories = rs.getDouble("Calories");
+				protein = rs.getDouble("Protein");
+				carbs = rs.getDouble("Carbs");
+				sugars = rs.getDouble("Sugars");
+				fats = rs.getDouble("Fat");
+				saturates = rs.getDouble("Saturates");
+				fibre = rs.getDouble("Fibre");
+				salt = rs.getDouble("Salt");		
+				
+			}
+			Food item = new Food(name, units, amount, serving, 1.92, 1.93, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
+			return item;
+		
 		}catch(Exception ex){
 			System.out.println(ex);
 			return null;

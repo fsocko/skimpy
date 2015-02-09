@@ -15,11 +15,12 @@ public class Main{
 	public static void main(String[] args) {
 		
 		//user creation
-		Person user = new Person("Ruaraidh Macfarlane", "ruaraidh2@gmail.com", "password", 20, 182, 60, 'M', 0);
+//		Person user = new Person("Ruaraidh Macfarlane", "ruaraidh2@gmail.com", "password", 20, 182, 60, 'M', 0);
 		
 		//create test meal plan
-    	MealPlanner plan = CreateMealPlan.create();
-		user.setMealplan(plan);
+		CreateMealPlan.create();
+//    	MealPlanner plan = CreateMealPlan.create();
+//		user.setMealplan(plan);
 //		
 //		String dayResult = NutritionOptimisation.compareCalories(user, plan);
 //    	String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);
