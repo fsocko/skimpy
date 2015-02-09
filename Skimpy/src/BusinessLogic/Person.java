@@ -8,8 +8,9 @@ public class Person {
 	 * This class will add users to the database or create person objects from the database.
 	 */
 	private String ID;
-	private String name; 
+	private String name;
 	private String email;
+	private String password; //needs encripting
 	private int age;
 	private double height;
 	private double weight;
@@ -32,10 +33,11 @@ public class Person {
 	 * 4 = 7-21hrs/week of strenuous exercise/work
 	*/
 	
-	public Person(String name, String email, int age, double height, double weight, char gender, int exercise){
+	public Person(String name, String email, String password, int age, double height, double weight, char gender, int exercise){
 		
 		this.name = name;
 		this.email = email;
+		this.password = password;
 		this.age = age;
 		this.height = height;
 		this.weight = weight;
@@ -107,6 +109,9 @@ public class Person {
 	}
 	public void setExercise(int exercise){
 		this.exercise = exercise;
+	}
+	public void setPassword(String password){
+		this.password = password;
 	}
 	
 }
