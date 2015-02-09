@@ -27,7 +27,8 @@ public class CreateMealPlan {
 //		
     	Food ID1 = connection.getFoodData("1");
     	System.out.println("FOOOD: " + ID1.toString());
-//		Food ID2 = connection.getFoodData("2");
+		Food ID2 = connection.getFoodData("2");
+		System.out.println("FOOOD: " + ID2.toString());
 //		Food ID3 = connection.getFoodData("3");
 //		Food ID4 = connection.getFoodData("4");
 //		Food ID5 = connection.getFoodData("5");

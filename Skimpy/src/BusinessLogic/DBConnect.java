@@ -25,7 +25,7 @@ public class DBConnect {
 
 	public Food getFoodData(String ID){ //table is the name of the table within the database db
 		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=1");
+			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID);
 			System.out.println("Records from Database");
 			
 			String name = null;
