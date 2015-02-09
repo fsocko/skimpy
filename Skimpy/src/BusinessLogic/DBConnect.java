@@ -26,12 +26,13 @@ public class DBConnect {
 	public Food getFoodData(String ID){ //table is the name of the table within the database db
 		try{
 			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID);
-			System.out.println("Records from Database");
 			
 			String name = null;
 			String units = null;
 			int amount = 0;
 			double serving = 0;
+			double tescoPrice = 0;
+			double asdaPrice = 0;
 			double calories = 0;
 			double protein = 0;
 			double carbs = 0;
@@ -46,6 +47,8 @@ public class DBConnect {
 				units = rs.getString("Units");
 				amount = rs.getInt("Amount");
 				serving = rs.getDouble("Serving");
+				tescoPrice = rs.getDouble("tesco_price");
+				asdaPrice = rs.getDouble("asda_price");
 				calories = rs.getDouble("Calories");
 				protein = rs.getDouble("Protein");
 				carbs = rs.getDouble("Carbs");
@@ -56,7 +59,7 @@ public class DBConnect {
 				salt = rs.getDouble("Salt");		
 				
 			}
-			Food item = new Food(name, units, amount, serving, 1.92, 1.93, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
+			Food item = new Food(name, units, amount, serving, tescoPrice, asdaPrice, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
 			return item;
 		
 		}catch(Exception ex){
