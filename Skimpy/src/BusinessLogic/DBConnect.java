@@ -23,27 +23,28 @@ public class DBConnect {
 		}
 	}
 
-	public void getFoodData(){ //table is the name of the table within the database db
+	public void getFoodData(String ID){ //table is the name of the table within the database db
 		try{
-			rs = st.executeQuery("select * FROM fooditems;");
+			rs = st.executeQuery("select * FROM fooditems WHERE ID=1;");
 			System.out.println("Records from Database");
 			while (rs.next()){
-//				int ID = rs.getInt("ID");
+////				int ID = rs.getInt("ID");
 				String name = rs.getString("Name");
-				String units = rs.getString("Units");
-				int amount = rs.getInt("Amount");
-				double serving = rs.getDouble("Serving");
-//				double price = rs.getDouble("Price");
-				double calories = rs.getDouble("Calories");
-				double protein = rs.getDouble("Protein");
-				double carbs = rs.getDouble("Carbs");
-				double sugars = rs.getDouble("Sugars");
-				double fats = rs.getDouble("Fat");
-				double saturates = rs.getDouble("Saturates");
-				double fibre = rs.getDouble("Fibre");
-				double salt = rs.getDouble("Salt");
-				
-				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
+				System.out.println("Name: " + name);
+////				String units = rs.getString("Units");
+////				int amount = rs.getInt("Amount");
+////				double serving = rs.getDouble("Serving");
+////				double price = rs.getDouble("Price");
+////				double calories = rs.getDouble("Calories");
+////				double protein = rs.getDouble("Protein");
+////				double carbs = rs.getDouble("Carbs");
+////				double sugars = rs.getDouble("Sugars");
+////				double fats = rs.getDouble("Fat");
+////				double saturates = rs.getDouble("Saturates");
+////				double fibre = rs.getDouble("Fibre");
+////				double salt = rs.getDouble("Salt");
+//				
+//				System.out.println( "Name: " + name + "Units " + units + " Amount: " + amount + " Serving " + serving + " Calories " + calories + " Protein "+ protein + "Carbs " +carbs + "Sugars " +sugars + " Farts " +fats + " Saturates "+ saturates +" Fibre " + fibre + " Salt " + salt);
 			}
 	
 		}catch(Exception ex){
@@ -76,7 +77,7 @@ public class DBConnect {
 	public void pushUser(Person user){
 		try{
 			String query = "insert into  User_Info (UserId, UserName,UserEmail, Age, Height, Weight, Gender, Exercise) values (" + 
-							user.getName() + ", '" + user.getName() + "', '" + user.getEmail() + "', "  +
+							user.getName() +  "', '" + user.getEmail() + "', "  +
 							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", '" + user.getGender() + "', " + 
 							user.getExercise() + ");";
 			st.executeUpdate(query);

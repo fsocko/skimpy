@@ -10,7 +10,7 @@ public class CreateMealPlan {
 		
 		//moved this here for now so that we can make meals from database
 		DBConnect connection = new DBConnect();
-    	connection.getFoodData();
+    	connection.getFoodData("1");
     	
 
 //		Food ID1 = new Food(1, "Coco Pops", "g", 800, 30, 1.92, 175.0, 6.0, 32.0, 17.0, 3.0, 1.5, 0.6, 0.35);
