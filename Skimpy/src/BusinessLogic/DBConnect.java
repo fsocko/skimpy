@@ -90,7 +90,8 @@ public class DBConnect {
 		
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO `user_info`(`UserName`, `UserEmail`, `Age`, `Height`, `Weight`, `Gender`, `Exercise`) VALUES ('" + 
+			String query = "INSERT INTO `user_info`(`UserName`, `UserEmail`, `Age`, `Height`, `Weight`, `Gender`, `Exercise`) "
+					+ "VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', "  +
 							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", '" + user.getGender() + "', " + 
 							user.getExercise() + ")";
@@ -101,4 +102,20 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
+	
+	public void pushFood(dbFood foodItem)
+	{
+		try{
+			String query = "INSERT INTO `user_info`(`ID`, ``, ``, ``, ``, ``, ``) "
+					+ "VALUES ( 
+							
+			
+			st.executeUpdate(query);
+			System.out.println("Pushes to Database");
+			
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
 }

@@ -31,6 +31,34 @@ public class SpiderToDB {
 		 
     }
 	 
+	 
+	 public int findCommas(String record, int commaNum) //takes record, the number of the comma we want to find. Index from 0 
+	 {
+		int j = 0;
+		int commaPos = -1;
+		System.out.println(commaNum); 
+		
+		 for(int i = 1; (i < record.length()+1); i++)
+		 {
+			 if(record.substring((i-1), i).equals(","))
+			 {
+				 System.out.println("found comma " +(j) + ", Position: " +(i-1) );
+				 j++;
+				 commaPos = (i-1);
+			 }	
+			 if((j-1) == commaNum && (commaPos > -1))
+			 {System.out.println("Found the comma!."); commaPos = (i-1); break;}
+			 
+			 if(i == record.length())
+			 {System.out.println("Comma number " +commaNum + " not found."); commaPos = -99; }
+			 
+		 }	 	 
+		 return commaPos; //returns position of comma number commaNum in a record, index from 0
+	 }
+	 
+	 
+	 public void formatRecord(String record)
+	 {
 	 /*RecordFormat:
 	Shop ID,
 	Name | mass,
@@ -38,6 +66,15 @@ public class SpiderToDB {
 	(Price / Unit),
 	Food cat
 	*/
-    
+		 String id = record.substring(0, 9);
+		 String name = "n";
+		 String mass = "m";
+		 double price = 1;
+		 double pricePU = 1;
+		 String foodCat = "fc";
+		 
+		 System.out.println(id + " ## " + name + mass + price + pricePU + foodCat);
+		 
+	 }
 
 }

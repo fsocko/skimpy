@@ -53,12 +53,20 @@ public class Main{
 */
 		
 //SpiderToDB:
-		//long startTime = System.nanoTime();
 		SpiderToDB std = new SpiderToDB();
 		System.out.println(std.readRecord(4));
-		//long endTime = System.nanoTime();
-		//long duration = ((endTime - startTime)/1000000);
-		//System.out.println("\n" + "Sequential search: " + duration + "ms");
+		
+		//std.formatRecord(std.readRecord(4));
+		
+		//std.findCommas(std.readRecord(4), 3);
+		
+		System.out.println(std.findCommas(std.readRecord(4), 0));
+		System.out.println(std.findCommas(std.readRecord(4), 1));
+		System.out.println(std.findCommas(std.readRecord(4), 2));
+		System.out.println(std.findCommas(std.readRecord(4), 3));
+		System.out.println(std.findCommas(std.readRecord(4), 4));
+		System.out.println(std.findCommas(std.readRecord(4), 9));
+		
 		
 		
     }
