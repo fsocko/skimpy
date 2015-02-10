@@ -6,7 +6,7 @@ import java.util.regex.*;
 public class SpiderToDB {
 	
 	//Read a record in a particular place in a file. - Sequential search for line number.
-	 public String readRecord(int recNum) //Indexes from 1 to match line number.
+	 public String readRecord(int recNum) //Indexes from 1 to match line numbers.
     { 
 		 String record = "No Record Found!";
 		 String file = "data/tesco.txt";
@@ -30,6 +30,14 @@ public class SpiderToDB {
 		 return record;
 		 
     }
+	 
+	 /*RecordFormat:
+	Shop ID,
+	Name | mass,
+	Price,
+	(Price / Unit),
+	Food cat
+	*/
     
 
 }
