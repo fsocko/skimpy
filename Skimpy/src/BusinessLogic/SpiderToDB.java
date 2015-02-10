@@ -32,7 +32,7 @@ public class SpiderToDB {
     }
 	 
 	 
-	 public int findCommas(String record, int commaNum) //takes record, the number of the comma we want to find. Index from 0 
+	 public int findComma(String record, int commaNum) //takes record, the number of the comma we want to find. Index from 0 
 	 {
 		int j = 0;
 		int commaPos = -1;
@@ -47,7 +47,7 @@ public class SpiderToDB {
 				 commaPos = (i-1);
 			 }	
 			 if((j-1) == commaNum && (commaPos > -1))
-			 {System.out.println("Found the comma!."); commaPos = (i-1); break;}
+			 {System.out.println("Found the comma!"); commaPos = (i-1); break;}
 			 
 			 if(i == record.length())
 			 {System.out.println("Comma number " +commaNum + " not found."); commaPos = -99; }
@@ -66,15 +66,23 @@ public class SpiderToDB {
 	(Price / Unit),
 	Food cat
 	*/
-		 String id = record.substring(0, 9);
-		 String name = "n";
+		 String id = record.substring(0, findComma(record, 0));
+		 String name = record.substring(findComma(record, 0), findComma(record, 1));
 		 String mass = "m";
-		 double price = 1;
-		 double pricePU = 1;
-		 String foodCat = "fc";
+		 String price = record.substring(findComma(record, 1)-1, findComma(record, 2)-1);
+		 String pricePU = record.substring(findComma(record, 2)-1, findComma(record, 3)-1);
+		 String foodCat = record.substring(findComma(record, 3)-1, record.length());
 		 
-		 System.out.println(id + " ## " + name + mass + price + pricePU + foodCat);
-		 
+		 		System.out.println(id);
+				 System.out.println(mass);
+				 System.out.println(price);
+				 System.out.println(pricePU);
+				 System.out.println(foodCat);
+				 
+			
+				 
+				 
+				 
 	 }
 
 }
