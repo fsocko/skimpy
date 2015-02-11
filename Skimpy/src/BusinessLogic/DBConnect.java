@@ -106,8 +106,8 @@ public class DBConnect {
 	public void pushFood(dbFood foodItem)
 	{
 		try{
-			String query = "INSERT INTO `user_info`(`ID`, ``, ``, ``, ``, ``, ``) "
-					+ "VALUES ( 
+			String query = "INSERT INTO `user_info`(``, ``, ``, ``, ``, ``, ``) "
+					
 							
 			
 			st.executeUpdate(query);

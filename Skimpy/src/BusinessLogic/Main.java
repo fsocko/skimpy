@@ -54,15 +54,16 @@ public class Main{
 		
 //SpiderToDB:
 		SpiderToDB std = new SpiderToDB();
-		System.out.println(std.readRecord(4));
+		//System.out.println(std.readRecord(4));
 		
-		std.formatRecord(std.readRecord(4));
+		//std.formatRecord(std.readRecord(4));
 		
-
-		
-		
-		
-		
-		
+		int k = 1;
+		while(k<2837)
+		{
+			System.out.println("\n FOOD ITEM " + k + "\n");
+			std.formatRecord(std.readRecord(k));
+			k++;
+		}				
     }
 }
