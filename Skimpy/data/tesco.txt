@@ -7,7 +7,6 @@
 253807413, Tesco Braeburn Apples Loose, £0.31, (£1.95/kg), Apples, Pears & Rhubarb
 284477058, Tesco British Apple Min 6 Pack 670G, £1.50, (£2.24/kg), Apples, Pears & Rhubarb
 254304534, Tesco Cox Apples Loose, £0.31, (£1.95/kg), Apples, Pears & Rhubarb
-284478005, Tesco Cripps Red Apple 6 Pack 670G, , , Apples, Pears & Rhubarb
 284477862, Tesco Empire Apple Min 5 Pack 700G, £2.25, (£3.22/kg), Apples, Pears & Rhubarb
 253562396, Tesco Empire Apples Loose, £0.44, (£2.75/kg), Apples, Pears & Rhubarb
 284475262, Tesco Evelina Apple 6 Pack 670G, £2.00, (£2.99/kg), Apples, Pears & Rhubarb
@@ -79,7 +78,6 @@
 257398518, Tesco Wholefoods Blueberries 100G, £2.50, (£25.00/kg), Dried Fruit & Nuts
 257399828, Tesco Wholefoods Cranberries 100G, £1.50, (£15.00/kg), Dried Fruit & Nuts
 283196305, Tesco Wholefoods Dried Apple Wedges 120G, £2.00, (£16.67/kg), Dried Fruit & Nuts
-258057537, Tesco Wholefoods Dried Apricots 250G, , , Dried Fruit & Nuts
 260165769, Tesco Wholefoods Dried Cherries 100G, £2.00, (£20.00/kg), Dried Fruit & Nuts
 253554469, Tesco Green Seedless Grapes Loose, £2.60, (£4.00/kg), Grapes
 267408167, Tesco Green Seedless Grapes Pack 500G, £2.00, (£4.00/kg), Grapes
@@ -161,7 +159,6 @@
 279844956, Tesco Grape And Strawberry Fruit Salad 125G, £1.00, (£8.00/kg), Fresh Cut Fruit
 269022942, Tesco Grape Snack Pack 80G, £0.50, (£6.25/kg), Fresh Cut Fruit
 286681826, Tesco Grape Snack Pack 80G, £0.50, (£6.25/kg), Fresh Cut Fruit
-286415803, Tesco Grape, British Pear, P/Gran And Blackberry 240G, £2.00, (£8.34/kg), Fresh Cut Fruit
 284735485, Tesco Kiwi, Strawberry And Melon 240G, £2.00, (£8.34/kg), Fresh Cut Fruit
 285363312, Tesco Mango And Pineapple Fingers 80G, £1.00, (£12.50/kg), Fresh Cut Fruit
 285333383, Tesco Mango And Pineapple With Drizzle 220G, £2.00, (£9.10/kg), Fresh Cut Fruit
@@ -195,7 +192,6 @@
 284933636, Tesco Jerusalem Artichokes 350G, £2.00, (£5.72/kg), Baby Vegetables
 250869015, Tesco Organic Baby Corn 125G, £1.60, (£12.80/kg), Baby Vegetables
 264653295, Tesco Stir Fry Vegetable Medley 220G, £2.35, (£10.69/kg), Baby Vegetables
-257211126, Tesco Baby Courgettes 200G, , , Baby Vegetables
 253430898, Tesco Chefs Vegetable Medley 280G, £2.35, (£8.40/kg), Baby Vegetables
 279627298, Tesco Tendersweet Carrots 150G, £2.00, (£13.34/kg), Baby Vegetables
 259764349, Tesco Baby Parsnips 230G, £1.60, (£6.96/kg), Baby Vegetables
@@ -444,7 +440,6 @@
 263943986, Tesco Organic Garlic 3 Pack, £0.90, (£0.30/each), World Vegetables
 263388823, Tesco Ginger 125G, £0.99, (£7.92/kg), World Vegetables
 260918818, Tesco Okra 175G, £1.99, (£11.38/kg), World Vegetables
-263946198, Tesco Ung Choi 175G, , , World Vegetables
 265299741, Tesco Ready To Eat Avocados Twin Pack, £1.80, (£0.90/each), Avocado
 265299361, Tesco Ready To Eat Large Avocados Each, £1.00, (£1.00/each), Avocado
 284605046, Tesco Ready To Eat Extra Large Avocados Each, £1.75, (£1.75/each), Avocado
@@ -1139,7 +1134,6 @@
 275576761, Tesco Turkey Breast 6 Quick Cook Steaks, £6.20, (£10.00/kg), Fresh Turkey
 281946787, Tesco Turkey Breast Hot And Spicy Steaks 350G, £3.50, (£10.00/kg), Fresh Turkey
 280515395, Tesco Turkey Breast Quick Cook Steaks 400G, £4.00, (£11.43/kg), Fresh Turkey
-284589790, Tesco Turkey Steaks With Cheese And Chive Melts 350G, , , Fresh Turkey
 279792728, Tesco Whole Turkey Fillet, £4.05, (£9.00/kg), Fresh Turkey
 280988525, Tesco Everyday Value Turkey Breast Pieces 700G, £5.00, (£7.15/kg), Fresh Turkey
 285727637, Tesco Mini Turkey Breast Fillets 320G, £3.00, (£9.38/kg), Fresh Turkey
@@ -1272,7 +1266,6 @@
 281037319, Tesco Cooked And Peeled King Prawns 160G, £3.50, (£2.19/100g), Chilled Seafood
 256995648, Tesco Cooked And Peeled Prawns 200G, £3.00, (£1.50/100g), Chilled Seafood
 264339057, Tesco Everyday Value Cold Water Prawns 300G, £3.10, (£1.04/100g), Chilled Seafood
-282150655, Tesco Everyday Value Cooked & Peeled King Prawn 180G, , , Chilled Seafood
 281054425, Tesco Garlic And Herb Marinated King Prawns 150G, £4.00, (£2.67/100g), Chilled Seafood
 285364265, Tesco King Prawn Seafood Selection 200G, £3.50, (£1.75/100g), Chilled Seafood
 281054293, Tesco Marinated King Prawns In Chilli And Coriander 150G, £4.00, (£2.67/100g), Chilled Seafood
@@ -1802,7 +1795,6 @@
 274445935, Tesco Creme Caramel 6X100, £1.10, (£0.18/100g), Indulgent Desserts
 274445843, Tesco Everyday Value Creme Caramel 6X100g, £0.68, (£0.11/100g), Indulgent Desserts
 274529612, Tesco Everyday Value Profiteroles 2X90g, £1.00, (£0.56/100g), Indulgent Desserts
-285725075, Tesco Finest 16Pk Dipping Profiteroles, , , Indulgent Desserts
 282279394, Tesco Finest Butterscotch And Pecan Choux Rings, £2.60, (£2.60/each), Indulgent Desserts
 282337556, Tesco Finest Tiramisu 200G, £3.00, (£1.50/100g), Indulgent Desserts
 282448042, Activia Intensely Creamy Blueberry 4X110g, £2.39, (£0.54/100g), Low Fat Desserts
@@ -2044,7 +2036,6 @@
 250039376, Mattessons Fridge Raiders Tikka Bites 60G, £1.29, (£2.15/100g), Desserts & Snacks On The Go
 254273379, Peperami 25G, £0.70, (£2.80/100g), Desserts & Snacks On The Go
 257455563, Peperami Hot 25G, £0.70, (£2.80/100g), Desserts & Snacks On The Go
-277065101, Tesco 2 Chicken Drumsticks 135G, , , Desserts & Snacks On The Go
 277142344, Tesco 2 Pack Mini Melton 100G, £1.00, (£1.00/100g), Desserts & Snacks On The Go
 277184518, Tesco Large Sausage Roll 150G, £0.65, (£0.43/100g), Desserts & Snacks On The Go
 283195871, Tesco Fajita Chicken Pasta 220G, £2.20, (£1.00/100g), Lunch On The Go
@@ -2059,13 +2050,11 @@
 262956648, Zugo's Bacon And Cheese Panini 145G, £2.20, (£15.18/kg), Lunch On The Go
 265393583, Express Tesco Egg And Bacon Sandwich, £2.30, (£2.30/each), Lunch On The Go
 265229658, Tesco All Day Breakfast Sandwich, £2.00, (£2.00/each), Lunch On The Go
-282882687, Tesco American Barbecue Beef Mustard And Slaw Sandwich, , , Lunch On The Go
 277064396, Tesco American Faves Chicken Bacon And Cheese With Ranch Mayonnaise, £2.30, (£2.30/each), Lunch On The Go
 254279246, Tesco Bacon Lettuce Tomato Malted Brown Bread Sandwich, £2.20, (£2.20/each), Lunch On The Go
 285293924, Tesco Bacon Lettuce Tomato No Mayonnaise, £2.20, (£2.20/each), Lunch On The Go
 284657485, Tesco Barbecue Meatball Sub Roll, £2.30, (£2.30/each), Lunch On The Go
 285301202, Tesco Big Eat Cheese And Bacon On White Bread, £2.00, (£2.00/each), Lunch On The Go
-285300589, Tesco Big Eat Smoked Ham And Egg On White Bread Sandwich, , , Lunch On The Go
 253582556, Tesco Cheese And Onion Brown Bread Sandwich, £1.05, (£1.05/each), Lunch On The Go
 265413941, Biogreen Mango Lassi 500Ml, £1.60, (£0.32/100ml), Asian Food
 268578677, Biogreen Mango Lassi Yoghurt Smoothie 1Ltr, £2.69, (£0.27/100ml), Asian Food
@@ -2194,20 +2183,9 @@
 282669892, Counter Tesco Ale Topped Snack Pork Pie 150G, £1.50, (£1.50/each), Counter - Delicatessen Pies, Savouries
 282722912, Counter Tesco Beef Pasty 150G, £1.00, (£1.00/each), Counter - Delicatessen Pies, Savouries
 282723364, Counter Tesco Cheese And Tomato Mini Quiche 170G, £1.50, (£1.50/each), Counter - Delicatessen Pies, Savouries
-254279488, Counter Tesco Chicken Satay Sticks Loose, , , Counter - Delicatessen Pies, Savouries
-267052379, Counter Tesco Chicken Tikka Bite, , , Counter - Delicatessen Pies, Savouries
-267031099, Counter Tesco Chicken Tikka Samosa, £0.90, (£0.90/each), Counter - Delicatessen Pies, Savouries
-260274438, Counter Tesco Free Range Scotch Egg, , , Counter - Delicatessen Pies, Savouries
-266943346, Counter Tesco Gala Pork Pie With Egg, £7.00, (£7.00/kg), Counter - Delicatessen Pies, Savouries
-282723197, Counter Tesco Hot And Spicy Scotch Egg, , , Counter - Delicatessen Pies, Savouries
-282722906, Counter Tesco Individual Pork Pie 130G, £1.00, (£1.00/each), Counter - Delicatessen Pies, Savouries
-260274421, Counter Tesco Jumbo Sausage Roll, , , Counter - Delicatessen Pies, Savouries
-282723442, Counter Tesco Large Feta, Spinach And Pepper Quiche 1 Slice, £0.90, (£0.90/each), Counter - Delicatessen Pies, Savouries
-282723410, Counter Tesco Large Quiche Lorraine 1 Slice, , , Counter - Delicatessen Pies, Savouries
 255792258, Counter Tesco Mini Melton Pork Pie Pick And Mix, £0.40, (£0.40/each), Counter - Delicatessen Pies, Savouries
 259109723, Counter Tesco Mini Onion Bhaji Pick And Mix, £0.40, (£0.40/each), Counter - Delicatessen Pies, Savouries
 282723266, Counter Tesco Mini Savoury Eggs, £0.40, (£0.40/each), Counter - Delicatessen Pies, Savouries
-267052391, Counter Tesco Mini Vegetable Samosa Pick And Mix, , , Counter - Delicatessen Pies, Savouries
 275398844, Counter Cold Smoked Mackerel Fillets, £4.00, (£8.00/kg), Counter - Fishmonger
 267601554, Counter Dyed Smoked Cod Loin, £14.40, (£18.00/kg), Counter - Fishmonger
 251005213, Counter Dyed Smoked Haddock Fillet, £6.00, (£10.00/kg), Counter - Fishmonger
@@ -2226,7 +2204,6 @@
 278274877, Counter Plaice Fillet, £6.00, (£10.00/kg), Counter - Fishmonger
 262028797, Counter River Cobbler, £2.40, (£8.00/kg), Counter - Fishmonger
 275174833, Counter Tesco Whole Hake, £7.00, (£7.00/kg), Counter - Fishmonger
-274898744, Counter Tesco Whole Trout, , , Counter - Fishmonger
 255794596, Counter Whole Cornish Sardine, £1.50, (£3.00/kg), Counter - Fishmonger
 277805614, Innocent Kids Apple Juice Not From Concentrate 4 X 180Ml, £2.79, (£0.39/100ml), Chilled Fruit Juice & Smoothies
 267378420, Tesco Finest Fresh Still Lemonade 1 Litre, £2.49, (£0.25/100ml), Chilled Fruit Juice & Smoothies
@@ -2476,7 +2453,6 @@
 262712724, Weight Watchers Petit Pain 4 Pack, £1.00, (£0.25/each), Part Baked Bread
 285874871, Kingsmill 4 White Bagels, £1.20, (£0.30/each), Bagels
 283629175, Kingsmill White Bagel Thins 6 Pack, £1.40, (£0.23/each), Bagels
-277468097, New York Bakery Blueberry Bagels 4 Pack, , , Bagels
 253829047, New York Bakery Cinnamon And Raisin Bagels 5 Pack, £1.00, (£0.20/each), Bagels
 281787456, New York Bakery Cinnamon And Raisin Mini Bagels 8Pk, £1.00, (£0.13/each), Bagels
 286767490, New York Bakery Garlic And Onion Bagel 4 Pack, £1.00, (£0.25/each), Bagels
@@ -2609,9 +2585,6 @@
 285246935, Tesco Pikelets 6 Pack, £0.80, (£0.13/each), Tea Cakes
 259805066, Warburtons Fruit Teacakes 4 Pack, £0.80, (£0.20/each), Tea Cakes
 286748942, 6 Beautifully Balanced Hot Cross Buns, £1.00, (£0.17/each), Fruit Loaves
-285103517, Haywood And Padgett 8 Cherry And Sultana Scones, , , Fruit Loaves
-285103362, Haywood And Padgett 8 Sultana Scones, , , Fruit Loaves
-285103759, Haywood And Padgett Devon Scones 8 Pack, , , Fruit Loaves
 268005279, Rankin Fruit Loaf, £1.50, (£1.50/each), Fruit Loaves
 256413776, Rankin Irish Barmbrack 480G, £1.80, (£0.38/100g), Fruit Loaves
 277901512, Soreen Apple And Sultana Loaf, £1.20, (£1.20/each), Fruit Loaves
@@ -2647,7 +2620,6 @@
 285393316, Tesco 5 Ring Doughnuts, £1.00, (£0.20/each), Doughnuts
 282539292, Tesco Jam Doughnuts 5 Pack, £1.00, (£0.20/each), Doughnuts
 285393224, Tesco 2 Lemon And Poppyseed Muffins, £1.50, (£0.75/each), Muffins
-285646652, Tesco 2 Mississippi Mud Muffins, , , Muffins
 285393149, Tesco 2 Raspberry And White Chocolate Muffins, £1.50, (£0.75/each), Muffins
 257682973, Tesco 4 Blueberry Muffins, £1.00, (£0.25/each), Muffins
 255821064, Tesco 4 Chocolate Chip Muffins, £1.00, (£0.25/each), Muffins
@@ -2698,7 +2670,6 @@
 279737254, Bonne Maman Lemon Tartelette 125G, £1.50, (£1.20/100g), Fruit Pies & Tarts
 279737323, Bonne Maman Milk Chocolate And Caramel Tartelette 135G, £1.50, (£1.12/100g), Fruit Pies & Tarts
 279532254, Everyday Value Cherry Bakewells 6 Pack, £0.75, (£0.13/each), Fruit Pies & Tarts
-254947821, Mr Kipling Bakewell Tart, , , Fruit Pies & Tarts
 254947838, Mr Kipling Cherry Bakewells 6 Pack, £1.00, (£0.17/each), Fruit Pies & Tarts
 254947867, Mr Kipling Jam Tarts 6 Pack, £1.00, (£0.17/each), Fruit Pies & Tarts
 267984779, Mr Kipling Trifle Bakewells 6 Pack, £1.00, (£0.17/each), Fruit Pies & Tarts

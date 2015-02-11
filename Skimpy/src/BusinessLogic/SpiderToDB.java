@@ -71,17 +71,19 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 return commaPos; //returns position of comma number commaNum in a record, index from 0
 	 }
 	 
-	 public double toDouble(String toDouble) //custom parseDouble method
+
+	 
+	 public double toDouble(String input) //custom parseDouble method
 	 {
 		 double result = -1.0;
-		 result = Double.parseDouble(toDouble.trim());
+		 result = Double.parseDouble((input));
 		 return result;	 
 	 }
 	 
-	 public int toInt(String toInt) //custom parseDouble method
+	 public int toInt(String input) //custom parseDouble method
 	 {
 		 int result = -1;
-		 result = Integer.parseInt(toInt.trim());
+		 result = Integer.parseInt((input).trim());
 		 return result;	 
 	 }
 	 
@@ -90,18 +92,16 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 	 public DBFood formatRecord(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
 	 {
 
-		 String stripChars = null;
+		 String stripChars = "-1";
 		 String id = record.substring(0, findComma(record, 0));
 		 
 		 if(! id.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
 		 {System.out.println("invalid ID"); id = "error!";}
 		 
-		 
-		 
 		 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
 		 //EXPERIMENTAL MASS REGEX
-		 String mass = "";
-		 String unit = "";
+		 String mass = " ";
+		 String unit = " ";
 		 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
 		 Matcher m = p.matcher(name);
 		 if(m.find())
@@ -110,7 +110,6 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 	 unit = m.group(2).trim();
 		 }
 		 //This sometimes returns e.g. "4 muffins" rather than 250G, but we can just erase those??
-		 
 		 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
 		 
 		 String price = record.substring(findComma(record, 1), findComma(record, 2));
@@ -118,11 +117,11 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 String foodCat = record.substring(findComma(record, 3)+2, record.length());
 		 
 		 //Strip all but numbers from price and PPU
+		 stripChars = "-1";
 		 stripChars = price.replaceAll("[^.0-9]","");
 		 price = stripChars;
 		 stripChars = pricePU.replaceAll("[^.0-9]","");
 		 pricePU = stripChars;
-		 
 		 int shopID = toInt(id);
 		 double massD = toDouble(mass);
 		 double pricePUD = toDouble(pricePU);
@@ -143,10 +142,22 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 				return currentRec; //return object ready for pushingtoDB
 	 }
 	 
+	
+	/*public boolean recordInvalid(DBFood foodValid)
+	{
+		boolean valid = false;
+		
+		if(foodValid.getID() | foodValid.getName() | foodValid.getMass())
+		
+		return valid;
+		
+	}*/
+	 
 	 public void pushFoodToDB(int recNum)
 	 {
 		 
 		 DBConnectDelta dbPush = new DBConnectDelta("food_db");
+		 
 		 dbPush.pushFood(formatRecord(readRecord(recNum)), "scraped_food");
 		 System.out.println("Fucking A! We pushed to DB");
 	 }
