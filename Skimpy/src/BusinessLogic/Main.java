@@ -59,7 +59,23 @@ public class Main{
 		
 //SpiderToDB:
 		SpiderToDB std = new SpiderToDB();
-		std.pushFoodToDB(8);
+		
+		
+		
+		for(int i = 0; i<2835; i++)
+		{
+			
+			try{
+			System.out.println("i is:  " +(i+1));
+			std.pushFoodToDB(i+1);
+			}
+			finally{
+				i++;
+			}
+		}
+		
+		
+		
 		
     }
 }
