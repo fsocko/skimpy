@@ -71,25 +71,48 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 return commaPos; //returns position of comma number commaNum in a record, index from 0
 	 }
 	 
-	 
-	 public void formatRecord(String record)
+	 public double toDouble(String toDouble) //custom parseDouble method
 	 {
-	 /*RecordFormat:
-	Shop ID,
-	Name | mass,
-	Price,
-	(Price / Unit),
-	Food cat
-	*/
+		 double result = -1.0;
+		 result = Double.parseDouble(toDouble.trim());
+		 return result;	 
+	 }
+	 
+	 public int toInt(String toInt) //custom parseDouble method
+	 {
+		 int result = -1;
+		 result = Integer.parseInt(toInt.trim());
+		 return result;	 
+	 }
+	 
+	 
+	 
+	 public DBFood formatRecord(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
+	 {
+
 		 String stripChars = null;
 		 String id = record.substring(0, findComma(record, 0));
 		 
 		 if(! id.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
 		 {System.out.println("invalid ID"); id = "error!";}
 		 
+		 
+		 
 		 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
- 
-		 String mass = "M = F/A";
+		 //EXPERIMENTAL MASS REGEX
+		 String mass = "";
+		 String unit = "";
+		 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
+		 Matcher m = p.matcher(name);
+		 if(m.find())
+		 {
+		     mass = m.group(1).trim();
+		 	 unit = m.group(2).trim();
+		 }
+		 //This sometimes returns e.g. "4 muffins" rather than 250G, but we can just erase those??
+		 
+		 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
+		 
 		 String price = record.substring(findComma(record, 1), findComma(record, 2));
 		 String pricePU = record.substring(findComma(record, 2), findComma(record, 3));
 		 String foodCat = record.substring(findComma(record, 3)+2, record.length());
@@ -97,17 +120,36 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 //Strip all but numbers from price and PPU
 		 stripChars = price.replaceAll("[^.0-9]","");
 		 price = stripChars;
-		 
 		 stripChars = pricePU.replaceAll("[^.0-9]","");
 		 pricePU = stripChars;
 		 
+		 int shopID = toInt(id);
+		 double massD = toDouble(mass);
+		 double pricePUD = toDouble(pricePU);
+		 double priceD = toDouble(price);
+		 
+		 
 		 		 System.out.println(id);
 		 		System.out.println(name);
-				 System.out.println(mass); 
+				 System.out.println(mass);
+				 System.out.println(unit);
 				 System.out.println(price);
 				 System.out.println(pricePU);
 				 System.out.println(foodCat);
-	 
+				 
+//to DBFood object
+				 
+				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
+				return currentRec; //return object ready for pushingtoDB
 	 }
-
+	 
+	 public void pushFoodToDB(int recNum)
+	 {
+		 
+		 DBConnectDelta dbPush = new DBConnectDelta("food_db");
+		 dbPush.pushFood(formatRecord(readRecord(recNum)), "scraped_food");
+		 System.out.println("Fucking A! We pushed to DB");
+	 }
+	 
+	 
 }

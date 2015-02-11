@@ -52,18 +52,14 @@ public class Main{
 //    	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
 */
 		
+//DBConnect
+		
+		//DBConnect dbc = new DBConnect();
+		
+		
 //SpiderToDB:
 		SpiderToDB std = new SpiderToDB();
-		//System.out.println(std.readRecord(4));
+		std.pushFoodToDB(8);
 		
-		//std.formatRecord(std.readRecord(4));
-		
-		int k = 1;
-		while(k<2837)
-		{
-			System.out.println("\n FOOD ITEM " + k + "\n");
-			std.formatRecord(std.readRecord(k));
-			k++;
-		}				
     }
 }

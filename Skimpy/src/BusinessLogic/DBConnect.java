@@ -103,15 +103,13 @@ public class DBConnect {
 		}
 	}
 	
-	public void pushFood(dbFood foodItem)
+	public void pushFood(DBFood foodItem)
 	{
 		try{
-			String query = "INSERT INTO `user_info`(``, ``, ``, ``, ``, ``, ``) "
-					
-							
-			
+			String query = "INSERT INTO ()";
+
 			st.executeUpdate(query);
-			System.out.println("Pushes to Database");
+			System.out.println("Pushed food to Database");
 			
 		}catch(Exception ex){
 			System.out.println(ex);
