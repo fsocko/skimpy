@@ -1,4 +1,5 @@
 //author: FPS
+//TODO: Roo, please merge my food class into food so it works. I need this object whenever I push food items to DB
 
 package BusinessLogic;
 

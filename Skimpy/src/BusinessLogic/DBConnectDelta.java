@@ -23,15 +23,6 @@ public class DBConnectDelta {
 		}
 	}
 	
-	/*this.shopID = shopIDX;
-	this.name = nameX;
-	this.unit = unitX;
-	this.price = priceX;
-	this.pricePU = pricePUX;
-	this.foodCat = foodCatX;*/
-	
-	//int shopID, String name, double mass, String unit, double price, double pricePU, String foodCat)
-	
 public void pushFood(DBFood food, String dataBaseName)//foodItems
 {
 		try{
