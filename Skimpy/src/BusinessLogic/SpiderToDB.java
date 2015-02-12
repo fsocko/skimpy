@@ -3,7 +3,7 @@ package BusinessLogic;
 import java.io.*;
 import java.util.regex.*;
 
-public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefully. It fucking crashes.
+public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefully. It crashes. It's not an issue now, but could cause problems down the line.
 	
 	//Read a record in a particular place in a file. - Sequential search for line number.
 	 public String readRecord(int recNum) //Indexes from 0
@@ -127,31 +127,13 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 double pricePUD = toDouble(pricePU);
 		 double priceD = toDouble(price);
 		 
-		 
-		 		 System.out.println(id);
-		 		System.out.println(name);
-				 System.out.println(mass);
-				 System.out.println(unit);
-				 System.out.println(price);
-				 System.out.println(pricePU);
-				 System.out.println(foodCat);
 				 
 //to DBFood object
-				 
+				//fieldName followed by D means the field was converted to a Double. ShopID is an int. 
 				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
 				return currentRec; //return object ready for pushingtoDB
 	 }
 	 
-	
-	/*public boolean recordInvalid(DBFood foodValid)
-	{
-		boolean valid = false;
-		
-		if(foodValid.getID() | foodValid.getName() | foodValid.getMass())
-		
-		return valid;
-		
-	}*/
 	 
 	 public void pushFoodToDB(int recNum)
 	 {
