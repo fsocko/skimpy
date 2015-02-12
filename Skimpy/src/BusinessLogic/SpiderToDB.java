@@ -1,20 +1,27 @@
+//@Author: FPS
+
 package BusinessLogic;
 
 import java.io.*;
 import java.util.regex.*;
 
 public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefully. It crashes. It's not an issue now, but could cause problems down the line.
-	
+
+	 //TESCO: "data/tesco.txt"
+	 //SAINSBURY's: "data/sainsburys.txt"
+	 String tescoPath = "data/tesco.txt";
+	 String sainsPath = "data/sains.txt";
+	 //Use these strings when selecting file, it's easier.
+	 
 	//Read a record in a particular place in a file. - Sequential search for line number.
-	 public String readRecord(int recNum) //Indexes from 0
+	 public String readRecord(String file, int recNum) //Indexes from 0
     { 
+		 
 		 String record = "No Record Found!";
-		 String file = "data/tesco.txt";
 		 
 		 FileInputStream fs = null;
 		 try
-		 {
-			 
+		 { 
 			 fs= new FileInputStream(file);
 			 BufferedReader br = new BufferedReader(new InputStreamReader(fs));
 			 for(int i = 0; i<recNum; i++)
@@ -86,20 +93,19 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 result = Integer.parseInt((input).trim());
 		 return result;	 
 	 }
-	 
-	 
-	 
-	 public DBFood formatRecord(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
+
+	 //Formats data scraped from tesco for pushing to DB
+	 public DBFood formatTesco(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
 	 {
 
 		 String stripChars = "-1";
-		 String id = record.substring(0, findComma(record, 0));
+		 String shopID = record.substring(0, findComma(record, 0));
 		 
-		 if(! id.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
-		 {System.out.println("invalid ID"); id = "error!";}
+		 if(! shopID.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
+		 {System.out.println("invalid ID"); shopID = "error!";}
 		 
 		 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
-		 //EXPERIMENTAL MASS REGEX
+		 //EXPERIMENTAL TESCO MASS REGEX
 		 String mass = " ";
 		 String unit = " ";
 		 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
@@ -122,27 +128,73 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 price = stripChars;
 		 stripChars = pricePU.replaceAll("[^.0-9]","");
 		 pricePU = stripChars;
-		 int shopID = toInt(id);
 		 double massD = toDouble(mass);
 		 double pricePUD = toDouble(pricePU);
 		 double priceD = toDouble(price);
 		 
 				 
 //to DBFood object
-				//fieldName followed by D means the field was converted to a Double. ShopID is an int. 
+				//fieldName followed by D means the field was converted to a Double. ShopID is a String!
 				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
 				return currentRec; //return object ready for pushingtoDB
 	 }
 	 
 	 
-	 public void pushFoodToDB(int recNum)
+	 public void pushTescoToDB(int recNum)
 	 {
 		 
 		 DBConnectDelta dbPush = new DBConnectDelta("food_db");
 		 
-		 dbPush.pushFood(formatRecord(readRecord(recNum)), "scraped_food");
-		 System.out.println("Fucking A! We pushed to DB");
+		 dbPush.pushFood(formatTesco(readRecord(tescoPath, recNum)), "tesco_scraped");
+		 System.out.println("Tesco Rec pushed to DB");
 	 }
 	 
+
+	//Formats data scraped from Sainsbury's for pushing to DB
+		 public DBFood formatSains(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
+		 {
+
+			 String stripChars = "-1";
+			 String shopID = record.substring(0, findComma(record, 0));
+			 
+			 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
+			 //EXPERIMENTAL SAINS MASS REGEX
+			 String mass = " ";
+			 String unit = " ";
+			 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
+			 Matcher m = p.matcher(name);
+			 if(m.find())
+			 {
+			     mass = m.group(1).trim();
+			 	 unit = m.group(2).trim();
+			 }
+			 
+			 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
+			 
+			 String price = record.substring(findComma(record, 1), findComma(record, 2));
+			 String pricePU = record.substring(findComma(record, 2), findComma(record, 3));
+			 String foodCat = record.substring(findComma(record, 3)+2, record.length());
+			 
+			 //Strip all but numbers from price and PPU
+			 stripChars = "-1";
+			 stripChars = price.replaceAll("[^.0-9]","");
+			 price = stripChars;
+			 stripChars = pricePU.replaceAll("[^.0-9]","");
+			 pricePU = stripChars;
+			 double massD = toDouble(mass);
+			 double pricePUD = toDouble(pricePU);
+			 double priceD = toDouble(price);
+			 
+					 
+	//to DBFood object
+					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING! 
+					DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
+					return currentRec; //return object ready for pushingtoDB
+		 }
+
 	 
-}
+	 
+	 
+	 
+	 
+}//EOF

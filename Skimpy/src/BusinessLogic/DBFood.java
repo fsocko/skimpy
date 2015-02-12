@@ -5,7 +5,7 @@ package BusinessLogic;
 
 public class DBFood {
 
-	private int shopID;
+	private String shopID;
 	private String name;
 	private double mass;
 	private String unit;
@@ -13,7 +13,7 @@ public class DBFood {
 	private double pricePU;
 	private String foodCat; 
 
-	public DBFood(int shopID, String name, double mass, String unit, double price, double pricePU, String foodCat)
+	public DBFood(String shopID, String name, double mass, String unit, double price, double pricePU, String foodCat)
 	{
 
 			this.shopID = shopID;
@@ -27,11 +27,11 @@ public class DBFood {
 	}
 
 
-	public int getShopID() {
+	public String getShopID() {
 		return shopID;
 	}
 
-	public void setShopID(int shopID) {
+	public void setShopID(String shopID) {
 		this.shopID = shopID;
 	}
 

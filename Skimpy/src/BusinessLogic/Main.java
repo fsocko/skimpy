@@ -14,66 +14,27 @@ public class Main{
 	
 	public static void main(String[] args) {
 		
-/*
-		//user creation
-		Person user = new Person("Ruaraidh Macfarlane", "ruaraidh2@gmail.com", "password", 20, 182, 60, 'M', 0);
-		
-		//create test meal plan
-
-    	MealPlanner plan = CreateMealPlan.create();
-    	System.out.println(plan.toString());
-		user.setMealplan(plan);
 	
-//		String dayResult = NutritionOptimisation.compareCalories(user, plan);
-//    	String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);
-//    	
-//    	System.out.println(dayResult);
-//    	System.out.println(weekResult);
-//    	
-//    	double priceD = plan.getPrice();
-//    	String price = String.format("%.2f", priceD);
-//    	System.out.println("Price: £" + price);
-//    	
-//    	ArrayList<Food> food = new ArrayList<Food>();
-//    	for (int i = 0; i < plan.getShoppingList().size(); i++) {
-//    		for (Food f: plan.getShoppingList().get(i)) {
-//    			food.add(f);
-//    		}
-//    	}
-//    	Food[] foodarray = food.toArray(new Food[food.size()]);
-//    	String[] shops = {"Tesco", "Asda"};
-//    	System.out.println("###################\nPrice Optimisation");
-//    	System.out.println("Cheapest Shop: " + shops[PriceOptimisation.cheapestShop(foodarray)]);
-//    	System.out.println("\nShopping lists such that you spend the minimum");
-//    	String[] temp = PriceOptimisation.minimumBudget(shops, foodarray);
-//    	for (String s : temp) {
-//    		System.out.println(s);
-//    	}
-//    	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
-*/
-		
-//DBConnect
-		
-		//DBConnect dbc = new DBConnect();
-		
 		
 //SpiderToDB:
 		SpiderToDB std = new SpiderToDB();
 		
 		
-		
+	/*	
 		for(int i = 0; i<2835; i++)
 		{
 			
 			try{
 			System.out.println("i is:  " +(i+1));
-			std.pushFoodToDB(i+1);
+			std.pushTescoToDB(i+1);
 			}
 			finally{
 				i++;
 			}
 		}
+		*/
 		
+		System.out.println(std.readRecord(std.sainsPath, 0));
 		
 		
 		
