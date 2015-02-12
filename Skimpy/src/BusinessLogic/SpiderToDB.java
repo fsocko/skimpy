@@ -154,7 +154,6 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 				return currentRec; //return object ready for pushingtoDB
 	 }
 	 
-	 
 	 public void pushTescoToDB(int recNum)
 	 {
 		 
@@ -193,21 +192,26 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 			 String massAndUnit = record.substring(findComma(record, 1)+2, findComma(record, 2));
 			 String unit = "";
 		
-			 String price = record.substring(findComma(record, 2), findComma(record, 3));
+			 String price = record.substring(findComma(record, 2)+2, findComma(record, 3));
 			 
-			 String pricePU = record.substring(findComma(record, 3), findComma(record, 4));
+			 String pricePU = record.substring(findComma(record, 3)+2, findComma(record, 4));
 			 
-			 String foodCat = record.substring(findComma(record, 4)+2, record.length());
+			/*
 			 
 			 //Strip all but numbers from price and PPU
 			 stripChars = "-1";
 			 stripChars = price.replaceAll("[^.0-9]","");
 			 price = stripChars;
 			 stripChars = pricePU.replaceAll("[^.0-9]","");
-			 
+			 pricePU = stripChars;
 			 //TODO: unit regex for PPU: selection 1 is number, / selection 2 unit
 			 
-			 pricePU = stripChars;
+			 */
+			 
+			 //TODO: replace foodCat - with " ";
+			 String foodCat = record.substring(findComma(record, 4)+2, record.length());
+			 
+			 
 			 
 					
 			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU +"\nFoodCat:" + foodCat);
