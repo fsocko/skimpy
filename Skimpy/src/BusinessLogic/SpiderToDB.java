@@ -14,7 +14,7 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 	 //Use these strings when selecting file, it's easier.
 	 
 	//Read a record in a particular place in a file. - Sequential search for line number.
-	 public String readRecord(String file, int recNum) //Indexes from 0
+	 public String readRecord(String file, int recNum) //Indexes from 1!
     { 
 		 
 		 String record = "No Record Found!";
@@ -28,6 +28,7 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 			 {
 			   record = br.readLine();
 			 }
+			 br.close();
 		 }
 		 
 		 catch(FileNotFoundException F)
@@ -94,6 +95,20 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 return result;	 
 	 }
 
+	 /*TODO: TESCO marker
+	     ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄                                                                  
+		▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌                                                                 
+		 ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌                                                                 
+		     ▐░▌     ▐░▌          ▐░▌          ▐░▌          ▐░▌       ▐░▌                                                                 
+		     ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌       ▐░▌                                                                 
+		     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌          ▐░▌       ▐░▌                                                                 
+		     ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌▐░▌          ▐░▌       ▐░▌                                                                 
+		     ▐░▌     ▐░▌                    ▐░▌▐░▌          ▐░▌       ▐░▌                                                                 
+		     ▐░▌     ▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌                                                                 
+		     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌                                                                 
+		      ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ 
+	*/
+
 	 //Formats data scraped from tesco for pushing to DB
 	 public DBFood formatTesco(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
 	 {
@@ -149,47 +164,58 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 System.out.println("Tesco Rec pushed to DB");
 	 }
 	 
+	 
+	/*TODO: SAINS marker
+	 
+		 ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄   ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+		▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌
+		▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌     ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ 
+		▐░▌          ▐░▌       ▐░▌     ▐░▌     ▐░▌▐░▌    ▐░▌▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          
+		▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░▌ ▐░▌   ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ 
+		▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░▌     ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+		 ▀▀▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌     ▐░▌     ▐░▌   ▐░▌ ▐░▌ ▀▀▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌▐░█▀▀▀▀█░█▀▀  ▀▀▀▀█░█▀▀▀▀  ▀▀▀▀▀▀▀▀▀█░▌
+		          ▐░▌▐░▌       ▐░▌     ▐░▌     ▐░▌    ▐░▌▐░▌          ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌     ▐░▌       ▐░▌               ▐░▌
+		 ▄▄▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌ ▄▄▄▄█░█▄▄▄▄ ▐░▌     ▐░▐░▌ ▄▄▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌      ▐░▌      ▐░▌      ▄▄▄▄▄▄▄▄▄█░▌
+		▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░▌       ▐░▌     ▐░▌     ▐░░░░░░░░░░░▌
+		 ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀       ▀       ▀▀▀▀▀▀▀▀▀▀▀ 
+
+*/
 
 	//Formats data scraped from Sainsbury's for pushing to DB
-		 public DBFood formatSains(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
+		 public void formatSains(String record) //TODO: make sure this returns a valid object
 		 {
 
 			 String stripChars = "-1";
 			 String shopID = record.substring(0, findComma(record, 0));
 			 
 			 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
-			 //EXPERIMENTAL SAINS MASS REGEX
-			 String mass = " ";
-			 String unit = " ";
-			 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
-			 Matcher m = p.matcher(name);
-			 if(m.find())
-			 {
-			     mass = m.group(1).trim();
-			 	 unit = m.group(2).trim();
-			 }
 			 
-			 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
+			 String massAndUnit = record.substring(findComma(record, 1)+2, findComma(record, 2));
+			 String unit = "";
+		
+			 String price = record.substring(findComma(record, 2), findComma(record, 3));
 			 
-			 String price = record.substring(findComma(record, 1), findComma(record, 2));
-			 String pricePU = record.substring(findComma(record, 2), findComma(record, 3));
-			 String foodCat = record.substring(findComma(record, 3)+2, record.length());
+			 String pricePU = record.substring(findComma(record, 3), findComma(record, 4));
+			 
+			 String foodCat = record.substring(findComma(record, 4)+2, record.length());
 			 
 			 //Strip all but numbers from price and PPU
 			 stripChars = "-1";
 			 stripChars = price.replaceAll("[^.0-9]","");
 			 price = stripChars;
 			 stripChars = pricePU.replaceAll("[^.0-9]","");
-			 pricePU = stripChars;
-			 double massD = toDouble(mass);
-			 double pricePUD = toDouble(pricePU);
-			 double priceD = toDouble(price);
 			 
-					 
+			 //TODO: unit regex for PPU: selection 1 is number, / selection 2 unit
+			 
+			 pricePU = stripChars;
+			 
+					
+			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU +"\nFoodCat:" + foodCat);
+			 
 	//to DBFood object
 					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING! 
-					DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
-					return currentRec; //return object ready for pushingtoDB
+					//DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
+					//return currentRec; //return object ready for pushingtoDB
 		 }
 
 	 

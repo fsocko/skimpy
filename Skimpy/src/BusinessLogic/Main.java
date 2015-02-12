@@ -34,7 +34,8 @@ public class Main{
 		}
 		*/
 		
-		System.out.println(std.readRecord(std.sainsPath, 0));
+		System.out.println(std.readRecord(std.sainsPath, 2));
+		std.formatSains(std.readRecord(std.sainsPath, 2));
 		
 		
 		
