@@ -31,7 +31,7 @@ public class Main{
 //    	
 //    	double priceD = plan.getPrice();
 //    	String price = String.format("%.2f", priceD);
-//    	System.out.println("Price: £" + price);
+//    	System.out.println("Price: Â£" + price);
 //    	
 //    	ArrayList<Food> food = new ArrayList<Food>();
 //    	for (int i = 0; i < plan.getShoppingList().size(); i++) {
@@ -50,5 +50,28 @@ public class Main{
 //    	}
 //    	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
     	
+		
+//SpiderToDB:
+		SpiderToDB std = new SpiderToDB();
+		
+		
+	/*	
+		for(int i = 0; i<2835; i++)
+		{
+			
+			try{
+			System.out.println("i is:  " +(i+1));
+			std.pushTescoToDB(i+1);
+			}
+			finally{
+				i++;
+			}
+		}
+		*/
+		
+		System.out.println(std.readRecord(std.sainsPath, 2));
+		std.formatSains(std.readRecord(std.sainsPath, 2));
     }
 }
+
+
