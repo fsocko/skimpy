@@ -15,7 +15,7 @@ public class Main{
 	public static void main(String[] args) {
 		
 		//user creation
-		Person user = new Person("Ruaraidh Macfarlane", "ruaraidh2@gmail.com", "password", 20, 182, 60, 'M', 0);
+		Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
 		
 		//create test meal plan
 

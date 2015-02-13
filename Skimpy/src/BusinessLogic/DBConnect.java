@@ -57,8 +57,8 @@ public class DBConnect {
 				saturates = rs.getDouble("Saturates");
 				fibre = rs.getDouble("Fibre");
 				salt = rs.getDouble("Salt");		
-				
 			}
+			
 			Food item = new Food(name, units, amount, serving, tescoPrice, asdaPrice, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
 			return item;
 		
