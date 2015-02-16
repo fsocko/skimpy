@@ -87,16 +87,16 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		
 		 for(int i = 1; (i < record.length()+1); i++)
 		 {
-			 if(record.substring((i-1), i).equals(";"))
+			 if(record.substring((i-1), i).equals(";"))//found colon
 			 {
 				 j++;
 				 colonPos = (i-1);
 			 }	
 			 if((j-1) == colonNum && (colonPos > -1))
-			 {colonPos = (i-1); break;}
+			 {colonPos = (i-1); break;} //found the colon we are looking for
 			 
-			 if(i == record.length())
-			 {colonPos = -99; }
+			 if(i == record.length()) //didn't find the colon
+			 {colonPos = -99; break; }
 			 
 		 }	 	 
 		 return colonPos; //returns position of semi-colon number colonNum in a record, index from 0
@@ -177,48 +177,33 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 System.out.println("Tesco Rec pushed to DB");
 	 }
 	 
-	 
-	/*TODO: SAINS marker
-
-*/
-
+	//TODO: SAINS marker
 	//Formats data scraped from Sainsbury's for pushing to DB
-		 public void formatSains(String record) //TODO: make sure this returns a valid object
+		 public void formatSains(String record)
 		 {
-
-			 String shopID = record.substring(0, findComma(record, 0));
-			 
-			 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
+			 //ShopID, name, price, PPU, foodcat
 			 
 			 String stripChars = "-1";
-			 
-			 String massAndUnit = record.substring(findComma(record, 1)+2, findComma(record, 2));
+			 String shopID = record.substring(0, findColon(record, 0));
+			 String name = record.substring(findColon(record, 0)+1, findColon(record, 1)); 
+			 String massAndUnit = "";
 			 String unit = massAndUnit;
+			 String price = record.substring(findColon(record, 1)+2, findColon(record, 2));
+			 String pricePU = record.substring(findColon(record, 2), findColon(record, 3));
+			 String foodCat = record.substring(findColon(record, 3), record.length());
+			 //stripChars = "-1";
+			 //stripChars = price.replaceAll("[^.0-9]","");
+			 //price = stripChars;
 			 
-			 String price = record.substring(findComma(record, 2)+2, findComma(record, 3));
-			 stripChars = "-1";
-			 stripChars = price.replaceAll("[^.0-9]","");
-			 price = stripChars;
-			 
-			 String pricePU = record.substring(findComma(record, 3)+2, findComma(record, 4));
-			 stripChars = pricePU.replaceAll("[^.0-9]","");
+
+			 stripChars = pricePU.replaceAll("[^.0-9]","") + "";
 			 pricePU = stripChars;
-			 
-			 
-			 
-			/*
-			 
-		
+
 			 //TODO: unit regex for PPU: selection 1 is number, / selection 2 unit
-			 
-			 */
-			 
 			 //TODO: replace foodCat - with " ";
-			 String foodCat = record.substring(findComma(record, 4)+2, record.length());
 			 
-			 
-			 
-					
+	
+
 			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU +"\nFoodCat:" + foodCat);
 			 
 	//to DBFood object

@@ -28,7 +28,7 @@ public class StdMain {
 				}
 				*/
 				
-				System.out.println(std.readRecord(std.sainsPath, 7));
+				
 				std.formatSains(std.readRecord(std.sainsPath, 7));
 		
 		
