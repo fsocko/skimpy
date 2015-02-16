@@ -14,50 +14,16 @@ public class Main{
 	
 	public static void main(String[] args) {
 
-/*
-		//user creation
-		Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
+		//this will open a class in which all your meal plan methods from main are now.
+		//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master branch.
+		//It makes it easier to comment out other people's work which may or may not be needed.
+			
+
+		MealPlanMain testPlan = new MealPlanMain();
+		testPlan.testMealPlan();
 		
-		//create test meal plan
-
-    	MealPlanner plan = CreateMealPlan.create();
-    	System.out.println(plan.toString());
-		user.setMealplan(plan);
-//		String dayResult = NutritionOptimisation.compareCalories(user, plan);
-//    	String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);
-//    	
-//    	System.out.println(dayResult);
-//    	System.out.println(weekResult);
-//    	
-//    	double priceD = plan.getPrice();
-//    	String price = String.format("%.2f", priceD);
-//    	System.out.println("Price: £" + price);
-//    	
-//    	ArrayList<Food> food = new ArrayList<Food>();
-//    	for (int i = 0; i < plan.getShoppingList().size(); i++) {
-//    		for (Food f: plan.getShoppingList().get(i)) {
-//    			food.add(f);
-//    		}
-//    	}
-//    	Food[] foodarray = food.toArray(new Food[food.size()]);
-//    	String[] shops = {"Tesco", "Asda"};
-//    	System.out.println("###################\nPrice Optimisation");
-//    	System.out.println("Cheapest Shop: " + shops[PriceOptimisation.cheapestShop(foodarray)]);
-//    	System.out.println("\nShopping lists such that you spend the minimum");
-//    	String[] temp = PriceOptimisation.minimumBudget(shops, foodarray);
-//    	for (String s : temp) {
-//    		System.out.println(s);
-//    	}
-//    	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
-
-
-*/
-	//this will open a class in which all my methods are located.
-	//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master.
-	//It makes it easier to comment out other people's work.
-		
-	StdMain run = new StdMain(); 	
-	run.testMethods();	
+		StdMain run = new StdMain(); 	
+		run.testMethods();	
 		
     }
 }
