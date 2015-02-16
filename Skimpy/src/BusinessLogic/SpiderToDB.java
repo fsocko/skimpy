@@ -79,6 +79,30 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 return commaPos; //returns position of comma number commaNum in a record, index from 0
 	 }
 	 
+	 
+	 public int findColon(String record, int colonNum)//does what commaPos does, except for semicolons. 
+	 {
+		int j = 0;
+		int colonPos = -1;
+		
+		 for(int i = 1; (i < record.length()+1); i++)
+		 {
+			 if(record.substring((i-1), i).equals(";"))
+			 {
+				 j++;
+				 colonPos = (i-1);
+			 }	
+			 if((j-1) == colonNum && (colonPos > -1))
+			 {colonPos = (i-1); break;}
+			 
+			 if(i == record.length())
+			 {colonPos = -99; }
+			 
+		 }	 	 
+		 return colonPos; //returns position of semi-colon number colonNum in a record, index from 0
+	 }
+	 
+	 
 
 	 
 	 public double toDouble(String input) //custom parseDouble method
@@ -162,26 +186,29 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 public void formatSains(String record) //TODO: make sure this returns a valid object
 		 {
 
-			 String stripChars = "-1";
 			 String shopID = record.substring(0, findComma(record, 0));
 			 
 			 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
 			 
+			 String stripChars = "-1";
+			 
 			 String massAndUnit = record.substring(findComma(record, 1)+2, findComma(record, 2));
-			 String unit = "";
-		
+			 String unit = massAndUnit;
+			 
 			 String price = record.substring(findComma(record, 2)+2, findComma(record, 3));
-			 
-			 String pricePU = record.substring(findComma(record, 3)+2, findComma(record, 4));
-			 
-			/*
-			 
-			 //Strip all but numbers from price and PPU
 			 stripChars = "-1";
 			 stripChars = price.replaceAll("[^.0-9]","");
 			 price = stripChars;
+			 
+			 String pricePU = record.substring(findComma(record, 3)+2, findComma(record, 4));
 			 stripChars = pricePU.replaceAll("[^.0-9]","");
 			 pricePU = stripChars;
+			 
+			 
+			 
+			/*
+			 
+		
 			 //TODO: unit regex for PPU: selection 1 is number, / selection 2 unit
 			 
 			 */

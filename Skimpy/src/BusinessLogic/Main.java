@@ -18,9 +18,9 @@ public class Main{
 		//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master branch.
 		//It makes it easier to comment out other people's work which may or may not be needed.
 			
-
-		MealPlanMain testPlan = new MealPlanMain();
-		testPlan.testMealPlan();
+//Run meal plan methods
+//		MealPlanMain testPlan = new MealPlanMain();
+//		testPlan.testMealPlan();
 		
 		StdMain run = new StdMain(); 	
 		run.testMethods();	
