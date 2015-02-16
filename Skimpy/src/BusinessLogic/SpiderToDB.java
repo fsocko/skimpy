@@ -147,7 +147,7 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 	 public void pushTescoToDB(int recNum)
 	 {
 		 
-		 DBConnectDelta dbPush = new DBConnectDelta("food_db");
+		 DBConnect dbPush = new DBConnect("food_db");
 		 
 		 dbPush.pushFood(formatTesco(readRecord(tescoPath, recNum)), "tesco_scraped");
 		 System.out.println("Tesco Rec pushed to DB");

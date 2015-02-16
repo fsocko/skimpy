@@ -87,7 +87,7 @@ public class DBConnect {
 		pushFood(food, "skimpy");
 	}
 	
-	public void pushFood(DBFood food, String dataBaseName)//foodItems
+	public void pushFood(DBFood food, String dataBaseName)
 	{
 			try{
 				String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"

@@ -13,7 +13,8 @@ public class Main{
 	 */
 	
 	public static void main(String[] args) {
-		
+
+/*
 		//user creation
 		Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
 		
@@ -22,7 +23,6 @@ public class Main{
     	MealPlanner plan = CreateMealPlan.create();
     	System.out.println(plan.toString());
 		user.setMealplan(plan);
-	
 //		String dayResult = NutritionOptimisation.compareCalories(user, plan);
 //    	String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);
 //    	
@@ -49,28 +49,16 @@ public class Main{
 //    		System.out.println(s);
 //    	}
 //    	System.out.println("Price: " + PriceOptimisation.minimumBudget(foodarray));
-    	
+
+
+*/
+	//this will open a class in which all my methods are located.
+	//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master.
+	//It makes it easier to comment out other people's work.
 		
-//SpiderToDB:
-		SpiderToDB std = new SpiderToDB();
+	StdMain run = new StdMain(); 	
+	run.testMethods();	
 		
-		
-	/*	
-		for(int i = 0; i<2835; i++)
-		{
-			
-			try{
-			System.out.println("i is:  " +(i+1));
-			std.pushTescoToDB(i+1);
-			}
-			finally{
-				i++;
-			}
-		}
-		*/
-		
-		System.out.println(std.readRecord(std.sainsPath, 2));
-		std.formatSains(std.readRecord(std.sainsPath, 2));
     }
 }
 
