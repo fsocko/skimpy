@@ -80,7 +80,7 @@ public class TescoProductExtractor implements Runnable {
 		
 		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit, this.categoryName);
 		
-		writeToFile("tesco.txt", prod.toString());
+		writeToFile("data/tesco.txt", prod.toString());
 	}
 
 	public static synchronized void writeToFile(String filename, String product) {
