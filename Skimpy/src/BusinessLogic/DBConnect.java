@@ -90,17 +90,17 @@ public class DBConnect {
 	public void pushFood(DBFood food, String dataBaseName)
 	{
 			try{
+				
 				String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
-						+ " values(" + 
-								food.getShopID() + ", '" + food.getName() + "', '" + food.getUnit() + "', "  +
+						+ " values( '" + 
+								food.getShopID() + "', '" + food.getName() + "', '" + food.getUnit() + "', "  +
 								food.getMass() + ", " + food.getPrice() + ", '" + food.getPricePU() + "', '" + 
 								food.getFoodCat() + "');";
 				
-				System.out.println(query);
 				
 				st.executeUpdate(query);
-				System.out.println("Pushes to Database");
-				
+				System.out.println("Pushes to Database\n\n");
+				st.close();
 						
 				
 			}catch(Exception ex){

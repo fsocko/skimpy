@@ -28,8 +28,18 @@ public class StdMain {
 				}
 				*/
 				
-				System.out.println(std.readRecord(std.sainsPath, 7) + "\n");
-				std.formatSains(std.readRecord(std.sainsPath, 7));
+				for(int i = 1; i<21948; i++)
+				{
+					
+					try{
+					
+					std.pushSainsToDB(i);
+					}
+					finally{
+						i++;
+					}
+				}
+				
 		
 		
 	}

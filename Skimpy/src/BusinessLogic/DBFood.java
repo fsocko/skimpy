@@ -28,6 +28,38 @@ public class DBFood {
 	       
 	}
 
+	public String getShopID() {
+		return shopID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public double getMass() {
+		return mass;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public double getPricePU() {
+		return pricePU;
+	}
+
+	public String getPPUUnit() {
+		return PPUUnit;
+	}
+
+	public String getFoodCat() {
+		return foodCat;
+	}
+
 
 	
 	

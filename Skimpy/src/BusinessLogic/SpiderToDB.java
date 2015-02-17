@@ -5,8 +5,12 @@ package BusinessLogic;
 import java.io.*;
 import java.util.regex.*;
 
-public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefully. It crashes. It's not an issue now, but could cause problems down the line.
-
+public class SpiderToDB {
+//TODO: Sort out NullPointer Exception, see error log.
+//TODO: Strip " ' " from DBFood, it fucks with the SQL syntax
+//TODO: sort out this error: Data source rejected establishment of connection,  message from server: "Too many connections"
+// Convert to SQL?
+	
 	 //TESCO: "data/tesco.txt"
 	 //SAINSBURY's: "data/sainsburys.txt"
 	 String tescoPath = "data/tesco.txt";
@@ -119,9 +123,9 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 return result;	 
 	 }
 
-	 /*TODO: TESCO marker
+	 //TODO: TESCO marker
 	  
-/*
+
 
 
 	 //Formats data scraped from tesco for pushing to DB
@@ -165,7 +169,7 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 				 
 //to DBFood object
 				//fieldName followed by D means the field was converted to a Double. ShopID is a String!
-				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
+				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, null, foodCat); 
 				return currentRec; //return object ready for pushingtoDB
 	 }
 	 
@@ -178,11 +182,11 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 System.out.println("Tesco Rec pushed to DB");
 	 }
 	 
-	 */
+	 
 	 
 	//TODO: SAINS marker
 	//Formats data scraped from Sainsbury's for pushing to DB
-		 public void formatSains(String record)
+		 public DBFood formatSains(String record)
 		 {
 			 //ShopID, name, price, PPU, PPUUnit, foodcat
 			 
@@ -207,20 +211,22 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 			 	 unit = m.group(2).trim(); // the unit is 100g, not 600 g
 			 }
 			 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
-
+			 double massD = toDouble(mass);
+			 
 			 String price = record.substring(findColon(record, 1)+2, findColon(record, 2));
+			 String stripChars = price.replaceAll("[^.0-9]","");
+			 price = stripChars;
+			 double priceD = toDouble(stripChars);
 			 
 			 String pricePU = record.substring(findColon(record, 2)+1, findColon(record, 3));
-			
 			 String PPUPrice = "-1";
 			 String PPUUnit = "-1";
 			 //find slash, separate price per unit from the actual unit the price is measured in.
-			 //e.g. GBP 2 / 100g gives "2" and "100g"
-			 //e.g. GBP 1.6 / 100ml gives "1.6" and "100ml"
+			 //e.g. GBP 2 / 100g gives "2" (i.e. PPUPrice) and "100g" (i.e. PPUUnit) 
+			 //e.g. GBP 1.6 / 100ml gives "1.6" (i.e. PPUPrice) and "100ml" (i.e. PPUUnit)
 			 e = pricePU.length();
 			 while(true) //iterate through name backwards. Find Slash.
 			 {
-				 System.out.println(e);
 				 if(pricePU.substring(e-1, e).equals("/"))
 				 {
 					 PPUPrice = pricePU.substring(0, e);
@@ -231,7 +237,7 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 				 e--;
 			 }
 			 
-			 String stripChars = "-1";
+			 stripChars = "-1";
 			 stripChars = PPUPrice.replaceAll("[^.0-9]","");
 			 double PPUPriceD = toDouble(stripChars);
 			 
@@ -239,21 +245,25 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 			 String spaceSlash = foodCat.replaceAll("-"," ");
 			 foodCat = spaceSlash;
 
-			 //TODO: replace foodCat - with " ";
 
-			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit 
-			+ "\nMass:" + mass + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU 
+			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass:" + mass  
+			+ "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + PPUPriceD
 			+"\nFoodCat:" + foodCat);
 			 
-			 System.out.println(PPUPriceD +"\n" +(PPUUnit));
 			 
 	//to DBFood object
-					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING! 
-					//DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, foodCat); 
-					//return currentRec; //return object ready for pushingtoDB
+					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
+			 		//public DBFood(String shopID, String name, double mass, String unit, double price, double pricePU, String PPUUnit, String foodCat)
+					DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); //pass a null instead of PPUUnit 
+					return currentRec; //return object ready for pushingtoDB
 		 }
 
-	 
+		 public void pushSainsToDB(int recNum)
+		 {
+			 DBConnect dbPush = new DBConnect("food_db");
+			 dbPush.pushFood(formatSains(readRecord(sainsPath, recNum)), "sains_scraped");
+			 
+		 }
 	 
 	 
 	 
