@@ -120,6 +120,8 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 	 }
 
 	 /*TODO: TESCO marker
+	  
+	 //PLEASE COMMIT MY DATA     
 	      
 	*/
 
