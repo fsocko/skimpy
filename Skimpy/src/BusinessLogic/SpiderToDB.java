@@ -121,9 +121,8 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 
 	 /*TODO: TESCO marker
 	  
-	 //PLEASE COMMIT MY DATA     
-	      
-	*/
+/*
+
 
 	 //Formats data scraped from tesco for pushing to DB
 	 public DBFood formatTesco(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
@@ -179,34 +178,74 @@ public class SpiderToDB {//TODO: Despite all efforts, it will not fail gracefull
 		 System.out.println("Tesco Rec pushed to DB");
 	 }
 	 
+	 */
+	 
 	//TODO: SAINS marker
 	//Formats data scraped from Sainsbury's for pushing to DB
 		 public void formatSains(String record)
 		 {
-			 //ShopID, name, price, PPU, foodcat
+			 //ShopID, name, price, PPU, PPUUnit, foodcat
 			 
-			 String stripChars = "-1";
 			 String shopID = record.substring(0, findColon(record, 0));
 			 String name = record.substring(findColon(record, 0)+1, findColon(record, 1)); 
-			 String massAndUnit = "";
-			 String unit = massAndUnit;
+			 
+			 String massAndUnit = name;
+			 int e = massAndUnit.length();
+			 while(true) //iterate through name backwards. Find space.
+			 {
+				 if(massAndUnit.substring(e-1, e).equals(" "))
+				 {massAndUnit = massAndUnit.substring(e, massAndUnit.length());break;}
+				 e--;
+			 }
+			 String mass = " ";
+			 String unit = " ";
+			 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
+			 Matcher m = p.matcher(massAndUnit);
+			 if(m.find())
+			 {
+			     mass = m.group(1).trim();
+			 	 unit = m.group(2).trim(); // the unit is 100g, not 600 g
+			 }
+			 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
+
 			 String price = record.substring(findColon(record, 1)+2, findColon(record, 2));
-			 String pricePU = record.substring(findColon(record, 2), findColon(record, 3));
-			 String foodCat = record.substring(findColon(record, 3), record.length());
-			 //stripChars = "-1";
-			 //stripChars = price.replaceAll("[^.0-9]","");
-			 //price = stripChars;
 			 
+			 String pricePU = record.substring(findColon(record, 2)+1, findColon(record, 3));
+			
+			 String PPUPrice = "-1";
+			 String PPUUnit = "-1";
+			 //find slash, separate price per unit from the actual unit the price is measured in.
+			 //e.g. GBP 2 / 100g gives "2" and "100g"
+			 //e.g. GBP 1.6 / 100ml gives "1.6" and "100ml"
+			 e = pricePU.length();
+			 while(true) //iterate through name backwards. Find Slash.
+			 {
+				 System.out.println(e);
+				 if(pricePU.substring(e-1, e).equals("/"))
+				 {
+					 PPUPrice = pricePU.substring(0, e);
+					 PPUUnit = pricePU.substring(e, pricePU.length());
+					break;
+				 }
+				 else{if(e == 0){break;}}	 
+				 e--;
+			 }
+			 
+			 String stripChars = "-1";
+			 stripChars = PPUPrice.replaceAll("[^.0-9]","");
+			 double PPUPriceD = toDouble(stripChars);
+			 
+			 String foodCat = record.substring(findColon(record, 3)+1, record.length());
+			 String spaceSlash = foodCat.replaceAll("-"," ");
+			 foodCat = spaceSlash;
 
-			 stripChars = pricePU.replaceAll("[^.0-9]","") + "";
-			 pricePU = stripChars;
-
-			 //TODO: unit regex for PPU: selection 1 is number, / selection 2 unit
 			 //TODO: replace foodCat - with " ";
-			 
-	
 
-			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU +"\nFoodCat:" + foodCat);
+			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass&unit:" + massAndUnit 
+			+ "\nMass:" + mass + "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + pricePU 
+			+"\nFoodCat:" + foodCat);
+			 
+			 System.out.println(PPUPriceD +"\n" +(PPUUnit));
 			 
 	//to DBFood object
 					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING! 
