@@ -28,6 +28,14 @@ public class DBFood {
 	       
 	}
 
+	@Override
+	public String toString() {
+		return "DBFood [shopID=" + shopID + ", name=" + name + ", mass=" + mass
+				+ ", unit=" + unit + ", price=" + price + ", pricePU="
+				+ pricePU + ", PPUUnit=" + PPUUnit + ", foodCat=" + foodCat
+				+ "]";
+	}
+
 	public String getShopID() {
 		return shopID;
 	}

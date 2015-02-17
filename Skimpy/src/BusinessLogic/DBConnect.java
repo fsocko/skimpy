@@ -11,7 +11,7 @@ public class DBConnect {
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
-	
+	//@alinauyazina: I'm getting an SQL error: too many connections. Could you have a look and fix the DBConnect and pushFood methods?
 	public DBConnect()
 	{
 		try{
@@ -100,7 +100,6 @@ public class DBConnect {
 				
 				st.executeUpdate(query);
 				System.out.println("Pushes to Database\n\n");
-				st.close();
 						
 				
 			}catch(Exception ex){

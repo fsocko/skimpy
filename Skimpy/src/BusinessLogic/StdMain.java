@@ -13,21 +13,12 @@ public class StdMain {
 		//SpiderToDB:
 				SpiderToDB std = new SpiderToDB();
 				
-				
-			/*	
-				for(int i = 0; i<2835; i++)
+				for(int i = 1; i<300; i++)
 				{
-					
-					try{
-					System.out.println("i is:  " +(i+1));
-					std.pushTescoToDB(i+1);
-					}
-					finally{
-						i++;
-					}
-				}
-				*/
-				
+					DBFood tescoTest = std.formatSains(std.readRecord(std.tescoPath, i));
+					System.out.println(tescoTest.toString() +" ");
+				}	
+	/*			
 				for(int i = 1; i<21948; i++)
 				{
 					
@@ -40,7 +31,7 @@ public class StdMain {
 					}
 				}
 				
-		
+		*/
 		
 	}
 }

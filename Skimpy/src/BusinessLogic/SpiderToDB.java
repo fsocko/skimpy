@@ -124,47 +124,19 @@ public class SpiderToDB {
 	 }
 
 	 //TODO: TESCO marker
-	  
+	 //TODO: the sainsbury formatter should more or less work for all data files now. Do the fixes needed to make this true in practice 
 
-
+/*
 
 	 //Formats data scraped from tesco for pushing to DB
 	 public DBFood formatTesco(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
 	 {
 
-		 String stripChars = "-1";
-		 String shopID = record.substring(0, findComma(record, 0));
 		 
 		 if(! shopID.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
 		 {System.out.println("invalid ID"); shopID = "error!";}
 		 
-		 String name = record.substring(findComma(record, 0)+2, findComma(record, 1));
-		 //EXPERIMENTAL TESCO MASS REGEX
-		 String mass = " ";
-		 String unit = " ";
-		 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
-		 Matcher m = p.matcher(name);
-		 if(m.find())
-		 {
-		     mass = m.group(1).trim();
-		 	 unit = m.group(2).trim();
-		 }
-		 //This sometimes returns e.g. "4 muffins" rather than 250G, but we can just erase those??
-		 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
-		 
-		 String price = record.substring(findComma(record, 1), findComma(record, 2));
-		 String pricePU = record.substring(findComma(record, 2), findComma(record, 3));
-		 String foodCat = record.substring(findComma(record, 3)+2, record.length());
-		 
-		 //Strip all but numbers from price and PPU
-		 stripChars = "-1";
-		 stripChars = price.replaceAll("[^.0-9]","");
-		 price = stripChars;
-		 stripChars = pricePU.replaceAll("[^.0-9]","");
-		 pricePU = stripChars;
-		 double massD = toDouble(mass);
-		 double pricePUD = toDouble(pricePU);
-		 double priceD = toDouble(price);
+		
 		 
 				 
 //to DBFood object
@@ -181,7 +153,7 @@ public class SpiderToDB {
 		 dbPush.pushFood(formatTesco(readRecord(tescoPath, recNum)), "tesco_scraped");
 		 System.out.println("Tesco Rec pushed to DB");
 	 }
-	 
+	 */
 	 
 	 
 	//TODO: SAINS marker
@@ -200,6 +172,8 @@ public class SpiderToDB {
 				 if(massAndUnit.substring(e-1, e).equals(" "))
 				 {massAndUnit = massAndUnit.substring(e, massAndUnit.length());break;}
 				 e--;
+				 
+				 //TODO: this can sometimes return an empty string, which causes an exception.
 			 }
 			 String mass = " ";
 			 String unit = " ";
