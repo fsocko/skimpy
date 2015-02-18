@@ -1,6 +1,8 @@
 //@author: FPS
 package BusinessLogic;
 
+import java.util.ArrayList;
+
 //this file will run the methods I am currently working on, so I only need a single line in the master main method. 
 
 public class StdMain {
@@ -12,7 +14,6 @@ public class StdMain {
 		
 		//SpiderToDB:
 				SpiderToDB std = new SpiderToDB();
-				System.out.println(std.countLines(std.tescoPath));
 				int i = 1;
 				
 				/*
@@ -29,18 +30,21 @@ public class StdMain {
 				
 				*/
 				
+				long A = (System.currentTimeMillis()/1000);
+				System.out.println("Timer started.");
+				
 				System.out.println("\n\n\n SAINSBURY'S STARTS HERE -------------------------------------------------------------------------------- \n\n\n");
 				
-				i = 1;
-				while(i < std.countLines(std.sainsPath))
+				ArrayList allRecs = std.readAllRecords(std.sainsPath);
+				for (i = 0; i < allRecs.size(); i++)	
 				{
-					System.out.println("\n i is:" + i + "\n");
-					DBFood sainsTest = std.formatRecord(std.readRecord(std.sainsPath, i));
-					i++;
+					 DBFood sainsTest = std.formatRecord(allRecs.get(i).toString());
+					 System.out.println(i);
 				}
-
-
-
+				
+					
+				long B = (System.currentTimeMillis()/1000) - A;
+				System.out.println("time in minutes: " + B/60);
 
 
 				

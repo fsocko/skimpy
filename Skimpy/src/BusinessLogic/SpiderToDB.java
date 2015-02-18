@@ -5,6 +5,7 @@ package BusinessLogic;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.regex.*;
 
 
@@ -41,8 +42,8 @@ public class SpiderToDB {
 
 		 }
 
-
-
+		 
+	//TODO: make this not linear.	 
 	//Read a record in a particular place in a file. - Sequential search for line number.
 	 public String readRecord(String file, int recNum) //Indexes from 1!
     { 
@@ -85,6 +86,50 @@ public class SpiderToDB {
 		 }
 		 return record;	 
     }
+	 
+	 
+	 public ArrayList readAllRecords(String file) //Indexes from 1!
+	    { 
+			 
+		 	ArrayList allRec = new ArrayList();
+			 
+			 FileInputStream fs = null;
+			 try
+			 { 
+				 fs= new FileInputStream(file);
+				 BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+				 for(int i = 0; i<countLines(file); i++)
+				 {
+				   allRec.add(br.readLine());
+				 }
+				 br.close();
+			 }
+			 
+			 catch(FileNotFoundException F)
+			 { System.out.println("IOexception while reading.");}
+			 
+			 catch (IOException e)
+	         {
+	             e.printStackTrace();
+	             System.out.println("could not read file.");
+	         }   
+			 
+			 finally 
+			 {
+			     if (fs != null)
+			     {
+			    	 try
+			    	 {
+			    		 fs.close();
+			    	 }
+			    	 catch(IOException e2)
+			    	 { System.out.println("IOException while closing.");}
+			     }	     	     
+			 }
+			 return allRec;	 
+	    }
+	 
+	 
 	 
 	 //takes record output from readRecord(int), the number of the comma we want to find. Index from 0
 	 public int findComma(String record, int commaNum) 
