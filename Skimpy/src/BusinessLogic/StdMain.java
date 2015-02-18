@@ -38,7 +38,7 @@ public class StdMain {
 				ArrayList allRecs = std.readAllRecords(std.sainsPath);
 				
 				long B = (System.currentTimeMillis()/1000) - A;
-				System.out.println("Time To Complete Generating ArrayList in minutes:");
+				System.out.println("Time To Complete Generating ArrayList in minutes:" +B);
 				
 				for (i = 0; i < allRecs.size(); i++)	
 				{
