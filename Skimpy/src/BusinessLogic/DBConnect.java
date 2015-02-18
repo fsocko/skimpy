@@ -14,7 +14,7 @@ public class DBConnect {
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
-	//@alinauyazina: I'm getting an SQL error: too many connections. Could you have a look and fix the DBConnect and pushFood methods?
+	
 	public DBConnect()
 	{
 		try{
@@ -99,10 +99,10 @@ public class DBConnect {
 			try{
 					
 					String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
-							+ " values( '" + 
-									food.getShopID() + "', '" + food.getName() + "', '" + food.getUnit() + "', "  +
-									food.getMass() + ", " + food.getPrice() + ", '" + food.getPricePU() + "', '" + 
-									food.getFoodCat() + "');";
+							+ " values(\" " + 
+									food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", "  +
+									food.getMass() + ", " + food.getPrice() + ", \"" + food.getPricePU() + "\", \"" + 
+									food.getFoodCat() + "\");";
 					
 					
 					st.executeUpdate(query);
@@ -139,10 +139,10 @@ public class DBConnect {
 		
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO `user_info`(`UserName`, `UserEmail`, `Age`, `Height`, `Weight`, `Gender`, `Exercise`) "
-					+ "VALUES ('" + 
-							user.getName() +  "', '" + user.getEmail() + "', "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", '" + user.getGender() + "', " + 
+			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\", \"Weight\", \"Gender\", \"Exercise\")"
+					+ "VALUES (\"" + 
+							user.getName() +  "\", \"" + user.getEmail() + "\", "  +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
 							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
