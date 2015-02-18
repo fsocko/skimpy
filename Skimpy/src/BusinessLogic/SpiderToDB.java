@@ -165,20 +165,24 @@ public class SpiderToDB {
 		 {
 			 if(record.contains("; ;"))
 			 {return null;}
-			 //ShopID, name, price, PPU, PPUUnit, foodcat
-			 
-			 
+
 			 String shopID = record.substring(0, findColon(record, 0));
-			 String name = record.substring(findColon(record, 0)+2, findColon(record, 1)); 
+			 String name = record.substring(findColon(record, 0), findColon(record, 1)); 
 			 String massAndUnit = name;
 			 
 			 int e = massAndUnit.length();
-			 while(massAndUnit.length() > 0) //iterate through name backwards. Find space.
+			 while(e>0) //iterate through name backwards. Find space.
 			 {
 				 if(massAndUnit.substring(e-1, e).equals(" "))
 				 {massAndUnit = massAndUnit.substring(e, massAndUnit.length());break;}
 				 
-				 else{if(e == 0){break;}}
+				 else{
+					 	if(e == 0)
+					 	{
+					 		massAndUnit = "No mass found.";
+					 		break;
+					 	}
+					 }
 				 e--;
 				 
 			 }
@@ -223,11 +227,19 @@ public class SpiderToDB {
 			 stripChars = PPUPrice.replaceAll("[^.0-9]",""); //strip all characters but numbers
 			 double PPUPriceD = toDouble(stripChars);
 			 
-			 String foodCat = record.substring(findColon(record, 3)+2, record.length());
-			 String spaceSlash = foodCat.replaceAll("-"," "); //specifically for the sainsbury data
+			 String foodCat = record.substring(findColon(record, 3), record.length());
+			 String spaceSlash = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
 			 foodCat = spaceSlash;
-
-
+			 
+			 //If there are any delimiters, we strip them from all fields
+			 shopID = shopID.replaceAll(";","");
+			 name = name.trim().replaceAll(";","");
+			 mass = mass.trim().replaceAll(";","");
+			 unit = unit.trim().replaceAll(";","");
+			 //not price
+			 //not PPU
+			 foodCat = foodCat.trim().replaceAll(";","");
+			 
 			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass:" + mass  
 			+ "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + PPUPriceD
 			+"\nFoodCat:" + foodCat);

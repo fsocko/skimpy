@@ -13,26 +13,35 @@ public class StdMain {
 		//SpiderToDB:
 				SpiderToDB std = new SpiderToDB();
 				System.out.println(std.countLines(std.tescoPath));
-				
-				
 				int i = 1;
+				
+				/*
+				
+				i = 1;
 				while(i < std.countLines(std.tescoPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
-					System.out.println(std.readRecord(std.tescoPath, i));
 					DBFood tescoTest = std.formatRecord(std.readRecord(std.tescoPath, i));
 					i++;
 				}
 				i=1;
 				
 				
+				*/
+				
+				System.out.println("\n\n\n SAINSBURY'S STARTS HERE -------------------------------------------------------------------------------- \n\n\n");
+				
+				i = 1;
 				while(i < std.countLines(std.sainsPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
-					System.out.println(std.readRecord(std.sainsPath, i));
 					DBFood sainsTest = std.formatRecord(std.readRecord(std.sainsPath, i));
 					i++;
 				}
+
+
+
+
 
 				
 			/*
