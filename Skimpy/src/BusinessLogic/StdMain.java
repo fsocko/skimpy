@@ -30,15 +30,16 @@ public class StdMain {
 				
 				*/
 				
-				long A = (System.currentTimeMillis()/1000);
+				long A = (System.currentTimeMillis());
 				System.out.println("Timer started.");
 				
 				System.out.println("\n\n\n SAINSBURY'S STARTS HERE -------------------------------------------------------------------------------- \n\n\n");
 				
 				ArrayList allRecs = std.readAllRecords(std.sainsPath);
 				
-				long B = (System.currentTimeMillis()/1000) - A;
-				System.out.println("Time To Complete Generating ArrayList in minutes:" +B);
+				long B = (System.currentTimeMillis());
+				long arrListTime = B-A;
+				System.out.println("Time To Complete Generating ArrayList in minutes:" + (arrListTime / 1000)/60);
 				
 				for (i = 0; i < allRecs.size(); i++)	
 				{
@@ -48,9 +49,12 @@ public class StdMain {
 				}
 				
 					
-				long C = (System.currentTimeMillis()/1000) - A;
-				System.out.println("Total time in minutes: " + B/60);
+				long C = (System.currentTimeMillis());
+				long pushTime = C - B;
+				System.out.println("Push time in minutes: " + (pushTime / 1000)/60);
 				//old way takes about 20min
+
+				
 
 				
 			/*
@@ -65,6 +69,11 @@ public class StdMain {
 				
 				*/
 				
+				
+				
+				long D = (System.currentTimeMillis());
+				long dbPush = D - C;
+				System.out.println("DBPush time in minutes: " + (dbPush / 1000)/60);
 				
 	}
 }
