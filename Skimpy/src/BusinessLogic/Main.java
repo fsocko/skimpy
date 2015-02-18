@@ -11,7 +11,7 @@ public class Main{
 	 * Will create a Person object, Food and the create a MealPlanner and add the Food.
 	 * @param args
 	 */
-	//asds
+	
 	public static void main(String[] args) {
 
 		//this will open a class in which all your meal plan methods from main are now.
