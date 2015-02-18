@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.*;
 
+//Create only one DB
 
 public class SpiderToDB {
 //TODO: Strip " ' " from DBFood, it fucks with the SQL syntax
