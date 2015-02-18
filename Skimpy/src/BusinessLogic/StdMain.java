@@ -16,20 +16,23 @@ public class StdMain {
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;
 				
-				/*
+				DBConnect tescoPush = new DBConnect("food_DB");
+				ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
 				
 				i = 1;
 				while(i < std.countLines(std.tescoPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
-					DBFood tescoTest = std.formatRecord(std.readRecord(std.tescoPath, i));
+					DBFood tescoTest = std.formatRecord(tescoItems.get(i).toString().trim());
+					tescoPush.pushFood(tescoTest, "tesco_scraped");
+					
 					i++;
 				}
 				i=1;
 				
 				
-				*/
-				
+			
+				/*
 				long A = (System.currentTimeMillis());
 				System.out.println("Timer started.");
 				
@@ -55,7 +58,7 @@ public class StdMain {
 				//old way takes about 20min
 
 				
-
+			*/
 				
 			/*
 				i = 1;
@@ -69,13 +72,6 @@ public class StdMain {
 				
 				*/
 				
-				
-				
-				long D = (System.currentTimeMillis());
-				long dbPush = D - C;
-				System.out.println("DBPush time in minutes: " + (dbPush / 1000)/60);
-				long E = (System.currentTimeMillis());
-				long totalT = E-A;
-				System.out.println("Total time in minutes: " + (totalT / 1000)/60);
+
 	}
 }
