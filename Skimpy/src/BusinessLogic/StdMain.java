@@ -36,6 +36,10 @@ public class StdMain {
 				System.out.println("\n\n\n SAINSBURY'S STARTS HERE -------------------------------------------------------------------------------- \n\n\n");
 				
 				ArrayList allRecs = std.readAllRecords(std.sainsPath);
+				
+				long B = (System.currentTimeMillis()/1000) - A;
+				System.out.println("Time To Complete Generating ArrayList in minutes:");
+				
 				for (i = 0; i < allRecs.size(); i++)	
 				{
 					 DBFood sainsTest = std.formatRecord(allRecs.get(i).toString());
@@ -43,9 +47,9 @@ public class StdMain {
 				}
 				
 					
-				long B = (System.currentTimeMillis()/1000) - A;
-				System.out.println("time in minutes: " + B/60);
-
+				long C = (System.currentTimeMillis()/1000) - A;
+				System.out.println("Total time in minutes: " + B/60);
+				//old way takes about 20min
 
 				
 			/*
