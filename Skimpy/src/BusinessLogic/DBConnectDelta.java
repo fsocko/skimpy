@@ -4,9 +4,11 @@ package BusinessLogic;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+import javax.servlet.http.HttpServlet;
+
 import com.mysql.jdbc.*;
 
-public class DBConnectDelta {
+public class DBConnectDelta extends HttpServlet{
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;

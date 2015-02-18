@@ -1,9 +1,12 @@
 package BusinessLogic;
+
+import javax.servlet.http.HttpServlet;
+
 /**
  *  @author Ruaraidh
  */
 
-public class Person {
+public class Person extends HttpServlet{
 	/**
 	 * This class will add users to the database or create person objects from the database.
 	 */

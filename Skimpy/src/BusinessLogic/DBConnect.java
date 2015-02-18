@@ -5,6 +5,8 @@ package BusinessLogic;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 
+import javax.servlet.http.HttpServlet;
+
 import com.mysql.jdbc.*;
 
 public class DBConnect {
@@ -12,7 +14,7 @@ public class DBConnect {
 	private Statement st;
 	private ResultSet rs;
 	
-	public DBConnect()
+	public DBConnect() extends HttpServlet
 	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");

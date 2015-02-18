@@ -1,4 +1,6 @@
 package BusinessLogic;
+
+import javax.servlet.http.HttpServlet;
 /**
  * @author Lee
  */
@@ -6,7 +8,7 @@ package BusinessLogic;
 /**
  * A class which tells you if you're higher or lower than the GDA values
  */
-public class NutritionOptimisation {
+public class NutritionOptimisation extends HttpServlet{
 	
 	/**
 	 * Returns the total nutritional values.

@@ -1,5 +1,10 @@
+  
 package BusinessLogic;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServlet;
+
+import BusinessLogic.Meal;
 
 /**
  * 
@@ -11,7 +16,7 @@ import java.util.ArrayList;
  * Creates an empty 2D grid to allow a weekly meal plan to be created.
  *
  */
-public class MealPlanner {
+public class MealPlanner extends HttpServlet{
 	/**
 	 * Meals can be added to a day and a meal time. This can work out what calories the Person plans
 	 * to eat during a week or per day.
@@ -45,6 +50,9 @@ public class MealPlanner {
 	/**
 	 * Represents the Meal plan as a string.
 	 */
+	public Meal getMeal(int i, int j) {
+		return plan[i][j];
+	}
 	
 	public String toString(){
 		
@@ -214,3 +222,4 @@ public class MealPlanner {
 	}
 	
 }
+
