@@ -3,8 +3,6 @@
 package BusinessLogic;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.regex.*;
 
@@ -43,52 +41,17 @@ public class SpiderToDB {
 		 }
 
 		 
-	//TODO: make this not linear.	 
-	//Read a record in a particular place in a file. - Sequential search for line number.
+	
 	 public String readRecord(String file, int recNum) //Indexes from 1!
     { 
-		 
-		 String record = "No Record Found!";
-		 
-		 FileInputStream fs = null;
-		 try
-		 { 
-			 fs= new FileInputStream(file);
-			 BufferedReader br = new BufferedReader(new InputStreamReader(fs));
-			 for(int i = 0; i<recNum; i++)
-			 {
-			   record = br.readLine();
-			 }
-			 br.close();
-		 }
-		 
-		 catch(FileNotFoundException F)
-		 { System.out.println("IOexception while reading.");}
-		 
-		 catch (IOException e)
-         {
-             e.printStackTrace();
-             record = "error";
-             System.out.println("could not read file.");
-         }   
-		 
-		 finally 
-		 {
-		     if (fs != null)
-		     {
-		    	 try
-		    	 {
-		    		 fs.close();
-		    	 }
-		    	 catch(IOException e2)
-		    	 { System.out.println("IOException while closing.");}
-		     }	     	     
-		 }
-		 return record;	 
+		 ArrayList allRec = readAllRecords(file);
+		 return(allRec.get(recNum).toString().trim());
+
     }
 	 
-	 
-	 public ArrayList readAllRecords(String file) //Indexes from 1!
+	 //creates array list of all records. The list can then be traversed.
+	 //Takes about 2min, but it beats the 20mins or so in a sequential search.
+	 public ArrayList readAllRecords(String file)
 	    { 
 			 
 		 	ArrayList allRec = new ArrayList();

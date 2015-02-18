@@ -74,6 +74,8 @@ public class StdMain {
 				long D = (System.currentTimeMillis());
 				long dbPush = D - C;
 				System.out.println("DBPush time in minutes: " + (dbPush / 1000)/60);
-				
+				long E = (System.currentTimeMillis());
+				long totalT = E-A;
+				System.out.println("Total time in minutes: " + (totalT / 1000)/60);
 	}
 }
