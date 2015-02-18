@@ -111,16 +111,25 @@ public class SpiderToDB {
 	 
 	 public double toDouble(String input) //custom parseDouble method
 	 {
-		 double result = -1.0;
-		 result = Double.parseDouble((input));
-		 return result;	 
+		 if(! (input.equals(null) | input.equals("")))
+		 {
+			 double result = -1.0;
+			 result = Double.parseDouble((input));
+			 return result;
+		 }
+		 else{return -1.0;}
 	 }
 	 
 	 public int toInt(String input) //custom parseDouble method
 	 {
-		 int result = -1;
-		 result = Integer.parseInt((input).trim());
-		 return result;	 
+		 
+		 if(! (input.equals(null) | input.equals("")))
+		 {	 
+			 int result = -1;
+			 result = Integer.parseInt((input).trim());
+			 return result;
+		 }	 
+		 else{return -1;}
 	 }
 
 	 //TODO: TESCO marker
@@ -184,15 +193,15 @@ public class SpiderToDB {
 			     mass = m.group(1).trim();
 			 	 unit = m.group(2).trim(); // the unit is 100g, not 600 g
 			 }
-			 else{mass = "-1"; unit = "Unknown Unit.";} //This happens if we haven't found a unit
+			 else{mass = "-1"; unit = massAndUnit;} //This happens if we haven't found a unit
 			 double massD = toDouble(mass);
 			 
-			 String price = record.substring(findColon(record, 1)+2, findColon(record, 2));
+			 String price = record.substring(findColon(record, 1), findColon(record, 2));
 			 String stripChars = price.replaceAll("[^.0-9]","");
 			 price = stripChars;
 			 double priceD = toDouble(stripChars);
 			 
-			 String pricePU = record.substring(findColon(record, 2)+1, findColon(record, 3));
+			 String pricePU = record.substring(findColon(record, 2), findColon(record, 3));
 			 String PPUPrice = "-1";
 			 String PPUUnit = "-1";
 			 //find slash, separate price per unit from the actual unit the price is measured in.
@@ -228,8 +237,12 @@ public class SpiderToDB {
 	//to DBFood object
 					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
 			 		//public DBFood(String shopID, String name, double mass, String unit, double price, double pricePU, String PPUUnit, String foodCat)
-					DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); //pass a null instead of PPUUnit 
-					return currentRec; //return object ready for pushingtoDB
+					
+			 //if none of the fields are null
+			 DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); //pass a null instead of PPUUnit 
+			 return currentRec; //return object ready for pushingtoDB
+			 
+			 //else{return null;}
 		 }
 
 		 public void pushSainsToDB(int recNum)
