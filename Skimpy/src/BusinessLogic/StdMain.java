@@ -21,26 +21,28 @@ public class StdMain {
 				{
 					System.out.println("\n i is:" + i + "\n");
 					System.out.println(std.readRecord(std.tescoPath, i));
-					DBFood tescoTest = std.formatSains(std.readRecord(std.tescoPath, i));
+					DBFood tescoTest = std.formatRecord(std.readRecord(std.tescoPath, i));
 					i++;
 				}
 				i=1;
 				
-				/*
+				
 				while(i < std.countLines(std.sainsPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
 					System.out.println(std.readRecord(std.sainsPath, i));
-					DBFood tescoTest = std.formatSains(std.readRecord(std.sainsPath, i));
+					DBFood sainsTest = std.formatRecord(std.readRecord(std.sainsPath, i));
 					i++;
 				}
 				i = 1;
+				
+			/*
 				
 				while(i < std.countLines(std.asdaPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
 					System.out.println(std.readRecord(std.asdaPath, i));
-					DBFood tescoTest = std.formatSains(std.readRecord(std.asdaPath, i));
+					DBFood tescoTest = std.formatRecord(std.readRecord(std.asdaPath, i));
 					i++;
 				}
 				

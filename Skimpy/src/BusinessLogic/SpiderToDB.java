@@ -9,7 +9,6 @@ import java.util.regex.*;
 
 
 public class SpiderToDB {
-//TODO: Sort out NullPointer Exception, see error log.
 //TODO: Strip " ' " from DBFood, it fucks with the SQL syntax
 //TODO: sort out this error: Data source rejected establishment of connection,  message from server: "Too many connections"
 // Convert to SQL?
@@ -87,8 +86,8 @@ public class SpiderToDB {
 		 return record;	 
     }
 	 
-	 
-	 public int findComma(String record, int commaNum) //takes record, the number of the comma we want to find. Index from 0 
+	 //takes record output from readRecord(int), the number of the comma we want to find. Index from 0
+	 public int findComma(String record, int commaNum) 
 	 {
 		int j = 0;
 		int commaPos = -1;
@@ -107,18 +106,19 @@ public class SpiderToDB {
 			 {commaPos = -99; }
 			 
 		 }	 	 
-		 return commaPos; //returns position of comma number commaNum in a record, index from 0
+		 return commaPos;
 	 }
 	 
 	 
-	 public int findColon(String record, int colonNum)//does what commaPos does, except for semicolons. 
+	//takes record output from readRecord(int), the number of the colon we want to find. Index from 0
+	 public int findColon(String record, int colonNum)
 	 {
 		int j = 0;
 		int colonPos = -1;
 		
 		 for(int i = 1; (i < record.length()+1); i++)
 		 {
-			 if(record.substring((i-1), i).equals(";"))//found colon
+			 if(record.substring((i-1), i).equals(";"))//found a colon
 			 {
 				 j++;
 				 colonPos = (i-1);
@@ -135,8 +135,8 @@ public class SpiderToDB {
 	 
 	 
 
-	 
-	 public double toDouble(String input) //custom parseDouble method
+	 //Custom methods for parsing strings to Double and to Int
+	 public double toDouble(String input)
 	 {
 		 if(! (input.equals(null) | input.equals("")))
 		 {
@@ -147,7 +147,7 @@ public class SpiderToDB {
 		 else{return -1.0;}
 	 }
 	 
-	 public int toInt(String input) //custom parseDouble method
+	 public int toInt(String input)
 	 {
 		 
 		 if(! (input.equals(null) | input.equals("")))
@@ -159,11 +159,9 @@ public class SpiderToDB {
 		 else{return -1;}
 	 }
 
-
-	 
-	//TODO: SAINS marker
-	//Formats data scraped from Sainsbury's for pushing to DB
-		 public DBFood formatSains(String record)
+	 	//Takes a record string, returns a food object. You probably want to read a record with readRecord(int)
+	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
+		 public DBFood formatRecord(String record)
 		 {
 			 if(record.contains("; ;"))
 			 {return null;}
@@ -183,11 +181,10 @@ public class SpiderToDB {
 				 else{if(e == 0){break;}}
 				 e--;
 				 
-				 //TODO: this can sometimes return an empty string, which causes an exception.
 			 }
 			 String mass = " ";
 			 String unit = " ";
-			 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)");
+			 Pattern p = Pattern.compile("(\\d*\\.?\\d+)\\s?(\\w+)"); //this finds a mass+unit pattern eg 400g
 			 Matcher m = p.matcher(massAndUnit);
 			 if(m.find())
 			 {
@@ -198,13 +195,13 @@ public class SpiderToDB {
 			 double massD = toDouble(mass);
 			 
 			 String price = record.substring(findColon(record, 1), findColon(record, 2));
-			 String stripChars = price.replaceAll("[^.0-9]","");
+			 String stripChars = price.replaceAll("[^.0-9]",""); //strip all but numbers from price.
 			 price = stripChars;
 			 double priceD = toDouble(stripChars);
 			 
 			 String pricePU = record.substring(findColon(record, 2), findColon(record, 3));
 			 String PPUPrice = "-1";
-			 String PPUUnit = "-1";
+			 String PPUUnit = "-1"; //not used yet, but depending on how PPU will work with @ruaraidhmacarflane 's code
 			 //find slash, separate price per unit from the actual unit the price is measured in.
 			 //e.g. GBP 2 / 100g gives "2" (i.e. PPUPrice) and "100g" (i.e. PPUUnit) 
 			 //e.g. GBP 1.6 / 100ml gives "1.6" (i.e. PPUPrice) and "100ml" (i.e. PPUUnit)
@@ -223,11 +220,11 @@ public class SpiderToDB {
 			 }
 			 
 			 stripChars = "-1";
-			 stripChars = PPUPrice.replaceAll("[^.0-9]","");
+			 stripChars = PPUPrice.replaceAll("[^.0-9]",""); //strip all characters but numbers
 			 double PPUPriceD = toDouble(stripChars);
 			 
 			 String foodCat = record.substring(findColon(record, 3)+2, record.length());
-			 String spaceSlash = foodCat.replaceAll("-"," ");
+			 String spaceSlash = foodCat.replaceAll("-"," "); //specifically for the sainsbury data
 			 foodCat = spaceSlash;
 
 
@@ -240,19 +237,18 @@ public class SpiderToDB {
 					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
 			 		//public DBFood(String shopID, String name, double mass, String unit, double price, double pricePU, String PPUUnit, String foodCat)
 					
-			 //if none of the fields are null
-			 DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); //pass a null instead of PPUUnit 
+			//pass a null instead of PPUUnit, we are not using PPUUnit in the DB. The code is there, but I need to check with team how PPU unit will work.
+			 DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); 
 			 return currentRec; //return object ready for pushingtoDB
 			 
-			 //else{return null;}
 		 }
-
+		 
+		 //push a particular record to the DB
 		 public void pushSainsToDB(int recNum)
 		 {
 			 DBConnect dbPush = new DBConnect("food_db");
-			 dbPush.pushFood(formatSains(readRecord(sainsPath, recNum)), "sains_scraped"); 
+			 dbPush.pushFood(formatRecord(readRecord(sainsPath, recNum)), "sains_scraped"); 
 		 }
-	 
 	 
 	 
 	 
