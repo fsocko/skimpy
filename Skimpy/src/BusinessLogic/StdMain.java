@@ -42,8 +42,9 @@ public class StdMain {
 				
 				for (i = 0; i < allRecs.size(); i++)	
 				{
-					 DBFood sainsTest = std.formatRecord(allRecs.get(i).toString());
-					 System.out.println(i);
+					System.out.println("\nRecord Number:" + i + "\n"); 
+					DBFood sainsTest = std.formatRecord(allRecs.get(i).toString());
+					 
 				}
 				
 					
