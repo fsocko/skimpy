@@ -15,7 +15,6 @@ public class StdMain {
 				System.out.println(std.countLines(std.tescoPath));
 				
 				
-				
 				int i = 1;
 				while(i < std.countLines(std.tescoPath))
 				{
@@ -34,10 +33,10 @@ public class StdMain {
 					DBFood sainsTest = std.formatRecord(std.readRecord(std.sainsPath, i));
 					i++;
 				}
-				i = 1;
+
 				
 			/*
-				
+				i = 1;
 				while(i < std.countLines(std.asdaPath))
 				{
 					System.out.println("\n i is:" + i + "\n");
