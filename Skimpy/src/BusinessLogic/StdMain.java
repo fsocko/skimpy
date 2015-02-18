@@ -12,26 +12,40 @@ public class StdMain {
 		
 		//SpiderToDB:
 				SpiderToDB std = new SpiderToDB();
+				System.out.println(std.countLines(std.tescoPath));
 				
-				for(int i = 1; i<300; i++)
+				
+				
+				int i = 1;
+				while(i < std.countLines(std.tescoPath))
 				{
+					System.out.println("\n i is:" + i + "\n");
+					System.out.println(std.readRecord(std.tescoPath, i));
 					DBFood tescoTest = std.formatSains(std.readRecord(std.tescoPath, i));
-					System.out.println(tescoTest.toString() +" ");
-				}	
-	/*			
-				for(int i = 1; i<21948; i++)
+					i++;
+				}
+				i=1;
+				
+				/*
+				while(i < std.countLines(std.sainsPath))
 				{
-					
-					try{
-					
-					std.pushSainsToDB(i);
-					}
-					finally{
-						i++;
-					}
+					System.out.println("\n i is:" + i + "\n");
+					System.out.println(std.readRecord(std.sainsPath, i));
+					DBFood tescoTest = std.formatSains(std.readRecord(std.sainsPath, i));
+					i++;
+				}
+				i = 1;
+				
+				while(i < std.countLines(std.asdaPath))
+				{
+					System.out.println("\n i is:" + i + "\n");
+					System.out.println(std.readRecord(std.asdaPath, i));
+					DBFood tescoTest = std.formatSains(std.readRecord(std.asdaPath, i));
+					i++;
 				}
 				
-		*/
-		
+				*/
+				
+				
 	}
 }

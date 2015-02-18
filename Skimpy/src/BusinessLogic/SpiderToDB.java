@@ -3,7 +3,10 @@
 package BusinessLogic;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.regex.*;
+
 
 public class SpiderToDB {
 //TODO: Sort out NullPointer Exception, see error log.
@@ -11,12 +14,36 @@ public class SpiderToDB {
 //TODO: sort out this error: Data source rejected establishment of connection,  message from server: "Too many connections"
 // Convert to SQL?
 	
-	 //TESCO: "data/tesco.txt"
-	 //SAINSBURY's: "data/sainsburys.txt"
+
+	 //Use these strings when selecting file, it's easier.
 	 String tescoPath = "data/tesco.txt";
 	 String sainsPath = "data/sains.txt";
-	 //Use these strings when selecting file, it's easier.
+	 String asdaPath = "data/asda.txt";
 	 
+
+		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
+		 {
+		  int lines = 0;
+		  try {
+		   File file = new File(inputFile);
+		   LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(file));
+		   lineNumberReader.skip(Long.MAX_VALUE);
+		   lines = lineNumberReader.getLineNumber();
+		   lineNumberReader.close();
+		   
+		  } catch (FileNotFoundException e) {
+		   System.out.println("FileNotFoundException Occured" 
+		     + e.getMessage());
+		  } catch (IOException e) {
+		   System.out.println("IOException Occured" + e.getMessage());
+		  }
+
+		  return lines;
+
+		 }
+
+
+
 	//Read a record in a particular place in a file. - Sequential search for line number.
 	 public String readRecord(String file, int recNum) //Indexes from 1!
     { 
@@ -132,54 +159,28 @@ public class SpiderToDB {
 		 else{return -1;}
 	 }
 
-	 //TODO: TESCO marker
-	 //TODO: the sainsbury formatter should more or less work for all data files now. Do the fixes needed to make this true in practice 
 
-/*
-
-	 //Formats data scraped from tesco for pushing to DB
-	 public DBFood formatTesco(String record) //takes relevant field, moves it to a string, formats the string, converts the strings to appropriate filetypes, pushes the filetypes to a DBfoodObject
-	 {
-
-		 
-		 if(! shopID.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
-		 {System.out.println("invalid ID"); shopID = "error!";}
-		 
-		
-		 
-				 
-//to DBFood object
-				//fieldName followed by D means the field was converted to a Double. ShopID is a String!
-				DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, pricePUD, null, foodCat); 
-				return currentRec; //return object ready for pushingtoDB
-	 }
-	 
-	 public void pushTescoToDB(int recNum)
-	 {
-		 
-		 DBConnect dbPush = new DBConnect("food_db");
-		 
-		 dbPush.pushFood(formatTesco(readRecord(tescoPath, recNum)), "tesco_scraped");
-		 System.out.println("Tesco Rec pushed to DB");
-	 }
-	 */
-	 
 	 
 	//TODO: SAINS marker
 	//Formats data scraped from Sainsbury's for pushing to DB
 		 public DBFood formatSains(String record)
 		 {
+			 if(record.contains("; ;"))
+			 {return null;}
 			 //ShopID, name, price, PPU, PPUUnit, foodcat
 			 
-			 String shopID = record.substring(0, findColon(record, 0));
-			 String name = record.substring(findColon(record, 0)+1, findColon(record, 1)); 
 			 
+			 String shopID = record.substring(0, findColon(record, 0));
+			 String name = record.substring(findColon(record, 0)+2, findColon(record, 1)); 
 			 String massAndUnit = name;
+			 
 			 int e = massAndUnit.length();
-			 while(true) //iterate through name backwards. Find space.
+			 while(massAndUnit.length() > 0) //iterate through name backwards. Find space.
 			 {
 				 if(massAndUnit.substring(e-1, e).equals(" "))
 				 {massAndUnit = massAndUnit.substring(e, massAndUnit.length());break;}
+				 
+				 else{if(e == 0){break;}}
 				 e--;
 				 
 				 //TODO: this can sometimes return an empty string, which causes an exception.
@@ -208,7 +209,7 @@ public class SpiderToDB {
 			 //e.g. GBP 2 / 100g gives "2" (i.e. PPUPrice) and "100g" (i.e. PPUUnit) 
 			 //e.g. GBP 1.6 / 100ml gives "1.6" (i.e. PPUPrice) and "100ml" (i.e. PPUUnit)
 			 e = pricePU.length();
-			 while(true) //iterate through name backwards. Find Slash.
+			 while(pricePU.length() > 0) //iterate through name backwards. Find Slash.
 			 {
 				 if(pricePU.substring(e-1, e).equals("/"))
 				 {
@@ -216,7 +217,8 @@ public class SpiderToDB {
 					 PPUUnit = pricePU.substring(e, pricePU.length());
 					break;
 				 }
-				 else{if(e == 0){break;}}	 
+				 else{if(e == 0){break;}}	 	 
+
 				 e--;
 			 }
 			 
@@ -224,7 +226,7 @@ public class SpiderToDB {
 			 stripChars = PPUPrice.replaceAll("[^.0-9]","");
 			 double PPUPriceD = toDouble(stripChars);
 			 
-			 String foodCat = record.substring(findColon(record, 3)+1, record.length());
+			 String foodCat = record.substring(findColon(record, 3)+2, record.length());
 			 String spaceSlash = foodCat.replaceAll("-"," ");
 			 foodCat = spaceSlash;
 
@@ -248,8 +250,7 @@ public class SpiderToDB {
 		 public void pushSainsToDB(int recNum)
 		 {
 			 DBConnect dbPush = new DBConnect("food_db");
-			 dbPush.pushFood(formatSains(readRecord(sainsPath, recNum)), "sains_scraped");
-			 
+			 dbPush.pushFood(formatSains(readRecord(sainsPath, recNum)), "sains_scraped"); 
 		 }
 	 
 	 

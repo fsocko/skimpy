@@ -21,6 +21,7 @@ public class DBConnect {
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
+			
 		}
 	}
 	
@@ -89,21 +90,25 @@ public class DBConnect {
 	
 	public void pushFood(DBFood food, String dataBaseName)
 	{
+		
+		if(food != null)
+		{
 			try{
-				
-				String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
-						+ " values( '" + 
-								food.getShopID() + "', '" + food.getName() + "', '" + food.getUnit() + "', "  +
-								food.getMass() + ", " + food.getPrice() + ", '" + food.getPricePU() + "', '" + 
-								food.getFoodCat() + "');";
-				
-				
-				st.executeUpdate(query);
-				System.out.println("Pushes to Database\n\n");
-						
-				
-			}catch(Exception ex){
-				System.out.println(ex);
+					
+					String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
+							+ " values( '" + 
+									food.getShopID() + "', '" + food.getName() + "', '" + food.getUnit() + "', "  +
+									food.getMass() + ", " + food.getPrice() + ", '" + food.getPricePU() + "', '" + 
+									food.getFoodCat() + "');";
+					
+					
+					st.executeUpdate(query);
+					System.out.println("Pushes to Database\n\n");
+							
+					
+				}catch(Exception ex){
+					System.out.println(ex);
+				}
 			}
 		}
 		
