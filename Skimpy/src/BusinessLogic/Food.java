@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import javax.servlet.http.HttpServlet;
+
 /**
  *
  * @author ruaraidh
@@ -9,7 +12,7 @@ package BusinessLogic;
  * A representation of a Food.
  *
  */
-public class Food{
+public class Food extends HttpServlet{
 	/**
 	 * Stores all the nutrients of a food, use by dates, prices etc. This will be used as ingredients
 	 * for a Meal and will help match to a Person's GDA.

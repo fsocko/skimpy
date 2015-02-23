@@ -3,9 +3,11 @@ package BusinessLogic;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServlet;
+
 //this file will run the methods I am currently working on, so I only need a single line in the master main method. 
 
-public class StdMain {
+public class StdMain extends HttpServlet{
 	
 	public static void testMethods()
 	{

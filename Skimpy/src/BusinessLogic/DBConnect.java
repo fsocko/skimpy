@@ -8,9 +8,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.http.HttpServlet;
+
 import com.mysql.jdbc.*;
 
-public class DBConnect {
+public class DBConnect extends HttpServlet{
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
