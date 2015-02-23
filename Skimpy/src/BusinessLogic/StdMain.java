@@ -16,7 +16,7 @@ public class StdMain {
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;
 				
-				DBConnect tescoPush = new DBConnect("food_DB");
+				DBConnect tescoPush = new DBConnect();
 				ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
 				
 				i = 1;
