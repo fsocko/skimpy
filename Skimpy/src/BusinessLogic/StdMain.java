@@ -15,6 +15,7 @@ public class StdMain {
 		//SpiderToDB:
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;
+/*
 				
 				DBConnect tescoPush = new DBConnect();
 				ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
@@ -31,35 +32,27 @@ public class StdMain {
 				i=1;
 				
 				
+		*/	
 			
-				/*
-				long A = (System.currentTimeMillis());
-				System.out.println("Timer started.");
+				DBConnect sainsPush = new DBConnect("food_DB");
 				
 				System.out.println("\n\n\n SAINSBURY'S STARTS HERE -------------------------------------------------------------------------------- \n\n\n");
 				
 				ArrayList allRecs = std.readAllRecords(std.sainsPath);
 				
-				long B = (System.currentTimeMillis());
-				long arrListTime = B-A;
-				System.out.println("Time To Complete Generating ArrayList in minutes:" + (arrListTime / 1000)/60);
-				
 				for (i = 0; i < allRecs.size(); i++)	
 				{
-					System.out.println("\nRecord Number:" + i + "\n"); 
+					System.out.println("\nRecord Number:" + i + "\n");
 					DBFood sainsTest = std.formatRecord(allRecs.get(i).toString());
+					sainsPush.pushFood(sainsTest, "sains_scraped");
 					 
 				}
 				
 					
-				long C = (System.currentTimeMillis());
-				long pushTime = C - B;
-				System.out.println("Push time in minutes: " + (pushTime / 1000)/60);
-				//old way takes about 20min
+
 
 				
-			*/
-				
+	
 			/*
 				i = 1;
 				while(i < std.countLines(std.asdaPath))
