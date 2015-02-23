@@ -1,12 +1,14 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
  */
 /**
  * Main class that brings all the other classes together.
  */
-public class Main{
+public class Main extends HttpServlet{
 	/**
 	 * Will create a Person object, Food and the create a MealPlanner and add the Food.
 	 * @param args

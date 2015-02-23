@@ -6,8 +6,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.*;
 
+import javax.servlet.http.HttpServlet;
 
-public class SpiderToDB {
+
+public class SpiderToDB extends HttpServlet{
 //TODO: Strip " ' " from DBFood, it fucks with the SQL syntax
 //TODO: sort out this error: Data source rejected establishment of connection,  message from server: "Too many connections"
 // Convert to SQL?

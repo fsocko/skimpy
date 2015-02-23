@@ -1,4 +1,7 @@
 package BusinessLogic;
+
+import javax.servlet.http.HttpServlet;
+
 /**
  * 
  * @author ruaraidh
@@ -9,7 +12,7 @@ package BusinessLogic;
  * A representation of what nutrients a user needs each day.
  *
  */
-public class GDA {
+public class GDA extends HttpServlet {
 	/**
 	 * This class will be used to check if a user's meal plan is balanced and healthy for them.
 	 */

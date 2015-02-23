@@ -1,4 +1,6 @@
 package BusinessLogic;
+
+import javax.servlet.http.HttpServlet;
 /**
  * @author Lee
  */
@@ -7,7 +9,7 @@ package BusinessLogic;
  * A class which optimises a shopping list based on price
  */
 //NOT USED
-public class PriceOptimisation {
+public class PriceOptimisation extends HttpServlet{
 	
 	/**
 	 *  Will return the shop where your shopping list will be cheapest.

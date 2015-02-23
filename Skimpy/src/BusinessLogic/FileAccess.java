@@ -1,5 +1,7 @@
 package BusinessLogic;
 import java.io.*;
+
+import javax.servlet.http.HttpServlet;
 /**
  *
  * @author fps
@@ -9,7 +11,7 @@ import java.io.*;
  * A class that will access the Food information. BLah BLah
  *
  */
-public class FileAccess 
+public class FileAccess extends HttpServlet
 {
 	/**
 	 * EXPLAIN IN MORE DETAIL WHAT THE CLASS DOES
