@@ -11,8 +11,21 @@ class Product {
 	public String url;
 	public String price;
 	public String pricePerUnit;
+	public String calories;
+	public String protein;
+	public String sugars;
+	public String fats;
+	public String saturates;
+	public String salt;
+	public String fibre;
 
-	public Product(String id, String name, String url, String ppi, String ppu, String category) {
+	public Product(String id,
+				   String name,
+				   String url,
+				   String ppi,
+				   String ppu,
+				   String category,
+				   String[] nutritionValues) {
 		this.id = id;
 		this.name = name;
 		this.category = category;
@@ -24,11 +37,17 @@ class Product {
 		}
 		else {
 			this.url = url;
-		}
-		
-		this.price = ppi;
-		
+		}		
+		this.price = ppi;		
 		this.pricePerUnit = ppu;
+		
+		this.calories = nutritionValues[0];
+		this.protein = nutritionValues[1];
+		this.sugars = nutritionValues[2];
+		this.fats = nutritionValues[3];
+		this.saturates = nutritionValues[4];
+		this.salt = nutritionValues[5];
+		this.fibre = nutritionValues[6];
 	}
 	
 	public String toString() {
@@ -36,6 +55,13 @@ class Product {
 			 + this.name		 + stdSeparator
 			 + this.price		 + stdSeparator
 			 + this.pricePerUnit + stdSeparator
-			 + this.category;
+			 + this.category	 + stdSeparator
+			 + this.calories 	 + stdSeparator
+			 + this.protein 	 + stdSeparator
+			 + this.sugars 		 + stdSeparator
+			 + this.fats		 + stdSeparator
+			 + this.saturates	 + stdSeparator
+			 + this.salt		 + stdSeparator
+			 + this.fibre;
 	}
 }

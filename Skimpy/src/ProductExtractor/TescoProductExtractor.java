@@ -58,6 +58,7 @@ public class TescoProductExtractor implements Runnable {
 		String productName = productPage.select("h1").text();
 		String price;
 		String pricePerUnit;
+		String[] nutriValues = new String[7];
 		
 		Pattern pattern = Pattern.compile("id=(\\d+)");
 		Matcher matcher = pattern.matcher(productPageURL);
@@ -78,7 +79,34 @@ public class TescoProductExtractor implements Runnable {
 			pricePerUnit = productPage.select("span.linePriceAbbr").text();
 		}
 		
-		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit, this.categoryName);
+		Elements nutriTable = productPage.select("table tbody tr");
+		for (Element row : nutriTable)
+		{
+			String rowHeader = row.select("th").text();
+			if (rowHeader.matches("[Ee]nergy")) {
+				nutriValues[0] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Pp]rotein")) {
+				nutriValues[1] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Ss]ugar[s]{0,1}")) {
+				nutriValues[2] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Ff]at[s]{0,1}")) {
+				nutriValues[3] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Ss]aturates")) {
+				nutriValues[4] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Ss]alt")) {
+				nutriValues[5] = row.select("td").first().text();
+			}
+			else if (rowHeader.matches("[Ff]ibre")) {
+				nutriValues[6] = row.select("td").first().text();
+			}
+		}
+				
+		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit, this.categoryName, nutriValues);
 		
 		writeToFile("data/tesco.txt", prod.toString()); //changed this.
 	}
