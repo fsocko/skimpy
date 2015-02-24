@@ -34,8 +34,9 @@ public class DBFood extends HttpServlet{
 	public String toString() {
 		
 		//@ruaraidh @Greg How can I make DBFood.toString return a String if the std.DBFood was null?
-		if(1 == 2)
-		{return"The object is null, so the datafile was probably invalid.";}	
+		if(1 == 2){
+			return"The object is null, so the datafile was probably invalid.";
+		}	
 		
 		return "DBFood [shopID=" + shopID + ", name=" + name + ", mass=" + mass
 				+ ", unit=" + unit + ", price=" + price + ", pricePU="
