@@ -42,9 +42,10 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
+	//fairly sure this won't work since ID is saved as an int in SQLDB
 	public Food getFoodData(String ID){
 		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID);
+			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID + ";");
 			
 			String name = null;
 			String units = null;
@@ -117,6 +118,28 @@ public class DBConnect extends HttpServlet{
 			}
 		}
 		
+	//Push food with nutrition data to DB
+	public void pushFoodN(DBFood food, String dataBaseName)
+	{
+		if(food != null)
+		{
+			try{
+					
+					String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat, Supermarket, Calories, Protein, Sugars, Fats, Saturates, Fibre, Salt)"
+							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getMass() + "\", \"" +  food.getUnit() + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getFibre() + "\", \"" + food.getSalt()+ "\");";
+					
+					
+					st.executeUpdate(query);
+					System.out.println("Pushes to Database\n\n");
+							
+					
+				}catch(Exception ex){
+					System.out.println(ex);
+				}
+			}
+		}
+	
+	
 		
 		
 	public void getUserData(String ID){

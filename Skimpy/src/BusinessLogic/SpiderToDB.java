@@ -248,20 +248,34 @@ public class SpiderToDB extends HttpServlet{
 			 unit = unit.trim().replaceAll(";","");
 			 //not price
 			 //not PPU
-			 foodCat = foodCat.trim().replaceAll(";","");
+			foodCat = foodCat.trim().replaceAll(";","");
+			
+			char supermarket = '0';
 			 
-			 System.out.println("ShopID:" + shopID + "\nName:" + name + "\nMass:" + mass  
-			+ "\nUnit:" +unit + "\nPrice:" + price +"\nPrice PU:" + PPUPriceD
-			+"\nFoodCat:" + foodCat);
+			double calories = -1;
+			double proteins = -1;
+			double carbs = -1;
+			double sugars = -1;
+			double fats = -1;
+			double saturates = -1;
+			double fibre = -1;
+			double salt = -1;
 			 
 			 
 	//to DBFood object
 					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
-			 		//public DBFood(String shopID, String name, double mass, String unit, double price, double pricePU, String PPUUnit, String foodCat)
+
+			//DBFood CONSTRUCTOR
+			/*public DBFood(String shopID, String name, double mass, String unit,
+			double price, double pricePU, String pPUUnit, String foodCat,
+			double calories, double proteins, double carbs, double sugars,
+			double fats, double saturates, double fibre, double salt)*/ 
 					
 			//pass a null instead of PPUUnit, we are not using PPUUnit in the DB. The code is there, but I need to check with team how PPU unit will work.
-			 DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat); 
-			 return currentRec; //return object ready for pushingtoDB
+			 
+			
+			DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat, supermarket, calories, proteins, carbs, sugars, fats, saturates, fibre, salt); 
+			return currentRec; //return object ready for pushingtoDB
 			 
 		 }
 		 
