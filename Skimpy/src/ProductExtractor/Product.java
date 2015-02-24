@@ -38,16 +38,16 @@ class Product {
 		else {
 			this.url = url;
 		}		
-		this.price = ppi;		
-		this.pricePerUnit = ppu;
+		this.price = (ppi == null ? "NULL" : ppi);		
+		this.pricePerUnit = (ppu == null ? "NULL" : ppu);
 		
-		this.calories = nutritionValues[0];
-		this.protein = nutritionValues[1];
-		this.sugars = nutritionValues[2];
-		this.fats = nutritionValues[3];
-		this.saturates = nutritionValues[4];
-		this.salt = nutritionValues[5];
-		this.fibre = nutritionValues[6];
+		this.calories = (nutritionValues[0] == null ? "NULL" : nutritionValues[0]);
+		this.protein = (nutritionValues[1] == null ? "NULL" : nutritionValues[1]);
+		this.sugars = (nutritionValues[2] == null ? "NULL" : nutritionValues[2]);
+		this.fats = (nutritionValues[3] == null ? "NULL" : nutritionValues[3]);
+		this.saturates = (nutritionValues[4] == null ? "NULL" : nutritionValues[4]);
+		this.salt = (nutritionValues[5] == null ? "NULL" : nutritionValues[5]);
+		this.fibre = (nutritionValues[6] == null ? "NULL" : nutritionValues[6]);
 	}
 	
 	public String toString() {
