@@ -84,7 +84,10 @@ public class TescoProductExtractor implements Runnable {
 		{
 			String rowHeader = row.select("th").text();
 			if (rowHeader.matches("[Ee]nergy")) {
-				nutriValues[0] = row.select("td").first().text();
+				pattern = Pattern.compile("(\\d+)\\s{0,1}kcal");
+				matcher = pattern.matcher(row.select("td").first().text());
+				matcher.find();
+				nutriValues[0] = matcher.group();
 			}
 			else if (rowHeader.matches("[Pp]rotein")) {
 				nutriValues[1] = row.select("td").first().text();
