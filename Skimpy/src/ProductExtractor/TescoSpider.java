@@ -75,7 +75,7 @@ public class TescoSpider extends WebSpider
 			Document productPage = this.getHTML(productURL);
 			String productName = productPage.select("h1").text();
 			String price;
-			String pricePerUnit;
+			String pricePerUnit;		
 			
 			Pattern pattern = Pattern.compile("id=(\\d+)");
 			Matcher matcher = pattern.matcher(productURL);
@@ -95,8 +95,9 @@ public class TescoSpider extends WebSpider
 			catch (NullPointerException npe) {
 				pricePerUnit = productPage.select("span.linePriceAbbr").text();
 			}
-			
-			Product prod = new Product(foundId, productName, productURL, price, pricePerUnit, categoryName);
+						
+			Product prod = new Product(foundId, productName, productURL, price, pricePerUnit, categoryName,
+					null);
 			allProducts.add(prod);
 		}
 		
