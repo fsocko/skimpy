@@ -3,7 +3,9 @@
 
 package BusinessLogic;
 
-public class DBFood {
+import javax.servlet.http.HttpServlet;
+
+public class DBFood extends HttpServlet{
 
 	private String shopID;
 	private String name;

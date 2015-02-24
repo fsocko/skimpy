@@ -6,13 +6,15 @@ package BusinessLogic;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import javax.servlet.http.HttpServlet;
 //Alina was here
 /**
  * FILIP! CAN YOU DOCUMENT THE BLUE SECTIONS IN THIS FILE
  * A representation of a date.
  *
  */
-public class DateMan
+public class DateMan extends HttpServlet
 {
 	/**
 	 * Represents a date so the use by date of Food can be shown.

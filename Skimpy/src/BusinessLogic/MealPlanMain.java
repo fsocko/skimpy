@@ -2,7 +2,9 @@
 
 package BusinessLogic;
 
-public class MealPlanMain {
+import javax.servlet.http.HttpServlet;
+
+public class MealPlanMain extends HttpServlet{
 
 	public static void testMealPlan()
 	{

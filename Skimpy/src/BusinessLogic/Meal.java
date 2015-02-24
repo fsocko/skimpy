@@ -1,5 +1,7 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServlet;
 /**
  *
  * @author ruaraidh
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  *  Represents a Meal
  *
  */
-public class Meal {
+public class Meal extends HttpServlet{
 	/**
 	 * Will be used in creating a MealPlanner . Then can be compared to the user's GDA.
 	 */
