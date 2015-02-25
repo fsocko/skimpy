@@ -16,7 +16,7 @@ public class DBConnect extends HttpServlet{
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
-	
+	//default, no args goes to Skimpy
 	public DBConnect()
 	{
 		try{
@@ -91,17 +91,16 @@ public class DBConnect extends HttpServlet{
 	
 	public void pushFood(DBFood food)
 	{
-		pushFood(food, "skimpy");
+		pushFood(food, "Skimpy");
 	}
 	
-	public void pushFood(DBFood food, String dataBaseName)
+	public void pushFood(DBFood food, String table)
 	{
 		
 		if(food != null)
 		{
 			try{
-					
-					String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
+					String query = "insert into " + table +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
 							+ " values(\" " + 
 									food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", "  +
 									food.getMass() + ", " + food.getPrice() + ", \"" + food.getPricePU() + "\", \"" + 
@@ -119,13 +118,13 @@ public class DBConnect extends HttpServlet{
 		}
 		
 	//Push food object with nutrition data to DB
-	public void pushFoodN(DBFood food, String dataBaseName)
+	public void pushFoodN(DBFood food, String table)
 	{
 		if(food != null)
 		{
 			try{
 					
-					String query = "insert into " + dataBaseName +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
+					String query = "insert into " + table +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
 							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \"" + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
 					
 					st.executeUpdate(query);
@@ -139,7 +138,6 @@ public class DBConnect extends HttpServlet{
 		}
 	
 	
-		
 		
 	public void getUserData(String ID){
 		try{
