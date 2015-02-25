@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 
 public class StdMain extends HttpServlet{
 	
-	public static void pushTesco(String db, String table)
+	public void pushTesco(String db, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		int i = 1;
@@ -31,7 +31,7 @@ public class StdMain extends HttpServlet{
 		
 	}
 	
-	public static void pushSains(String db, String table)
+	public void pushSains(String db, String table)
 	{
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;

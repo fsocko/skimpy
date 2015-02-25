@@ -20,13 +20,14 @@ public class Main extends HttpServlet{
 		//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master branch.
 		//It makes it easier to comment out other people's work which may or may not be needed.
 			
-//Run meal plan methods
-//		MealPlanMain testPlan = new MealPlanMain();
-//		testPlan.testMealPlan();
+		//Run meal plan methods
+		//MealPlanMain testPlan = new MealPlanMain();
+		//testPlan.testMealPlan();
 		
+		//Scraper Output to DB
 		StdMain run = new StdMain(); 	
-		run.testMethods();	
-		
+		run.pushTesco("food_db","tesco_scraped");	
+		run.pushSains("food_db","sains_scraped");
     }
 }
 
