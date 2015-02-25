@@ -4663,3 +4663,230 @@
 281203935; Nestle Dairy Box Deluxe Collection 400G; £6.00; (£1.50/100g); Valentines Chocolate & Sweets; 2350 kJ 429 kJ 8400 kJ -; 7.0g; NULL; 34.1g; NULL; 0.20g; 1.7g
 276805962; Cadbury Say It With Hearts 48G; £1.29; (£2.69/100g); Valentines Chocolate & Sweets; NULL; 6.3g; NULL; 36.0g; NULL; NULL; 1.2g
 281205305; Thorntons Cupcake Egg 149G; £3.00; (£2.02/100g); Valentines Chocolate & Sweets; 2261 kJ -; 6.9 g; NULL; 32 g; NULL; 0.20 g; NULL
+284477507; Tesco Bramley Apple 775G; £1.00; (£1.30/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253558033; Tesco Bramley Apples Loose; £0.29; (£1.15/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477375; Tesco Apple Selection 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254304534; Tesco Cox Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475671; Tesco Braeburn Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477317; Tesco Best Of British Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475550; Tesco Gala Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253559147; Tesco Gala Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477862; Tesco Empire Apple Min 5 Pack 700G; £1.75; (£2.50/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477628; Tesco Jazz Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477058; Tesco British Apple Min 6 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477283; Tesco Braeburn Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284507329; Tesco Everyday Value Apple Pack 500G; £0.89; (£1.78/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253562396; Tesco Empire Apples Loose; £0.44; (£2.75/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284478005; Tesco Cripps Red Apple 6 Pack 670G; £2.25; (£3.36/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477156; Tesco Gala Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477801; Tesco Kanzi Apple 6Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475262; Tesco Evelina Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475354; Tesco Opal Apple Min 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253807413; Tesco Braeburn Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265299361; Tesco Ready To Eat Large Avocados Each; £1.00; (£1.00/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265299741; Tesco Ready To Eat Avocados Twin Pack; £1.80; (£0.90/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+256074560; Tesco Ripen At Home Avocados 4 Pack; £1.75; (£0.44/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+268734435; Tesco Organic Fair Trade Bananas 6 Pack; £1.65; (£0.28/each); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+285157326; Tesco Small Bananas 6 Pack; £1.00; (£0.17/each); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+268437188; Tesco Organic Goodness Bananas Pack; £1.50; (£0.25/each); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266419328; Tesco Eat Me Bananas 5 Pack; £1.00; (£0.20/each); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253555203; Tesco Bananas Loose; £0.12; (£0.68/kg); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266420677; Tesco Keep Me Bananas 5 Pack; £1.00; (£0.20/each); Bananas; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+274026003; Tesco Organic Strawberries 300G; £3.00; (£10.00/kg); Berries & Cherries; 28kcal; 0.8g; NULL; 0.1g; NULL; NULL; 1.1g
+256991482; Tesco Organic Blueberries 150G; £3.00; (£20.00/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+280919384; Tesco Strawberries 400G; £3.00; (£7.50/kg); Berries & Cherries; 30kcal; 0.8g; 6.0g; 0.1g; <0.1g; 0.1g; 1.1g
+286199925; Tesco Berry Trio 300G; £3.50; (£11.67/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255425124; Tesco Everyday Value Strawberries 227G; £1.65; (£7.27/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253559504; Tesco Large Cherries Loose; £6.24; (£12.49/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+258420257; Tesco Blackberries 150G; £2.00; (£13.34/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+278452718; Tesco Raspberries 150G; £2.00; (£13.34/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+268793976; Tesco Blackberries 300G; £3.00; (£10.00/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266291241; Tesco Cherries 200G; £2.50; (£12.50/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+287357000; Tesco Blueberries 250G; £3.00; (£12.00/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+287356888; Tesco Blueberries 150G; £2.00; (£13.34/kg); Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+250414859; Tesco Organic Raspberries 125G; NULL; NULL; Berries & Cherries; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+272202380; Tesco Strawberries 227G; £2.00; (£8.82/kg); Berries & Cherries; 30kcal; 0.8g; 6.0g; 0.1g; <0.1g; 0.1g; 1.1g
+268215543; Jaffa Reds Orange Pack; £2.25; (£2.25/kg); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253832428; Tesco Yellow Grapefruit Each; £0.40; (£0.40/each); Citrus Fruit; 34kcal; 0.8g; 6.8g; 0.1g; trace; NULL; 1.3g
+257742718; Jaffa Oranges Min 4 Pack; £1.85; (£0.31/each); Citrus Fruit; 39kcal; 1.1g; 8.5g; 0.1g; 0g; NULL; 1.7g
+259397933; Tesco Everyday Value Lemons Min 3 Pack; £0.89; (£0.30/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+259397340; Tesco Everyday Value Oranges Min 4 Pack; £0.76; (£0.19/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; 0g; 0.1g; 1.7g
+287437551; Tesco Red Grapefruit 3 Pack; £1.00; (£0.33/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+267000614; Tesco Giant Oranges 4 Pack; £2.20; (£0.55/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; NULL; 0.1g; 1.7g
+253556346; Tesco Pink Grapefruit Each; £0.50; (£0.50/each); Citrus Fruit; 34kcal; 0.8g; 6.8g; 0.1g; trace; NULL; 1.3g
+263608606; Tesco Fair Trade Oranges 4 Pack; £1.35; (£0.34/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253556127; Tesco Clementine Or Sweet Easy Peeler Loose; £0.30; (£2.90/kg); Citrus Fruit; 42kcal; 0.9g; 8.7g; 0.1g; 0g; <0.01g; 1.2g
+262792946; Tesco Organic Oranges Min 3 Pack; £1.75; (£0.35/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; <0.1g; 0.1g; 1.7g
+265281220; Tesco Unwaxed Lemons Min 5 Pack; £1.50; (£0.30/each); Citrus Fruit; 20kcal; 1.0g; 3.2g; 0.3g; 0.1g; 0.1g; 0g
+253556398; Tesco Lemons Each; £0.30; (£0.30/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265891385; Tesco Limes Min 5 Pack; £1.50; (£0.30/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255617024; Tesco Large Orange Pack; £1.80; (£0.36/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; NULL; 0.1g; 1.7g
+253560634; Tesco Limes Each; £0.30; (£0.30/each); Citrus Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+273660278; Tesco Finest Oranges 5 Pack; £2.20; (£0.44/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; 0g; 0.1g; 1.7g
+266357752; Jaffa Clementine Or Sweet Easy Peeler Pack 650G; £1.85; (£2.85/kg); Citrus Fruit; 39kcal; 0.9g; 8.7g; 0.1g; 0g; NULL; 1.2g
+253554014; Tesco Oranges Each; £0.30; (£0.30/each); Citrus Fruit; 43kcal; 1.1g; 8.5g; 0.1g; 0g; 0.1g; 1.7g
+253561443; Tesco Red Grapefruit Each; £0.50; (£0.50/each); Citrus Fruit; 34kcal; 0.8g; 6.8g; 0.1g; trace; NULL; 1.3g
+284196413; Eat Me Dates Deglet Nour Pitted 200G; £1.50; (£7.50/kg); Dried Fruit & Nuts; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+274157867; Tesco Deglet Nour Dates 300G; £2.00; (£6.67/kg); Dried Fruit & Nuts; 289kcal; 2.2g; 51.0g; 0.3g; 0.2g; <0.01g; 6.9g
+250281502; Tesco Organic Medjool Dates 200G; £2.00; (£10.00/kg); Dried Fruit & Nuts; 275kcal; 1.8g; 58.5g; 0.2g; <0.1g; 0.1g; 7.3g
+275218570; Tesco Finest King Solomon Dates 225G; £2.99; (£13.29/kg); Dried Fruit & Nuts; 295kcal; 3.3g; 68.0g; 0.2g; 0.1g; 0g; 4.0g
+274171043; Tesco Soft Pitted Dates 250G; £2.00; (£8.00/kg); Dried Fruit & Nuts; 289kcal; 2.2g; 51.0g; 0.3g; 0.2g; <0.01g; 6.9g
+286169408; Tesco Dried Apricots 60G; £1.00; (£16.67/kg); Dried Fruit & Nuts; 219kcal; 2.0g; 23.0g; 0.4g; 0.3g; 0.1g; 5.7g
+266594764; Tesco Halawi Dates 200G; £1.00; (£5.00/kg); Dried Fruit & Nuts; 327kcal; 2.1g; 67.5g; 0.4g; <0.1g; 0.3g; 5.6g
+268968832; Tesco Goodness Dried Banana 25G; £0.40; (£16.00/kg); Dried Fruit & Nuts; 323kcal; 4.3g; 51.0g; 0.4g; 0.2g; 0.6g; 6.1g
+268961298; Tesco Goodness Raisin Mix 30G; £0.40; (£13.34/kg); Dried Fruit & Nuts; 292kcal; 2.3g; 56.0g; 0.6g; 0.2g; 0.1g; 3.6g
+258057537; Tesco Wholefoods Dried Apricots 250G; £2.05; (£8.20/kg); Dried Fruit & Nuts; 219kcal; 2.0g; 23.0g; 0.4g; 0.3g; 0.1g; 5.7g
+268973406; Tesco Kids Mini Raisins 10X14g; £1.25; (£8.93/kg); Dried Fruit & Nuts; 297kcal; 2.1g; 69.0g; 0.9g; 0.1g; NULL; 2.0g
+257399828; Tesco Wholefoods Cranberries 100G; £1.50; (£15.00/kg); Dried Fruit & Nuts; 358kcal; 0.4g; 73.9g; 0.7g; 0.2g; 0.1g; 4.7g
+268967695; Tesco Goodness Kids Apricots 30G; £0.40; (£13.34/kg); Dried Fruit & Nuts; 219kcal; 2.0g; 23.0g; 0.4g; 0.3g; 0.1g; 5.7g
+283111545; Tesco Snacking Raisins And Berries 60G; £1.00; (£16.67/kg); Dried Fruit & Nuts; 334kcal; 2.2g; 61.4g; 0.5g; <0.1g; 0.1g; 3.8g
+256754153; Tesco Wholefoods Dried Apricots 225G; £2.00; (£8.00/kg); Dried Fruit & Nuts; 215kcal; 4.8g; 43.4g; 0.6g; 0g; NULL; 6.6g
+283196305; Tesco Wholefoods Dried Apple Wedges 120G; £2.00; (£16.67/kg); Dried Fruit & Nuts; 282kcal; 1.0g; 54.0g; 0.2g; 0.1g; 0.1g; 9.9g
+257398518; Tesco Wholefoods Blueberries 100G; £2.50; (£25.00/kg); Dried Fruit & Nuts; 335kcal; 2.0g; 77.5g; 1.0g; 0.2g; 0.1g; 3.2g
+283111272; Tesco Snacking Lemon Jumbo Golden Raisins 60G; £1.00; (£16.67/kg); Dried Fruit & Nuts; 293kcal; 2.1g; 69.3g; 0.4g; 0g; 0.2g; 2.0g
+268323017; Tesco Goodness Dried Selection Fruit Packs 10X25g; £2.00; (£8.00/kg); Dried Fruit & Nuts; 297kcal; 2.1g; 69.0g; 0.9g; 0.1g; NULL; 2.0g
+269018130; Tesco Dried Mango Snack Pack 40G; £1.00; (£25.00/kg); Dried Fruit & Nuts; 311kcal; 1.6g; 57.6g; 0.3g; 0.1g; 0.2g; 8.9g
+260138854; Tesco Red Seedless Grapes 500G; £2.00; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+267408167; Tesco Green Seedless Grapes Pack 500G; £2.00; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+260138514; Tesco Seedless Grape Selection Pack 500G; £2.00; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+250299925; Tesco Organic Red Or Black Grapes 400G; £3.00; (£7.50/kg); Grapes; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+258358596; Tesco Organic Green Grapes 400G; £2.00; (£5.00/kg); Grapes; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253554469; Tesco Green Seedless Grapes Loose; £2.60; (£4.00/kg); Grapes; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+262640958; Tesco Black Seedless Grapes 500G; £2.00; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+253662715; Tesco Black Seedless Grapes Loose; £2.00; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+253558396; Tesco Red Seedless Grapes Loose; £2.60; (£4.00/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 0.7g
+259421180; Tesco Everyday Value Green/Red Grapes 500G; £1.25; (£2.50/kg); Grapes; 66kcal; 0.4g; 15.4g; 0.1g; NULL; <0.01g; 0.7g
+252949690; Tesco Perfectly Ripe Kiwi Pack 4 Pack; £1.65; (£0.41/each); Kiwi & Mango; 55kcal; 1.1g; 10.3g; 0.5g; 0.1g; NULL; 1.9g
+282764188; Tesco Mango 275G; £2.00; (£7.28/kg); Kiwi & Mango; 63kcal; 0.7g; 13.3g; 0.2g; 0.1g; NULL; 1.8g
+253381878; Tesco Kiwi Fruits 6 Pack; £1.00; (£0.20/each); Kiwi & Mango; 55kcal; 1.1g; 10.3g; 0.5g; <0.1g; <0.01g; 1.9g
+282154363; Tesco Ripe And Ready Mango 3 Pack; £2.50; (£0.83/each); Kiwi & Mango; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255805844; Tesco Perfectly Ripe Mango; £1.00; (£1.00/each); Kiwi & Mango; 70kcal; 0.7g; 13.8g; 0.2g; NULL; NULL; 2.6g
+260278123; Tesco Giant Mango Each; £1.80; (£1.80/each); Kiwi & Mango; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+282744270; Tesco Mango, Melon And Apple Fingers 240G; £2.00; (£8.34/kg); Kiwi & Mango; 45kcal; 0.5g; 9.5g; 0.1g; 0g; <0.01g; 1.7g
+250164181; Tesco Finest Mango Each; £2.00; (£2.00/each); Kiwi & Mango; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+259417448; Tesco Everyday Value Kiwi Fruit Pack; £0.83; (£0.14/each); Kiwi & Mango; 55kcal; 1.1g; 10.3g; 0.5g; 0.2g; <0.01g; 1.9g
+253554285; Tesco Large Kiwi Fruit Each; £0.35; (£0.35/each); Kiwi & Mango; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+260905678; Tesco Extra Large Pineapple Each; £1.50; (£1.50/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254814662; Tesco Pineapple Chunks 400G; £2.00; (£5.00/kg); Melons & Pineapples; 45kcal; 0.4g; 9.8g; 0.2g; <0.1g; <0.01g; 1.2g
+280004867; Tesco Pineapple Chunks 130G; £1.00; (£7.70/kg); Melons & Pineapples; 45kcal; 0.4g; 9.8g; 0.2g; <0.1g; <0.01g; 1.2g
+255771828; Tesco Fair Trade Pineapple Each; NULL; NULL; Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+279934971; Tesco Mouthwatering Melon 130G; £1.00; (£7.70/kg); Melons & Pineapples; 29kcal; 0.5g; 5.9g; 0.2g; 0g; 0.1g; 0.6g
+254384645; Tesco Honeydew Melon; £2.00; (£2.00/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254638605; Tesco Watermelon; £3.00; (£3.00/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+258336461; Tesco Everyday Value Melon; £0.90; (£0.90/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255230763; Tesco Pineapple; £1.00; (£1.00/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254650837; Tesco Piel De Sapo Melon Each; £2.25; (£2.25/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265107198; Tesco Melon And Grapes Duo 400G; £2.00; (£5.00/kg); Melons & Pineapples; 33kcal; 0.6g; 7.0g; 0.1g; 0g; 0.1g; 0.7g
+254385356; Tesco Galia Melon Each; £1.00; (£1.00/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+279907364; Melon And Grape Duo 130G; £1.00; (£7.70/kg); Melons & Pineapples; 33kcal; 0.6g; 7.0g; 0.1g; 0g; 0.1g; 0.7g
+256582085; Tesco Cantaloupe Melon Each; £2.00; (£2.00/each); Melons & Pineapples; 22kcal; 0.6g; 4.2g; 0.1g; <0.1g; 0.1g; 1.0g
+259414298; Tesco Everyday Value Pineapple Each; £0.80; (£0.80/each); Melons & Pineapples; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266782962; Tesco Super Sweet Nectarine Pack; £2.00; (£0.67/each); Nectarines & Peaches; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265421879; Tesco Ripen At Home Nectarines Min 4 Pack; £1.50; (£0.38/each); Nectarines & Peaches; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266782985; Tesco Super Sweet Peaches Min 3 Pack; £2.00; (£2.00/each); Nectarines & Peaches; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+268734435; Tesco Organic Fair Trade Bananas 6 Pack; £1.65; (£0.28/each); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+256991482; Tesco Organic Blueberries 150G; £3.00; (£20.00/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+250414859; Tesco Organic Raspberries 125G; NULL; NULL; Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+268437188; Tesco Organic Goodness Bananas Pack; £1.50; (£0.25/each); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+262792946; Tesco Organic Oranges Min 3 Pack; £1.75; (£0.35/each); Organic Fruit; 43kcal; 1.1g; 8.5g; 0.1g; <0.1g; 0.1g; 1.7g
+250299925; Tesco Organic Red Or Black Grapes 400G; £3.00; (£7.50/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+250281502; Tesco Organic Medjool Dates 200G; £2.00; (£10.00/kg); Organic Fruit; 275kcal; 1.8g; 58.5g; 0.2g; <0.1g; 0.1g; 7.3g
+266356816; Tesco Organic Hazelnuts 200G; £2.50; (£12.50/kg); Organic Fruit; 665kcal; 14.1g; 4.0g; 63.5g; 4.7g; 0.1g; 6.5g
+287024855; Tesco Organic British Apples 630G; £2.00; (£3.18/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+261834005; Tesco Organic Walnuts 100G; £2.25; (£22.50/kg); Organic Fruit; 689kcal; 15.2g; 2.6g; 65.2g; 6.1g; <0.01g; 6.7g
+287009091; Tesco Organic Gala Apples 630G; £2.50; (£3.97/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266356851; Tesco Organic Almonds 200G; £2.80; (£14.00/kg); Organic Fruit; 592kcal; 21.2g; 3.9g; 49.4g; 3.7g; <0.01g; 12.2g
+262057163; Tesco Organic Roasted Pistachios 100G; £2.25; (£22.50/kg); Organic Fruit; 585kcal; 20.9g; 7.7g; 44.8g; 5.5g; 0.1g; 9.9g
+250404353; Tesco Organic Sweet Easy Peeler Min 4 Pack; £1.75; (£0.44/each); Organic Fruit; 42kcal; 0.9g; 8.7g; 0.1g; 0g; <0.01g; 1.2g
+252201146; Tesco Organic Unwaxed Lemons Min 3 Pack; £1.00; (£0.33/each); Organic Fruit; 20kcal; 1.0g; 3.2g; 0.3g; 0.1g; 0.1g; <0.1g
+266565966; Tesco Organic Cashew Nuts 150G; £2.75; (£18.34/kg); Organic Fruit; 583kcal; 17.7g; 4.6g; 48.2g; 8.3g; NULL; 3.2g
+287024383; Tesco Organic Braeburn Apples 630G; £2.00; (£3.18/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+287024072; Tesco Organic Pink Lady Apples 570G; £2.85; (£5.00/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+287024262; Tesco Organic Goodness Apples 630G; £1.50; (£2.39/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+258358596; Tesco Organic Green Grapes 400G; £2.00; (£5.00/kg); Organic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+267246790; Tesco Finest Plums Min 4 Pack; £2.00; (£0.50/each); Plums & Apricots; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+259417145; Tesco Everyday Value Plums 1Kg; £2.20; (£2.20/kg); Plums & Apricots; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+280967222; Tesco Yellow Plums 300G; £1.50; (£5.00/kg); Plums & Apricots; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+264778166; Tesco Ripen At Home Plums 400G; £1.00; (£2.50/kg); Plums & Apricots; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253559216; Tesco Plums Loose; £0.20; (£3.99/kg); Plums & Apricots; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+286681740; Tesco Apple And Grape Snack Pack 80G; £0.50; (£6.25/kg); Fresh Cut Fruit; 57kcal; 0.3g; 12.3g; 0.1g; <0.1g; 0.1g; 2.6g
+279844518; Tesco Apple And Strawberry Fruit Salad 125G; £1.00; (£8.00/kg); Fresh Cut Fruit; 46kcal; 0.5g; 9.9g; 0.1g; 0g; <0.01g; 1.6g
+280134494; Tesco Berry Medley 240G; £2.00; (£8.34/kg); Fresh Cut Fruit; 50kcal; 0.6g; 11.2g; 0.1g; 0g; <0.01g; 1.1g
+284735485; Tesco Kiwi, Strawberry And Melon 240G; £2.00; (£8.34/kg); Fresh Cut Fruit; 43kcal; 0.9g; 7.7g; 0.3g; 0g; 0.1g; 2.6g
+279844956; Tesco Grape And Strawberry Fruit Salad 125G; £1.00; (£8.00/kg); Fresh Cut Fruit; 54kcal; 0.5g; 12.4g; 0.1g; 0g; <0.01g; 0.8g
+269022942; Tesco Grape Snack Pack 80G; £0.50; (£6.25/kg); Fresh Cut Fruit; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 1.0g
+282595172; Tesco Grape, Plum And Blueberry 240G; £2.00; (£8.34/kg); Fresh Cut Fruit; 58kcal; 0.6g; 12.1g; 0.1g; 0g; <0.01g; 1.1g
+279565543; Tesco Melon And Grapes 130G; £1.00; (£7.70/kg); Fresh Cut Fruit; 33kcal; 0.6g; 7.0g; 0.1g; 0g; 0.1g; 0.7g
+287651812; Tesco Fruit Salad 260G; £2.00; (£8.34/kg); Fresh Cut Fruit; 48kcal; 0.6g; 10.1g; 0.1g; <0.1g; <0.01g; 2.0g
+279532444; Tesco Coconut Pieces 100G; £1.00; (£10.00/kg); Fresh Cut Fruit; 371kcal; 3.8g; 3.5g; 36.0g; 31.0g; 0.1g; 9.0g
+279934971; Tesco Mouthwatering Melon 130G; £1.00; (£7.70/kg); Fresh Cut Fruit; 29kcal; 0.5g; 5.9g; 0.2g; 0g; 0.1g; 0.6g
+274983482; Tesco Melon And Pineapple Finger Trio 300G; £2.00; (£6.67/kg); Fresh Cut Fruit; 35kcal; 0.4g; 7.6g; 0.2g; 0g; 0.1g; 0.8g
+274983314; Tesco Melon Grapes And Pineapple Fingers 300G; £2.00; (£0.67/100g); Fresh Cut Fruit; 41kcal; 0.5g; 9.0g; 0.1g; 0g; <0.01g; 1.0g
+280115275; Tesco Berry Medley 240G; £2.00; (£8.34/kg); Fresh Cut Fruit; 50kcal; 0.6g; 11.2g; 0.1g; 0g; <0.01g; 1.1g
+285363312; Tesco Mango And Pineapple Fingers 80G; £1.00; (£12.50/kg); Fresh Cut Fruit; 54kcal; 0.6g; 11.6g; 0.2g; 0.1g; <0.01g; 1.5g
+286681826; Tesco Grape Snack Pack 80G; £0.50; (£6.25/kg); Fresh Cut Fruit; 66kcal; 0.4g; 15.4g; 0.1g; <0.1g; <0.01g; 1.0g
+287652042; Tesco Mango And Pineapple With Drizzle 220G; £2.00; (£8.34/kg); Fresh Cut Fruit; 74kcal; 0.6g; 13.0g; 1.4g; 1.1g; <0.01g; 1.7g
+286681924; Tesco Apple Snack Pack 80G; £0.50; (£6.25/kg); Fresh Cut Fruit; 55kcal; 0.3g; 12.3g; 0.1g; <0.1g; 0.1g; 1.8g
+287651953; Tesco Apple, Plum And Grapes With Drizzle 225G; £2.00; (£8.89/kg); Fresh Cut Fruit; 60kcal; 0.5g; 12.7g; 0.2g; <0.1g; <0.01g; 2.0g
+285363433; Tesco Chunky Melon Slices 550G; £2.50; (£4.55/kg); Fresh Cut Fruit; 17kcal; 0.4g; 3.4g; 0.1g; 0g; 0.1g; 0.5g
+253554285; Tesco Large Kiwi Fruit Each; £0.35; (£0.35/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+259417448; Tesco Everyday Value Kiwi Fruit Pack; £0.83; (£0.14/each); Tropical & Exotic Fruit; 55kcal; 1.1g; 10.3g; 0.5g; 0.2g; <0.01g; 1.9g
+258336461; Tesco Everyday Value Melon; £0.90; (£0.90/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255547786; Tesco Ripe Papaya Each; £1.50; (£1.50/each); Tropical & Exotic Fruit; 43kcal; 0.5g; 8.8g; 0.1g; 0g; NULL; 2.2g
+254638605; Tesco Watermelon; £3.00; (£3.00/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254650837; Tesco Piel De Sapo Melon Each; £2.25; (£2.25/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253554982; Tesco Pomegranates Each; £1.00; (£1.00/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+256582085; Tesco Cantaloupe Melon Each; £2.00; (£2.00/each); Tropical & Exotic Fruit; 22kcal; 0.6g; 4.2g; 0.1g; <0.1g; 0.1g; 1.0g
+254384645; Tesco Honeydew Melon; £2.00; (£2.00/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+260278123; Tesco Giant Mango Each; £1.80; (£1.80/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254385356; Tesco Galia Melon Each; £1.00; (£1.00/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+252949690; Tesco Perfectly Ripe Kiwi Pack 4 Pack; £1.65; (£0.41/each); Tropical & Exotic Fruit; 55kcal; 1.1g; 10.3g; 0.5g; 0.1g; NULL; 1.9g
+253381878; Tesco Kiwi Fruits 6 Pack; £1.00; (£0.20/each); Tropical & Exotic Fruit; 55kcal; 1.1g; 10.3g; 0.5g; <0.1g; <0.01g; 1.9g
+255230763; Tesco Pineapple; £1.00; (£1.00/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+255771828; Tesco Fair Trade Pineapple Each; NULL; NULL; Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+266596451; Tesco Baby Figs 150G; £2.00; (£13.34/kg); Tropical & Exotic Fruit; 49kcal; 1.3g; 9.5g; 0.3g; <0.1g; <0.01g; 1.5g
+259414298; Tesco Everyday Value Pineapple Each; £0.80; (£0.80/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+260905678; Tesco Extra Large Pineapple Each; £1.50; (£1.50/each); Tropical & Exotic Fruit; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477507; Tesco Bramley Apple 775G; £1.00; (£1.30/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477317; Tesco Best Of British Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475354; Tesco Opal Apple Min 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253562396; Tesco Empire Apples Loose; £0.44; (£2.75/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477801; Tesco Kanzi Apple 6Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475550; Tesco Gala Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284507329; Tesco Everyday Value Apple Pack 500G; £0.89; (£1.78/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477628; Tesco Jazz Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475262; Tesco Evelina Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475671; Tesco Braeburn Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477375; Tesco Apple Selection 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284478005; Tesco Cripps Red Apple 6 Pack 670G; £2.25; (£3.36/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477156; Tesco Gala Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253807413; Tesco Braeburn Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477862; Tesco Empire Apple Min 5 Pack 700G; £1.75; (£2.50/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253558033; Tesco Bramley Apples Loose; £0.29; (£1.15/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477283; Tesco Braeburn Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254304534; Tesco Cox Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477058; Tesco British Apple Min 6 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253559147; Tesco Gala Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477507; Tesco Bramley Apple 775G; £1.00; (£1.30/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475550; Tesco Gala Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477862; Tesco Empire Apple Min 5 Pack 700G; £1.75; (£2.50/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253562396; Tesco Empire Apples Loose; £0.44; (£2.75/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475262; Tesco Evelina Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477801; Tesco Kanzi Apple 6Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477058; Tesco British Apple Min 6 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475671; Tesco Braeburn Apple Min 5 Pack 670G; £1.50; (£2.24/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253559147; Tesco Gala Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284478005; Tesco Cripps Red Apple 6 Pack 670G; £2.25; (£3.36/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477375; Tesco Apple Selection 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477283; Tesco Braeburn Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477628; Tesco Jazz Apple 6 Pack 670G; £2.00; (£2.99/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+254304534; Tesco Cox Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477317; Tesco Best Of British Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253807413; Tesco Braeburn Apples Loose; £0.31; (£1.95/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+253558033; Tesco Bramley Apples Loose; £0.29; (£1.15/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284507329; Tesco Everyday Value Apple Pack 500G; £0.89; (£1.78/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284477156; Tesco Gala Apple 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+284475354; Tesco Opal Apple Min 4 Pack 590G; £2.00; (£3.39/kg); Apples, Pears & Rhubarb; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265299361; Tesco Ready To Eat Large Avocados Each; £1.00; (£1.00/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+265299741; Tesco Ready To Eat Avocados Twin Pack; £1.80; (£0.90/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
+256074560; Tesco Ripen At Home Avocados 4 Pack; £1.75; (£0.44/each); Avocados; NULL; NULL; NULL; NULL; NULL; NULL; NULL
