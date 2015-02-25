@@ -119,6 +119,17 @@ public class DBFood extends HttpServlet{
 		return salt;
 	}
 
+	@Override
+	public String toString() {
+		return "DBFood [shopID=" + shopID + ", name=" + name + ", mass=" + mass
+				+ ", unit=" + unit + ", price=" + price + ", pricePU="
+				+ pricePU + ", PPUUnit=" + PPUUnit + ", foodCat=" + foodCat
+				+ ", supermarket=" + supermarket + ", calories=" + calories
+				+ ", proteins=" + proteins + ", carbs=" + carbs + ", sugars="
+				+ sugars + ", fats=" + fats + ", saturates=" + saturates
+				+ ", fibre=" + fibre + ", salt=" + salt + "]";
+	}
+
 	
 	
 	

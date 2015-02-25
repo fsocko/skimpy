@@ -173,13 +173,15 @@ public class SpiderToDB extends HttpServlet{
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
 		 public DBFood formatRecord(String record)
 		 {
-			 if(record.contains("; ;"))
+			 if(record.contains("; ;") | record.contains(";;") )
 			 {return null;}
 
 			 String shopID = record.substring(0, findColon(record, 0));
+			 shopID = shopID.replaceAll(";","");
 			 String name = record.substring(findColon(record, 0), findColon(record, 1)); 
+			 name = name.trim().replaceAll(";","");
 			 String massAndUnit = name;
-			 
+
 			 int e = massAndUnit.length();
 			 while(e>0) //iterate through name backwards. Find space.
 			 {
@@ -205,7 +207,11 @@ public class SpiderToDB extends HttpServlet{
 			     mass = m.group(1).trim();
 			 	 unit = m.group(2).trim(); // the unit is 100g, not 600 g
 			 }
-			 else{mass = "-1"; unit = massAndUnit;} //This happens if we haven't found a unit
+			 else{mass = "-1.0"; unit = "Unit Not Found";} //This happens if we haven't found a unit
+			 
+			 //If there are any delimiters, we strip them from all fields
+			 mass = mass.trim().replaceAll(";","");
+			 unit = unit.trim().replaceAll(";","");
 			 double massD = toDouble(mass);
 			 
 			 String price = record.substring(findColon(record, 1), findColon(record, 2));
@@ -237,20 +243,12 @@ public class SpiderToDB extends HttpServlet{
 			 stripChars = PPUPrice.replaceAll("[^.0-9]",""); //strip all characters but numbers
 			 double PPUPriceD = toDouble(stripChars);
 			 
-			 String foodCat = record.substring(findColon(record, 3), record.length());
+			 String foodCat = record.substring(findColon(record, 3), findColon(record, 4));
 			 String spaceSlash = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
 			 foodCat = spaceSlash;
-			 
-			 //If there are any delimiters, we strip them from all fields
-			 shopID = shopID.replaceAll(";","");
-			 name = name.trim().replaceAll(";","");
-			 mass = mass.trim().replaceAll(";","");
-			 unit = unit.trim().replaceAll(";","");
-			 //not price
-			 //not PPU
-			foodCat = foodCat.trim().replaceAll(";","");
-			
-			char supermarket = '0';
+			 foodCat = foodCat.trim().replaceAll(";","");
+
+			char supermarket = 'T'; //Just to make sure some idiot didn't push to the wrong table by mistake
 			 
 			double calories = -1;
 			double proteins = -1;
@@ -261,31 +259,21 @@ public class SpiderToDB extends HttpServlet{
 			double fibre = -1;
 			double salt = -1;
 			 
+			
+	
+			
 			 
 	//to DBFood object
-					//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
-
-			//DBFood CONSTRUCTOR
-			/*public DBFood(String shopID, String name, double mass, String unit,
-			double price, double pricePU, String pPUUnit, String foodCat,
-			double calories, double proteins, double carbs, double sugars,
-			double fats, double saturates, double fibre, double salt)*/ 
-					
-			//pass a null instead of PPUUnit, we are not using PPUUnit in the DB. The code is there, but I need to check with team how PPU unit will work.
+	//fieldName followed by D means the field was converted to a Double. ShopID is a STRING!
+	
+	//TODO: pass a null instead of PPUUnit, we are not using PPUUnit in the DB. The code is there, but I need to check with team how PPU unit will work.
 			 
 			
 			DBFood currentRec = new DBFood(shopID, name, massD, unit, priceD, PPUPriceD, null, foodCat, supermarket, calories, proteins, carbs, sugars, fats, saturates, fibre, salt); 
+			System.out.println(currentRec.toString());
 			return currentRec; //return object ready for pushingtoDB
 			 
 		 }
-		 
-		 //push a particular record to the DB
-		 public void pushSainsToDB(int recNum)
-		 {
-			 DBConnect dbPush = new DBConnect("food_db");
-			 dbPush.pushFood(formatRecord(readRecord(sainsPath, recNum)), "sains_scraped"); 
-		 }
-	 
-	 
+
 	 
 }//EOF
