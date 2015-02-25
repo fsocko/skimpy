@@ -38,8 +38,8 @@ class Product {
 		else {
 			this.url = url;
 		}		
-		this.price = (ppi == null ? "NULL" : ppi);		
-		this.pricePerUnit = (ppu == null ? "NULL" : ppu);
+		this.price = (ppi == null || ppi.equals("") ? "NULL" : ppi);		
+		this.pricePerUnit = (ppu == null || ppu.equals("") ? "NULL" : ppu);
 		
 		this.calories = (nutritionValues[0] == null ? "NULL" : nutritionValues[0]);
 		this.protein = (nutritionValues[1] == null ? "NULL" : nutritionValues[1]);
