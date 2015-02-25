@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MealInterface extends HttpServlet {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 102831973239L;
-
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		/*String userAgent =  req.getHeader("user-agent");
@@ -20,6 +15,6 @@ public class MealInterface extends HttpServlet {
 		if( userAgent != null)
 			clientBrowser = userAgent;
 		req.setAttribute("client.browser",clientBrowser );*/
-		req.getRequestDispatcher("/MealPlan.jsp").forward(req,resp);
+		req.getRequestDispatcher("/showBrowser.jsp").forward(req,resp);
 	}
 }
