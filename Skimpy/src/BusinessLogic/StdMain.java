@@ -51,7 +51,7 @@ public class StdMain extends HttpServlet{
 					if(sainsTest != null)
 					{
 						sainsTest.toString();
-						sainsPush.pushFoodN(sainsTest, "tesco_scraped");
+						sainsPush.pushFoodN(sainsTest, "sains_scraped");
 					}
 					
 					

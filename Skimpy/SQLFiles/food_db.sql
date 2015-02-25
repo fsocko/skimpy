@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2015 at 01:42 AM
+-- Generation Time: Feb 25, 2015 at 11:53 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -19,6 +19,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `food_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sains_scraped`
+--
+
+CREATE TABLE IF NOT EXISTS `sains_scraped` (
+`ID` int(11) unsigned NOT NULL,
+  `ShopID` varchar(200) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Unit` varchar(5) DEFAULT NULL,
+  `Mass` double DEFAULT NULL,
+  `Price` double DEFAULT NULL,
+  `PPUPrice` double DEFAULT NULL,
+  `PPUUnit` varchar(5) DEFAULT NULL,
+  `FoodCat` varchar(100) DEFAULT NULL,
+  `SuperMarket` char(2) DEFAULT NULL,
+  `Calories` double DEFAULT NULL,
+  `Protein` double DEFAULT NULL,
+  `Carbs` double DEFAULT NULL,
+  `Sugars` double DEFAULT NULL,
+  `Fats` double DEFAULT NULL,
+  `Saturates` double DEFAULT NULL,
+  `Salt` double DEFAULT NULL,
+  `Fibre` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -3781,6 +3808,12 @@ INSERT INTO `tesco_scraped` (`ID`, `ShopID`, `Name`, `Unit`, `Mass`, `Price`, `P
 --
 
 --
+-- Indexes for table `sains_scraped`
+--
+ALTER TABLE `sains_scraped`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tesco_scraped`
 --
 ALTER TABLE `tesco_scraped`
@@ -3790,6 +3823,11 @@ ALTER TABLE `tesco_scraped`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `sains_scraped`
+--
+ALTER TABLE `sains_scraped`
+MODIFY `ID` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tesco_scraped`
 --
