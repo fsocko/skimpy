@@ -5,41 +5,38 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
 
-//this file will run the methods I am currently working on, so I only need a single line in the master main method. 
-
 public class StdMain extends HttpServlet{
 	
-	public static void testMethods()
+	public static void pushTesco(String db, String table)
 	{
+		SpiderToDB std = new SpiderToDB();
+		int i = 1;
+		DBConnect tescoPush = new DBConnect(db);		
+		ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
 		
-
+		i = 1;
+		while(i < std.countLines(std.tescoPath))
+		{
+			System.out.println("\n i is:" + i + "\n");
+			DBFood tescoTest = std.formatRecord(tescoItems.get(i).toString().trim());
+			
+			if(tescoTest != null)
+			{tescoTest.toString();}
+			
+			tescoPush.pushFoodN(tescoTest, table);
+			
+			i++;
+		}
+		i=1;
 		
-		//SpiderToDB:
+	}
+	
+	public static void pushSains(String db, String table)
+	{
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;
 
-				/*
-				DBConnect tescoPush = new DBConnect("food_db");
-				
-				ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
-				
-				i = 1;
-				while(i < std.countLines(std.tescoPath))
-				{
-					System.out.println("\n i is:" + i + "\n");
-					DBFood tescoTest = std.formatRecord(tescoItems.get(i).toString().trim());
-					
-					if(tescoTest != null)
-					{tescoTest.toString();}
-					
-					tescoPush.pushFoodN(tescoTest, "tesco_scraped");
-					
-					i++;
-				}
-				i=1;
-				
-				*/
-				DBConnect sainsPush = new DBConnect("food_db");
+				DBConnect sainsPush = new DBConnect(db);
 				ArrayList sainsItems = new ArrayList(std.readAllRecords(std.sainsPath));
 				
 				i = 1;
@@ -51,15 +48,15 @@ public class StdMain extends HttpServlet{
 					if(sainsTest != null)
 					{
 						sainsTest.toString();
-						sainsPush.pushFoodN(sainsTest, "sains_scraped");
+						sainsPush.pushFoodN(sainsTest, table);
 					}
-					
 					
 					i++;
 				}
-				i=1;
-			
-				
 
+//calls the methods to run 				
+			pushTesco("food_db", "tesco_scraped");
+			pushSains("food_db", "sains_scraped");
+				
 	}
 }
