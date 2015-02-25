@@ -18,7 +18,7 @@ public class StdMain extends HttpServlet{
 				SpiderToDB std = new SpiderToDB();
 				int i = 1;
 
-				
+				/*
 				DBConnect tescoPush = new DBConnect("food_db");
 				
 				ArrayList tescoItems = new ArrayList(std.readAllRecords(std.tescoPath));
@@ -38,8 +38,26 @@ public class StdMain extends HttpServlet{
 				}
 				i=1;
 				
+				*/
+				DBConnect sainsPush = new DBConnect("food_db");
+				ArrayList sainsItems = new ArrayList(std.readAllRecords(std.sainsPath));
 				
-			
+				i = 1;
+				while(i < std.countLines(std.sainsPath))
+				{
+					System.out.println("\n i is:" + i + "\n");
+					DBFood sainsTest = std.formatRecord(sainsItems.get(i).toString().trim());
+					
+					if(sainsTest != null)
+					{
+						sainsTest.toString();
+						sainsPush.pushFoodN(sainsTest, "tesco_scraped");
+					}
+					
+					
+					i++;
+				}
+				i=1;
 			
 				
 
