@@ -26,8 +26,8 @@ public class Main extends HttpServlet{
 		
 		//Scraper Output to DB
 		StdMain run = new StdMain(); 	
-		run.pushTesco("food_db","tesco_scraped");	
-		run.pushSains("food_db","sains_scraped");
+		//run.pushTesco("food_db","tesco_scraped");	
+		//run.pushSains("food_db","sains_scraped");
     }
 }
 

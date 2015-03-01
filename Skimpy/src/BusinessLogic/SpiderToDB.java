@@ -42,8 +42,7 @@ public class SpiderToDB extends HttpServlet{
 
 		 }
 
-		 
-	
+
 	 public String readRecord(String file, int recNum) //Indexes from 1!
     { 
 		 ArrayList allRec = readAllRecords(file);
@@ -94,31 +93,7 @@ public class SpiderToDB extends HttpServlet{
 			 return allRec;	 
 	    }
 	 
-	 
-	 
-	 //takes record output from readRecord(int), the number of the comma we want to find. Index from 0
-	 public int findComma(String record, int commaNum) 
-	 {
-		int j = 0;
-		int commaPos = -1;
-		
-		 for(int i = 1; (i < record.length()+1); i++)
-		 {
-			 if(record.substring((i-1), i).equals(","))
-			 {
-				 j++;
-				 commaPos = (i-1);
-			 }	
-			 if((j-1) == commaNum && (commaPos > -1))
-			 {commaPos = (i-1); break;}
-			 
-			 if(i == record.length())
-			 {commaPos = -99; }
-			 
-		 }	 	 
-		 return commaPos;
-	 }
-	 
+ 
 	 
 	//takes record output from readRecord(int), the number of the colon we want to find. Index from 0
 	 public int findColon(String record, int colonNum)
