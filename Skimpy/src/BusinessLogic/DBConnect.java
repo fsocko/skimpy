@@ -175,5 +175,27 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	
+	public void search(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     while (rs.next()) {
+		    	 
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name)){
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
 
 }

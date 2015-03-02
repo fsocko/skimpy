@@ -39,7 +39,7 @@ public class StdMain extends HttpServlet{
 				i=1;
 				
 				*/
-				DBConnect sainsPush = new DBConnect("food_db");
+				DBConnect sainsPush = new DBConnect();
 				ArrayList sainsItems = new ArrayList(std.readAllRecords(std.sainsPath));
 				
 				i = 1;
@@ -51,7 +51,7 @@ public class StdMain extends HttpServlet{
 					if(sainsTest != null)
 					{
 						sainsTest.toString();
-						sainsPush.pushFoodN(sainsTest, "tesco_scraped");
+						sainsPush.pushFoodN(sainsTest, "sains_scraped");
 					}
 					
 					

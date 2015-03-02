@@ -24,8 +24,11 @@ public class Main extends HttpServlet{
 //		MealPlanMain testPlan = new MealPlanMain();
 //		testPlan.testMealPlan();
 		
-		StdMain run = new StdMain(); 	
-		run.testMethods();	
+//		StdMain run = new StdMain(); 	
+//		run.testMethods();	
+		
+		DBConnect run  = new DBConnect();
+		run.search("coca cola");
 		
     }
 }
