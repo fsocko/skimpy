@@ -24,10 +24,19 @@ public class Main extends HttpServlet{
 		//MealPlanMain testPlan = new MealPlanMain();
 		//testPlan.testMealPlan();
 		
+
+//		StdMain run = new StdMain(); 	
+//		run.testMethods();	
+		
+		DBConnect run  = new DBConnect();
+		run.search("bread");
+		
+
 		//Scraper Output to DB
-		StdMain run = new StdMain(); 	
+
 		//run.pushTesco("food_db","tesco_scraped");	
 		//run.pushSains("food_db","sains_scraped");
+
     }
 }
 
