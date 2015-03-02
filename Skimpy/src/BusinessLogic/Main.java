@@ -28,7 +28,7 @@ public class Main extends HttpServlet{
 //		run.testMethods();	
 		
 		DBConnect run  = new DBConnect();
-		run.search("coca cola");
+		run.search("coasdf la");
 		
     }
 }

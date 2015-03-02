@@ -183,13 +183,17 @@ public class DBConnect extends HttpServlet{
 		     ResultSet rs = st.executeQuery(query);
 		     String temp = "";
 		     String name = "";
+		     boolean found = false;
 		     while (rs.next()) {
-		    	 
+		    	 found = true;
 		    	 temp = name;
 		    	 name = rs.getString("name");
 		    	 if(!temp.equals(name)){
 		    		 System.out.println(name+"  ");
 		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
 		     }
 		     System.out.println();
 			 
