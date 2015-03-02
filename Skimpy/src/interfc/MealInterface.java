@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MealInterface extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*String userAgent =  req.getHeader("user-agent");
-		String clientBrowser =  "Not known!";	
-		if( userAgent != null)
-			clientBrowser = userAgent;
-		req.setAttribute("client.browser",clientBrowser );*/
-		req.getRequestDispatcher("/showBrowser.jsp").forward(req,resp);
+		req.getRequestDispatcher("/index.jsp").forward(req,resp);
 	}
 }
+
