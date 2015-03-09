@@ -15,12 +15,12 @@
 </head>
 <body>
 <h1> Please Log in: </h1>
-<form action="MealPlan.jsp" method ="post">
+<form action="Main" method ="post">
 	<table>
 		<tr>
 			<td> User name: </td>
 			<td>
-				<input type="text" name="email">
+				<input type="text" name="username">
 			</td>
 		</tr>
 		<tr>
@@ -37,14 +37,18 @@
 </form>
 <% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
 user.setName(request.getParameter("name"));
+//= request.getParameter("name");
+user.setEmail(request.getParameter("emailaddress"));
+user.setPassword(request.getParameter("password"));
 user.setAge(Integer.valueOf(request.getParameter("age")));
 user.setHeight(Double.parseDouble(request.getParameter("height")));
 user.setWeight(Double.parseDouble(request.getParameter("weight")));
-user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
+char gender  = request.getParameter("gender").toUpperCase().charAt(0);
+int exercise = Integer.valueOf(request.getParameter("exercise"));
 user.setExercise(Integer.valueOf(request.getParameter("exercise")));
-user.setPassword(request.getParameter("password"));
-user.setEmail(request.getParameter("emailaddress"));
-DBConnect connect = new DBConnect();
-connect.pushUser(user);%>
+System.out.println(gender);
+System.out.println(exercise);
+//DBConnect connect = new DBConnect();
+//connect.pushUser(user);%>
 </body>
 </html>

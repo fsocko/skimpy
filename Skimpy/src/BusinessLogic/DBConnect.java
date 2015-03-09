@@ -22,7 +22,7 @@ public class DBConnect extends HttpServlet{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/Skimpy", "root", "");
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
@@ -35,7 +35,7 @@ public class DBConnect extends HttpServlet{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ db, "root", "");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/"+ db, "root", "");
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
@@ -146,11 +146,12 @@ public class DBConnect extends HttpServlet{
 			while (rs.next()){
 				String userName = rs.getString("UserName");
 				String userEmail = rs.getString("UserEmail");
+				String password = rs.getString("Password");
 				int age = rs.getInt("Age");
 				float weight = rs.getFloat("Weight");
 				String gender = rs.getString("Gender");
 				float exercise = rs.getFloat("Exercise");
-				
+			
 				System.out.println(ID + userName + userEmail + age + weight + gender + exercise);
 			}
 	
@@ -161,11 +162,11 @@ public class DBConnect extends HttpServlet{
 		
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, Age, Height, Weight, Gender, Exercise)"
+			String query = "INSERT INTO user_info (UserName, UserEmail, Password, Age, Height, Weight, Gender, Exercise)"
 					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
-							user.getExercise() + ")";
+							user.getName() +  "\", \"" + user.getEmail() + "\", \""  + user.getPassword() + "\", \"" +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", \"" + 
+							user.getExercise() + "\");";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
