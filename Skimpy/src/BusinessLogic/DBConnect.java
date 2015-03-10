@@ -124,8 +124,8 @@ public class DBConnect extends HttpServlet{
 		{
 			try{
 					
-					String query = "insert into " + table +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
-							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \"" + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
+					String query = "insert into " + table +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
+							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
 					
 					st.executeUpdate(query);
 					System.out.println("Pushes to Database\n\n");
@@ -170,32 +170,6 @@ public class DBConnect extends HttpServlet{
 			System.out.println("Pushes to Database");
 			
 		}catch(Exception ex){
-			System.out.println(ex);
-		}
-	}
-	
-	public void search(String qu){
-		try{
-			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
-		 
-		     ResultSet rs = st.executeQuery(query);
-		     String temp = "";
-		     String name = "";
-		     boolean found = false;
-		     while (rs.next()) {
-		    	 found = true;
-		    	 temp = name;
-		    	 name = rs.getString("name");
-		    	 if(!temp.equals(name)){
-		    		 System.out.println(name+"  ");
-		    	 }
-		     }
-		     if(!found){
-		    	 System.out.println("No results for query: " + qu);
-		     }
-		     System.out.println();
-			 
-		} catch(Exception ex){
 			System.out.println(ex);
 		}
 	}

@@ -16,7 +16,6 @@ public class DBFood extends HttpServlet{
 	private double pricePU;
 	private String PPUUnit;
 	private String foodCat;
-	private char supermarket;
 	private double calories;
 	private double proteins;
 	private double carbs;
@@ -28,7 +27,7 @@ public class DBFood extends HttpServlet{
 	
 	public DBFood(String shopID, String name, double mass, String unit,
 			double price, double pricePU, String pPUUnit, String foodCat,
-			char supermarket, double calories, double proteins, double carbs,
+			double calories, double proteins, double carbs,
 			double sugars, double fats, double saturates, double fibre,
 			double salt) {
 		super();
@@ -40,7 +39,6 @@ public class DBFood extends HttpServlet{
 		this.pricePU = pricePU;
 		PPUUnit = pPUUnit;
 		this.foodCat = foodCat;
-		this.supermarket = supermarket;
 		this.calories = calories;
 		this.proteins = proteins;
 		this.carbs = carbs;
@@ -83,9 +81,6 @@ public class DBFood extends HttpServlet{
 		return foodCat;
 	}
 
-	public char getSupermarket() {
-		return supermarket;
-	}
 
 	public double getCalories() {
 		return calories;
@@ -124,13 +119,11 @@ public class DBFood extends HttpServlet{
 		return "DBFood [shopID=" + shopID + ", name=" + name + ", mass=" + mass
 				+ ", unit=" + unit + ", price=" + price + ", pricePU="
 				+ pricePU + ", PPUUnit=" + PPUUnit + ", foodCat=" + foodCat
-				+ ", supermarket=" + supermarket + ", calories=" + calories
+				+ ", calories=" + calories
 				+ ", proteins=" + proteins + ", carbs=" + carbs + ", sugars="
 				+ sugars + ", fats=" + fats + ", saturates=" + saturates
 				+ ", fibre=" + fibre + ", salt=" + salt + "]";
 	}
 
-	
-	
 	
 }//EOF
