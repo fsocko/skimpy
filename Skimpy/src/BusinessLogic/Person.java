@@ -47,8 +47,8 @@ public class Person extends HttpServlet{
 		this.gender = gender;
 		this.exercise = exercise;	
 		
-		DBConnect connect = new DBConnect();
-    	connect.pushUser(this);
+		//DBConnect connect = new DBConnect();
+    	//connect.pushUser(this);
 	}
 	
 	public void setMealplan(MealPlanner mealplan){
@@ -100,6 +100,9 @@ public class Person extends HttpServlet{
 	}
 	public void setAge(int age){
 		this.age = age;
+	}
+	public void setEmail(String email){
+		this.email = email;
 	}
 	public void setHeight(double height){
 		this.height = height;
