@@ -37,17 +37,13 @@
 </form>
 <% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
 user.setName(request.getParameter("name"));
-//= request.getParameter("name");
 user.setEmail(request.getParameter("emailaddress"));
 user.setPassword(request.getParameter("password"));
 user.setAge(Integer.valueOf(request.getParameter("age")));
 user.setHeight(Double.parseDouble(request.getParameter("height")));
 user.setWeight(Double.parseDouble(request.getParameter("weight")));
-char gender  = request.getParameter("gender").toUpperCase().charAt(0);
-int exercise = Integer.valueOf(request.getParameter("exercise"));
+user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
 user.setExercise(Integer.valueOf(request.getParameter("exercise")));
-System.out.println(gender);
-System.out.println(exercise);
 //DBConnect connect = new DBConnect();
 //connect.pushUser(user);%>
 </body>
