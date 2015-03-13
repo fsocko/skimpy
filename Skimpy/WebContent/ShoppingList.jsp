@@ -67,5 +67,7 @@
  	</p><input type="button" name="MealPlan" 
  	value="Go Back" onclick="document.location.href='showBrowser.jsp'">
  	<input type="button" name="PComp" value="Get Prices" onclick="document.location.href='Price.jsp'">
+ 	<br>
+ 	<a href="Log out">Log Out </a>
 </body>
 </html>
