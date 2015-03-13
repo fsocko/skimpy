@@ -44,7 +44,7 @@ user.setHeight(Double.parseDouble(request.getParameter("height")));
 user.setWeight(Double.parseDouble(request.getParameter("weight")));
 user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
 user.setExercise(Integer.valueOf(request.getParameter("exercise")));
-//DBConnect connect = new DBConnect();
-//connect.pushUser(user);%>
+DBConnect connect = new DBConnect();
+connect.pushUser(user);%>
 </body>
 </html>
