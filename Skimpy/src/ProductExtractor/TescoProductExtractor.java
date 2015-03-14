@@ -58,7 +58,7 @@ public class TescoProductExtractor implements Runnable {
 		String productName = productPage.select("h1").text();
 		String price;
 		String pricePerUnit;
-		String[] nutriValues = new String[7];
+		String[] nutriValues = new String[8];
 		
 		Pattern pattern = Pattern.compile("id=(\\d+)");
 		Matcher matcher = pattern.matcher(productPageURL);
@@ -66,17 +66,17 @@ public class TescoProductExtractor implements Runnable {
 		String foundId = matcher.group().substring(3);
 		
 		try {
-			price = productPage.select("span.linePrice").first().text();
+			price = productPage.select("span.linePrice").first().text().trim();
 		}
 		catch (NullPointerException npe) {
-			price = productPage.select("span.linePrice").text();
+			price = productPage.select("span.linePrice").text().trim();
 		}
 		
 		try {
-			pricePerUnit = productPage.select("span.linePriceAbbr").first().text();
+			pricePerUnit = productPage.select("span.linePriceAbbr").first().text().trim();
 		}
 		catch (NullPointerException npe) {
-			pricePerUnit = productPage.select("span.linePriceAbbr").text();
+			pricePerUnit = productPage.select("span.linePriceAbbr").text().trim();
 		}
 		
 		Elements nutriTable = productPage.select("table tbody tr");
@@ -85,37 +85,40 @@ public class TescoProductExtractor implements Runnable {
 			String rowHeader = row.select("th").text();
 			if (rowHeader.matches("[Ee]nergy")) {
 				pattern = Pattern.compile("(\\d+)\\s{0,1}[Kk]cal");
-				matcher = pattern.matcher(row.select("td").first().text());
+				matcher = pattern.matcher(row.select("td").first().text().trim());
 				if (matcher.find()) {
-					nutriValues[0] = matcher.group();
+					nutriValues[0] = matcher.group().replace("kcal", "");
 				}
 				else {
 					nutriValues[0] = row.select("td").text();
 				}
 			}
 			else if (rowHeader.matches("[Pp]rotein")) {
-				nutriValues[1] = row.select("td").first().text();
+				nutriValues[1] = row.select("td").first().text().trim().replace("g", "");
+			}
+			else if (rowHeader.matches("[Cc]arbohydrates")) {
+				nutriValues[2] = row.select("td").first().text().trim().replace("g", "");
 			}
 			else if (rowHeader.matches("[Ss]ugar[s]{0,1}")) {
-				nutriValues[2] = row.select("td").first().text();
+				nutriValues[3] = row.select("td").first().text().trim().replace("g", "");
 			}
 			else if (rowHeader.matches("[Ff]at[s]{0,1}")) {
-				nutriValues[3] = row.select("td").first().text();
+				nutriValues[4] = row.select("td").first().text().trim().replace("g", "");
 			}
 			else if (rowHeader.matches("[Ss]aturates")) {
-				nutriValues[4] = row.select("td").first().text();
-			}
-			else if (rowHeader.matches("[Ss]alt")) {
-				nutriValues[5] = row.select("td").first().text();
+				nutriValues[5] = row.select("td").first().text().trim().replace("g", "");
 			}
 			else if (rowHeader.matches("[Ff]ibre")) {
-				nutriValues[6] = row.select("td").first().text();
+				nutriValues[6] = row.select("td").first().text().trim().replace("g", "");
+			}
+			else if (rowHeader.matches("[Ss]alt")) {
+				nutriValues[7] = row.select("td").first().text().trim().replace("g", "");
 			}
 		}
 				
 		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit, this.categoryName, nutriValues);
 		
-		writeToFile("data/tesco.txt", prod.toString()); //changed this.
+		writeToFile("data/tesco.txt", prod.toString());
 	}
 
 	public static synchronized void writeToFile(String filename, String product) {
@@ -143,7 +146,6 @@ public class TescoProductExtractor implements Runnable {
 	{
 		URL obj;
 		HttpURLConnection conn;
-		//int responseCode;
 		BufferedReader inBuff;
 		String inputLine;
 		StringBuffer response;
@@ -154,7 +156,6 @@ public class TescoProductExtractor implements Runnable {
 			conn = (HttpURLConnection)obj.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-			//responseCode = conn.getResponseCode();
 			System.out.println("GET " + url + System.lineSeparator());
 
 			inBuff = new BufferedReader(new InputStreamReader(conn.getInputStream()));

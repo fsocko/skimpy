@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Product {
-	public static String stdSeparator = "; ";
+	public static String stdSeparator = ";";
 	public String id;
 	public String name;
 	public String category;
@@ -13,6 +13,7 @@ class Product {
 	public String pricePerUnit;
 	public String calories;
 	public String protein;
+	public String carbohydrates;
 	public String sugars;
 	public String fats;
 	public String saturates;
@@ -38,30 +39,32 @@ class Product {
 		else {
 			this.url = url;
 		}		
-		this.price = (ppi == null || ppi.equals("") ? "NULL" : ppi);		
-		this.pricePerUnit = (ppu == null || ppu.equals("") ? "NULL" : ppu);
+		this.price 		  = (ppi == null || ppi.equals("") ? "null" : ppi);		
+		this.pricePerUnit = (ppu == null || ppu.equals("") ? "null" : ppu);
 		
-		this.calories = (nutritionValues[0] == null ? "NULL" : nutritionValues[0]);
-		this.protein = (nutritionValues[1] == null ? "NULL" : nutritionValues[1]);
-		this.sugars = (nutritionValues[2] == null ? "NULL" : nutritionValues[2]);
-		this.fats = (nutritionValues[3] == null ? "NULL" : nutritionValues[3]);
-		this.saturates = (nutritionValues[4] == null ? "NULL" : nutritionValues[4]);
-		this.salt = (nutritionValues[5] == null ? "NULL" : nutritionValues[5]);
-		this.fibre = (nutritionValues[6] == null ? "NULL" : nutritionValues[6]);
+		this.calories 	   = (nutritionValues[0] == null ? "null" : nutritionValues[0]);
+		this.protein 	   = (nutritionValues[1] == null ? "null" : nutritionValues[1]);
+		this.carbohydrates = (nutritionValues[2] == null ? "null" : nutritionValues[2]);
+		this.sugars 	   = (nutritionValues[3] == null ? "null" : nutritionValues[3]);		
+		this.fats 		   = (nutritionValues[4] == null ? "null" : nutritionValues[4]);
+		this.saturates 	   = (nutritionValues[5] == null ? "null" : nutritionValues[5]);
+		this.fibre 		   = (nutritionValues[6] == null ? "null" : nutritionValues[6]);
+		this.salt 		   = (nutritionValues[7] == null ? "null" : nutritionValues[7]);
 	}
 	
 	public String toString() {
-		return this.id			 + stdSeparator
-			 + this.name		 + stdSeparator
-			 + this.price		 + stdSeparator
-			 + this.pricePerUnit + stdSeparator
-			 + this.category	 + stdSeparator
-			 + this.calories 	 + stdSeparator
-			 + this.protein 	 + stdSeparator
-			 + this.sugars 		 + stdSeparator
-			 + this.fats		 + stdSeparator
-			 + this.saturates	 + stdSeparator
-			 + this.salt		 + stdSeparator
-			 + this.fibre;
+		return this.id			  + stdSeparator
+			 + this.name		  + stdSeparator
+			 + this.price		  + stdSeparator
+			 + this.pricePerUnit  + stdSeparator
+			 + this.category	  + stdSeparator
+			 + this.calories 	  + stdSeparator
+			 + this.protein 	  + stdSeparator
+			 + this.carbohydrates + stdSeparator
+			 + this.sugars 		  + stdSeparator
+			 + this.fats		  + stdSeparator
+			 + this.saturates	  + stdSeparator
+			 + this.fibre 		  + stdSeparator
+			 + this.salt		  + stdSeparator;
 	}
 }
