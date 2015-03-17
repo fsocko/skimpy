@@ -161,9 +161,9 @@ public class DBConnect extends HttpServlet{
 		
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, Age, Height, Weight, Gender, Exercise)"
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
 					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", "  +
+							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
 							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
 							user.getExercise() + ")";
 			st.executeUpdate(query);
