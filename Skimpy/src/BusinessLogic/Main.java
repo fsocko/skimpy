@@ -23,26 +23,31 @@ public class Main extends HttpServlet{
 		//Run meal plan methods
 		//MealPlanMain testPlan = new MealPlanMain();
 		//testPlan.testMealPlan();
-		
-
-//		StdMain run = new StdMain(); 	
-//		run.testMethods();	
-		
+				
 		//Connect run  = new DBConnect();
 		//run.search("bread");
 
 		
-//TODO: Not touch this
+//TODO: Not touch this-FPS
 
-		//Scraper Output to DB
-
-		//run.pushTesco("food_db","tesco_scraped");	
-		//run.pushSains("food_db","sains_scraped");
 		
+		//Scraper Output to DB
+		SpiderToDB path = new SpiderToDB();
+		StdMain run = new StdMain();
+		
+		System.out.println(path.asdaPath);
+		run.pushToDB(path.asdaPath, "food_db","asda_scraped");	
+		System.out.println(path.sainsPath);
+		run.pushToDB(path.sainsPath, "food_db","sains_scraped");
+		System.out.println(path.tescoPath);
+		run.pushToDB(path.tescoPath, "food_db","tesco_scraped");
+	
+
+
 		//PortionSizes
 		
-		StdMain run = new StdMain(); 
-		run.portionSizeToDB("food_db", "portion_sizes");
+		StdMain portions = new StdMain(); 
+		portions.portionSizeToDB("food_db", "portion_sizes");
 		
     }
 }
