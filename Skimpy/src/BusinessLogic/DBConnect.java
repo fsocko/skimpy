@@ -173,7 +173,7 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
-	public void pushPortionSizes(String foodCat, String item, int mass, String unit){
+	public void pushPortionSizes(String foodCat, String item, double mass, String unit){
 		try{
 			String query = "INSERT INTO food_db (FoodCat, Item, Mass, Unit)VALUES (\"" + 
 							foodCat +  "\", \"" + item + "\", "  + mass + ", " + unit  + ")";

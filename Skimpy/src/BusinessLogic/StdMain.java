@@ -29,6 +29,7 @@ public class StdMain extends HttpServlet{
 	{
 		
 		SpiderToDB std = new SpiderToDB();
+		DBConnect dbCon = new DBConnect();
 		
 		ArrayList portions = new ArrayList(std.readAllRecords(std.portionPath));
 		
@@ -36,9 +37,12 @@ public class StdMain extends HttpServlet{
 		while(i < std.countLines(std.portionPath))
 		{
 			System.out.println("\n i is:" + i + "\n");
-
+			
 			PortionSize portion = std.parsePortion(portions.get(i).toString().trim());
 			System.out.println(portion.toString());
+			dbCon.pushPortionSizes(portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
+			
+			//pushPortionSizes(String foodCat, String item, double mass, String unit)
 				
 			
 			

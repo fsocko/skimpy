@@ -38,9 +38,11 @@ public class Main extends HttpServlet{
 
 		//run.pushTesco("food_db","tesco_scraped");	
 		//run.pushSains("food_db","sains_scraped");
-
+		
 		//PortionSizes
 		
+		StdMain run = new StdMain(); 
+		run.portionSizeToDB("food_db", "portion_sizes");
 		
     }
 }
