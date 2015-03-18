@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 
 
 public class SpiderToDB extends HttpServlet{
-//TODO: Strip " from DBFood, it fucks with the SQL syntax
 
 	 //Use these strings when selecting file, it's easier.
 	 String tescoPath = "data/tesco.txt";
@@ -262,8 +261,11 @@ public class SpiderToDB extends HttpServlet{
 			 //public int findColon(String record, int colonNum)
 			 
 			 String foodCat =  portion.substring(0, findColon(portion, 0));
+			 System.out.println(foodCat);
 			 String foodItem = portion.substring(findColon(portion, 0), findColon(portion, 1));
+			 System.out.println(foodItem);
 			 String massUnit = portion.substring(findColon(portion, 1), portion.length());
+			 System.out.println(massUnit);
 			 double mass = 0;
 			 mass = toDouble(getMass(massUnit));
 			 String unit = getMassUnit(massUnit);

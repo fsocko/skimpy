@@ -38,6 +38,7 @@ public class StdMain extends HttpServlet{
 		{
 			System.out.println("\n i is:" + i + "\n");
 			
+			System.out.println(portions.get(i).toString().trim());
 			PortionSize portion = std.parsePortion(portions.get(i).toString().trim());
 			System.out.println(portion.toString());
 			dbCon.pushPortionSizes(portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
