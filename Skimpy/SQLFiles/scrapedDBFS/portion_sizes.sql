@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `portion_sizes` (
   `FoodCat` varchar(50) NOT NULL,
   `Item` varchar(600) NOT NULL,
-  `Mass` int(11) NOT NULL,
+  `Mass` double DEFAULT NULL,
   `Unit` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
