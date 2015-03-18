@@ -7,6 +7,7 @@ class Product {
 	public static String stdSeparator = ";";
 	public String id;
 	public String name;
+	public String department;
 	public String category;
 	public String url;
 	public String price;
@@ -25,10 +26,12 @@ class Product {
 				   String url,
 				   String ppi,
 				   String ppu,
+				   String dept,
 				   String category,
 				   String[] nutritionValues) {
 		this.id = id;
 		this.name = name;
+		this.department = dept;
 		this.category = category;
 		
 		Pattern r = Pattern.compile("^/groceries");
@@ -57,6 +60,7 @@ class Product {
 			 + this.name		  + stdSeparator
 			 + this.price		  + stdSeparator
 			 + this.pricePerUnit  + stdSeparator
+			 + this.department	  + stdSeparator
 			 + this.category	  + stdSeparator
 			 + this.calories 	  + stdSeparator
 			 + this.protein 	  + stdSeparator

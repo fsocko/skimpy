@@ -15,10 +15,12 @@ import org.jsoup.select.*;
 public class TescoProductExtractor implements Runnable {
 	public static List<Product> allProducts;
 	public String productPageURL;
+	public String departmentName;
 	public String categoryName;
 
-	TescoProductExtractor(String productPageURL, String categoryName) {
+	TescoProductExtractor(String productPageURL, String departmentName, String categoryName) {
 		this.productPageURL = productPageURL;
+		this.departmentName = departmentName;
 		this.categoryName = categoryName;
 	}
 
@@ -39,7 +41,7 @@ public class TescoProductExtractor implements Runnable {
 		}
 
 		for (String productURL : productURLs) {
-			Thread t = new Thread(new TescoProductExtractor(productURL, this.categoryName));
+			Thread t = new Thread(new TescoProductExtractor(productURL, this.departmentName, this.categoryName));
 			runningThreads.add(t);
 			t.start();
 		}
@@ -94,29 +96,30 @@ public class TescoProductExtractor implements Runnable {
 				}
 			}
 			else if (rowHeader.matches("[Pp]rotein")) {
-				nutriValues[1] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[1] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Cc]arbohydrates")) {
-				nutriValues[2] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[2] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Ss]ugar[s]{0,1}")) {
-				nutriValues[3] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[3] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Ff]at[s]{0,1}")) {
-				nutriValues[4] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[4] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Ss]aturates")) {
-				nutriValues[5] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[5] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Ff]ibre")) {
-				nutriValues[6] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[6] = row.select("td").first().text().replace("g", "").trim();
 			}
 			else if (rowHeader.matches("[Ss]alt")) {
-				nutriValues[7] = row.select("td").first().text().trim().replace("g", "");
+				nutriValues[7] = row.select("td").first().text().replace("g", "").trim();
 			}
 		}
 				
-		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit, this.categoryName, nutriValues);
+		Product prod = new Product(foundId, productName, productPageURL, price, pricePerUnit,
+				this.departmentName, this.categoryName, nutriValues);
 		
 		writeToFile("data/tesco.txt", prod.toString());
 	}
