@@ -173,6 +173,37 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	public void pushPortionSizes(String foodCat, String item, int mass, String unit){
+		try{
+			String query = "INSERT INTO food_db (FoodCat, Item, Mass, Unit)VALUES (\"" + 
+							foodCat +  "\", \"" + item + "\", "  + mass + ", " + unit  + ")";
+			st.executeUpdate(query);
+			System.out.println("Pushed Portion Sizes");
+			
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	public void getPortionSizes(String itemSearch){
+		try{
+			System.out.println("Records from Database:");
+			rs = st.executeQuery("select * FROM user_info WHERE item=" + itemSearch);
+			while (rs.next()){
+				String foodCat = rs.getString("FoodCat");
+				String item = rs.getString("Item");
+				int mass = rs.getInt("Mass");
+				String unit = rs.getString("Unit");
+				
+				System.out.println("Food Cat: "  + foodCat + 
+									"\nItem: " + item + 
+									"\nMass: " + mass + 
+									"\nUnit: " + unit);
+			}
+	
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
 	public void search(String qu){
 		try{
 			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
