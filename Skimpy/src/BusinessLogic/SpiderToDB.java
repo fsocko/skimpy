@@ -16,7 +16,7 @@ public class SpiderToDB extends HttpServlet{
 	 String tescoPath = "data/tesco.txt";
 	 String sainsPath = "data/sains.txt";
 	 String asdaPath = "data/asda.txt";
-	 String portionPath = "data/canada.initialCSV.csv";
+	 String portionPath = "data/portionSizeToJavaInit.txt";
 	 
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
