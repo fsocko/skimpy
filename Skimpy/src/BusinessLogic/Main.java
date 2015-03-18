@@ -30,7 +30,7 @@ public class Main extends HttpServlet{
 		
 //TODO: Not touch this-FPS
 
-		
+		/*
 		//Scraper Output to DB
 		SpiderToDB path = new SpiderToDB();
 		StdMain run = new StdMain();
@@ -48,6 +48,11 @@ public class Main extends HttpServlet{
 		
 		StdMain portions = new StdMain(); 
 		portions.portionSizeToDB("food_db", "portion_sizes");
+		*/
+		
+		//DBConnectTest
+		DBConnect test1 = new DBConnect();
+		test1.getFoodData("asda_scraped", "2");
 		
     }
 }
