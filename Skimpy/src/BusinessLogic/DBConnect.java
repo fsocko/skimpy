@@ -217,7 +217,8 @@ public class DBConnect extends HttpServlet{
 		    	 found = true;
 		    	 temp = name;
 		    	 name = rs.getString("name");
-		    	 if(!temp.equals(name)){
+		    	 if(!temp.equals(name))
+		    	 {
 		    		 System.out.println(name+"  ");
 		    	 }
 		     }
@@ -230,6 +231,34 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	
+	public void findCat(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name))
+		    	 {
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
 	
 	public void recommend(String val, String coloumn){
 		try{
