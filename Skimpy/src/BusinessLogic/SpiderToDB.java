@@ -16,6 +16,7 @@ public class SpiderToDB extends HttpServlet{
 	 String tescoPath = "data/tesco.txt";
 	 String sainsPath = "data/sains.txt";
 	 String asdaPath = "data/asda.txt";
+	 String portionPath = "data/canada.initialCSV.csv";
 	 
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
@@ -151,18 +152,26 @@ public class SpiderToDB extends HttpServlet{
 	 
 	 
 
-	 //Custom methods for parsing strings to Double and to Int
+		 
+	 //Custom methods for parsing strings to Double
 	 public double toDouble(String input)
 	 {
-		 double result = -1.69;
+		 input = input.replaceAll("[^.0-9]","").trim();	 
+
+		 		 if(input.matches("-?\\d+(\\.\\d+)?"))
+				 {
+						 input = input.replaceAll("[^.0-9]","");
+						 double result =  Double.parseDouble((input.trim()));
+						 return result;
+				 }
 		 
-		 //TODO:make sure we can handle upper case null too
-		 if(!(input.equals(null) | input.equals("") | input.contains("null") | input.matches("\\d+")))
-		 {
-			 input = input.replaceAll("[^.0-9]","").trim();
-			 result =  Double.parseDouble((input).trim());
-		 }
-		 return result;
+				 else{
+					 	if(input.contains("trace"))
+					 	{return 0;}
+					 }
+				 
+		 
+		 return -1.69;
 	 }
 	 
 
@@ -190,7 +199,9 @@ public class SpiderToDB extends HttpServlet{
 				 String fats = record.substring(findColon(record, 8), findColon(record, 9));
 				 String saturates = record.substring(findColon(record, 9), findColon(record, 10));
 				 String fibre = record.substring(findColon(record, 10), findColon(record, 11));
-				 String salt = record.substring(findColon(record, 11), findColon(record, 12));
+				 String salt = record.substring(findColon(record, 11), record.length());
+	
+	
 				 
 	//ShopID---------NO CHANGE			 
 	//Name-----------NO CHANGE		
@@ -205,7 +216,7 @@ public class SpiderToDB extends HttpServlet{
 				 PPUUnit = formatPPU(pricePU, false);
 				 PPUUnit = PPUUnit.replaceAll(";","");
 	
-	//foodCat		 
+	//foodCat	 	 
 				 foodCat = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
 				 foodCat = foodCat.replaceAll(";"," ");
 				 
@@ -218,12 +229,50 @@ public class SpiderToDB extends HttpServlet{
 	//Salts------------NO CHANGE
 	//Fibre------------NO CHANGE
 	
-
+				 //check the output
+				/* System.out.println(
+						 "\nshopID:" + shopID + 
+						 "\nname:"+name + 
+						 "\nmass:" + mass +
+						 "\nunit:" + unit + 
+						 "\nprice:"+price + 
+						 "\nPPUPrice:" + PPUPrice + 
+						 "\nPPUUnit:"+ PPUUnit + 
+						 "\nFoodcat" + foodCat + 
+						 "\nCalories:" + calories + 
+						 "\nProteins:"+proteins + 
+						 "\n Carbs:" + carbs + 
+						 "\nSugars:"+ sugars +
+						 "\nFats:" + fats + 
+						 "\n Saturates:" + saturates + 
+						 "\nFibre:"+ fibre + 
+						 "\nSalt:" + salt);
+				 */	
+				 
 				DBFood currentRec = new DBFood(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 
 		 }
+		 
+		 public PortionSize parsePortion(String portion)
+		 {
+			
+			 //	//takes record output from readRecord(int), the number of the colon we want to find. Index from 0
+			 //public int findColon(String record, int colonNum)
+			 
+			 String foodCat =  portion.substring(0, findColon(portion, 0));
+			 String foodItem = portion.substring(findColon(portion, 0), findColon(portion, 1));
+			 String massUnit = portion.substring(findColon(portion, 1), portion.length());
+			 double mass = 0;
+			 mass = toDouble(getMass(massUnit));
+			 String unit = getMassUnit(massUnit);
+			
+			 PortionSize portionToDB  = new PortionSize(foodCat, foodItem, mass, unit);
+			 
+			 return portionToDB;
+		 }
+		 
 		 
 		 //HERE BE DRAGONS
 		  
@@ -250,11 +299,11 @@ public class SpiderToDB extends HttpServlet{
 			 return formatPPU(field, false);
 			 
 		 }
-		
+		//asdf
 
 		 
 		 public String formatMassUnit(String name, boolean returnMass)
-		 {
+		 { 
 			 String massAndUnit = name;
 			 int e = massAndUnit.length();
 			 while(e>1) //iterate through name backwards. Find space.
@@ -281,11 +330,13 @@ public class SpiderToDB extends HttpServlet{
 			     mass = m.group(1).trim(); // mass is 400
 			 	 unit = m.group(2).trim(); // the unit is "g"
 			 }
-			 else{mass = "-1.0"; unit = "NULL";} //This happens if we haven't found a unit
+			 else{mass = "-1.69"; unit = "NULL";} //This happens if we haven't found a unit
 			 
 			 //If there are any delimiters, we strip them from all fields
 			 mass = mass.trim().replaceAll(";","");
-			 unit = unit.trim().replaceAll(";",""); 
+			 unit = unit.trim().replaceAll(";","");
+			 unit = unit.replaceAll("[^a-zA-Z]+","");
+			
 			 if(returnMass == true)
 			 {
 				 return mass;
@@ -302,7 +353,9 @@ public class SpiderToDB extends HttpServlet{
 		
 		 public String formatPPU(String pricePU, boolean returnPrice)
 		 {
-			
+			 if(pricePU.toUpperCase().contains("NULL"))
+			 {return "NULL";}	 
+			 
 			 String PPUPrice = "-1";
 			 String PPUUnit = "-1";
 			 int e = pricePU.length();
@@ -321,6 +374,7 @@ public class SpiderToDB extends HttpServlet{
 			 
 			 PPUPrice = PPUPrice.replaceAll("[^.0-9]","");
 			 PPUUnit = PPUUnit.trim();
+			 PPUUnit = PPUUnit.replaceAll("[^a-zA-Z]+","");
 			 
 			 if(returnPrice == true)
 			 {
