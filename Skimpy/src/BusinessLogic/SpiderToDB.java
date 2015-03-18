@@ -261,14 +261,15 @@ public class SpiderToDB extends HttpServlet{
 			 //public int findColon(String record, int colonNum)
 			 
 			 String foodCat =  portion.substring(0, findColon(portion, 0));
-			 System.out.println(foodCat);
+			 foodCat = foodCat.replaceAll(";","");
 			 String foodItem = portion.substring(findColon(portion, 0), findColon(portion, 1));
-			 System.out.println(foodItem);
+			 foodItem = foodItem.replaceAll(";","");
 			 String massUnit = portion.substring(findColon(portion, 1), portion.length());
-			 System.out.println(massUnit);
+			 massUnit = massUnit.replaceAll(";","");
 			 double mass = 0;
 			 mass = toDouble(getMass(massUnit));
 			 String unit = getMassUnit(massUnit);
+			 unit = unit.replaceAll(";","");
 			
 			 PortionSize portionToDB  = new PortionSize(foodCat, foodItem, mass, unit);
 			 
