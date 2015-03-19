@@ -19,7 +19,7 @@ public class Main extends HttpServlet{
 		//Push foodCat2
 		SpiderToDB std = new SpiderToDB();
 		//pushToDB(std.tescoPath, "skimpy", "tesco");
-		for(int i = 1; i<5553; i++)
+		for(int i = 1; i<5548; i++)
 		{
 			pullFromDB("tesco", i);
 		
