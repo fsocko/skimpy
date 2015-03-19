@@ -126,7 +126,7 @@ public class DBConnect extends HttpServlet{
 			try{
 					
 					String query = "insert into " + dataBaseName +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
-							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \"" + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
+							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
 					
 					st.executeUpdate(query);
 					System.out.println("Pushes to Database\n\n");
