@@ -43,20 +43,20 @@ public class DBConnect extends HttpServlet{
 	}
 	
 	
-	public Food getFoodDataN(String table, int ID){
+	public void getFoodDataN(String table, int ID)
+	{
 		try{
 			
-			String query = "select * FROM " + table + "WHERE ID=" + ID + ";";
+			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 			System.out.println(query);
 			rs = st.executeQuery(query);
 			
-			int ID = -1.69;
 			String shopID = null;
 			String name = null;
 			double mass = -1;
 			String unit = null;
 			double price = -1;
-			double pricePU = -1;
+			double PPUPrice = -1;
 			String PPUUnit = null;
 			String foodCat = null;
 			String supermarket = "X";
@@ -81,7 +81,7 @@ public class DBConnect extends HttpServlet{
 				PPUPrice = rs.getDouble("PPUPrice");
 				PPUUnit = rs.getString("PPUUnit");
 				foodCat = rs.getString("FoodCat");
-				supermarket = rs.getChar("SuperMarket");
+				supermarket = rs.getString("SuperMarket");
 				calories = rs.getDouble("Calories");
 				proteins = rs.getDouble("Proteins");
 				carbs = rs.getDouble("Carbs");
@@ -92,7 +92,13 @@ public class DBConnect extends HttpServlet{
 				fibre = rs.getDouble("Fibre");
 			}
 			
+			System.out.println(name);
 		}
+		catch(Exception ex)
+		{
+				System.out.println("Error:"+ex );	
+		}
+		
 		
 	}	
 	

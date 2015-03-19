@@ -52,7 +52,7 @@ public class Main extends HttpServlet{
 		//portions.portionSizeToDB("food_db", "portion_sizes");
 		
 		DBConnect pull = new DBConnect("food_db");
-		pull.getFoodData("2");
+		pull.getFoodDataN("tesco_scraped", 2);
 		
 		//DBConnectTest
 		//DBConnect test1 = new DBConnect();
