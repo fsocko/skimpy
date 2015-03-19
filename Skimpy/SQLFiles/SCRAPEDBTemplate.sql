@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sains_scraped`
+-- Table structure for table `asda_scraped`
 --
 
-CREATE TABLE IF NOT EXISTS `sains_scraped` (
+CREATE TABLE IF NOT EXISTS `asda_scraped` (
 `ID` int(11) unsigned NOT NULL,
   `ShopID` varchar(200) DEFAULT NULL,
   `Name` varchar(100) DEFAULT NULL,
@@ -48,16 +48,16 @@ CREATE TABLE IF NOT EXISTS `sains_scraped` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Indexes for table `sains_scraped`
+-- Indexes for table `asda_scraped`
 --
-ALTER TABLE `sains_scraped`
+ALTER TABLE `asda_scraped`
  ADD PRIMARY KEY (`ID`);
 
 
 --
--- AUTO_INCREMENT for table `sains_scraped`
+-- AUTO_INCREMENT for table `asda_scraped`
 --
-ALTER TABLE `sains_scraped`
+ALTER TABLE `asda_scraped`
 MODIFY `ID` int(11) unsigned NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

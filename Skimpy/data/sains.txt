@@ -19,7 +19,6 @@
 9-bar-flax-seed-bars-4x40g;9 Bar Flax Seed Bars 4x40g;£2.00/unit;£1.25/100g;breakfast-cereal-bars-breakfast-biscuits;5232180;17.4;33.5;30.0;35.5;10.0;-1;-1
 9-bar-pumpkin-bars-4x40g;9 Bar Pumpkin Bars 4x40g;£2.00/unit;£1.25/100g;breakfast-cereal-bars-breakfast-biscuits;5102130;21.5;28.4;23.5;34.6;6.6;-1;-1
 ProductDisplay?storeId=10151&productId=102784&urlRequestType=Base&categoryId=12487&catalogId=10313&langId=44;Rolo Mulitpack x4 52g;£1.50/unit;£0.72/100g;chocolate;477;4.4;68.4;58.7;20.4;11.7;1.2;0.30;
-ProductDisplay?storeId=10151&productId=102786&urlRequestType=Base&categoryId=12487&catalogId=10313&langId=44;Toffee Crisp Multipack x4 43.2g;£1.50/unit;£0.87/100g;chocolate;Per 100g nutrition not found
 ProductDisplay?storeId=10151&productId=110678&urlRequestType=Base&categoryId=13247&catalogId=10118&langId=44;Sainsbury's Onions 1kg;£0.60/unit;£0.60/kg;onions-leeks-garlic;38;1.0;7.6;5.9;0.5;0.1;1.4;0.01
 ProductDisplay?storeId=10151&productId=113034&urlRequestType=Base&categoryId=13358&catalogId=10169&langId=44;Sainsbury's British Whole Chicken with Pork, Sage & Onion Stuffing 1.45kg;£5.50/unit;£3.93/kg;chicken;196;24.3;2.1;0.5;10.0;3.0;0.5;0.45
 ProductDisplay?storeId=10151&productId=113034&urlRequestType=Base&categoryId=135656&catalogId=10173&langId=44;Sainsbury's British Whole Chicken with Pork, Sage & Onion Stuffing 1.45kg;£5.50/unit;£3.93/kg;prepared-joints;196;24.3;2.1;0.5;10.0;3.0;0.5;0.45
@@ -77,12 +76,10 @@ ProductDisplay?storeId=10151&productId=811180&urlRequestType=Base&categoryId=125
 ProductDisplay?storeId=10151&productId=811182&urlRequestType=Base&categoryId=13238&catalogId=10118&langId=44;Sainsbury's Gem Potatoes, Taste the Difference 1kg;£2.00/unit;£2.00/kg;potatoes;76;1.8;14.9;1.1;0.6;0.1;1.8;0.01
 ProductDisplay?storeId=10151&productId=811566&urlRequestType=Base&categoryId=12648&catalogId=10170&langId=44;Sainsbury's Easy Peeler With Leaves, Taste the Difference 500g;£2.00/unit;£4.00/kg;citrus-fruit;42;0.9;8.7;8.7;0.5;0.1;1.2;0.01
 ProductDisplay?storeId=10151&productId=817246&urlRequestType=Base&categoryId=13205&catalogId=10306&langId=44;Sainsbury's Kiwi Fruit x6;£1.00/unit;£0.17/ea;melon-pineapple-kiwi;55;1.1;11;10;0.5;0.1;1.9;0.5
-ProductDisplay?storeId=10151&productId=94970&urlRequestType=Base&categoryId=12487&catalogId=10313&langId=44;Maltesers Box 120g;£1.50/unit;£1.25/100g;chocolate;Per 100g nutrition not found
 a2-milk-semi-skimmed-1l;a2 Semi Skimmed Milk 1L;£1.35/unit;£1.35/ltr;drinks-fresh-milk;47;3.4;4.8;4.8;1.7;1.1;-1;0.11
 a2-milk-semi-skimmed-1l;a2 Semi Skimmed Milk 1L;£1.35/unit;£1.35/ltr;fresh-milk;47;3.4;4.8;4.8;1.7;1.1;-1;0.11
 a2-milk-semi-skimmed-1l;a2 Semi Skimmed Milk 1L;£1.35/unit;£1.35/ltr;soya---dietary-needs;47;3.4;4.8;4.8;1.7;1.1;-1;0.11
 abra-ca-debora-diddy-pancakes-200g;Abra Ca Debora Diddy Pancakes 200g;£1.00/unit;£0.50/100g;desserts;490360;5.7;37.7;15.4;20.2;8.9;1.2;0.4
-acqua-panna-glass-bottle-750ml;Acqua Panna Still Mineral Water 750ml;£1.00/unit;£0.13/100ml;still-water;Per 100g nutrition not found
 actimel-blueberry-yogurt-8x100g;Actimel Yogurt Drink Blueberry 8x100g;£3.00/unit;£0.38/100g;active-health-yogurts-drinks;31574;2.6;11.8;11.6;1.5;1;0.5;0.1;
 actimel-blueberry-yogurt-8x100g;Actimel Yogurt Drink Blueberry 8x100g;£3.00/unit;£0.38/100g;breakfast-yogurts;31574;2.6;11.8;11.6;1.5;1;0.5;0.1;
 actimel-blueberry-yogurt-8x100g;Actimel Yogurt Drink Blueberry 8x100g;£3.00/unit;£0.38/100g;yogurt-drinks;31574;2.6;11.8;11.6;1.5;1;0.5;0.1;
@@ -101,9 +98,6 @@ actimel-rapsberry-yogurt-8x100g;Actimel Yogurt Drink Raspberry 8x100g;£3.00/unit
 actimel-strawberry-yogurt-12x100g;Actimel Yogurt Drink Strawberry 12x100g;£1.95/unit;£0.17/100g;active-health-yogurts-drinks;31474;2.6;11.7;11.6;1.5;1;0.5;0.1;
 actimel-strawberry-yogurt-12x100g;Actimel Yogurt Drink Strawberry 12x100g;£1.95/unit;£0.17/100g;breakfast-yogurts;31474;2.6;11.7;11.6;1.5;1;0.5;0.1;
 actimel-strawberry-yogurt-12x100g;Actimel Yogurt Drink Strawberry 12x100g;£1.95/unit;£0.17/100g;yogurt-drinks;31474;2.6;11.7;11.6;1.5;1;0.5;0.1;
-actimel-vanilla-yogurt-8x100g;Actimel Yogurt Drink Vanilla 8x100g;£3.00/unit;£0.38/100g;active-health-yogurts-drinks;Per 100g nutrition not found
-actimel-vanilla-yogurt-8x100g;Actimel Yogurt Drink Vanilla 8x100g;£3.00/unit;£0.38/100g;breakfast-yogurts;Per 100g nutrition not found
-actimel-vanilla-yogurt-8x100g;Actimel Yogurt Drink Vanilla 8x100g;£3.00/unit;£0.38/100g;yogurt-drinks;Per 100g nutrition not found
 actimel-yogurt-drink--multi-fruits-8x100g;Actimel Yogurt Drink Multifruit 8x100g;£3.00/unit;£0.38/100g;active-health-yogurts-drinks;32577;2.6;12.4;12.2;1.5;1.0;0.5;0.1;
 actimel-yogurt-drink--multi-fruits-8x100g;Actimel Yogurt Drink Multifruit 8x100g;£3.00/unit;£0.38/100g;breakfast-yogurts;32577;2.6;12.4;12.2;1.5;1.0;0.5;0.1;
 actimel-yogurt-drink--multi-fruits-8x100g;Actimel Yogurt Drink Multifruit 8x100g;£3.00/unit;£0.38/100g;yogurt-drinks;32577;2.6;12.4;12.2;1.5;1.0;0.5;0.1;
@@ -176,12 +170,7 @@ activia-natural-yogurt-low-fat-500g;Activia Low Fat Natural Yogurt 500g;£1.20/un
 activia-pear-yogurts-4x125g;Activia Pear Yogurt 4x125g;£2.00/unit;£0.40/100g;active-health-yogurts-drinks;100;3.5;13.9;13.6;3.3;2.3;0.3;2.0
 activia-weekly-red-fruits-yogurt-8x125g;Activia Mixed Red Fruits Yogurt 8x125g;£2.90/unit;£0.29/100g;active-health-yogurts-drinks;98;3.6;13.1;12.6;3.3;2.3;0.8;0.1
 activia-weekly-yellow-fruits-8x125g;Activia Mixed Yellow Fruits Yogurt 8x125g;£2.90/unit;£0.29/100g;active-health-yogurts-drinks;99;3.5;13.5;13.3;3.4;2.3;0.2;0.2
-aero-bubbly-minty-chocolate-mouse-4x59g;Aero Mousse Mint Chocolate 4x59g;£1.25/unit;£0.53/100g;rice-dessert-style-yogurts;Per 100g nutrition not found
-aero-finesse-milk-chocolate-mousse-4x57g;Aero Finesse Mousse Milk Chocolate 4x57g;£1.68/unit;£0.74/100g;rice-dessert-style-yogurts;Per 100g nutrition not found
-aero-milk-chocolate-mousse-4x59g;Aero Mousse, Milk Chocolate 4x59g;£1.25/unit;£0.53/100g;rice-dessert-style-yogurts;Per 100g nutrition not found
-aero-mousse-ltd-edition-4x58g;Aero Mousse Ltd Edition 4x58g;£1.25/unit;£0.54/100g;rice-dessert-style-yogurts;Per 100g nutrition not found
 aero-split-pots-4x115g;Aero Split Pots 4x115g;£2.19/unit;£0.48/100g;rice-dessert-style-yogurts;162;4.6;18.1;17.6;7.9;5.1;-1;0.2
-after-eight-mousse-4x57g;After Eight Mousse 4x57g;£1.70/unit;£0.75/100g;rice-dessert-style-yogurts;Per 100g nutrition not found
 alf-turners-best-of-british-sausages-x8-400g;Alf Turner Best of British Premium Pork Sausages x6 400g;£3.00/unit;£7.50/kg;sausages;868208;12.5;10.7;4.6;12.1;4.6;1.7;1.50
 alf-turners-hair-of-the-hog-sausages-x8-400g;Alf Turner Hair of the Hog Premium Pork Sausages x6 400g;£3.00/unit;£7.50/kg;sausages;829198;14.9;12.1;1.8;10.4;3.8;1.7;1.40
 allinson-wholemeal-bread-400g;Allinson Wholemeal Bread 400g;£0.80/unit;£0.20/100g;small-loaves;231;10.6;37.2;2.8;2.8;0.5;7.2;1.00
@@ -219,34 +208,8 @@ alpro-almond-milk--unsweetened-uht-1l;Alpro Almond Milk Alternative to Dairy Uns
 alpro-almond-milk--unsweetened-uht-1l;Alpro Almond Milk Alternative to Dairy Unsweetened 1L;£1.50/unit;£1.50/ltr;longer-life-milk;5213;0.4;0.1;0.1;1.1;0.1;0.4;0.13;
 alpro-almond-milk--unsweetened-uht-1l;Alpro Almond Milk Alternative to Dairy Unsweetened 1L;£1.50/unit;£1.50/ltr;soya---dietary-needs;5213;0.4;0.1;0.1;1.1;0.1;0.4;0.13;
 alpro-blueberry-cherry-yogurt-alternative-4x125g;Alpro Yogurt Alternative Blueberry/Cherry 4x125g;£1.85/unit;£0.37/100g;soya-dairy-alternatives-yogurts;Per 100g nutrition not found
-alpro-chilled-almond-milk-1l;Alpro Almond Milk Alternative to Dairy 1L;£1.00/unit;£1.00/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-chilled-almond-milk-1l;Alpro Almond Milk Alternative to Dairy 1L;£1.00/unit;£1.00/ltr;drinks-fresh-milk;Per 100g nutrition not found
-alpro-chilled-almond-milk-1l;Alpro Almond Milk Alternative to Dairy 1L;£1.00/unit;£1.00/ltr;flavoured-milk;Per 100g nutrition not found
-alpro-chilled-almond-milk-1l;Alpro Almond Milk Alternative to Dairy 1L;£1.00/unit;£1.00/ltr;soya---dietary-needs;Per 100g nutrition not found
-alpro-chilled-alternative-to-cream-250ml;Alpro Cream Dairy Free Soya 250ml;£1.00/unit;£0.40/100ml;dairy-alternatives;Per 100g nutrition not found
-alpro-chilled-alternative-to-cream-250ml;Alpro Cream Dairy Free Soya 250ml;£1.00/unit;£0.40/100ml;fresh-cream-custard;Per 100g nutrition not found
-alpro-chilled-alternative-to-cream-250ml;Alpro Cream Dairy Free Soya 250ml;£1.00/unit;£0.40/100ml;soya---dietary-needs;Per 100g nutrition not found
-alpro-chilled-chocolate-soya-milk-alternative-drink-1l;Alpro Soya Milk Alternative to Dairy Chocolate  1L;£1.70/unit;£1.70/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-chilled-chocolate-soya-milk-alternative-drink-1l;Alpro Soya Milk Alternative to Dairy Chocolate  1L;£1.70/unit;£1.70/ltr;soya---dietary-needs;Per 100g nutrition not found
-alpro-chilled-hazelnut-milk-1l;Alpro Hazelnut Milk Alternative to Dairy 1L;£1.70/unit;£1.70/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-chilled-hazelnut-milk-1l;Alpro Hazelnut Milk Alternative to Dairy 1L;£1.70/unit;£1.70/ltr;drinks-fresh-milk;Per 100g nutrition not found
-alpro-chilled-hazelnut-milk-1l;Alpro Hazelnut Milk Alternative to Dairy 1L;£1.70/unit;£1.70/ltr;flavoured-milk;Per 100g nutrition not found
-alpro-chilled-hazelnut-milk-1l;Alpro Hazelnut Milk Alternative to Dairy 1L;£1.70/unit;£1.70/ltr;soya---dietary-needs;Per 100g nutrition not found
 alpro-chilled-mild-soya-drink-1l;Alpro Chilled Mild Soya Milk Alternative 1L;£1.40/unit;£1.40/ltr;dairy-alternatives;14835;3.0;1.5;1.4;1.8;0.3;0.5;0.09
 alpro-chilled-mild-soya-drink-1l;Alpro Chilled Mild Soya Milk Alternative 1L;£1.40/unit;£1.40/ltr;soya---dietary-needs;14835;3.0;1.5;1.4;1.8;0.3;0.5;0.09
-alpro-forest-fruits-yogurt-alternative-4x125g;Alpro Yogurt Alternative Forest Fruits 4x125g;£1.85/unit;£0.37/100g;soya-dairy-alternatives-yogurts;Per 100g nutrition not found
-alpro-fresh-almond-unsweetened-1l;Alpro Almond Milk Alternative to Dairy Unsweetened 1L;£1.00/unit;£1.00/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-fresh-almond-unsweetened-1l;Alpro Almond Milk Alternative to Dairy Unsweetened 1L;£1.00/unit;£1.00/ltr;soya---dietary-needs;Per 100g nutrition not found
-alpro-fresh-coconut-drink-1l;Alpro Fresh Coconut Drink 1L;£1.70/unit;£1.70/ltr;coconut-water-115153-44;Per 100g nutrition not found
-alpro-junior-1-soya-milk-alternative-1l;Alpro Soya Junior Milk Alternative to Dairy 1L;£1.35/unit;£1.35/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-junior-1-soya-milk-alternative-1l;Alpro Soya Junior Milk Alternative to Dairy 1L;£1.35/unit;£1.35/ltr;longer-life-milk;Per 100g nutrition not found
-alpro-junior-1-soya-milk-alternative-1l;Alpro Soya Junior Milk Alternative to Dairy 1L;£1.35/unit;£1.35/ltr;soya---dietary-needs;Per 100g nutrition not found
-alpro-light-chilled-soya-milk-alternative-1l;Alpro Soya Light Milk Alternative to Dairy 1L;£1.40/unit;£1.40/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-light-chilled-soya-milk-alternative-1l;Alpro Soya Light Milk Alternative to Dairy 1L;£1.40/unit;£1.40/ltr;drinks-fresh-milk;Per 100g nutrition not found
-alpro-light-chilled-soya-milk-alternative-1l;Alpro Soya Light Milk Alternative to Dairy 1L;£1.40/unit;£1.40/ltr;soya---dietary-needs;Per 100g nutrition not found
-alpro-long-life-almond-milk-alternative--chocolate-1l;Alpro Almond Milk Alternative to Dairy Chocolate 1L;£1.50/unit;£1.50/ltr;dairy-alternatives;Per 100g nutrition not found
-alpro-long-life-almond-milk-alternative--chocolate-1l;Alpro Almond Milk Alternative to Dairy Chocolate 1L;£1.50/unit;£1.50/ltr;longer-life-milk;Per 100g nutrition not found
-alpro-long-life-almond-milk-alternative--chocolate-1l;Alpro Almond Milk Alternative to Dairy Chocolate 1L;£1.50/unit;£1.50/ltr;soya---dietary-needs;Per 100g nutrition not found
 alpro-long-life-almond-milk-alternative-1l;Alpro Almond Milk Alternative to Dairy Sweetened 1L;£1.50/unit;£1.50/ltr;dairy-alternatives;10224;0.5;3.0;3.0;1.1;0.1;0.2;0.05;0.13
 alpro-long-life-almond-milk-alternative-1l;Alpro Almond Milk Alternative to Dairy Sweetened 1L;£1.50/unit;£1.50/ltr;longer-life-milk;10224;0.5;3.0;3.0;1.1;0.1;0.2;0.05;0.13
 alpro-long-life-almond-milk-alternative-1l;Alpro Almond Milk Alternative to Dairy Sweetened 1L;£1.50/unit;£1.50/ltr;soya---dietary-needs;10224;0.5;3.0;3.0;1.1;0.1;0.2;0.05;0.13
