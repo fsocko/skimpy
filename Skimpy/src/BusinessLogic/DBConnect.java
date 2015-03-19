@@ -6,6 +6,7 @@ package BusinessLogic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,6 @@ public class DBConnect extends HttpServlet{
 	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
 			st = (Statement) con.createStatement();
 		}
@@ -30,6 +30,38 @@ public class DBConnect extends HttpServlet{
 			System.out.println("Error:"+ex );
 		}
 	}
+	
+	public void closeConnections()
+	{
+		try 
+		{
+			rs.close();
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try 
+		{
+			st.close();
+		} 
+		catch (SQLException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+				con.close();
+			} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+	}
+	
 	
 	public Food pullFood(String table, int ID)
 	{
@@ -82,12 +114,19 @@ public class DBConnect extends HttpServlet{
 				}
 			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
 									foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
-									fats, saturates, fibre, salt);		
+									fats, saturates, fibre, salt);	
+			
 		} 
 		catch(Exception ex) 
 		{
 			System.out.println("Error:"+ex );	
 		}	
+		//close connections.
+		finally 
+		{
+			closeConnections();
+		}
+
 		return returnedFood;	
 	}	
 		
@@ -115,6 +154,10 @@ public class DBConnect extends HttpServlet{
 			} catch(Exception ex){
 					System.out.println(ex);
 			}
+			finally 
+			{
+				closeConnections();
+			}
 		}
 	}
 	
@@ -136,6 +179,10 @@ public class DBConnect extends HttpServlet{
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 		
@@ -169,6 +216,10 @@ public class DBConnect extends HttpServlet{
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeConnections();
+		}
 	}
 	public void pullPortionSizes(String itemSearch)
 	{
@@ -189,6 +240,10 @@ public class DBConnect extends HttpServlet{
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 	public void search(String qu)
@@ -216,6 +271,10 @@ public class DBConnect extends HttpServlet{
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeConnections();
+		}
 	}
 	
 	public void recommend(String val, String coloumn)
@@ -242,6 +301,10 @@ public class DBConnect extends HttpServlet{
 			 
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 	

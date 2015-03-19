@@ -22,11 +22,7 @@ public class Main extends HttpServlet{
 		for(int i = 1; i<5553; i++)
 		{
 			pullFromDB("tesco", i);
-			try {
-			    Thread.sleep(1000);
-			} catch(InterruptedException ex) {
-			    Thread.currentThread().interrupt();
-			}
+		
 		}
 		System.out.println("Pulled all records");
     }
