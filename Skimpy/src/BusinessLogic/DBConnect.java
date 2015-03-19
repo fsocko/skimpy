@@ -174,6 +174,91 @@ public class DBConnect extends HttpServlet{
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
+		
 	}
 
+	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit){
+		try{
+			String query = "INSERT INTO "+ table +" (FoodCat, Item, Mass, Unit) VALUES (\"" + 
+							foodCat +  "\", \"" + item + "\", \""  + mass + "\", \"" + unit  + "\");";
+			System.out.println(query);
+			st.executeUpdate(query);
+			System.out.println("Pushed Portion Sizes");
+			
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	public void getPortionSizes(String itemSearch){
+		try{
+			System.out.println("Records from Database:");
+			rs = st.executeQuery("select * FROM user_info WHERE item=" + itemSearch);
+			while (rs.next()){
+				String foodCat = rs.getString("FoodCat");
+				String item = rs.getString("Item");
+				int mass = rs.getInt("Mass");
+				String unit = rs.getString("Unit");
+				
+				System.out.println("Food Cat: "  + foodCat + 
+									"\nItem: " + item + 
+									"\nMass: " + mass + 
+									"\nUnit: " + unit);
+			}
+	
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	public void search(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name)){
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
+	public void recommend(String val, String coloumn){
+		try{
+			 String query ="SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name)){
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + val);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
 }
