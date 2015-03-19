@@ -15,22 +15,19 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		//Scraper Output to DB - Tesco
-		SpiderToDB path = new SpiderToDB();
-		DBConnect pull = new DBConnect("food_db");
-		pull.getFoodData("tesco_scraped", 2);
+		
     }
 	
-	public void examineRecord(String path, String db, String table, int record)
+	public void examineRecord(String path, String table, int record)
 	{
 		SpiderToDB std = new SpiderToDB();
-		DBConnect toDB = new DBConnect(db);
+		DBConnect toDB = new DBConnect();
 		System.out.println(std.readRecord(path, record));
 		Food foodItem = std.formatRecord(std.readRecord(path, record));
 		if(foodItem != null)
 		{
 			System.out.println(foodItem.toString());
-			toDB.pushFoodN(foodItem, table);
+			toDB.pushFood(foodItem, table);
 		}		
 	}
 	
@@ -38,7 +35,8 @@ public class Main extends HttpServlet{
 	{
 		
 		SpiderToDB std = new SpiderToDB();
-		DBConnect dbCon = new DBConnect("food_db");
+		DBConnect dbCon = new DBConnect();
+		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ArrayList portions = new ArrayList(std.readAllRecords(std.portionPath));
 		
 		int i = 1;
@@ -56,7 +54,7 @@ public class Main extends HttpServlet{
 	public void pushToDB(String path, String db, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
-		DBConnect toDB = new DBConnect(db);
+		DBConnect toDB = new DBConnect();
 		ArrayList Items = new ArrayList(std.readAllRecords(path));
 		int i = 1;
 		while(i < std.countLines(path)){
@@ -65,7 +63,7 @@ public class Main extends HttpServlet{
 			if(foodItem != null)
 			{
 				System.out.println(foodItem.toString());
-				toDB.pushFoodN(foodItem, table);
+				toDB.pushFood(foodItem, table);
 			}
 			i++;
 		}

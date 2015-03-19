@@ -54,14 +54,14 @@ public class Meal extends HttpServlet{
 	public double mealTescoPrice(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getTescoPrice();
+			result += f.getPrice();
 		}
 		return result;
 	}
 	public double mealAsdaPrice(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getAsdaPrice();
+			result += f.getPrice();
 		}
 		return result;
 	}
@@ -80,7 +80,7 @@ public class Meal extends HttpServlet{
 	public double mealProt(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getProtein();
+			result += f.getProteins();
 		}
 		return result;
 	}
@@ -101,7 +101,7 @@ public class Meal extends HttpServlet{
 	public double mealFat(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getFat();
+			result += f.getFats();
 		}
 		return result;
 	}

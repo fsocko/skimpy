@@ -248,7 +248,7 @@ public class SpiderToDB extends HttpServlet{
 						 "\nSalt:" + salt);
 				 */	
 				 
-				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, 'x', toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, "x", toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 
@@ -391,6 +391,5 @@ public class SpiderToDB extends HttpServlet{
 			 }
 			 return "NULL";
 			 
-		 }
-		  
+		 } 
 }//EOF

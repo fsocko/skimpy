@@ -11,19 +11,19 @@ public class CreateMealPlan extends HttpServlet{
 	public static MealPlanner create(){ 
 		
 		//moved this here for now so that we can make meals from database
-		DBConnect connection = new DBConnect("");
+		DBConnect connection = new DBConnect();
     	
-    	Food ID1 = connection.getFoodData("tesco_scraped", 1);
-		Food ID2 = connection.getFoodData(2);
-		Food ID3 = connection.getFoodData(3);
-		Food ID4 = connection.getFoodData(4);
-		Food ID5 = connection.getFoodData(5);
-		Food ID6 = connection.getFoodData(6);
-		Food ID7 = connection.getFoodData(7);
-		Food ID8 = connection.getFoodData("8");
-		Food ID9 = connection.getFoodData("9");
-		Food ID10 = connection.getFoodData("10");
-		Food ID11 = connection.getFoodData("11");
+    	Food ID1 = connection.pullFood("tesco", 1);
+    	Food ID2 = connection.pullFood("tesco", 2);
+    	Food ID3 = connection.pullFood("tesco", 3);
+    	Food ID4 = connection.pullFood("tesco", 4);
+    	Food ID5 = connection.pullFood("tesco", 5);
+    	Food ID6 = connection.pullFood("tesco", 6);
+    	Food ID7 = connection.pullFood("tesco", 7);
+    	Food ID8 = connection.pullFood("tesco", 8);
+    	Food ID9 = connection.pullFood("tesco", 9);
+    	Food ID10 = connection.pullFood("tesco", 10);
+    	Food ID11 = connection.pullFood("tesco", 11);
     	
 		ArrayList<Food> ing1B = new ArrayList<Food>();
     	ArrayList<Food> ing1L = new ArrayList<Food>();
@@ -98,7 +98,7 @@ public class CreateMealPlan extends HttpServlet{
 		double result = 0;
 		for(int i = 0; i < 5; i++){
 			for(Food f : list.get(i)){
-				result += f.getTescoPrice();
+				result += f.getPrice();
 			}
 		}
 		return result;

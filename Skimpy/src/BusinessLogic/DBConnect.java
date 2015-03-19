@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import javax.servlet.http.HttpServlet;
+
 import com.mysql.jdbc.*;
 
 public class DBConnect extends HttpServlet{
@@ -22,14 +24,16 @@ public class DBConnect extends HttpServlet{
 			
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
 			st = (Statement) con.createStatement();
-		}catch(Exception ex){
+		}
+		catch(Exception ex)
+		{
 			System.out.println("Error:"+ex );
-			
 		}
 	}
 	
-	public void getFoodData(String table, int ID)
+	public Food pullFood(String table, int ID)
 	{
+		Food returnedFood = null;
 		try{
 			
 			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
@@ -73,49 +77,47 @@ public class DBConnect extends HttpServlet{
 				saturates = rs.getDouble("Saturates");
 				salt = rs.getDouble("Salt");
 				fibre = rs.getDouble("Fibre");
-			}
-			
-			System.out.println(name);
-		}
-		catch(Exception ex)
+				}
+			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
+									foodCat, supermarket, calories, proteins, carbs, sugars,
+									fats, saturates, fibre, salt);		
+		} 
+		catch(Exception ex) 
 		{
-				System.out.println("Error:"+ex );	
-		}
-		
-		
+			System.out.println("Error:"+ex );	
+		}	
+		return returnedFood;	
 	}	
-	
-	public void pushFood(Food food)
-	{
-		pushFoodN(food, "skimpy");
-	}
-	
-	
 		
 	//Push food object with nutrition data to DB
-	public void pushFoodN(Food food, String dataBaseName)
+	public void pushFood(Food food, String tableName)
 	{
 		if(food != null)
 		{
 			try{
-					
-					String query = "insert into " + dataBaseName +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
-							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \""  + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
-					System.out.println(query);
-					st.executeUpdate(query);
-					System.out.println("Pushes to Database\n\n");
+				String query = "insert into " + tableName 
+								+ "(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket,"
+								+ " Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
+								+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" 
+								+ food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() 
+								+ "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" 
+								+ food.getFoodCat() + "\", \""  + food.getSupermarket() + "\", \"" 
+								+ food.getCalories() + "\", \"" + food.getProteins() + "\", \"" 
+								+ food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" 
+								+ food.getFats() + "\", \"" + food.getSaturates() + "\", \"" 
+								+ food.getSalt() + "\", \"" + food.getFibre()+ "\");";
+
+				st.executeUpdate(query);
+				System.out.println("Pushes to Database\n\n");
 							
-					
-				}catch(Exception ex){
+			} catch(Exception ex){
 					System.out.println(ex);
-				}
 			}
 		}
+	}
 	
-	
-		
-		
-	public void getUserData(String ID){
+	public void pullUser(String ID)
+	{
 		try{
 			System.out.println("Records from Database");
 			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
@@ -130,40 +132,44 @@ public class DBConnect extends HttpServlet{
 				System.out.println(ID + userName + userEmail + age + weight + gender + exercise);
 			}
 	
-		}catch(Exception ex){
+		} catch(Exception ex){
 			System.out.println(ex);
 		}
 	}
 		
-	public void pushUser(Person user){
+	public void pushUser(Person user)
+	{
 		try{
-			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\", \"Weight\", \"Gender\", \"Exercise\")"
-					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
-							user.getExercise() + ")";
+			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\","
+							+ " \"Weight\", \"Gender\", \"Exercise\")"+ "VALUES (\"" 
+							+ user.getName() +  "\", \"" + user.getEmail() + "\", "  +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() 
+							+ ", \"" + user.getGender() + "\", " + user.getExercise() + ")";
+			
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
-		}catch(Exception ex){
+		} catch(Exception ex){
 			System.out.println(ex);
 		}
-		
 	}
 
-	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit){
+	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit)
+	{
 		try{
 			String query = "INSERT INTO "+ table +" (FoodCat, Item, Mass, Unit) VALUES (\"" + 
 							foodCat +  "\", \"" + item + "\", \""  + mass + "\", \"" + unit  + "\");";
+			
 			System.out.println(query);
 			st.executeUpdate(query);
 			System.out.println("Pushed Portion Sizes");
 			
-		}catch(Exception ex){
+		} catch(Exception ex){
 			System.out.println(ex);
 		}
 	}
-	public void getPortionSizes(String itemSearch){
+	public void pullPortionSizes(String itemSearch)
+	{
 		try{
 			System.out.println("Records from Database:");
 			rs = st.executeQuery("select * FROM user_info WHERE item=" + itemSearch);
@@ -179,11 +185,12 @@ public class DBConnect extends HttpServlet{
 									"\nUnit: " + unit);
 			}
 	
-		}catch(Exception ex){
+		} catch(Exception ex){
 			System.out.println(ex);
 		}
 	}
-	public void search(String qu){
+	public void search(String qu)
+	{
 		try{
 			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
 		 
@@ -209,7 +216,8 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void recommend(String val, String coloumn){
+	public void recommend(String val, String coloumn)
+	{
 		try{
 			 String query ="SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
 		 
