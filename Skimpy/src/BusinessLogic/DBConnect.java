@@ -48,6 +48,7 @@ public class DBConnect extends HttpServlet{
 			double PPUPrice = -1;
 			String PPUUnit = null;
 			String foodCat = null;
+			String foodCat2 = null;
 			String supermarket = "X";
 			double calories = -1;
 			double proteins = -1;
@@ -68,6 +69,7 @@ public class DBConnect extends HttpServlet{
 				PPUPrice = rs.getDouble("PPUPrice");
 				PPUUnit = rs.getString("PPUUnit");
 				foodCat = rs.getString("FoodCat");
+				foodCat2 = rs.getString("FoodCat2");
 				supermarket = rs.getString("SuperMarket");
 				calories = rs.getDouble("Calories");
 				proteins = rs.getDouble("Proteins");
@@ -79,7 +81,7 @@ public class DBConnect extends HttpServlet{
 				fibre = rs.getDouble("Fibre");
 				}
 			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
-									foodCat, supermarket, calories, proteins, carbs, sugars,
+									foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
 									fats, saturates, fibre, salt);		
 		} 
 		catch(Exception ex) 
@@ -96,12 +98,12 @@ public class DBConnect extends HttpServlet{
 		{
 			try{
 				String query = "insert into " + tableName 
-								+ "(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket,"
+								+ "(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, FoodCat2, Supermarket,"
 								+ " Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
 								+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" 
 								+ food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() 
 								+ "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" 
-								+ food.getFoodCat() + "\", \""  + food.getSupermarket() + "\", \"" 
+								+ food.getFoodCat() + "\", \"" + food.getFoodCat2() + "\", \"" + food.getSupermarket() + "\", \"" 
 								+ food.getCalories() + "\", \"" + food.getProteins() + "\", \"" 
 								+ food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" 
 								+ food.getFats() + "\", \"" + food.getSaturates() + "\", \"" 

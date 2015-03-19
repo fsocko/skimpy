@@ -16,6 +16,13 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		
+		SpiderToDB std = new SpiderToDB();
+		
+		
+		//Push foodCat2
+		pushToDB(std.tescoPath, "skimpy", "tesco");
+		
+		
     }
 	
 	public void examineRecord(String path, String table, int record)
@@ -51,7 +58,7 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public void pushToDB(String path, String db, String table)
+	public static void pushToDB(String path, String db, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
