@@ -31,24 +31,28 @@ public class Main extends HttpServlet{
 //TODO: Not touch this-FPS
 
 		
-		//Scraper Output to DB
+		//Scraper Output to DB - Tesco
 		SpiderToDB path = new SpiderToDB();
 		StdMain run = new StdMain();
 		
-		System.out.println(path.asdaPath);
-		run.pushToDB(path.asdaPath, "food_db","asda_scraped");	
-		System.out.println(path.sainsPath);
-		run.pushToDB(path.sainsPath, "food_db","sains_scraped");
-		System.out.println(path.tescoPath);
-		run.pushToDB(path.tescoPath, "food_db","tesco_scraped");
+		//System.out.println(path.tescoPath);
+		//run.pushToDB(path.tescoPath, "food_db","tesco_scraped");
+		
+		
+		
+		//System.out.println(path.asdaPath);
+		//run.pushToDB(path.asdaPath, "food_db","asda_scraped");	
+		
 	
 
 
 		//PortionSizes
 		
-		StdMain portions = new StdMain(); 
-		portions.portionSizeToDB("food_db", "portion_sizes");
+		//StdMain portions = new StdMain(); 
+		//portions.portionSizeToDB("food_db", "portion_sizes");
 		
+		DBConnect pull = new DBConnect("food_db");
+		pull.getFoodData("2");
 		
 		//DBConnectTest
 		//DBConnect test1 = new DBConnect();

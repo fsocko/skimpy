@@ -248,7 +248,7 @@ public class SpiderToDB extends HttpServlet{
 						 "\nSalt:" + salt);
 				 */	
 				 
-				DBFood currentRec = new DBFood(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				DBFood currentRec = new DBFood(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, 'x', toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 

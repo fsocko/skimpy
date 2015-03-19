@@ -42,81 +42,66 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	//fairly sure this won't work since ID is saved as an int in SQLDB
-	public Food getFoodData(String ID){
+	
+	public Food getFoodDataN(String table, int ID){
 		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID + ";");
 			
+			String query = "select * FROM " + table + "WHERE ID=" + ID + ";";
+			System.out.println(query);
+			rs = st.executeQuery(query);
+			
+			int ID = -1.69;
+			String shopID = null;
 			String name = null;
-			String units = null;
-			int amount = 0;
-			double serving = 0;
-			double tescoPrice = 0;
-			double asdaPrice = 0;
-			double calories = 0;
-			double protein = 0;
-			double carbs = 0;
-			double sugars = 0;
-			double fats = 0;
-			double saturates = 0;
-			double fibre = 0;
-			double salt = 0;	
+			double mass = -1;
+			String unit = null;
+			double price = -1;
+			double pricePU = -1;
+			String PPUUnit = null;
+			String foodCat = null;
+			String supermarket = "X";
+			double calories = -1;
+			double proteins = -1;
+			double carbs = -1;
+			double sugars = -1;
+			double fats = -1;
+			double saturates = -1;
+			double fibre = -1;
+			double salt = -1;
 			
-			while (rs.next()){
+			while(rs.next())
+			{
+				
+				ID = rs.getInt("ID");
+				shopID = rs.getString("shopID");
 				name = rs.getString("Name");
-				units = rs.getString("Units");
-				amount = rs.getInt("Amount");
-				serving = rs.getDouble("Serving");
-				tescoPrice = rs.getDouble("tesco_price");
-				asdaPrice = rs.getDouble("asda_price");
+				unit = rs.getString("Units");
+				mass = rs.getDouble("Mass");
+				price = rs.getDouble("Price");
+				PPUPrice = rs.getDouble("PPUPrice");
+				PPUUnit = rs.getString("PPUUnit");
+				foodCat = rs.getString("FoodCat");
+				supermarket = rs.getChar("SuperMarket");
 				calories = rs.getDouble("Calories");
-				protein = rs.getDouble("Protein");
+				proteins = rs.getDouble("Proteins");
 				carbs = rs.getDouble("Carbs");
 				sugars = rs.getDouble("Sugars");
-				fats = rs.getDouble("Fat");
+				fats = rs.getDouble("Fats");
 				saturates = rs.getDouble("Saturates");
+				salt = rs.getDouble("Salt");
 				fibre = rs.getDouble("Fibre");
-				salt = rs.getDouble("Salt");		
 			}
 			
-			Food item = new Food(name, units, amount, serving, tescoPrice, asdaPrice, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
-			return item;
-		
-		}catch(Exception ex){
-			System.out.println(ex);
-			return null;
 		}
-	}
-	
+		
+	}	
 	
 	public void pushFood(DBFood food)
 	{
-		pushFood(food, "skimpy");
+		pushFoodN(food, "skimpy");
 	}
 	
-	public void pushFood(DBFood food, String dataBaseName)
-	{
-		
-		if(food != null)
-		{
-			try{
-					
-					String query = "insert into " + dataBaseName +"(shopID, Name, Units, Mass, Price, PricePUnit, FoodCat)"
-							+ " values(\" " + 
-									food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", "  +
-									food.getMass() + ", " + food.getPrice() + ", \"" + food.getPricePU() + "\", \"" + 
-									food.getFoodCat() + "\");";
-					
-					
-					st.executeUpdate(query);
-					System.out.println("Pushes to Database\n\n");
-							
-					
-				}catch(Exception ex){
-					System.out.println(ex);
-				}
-			}
-		}
+	
 		
 	//Push food object with nutrition data to DB
 	public void pushFoodN(DBFood food, String dataBaseName)
@@ -126,8 +111,8 @@ public class DBConnect extends HttpServlet{
 			try{
 					
 					String query = "insert into " + dataBaseName +"(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket, Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
-							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
-					
+							+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" + food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() + "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" + food.getFoodCat() + "\", \""  + food.getSupermarket() + "\", \"" + food.getCalories() + "\", \"" + food.getProteins() + "\", \"" + food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" + food.getFats() + "\", \"" + food.getSaturates() + "\", \"" + food.getSalt() + "\", \"" + food.getFibre()+ "\");";
+					System.out.println(query);
 					st.executeUpdate(query);
 					System.out.println("Pushes to Database\n\n");
 							
