@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<form action="login.jsp" method="post">
+<form action="Signed.jsp" method="post">
  <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, 'M', 0); %> --%>
 	<h1> Please enter your details:</h1>
 	<br><table>
@@ -32,7 +32,7 @@
 	<tr><td> Weight:</td><td><input type="text" name="weight"></td></tr>
 	<tr> <td>Height: </td> <td><input type="text" name="height" ></td></tr>
 	<tr><td> Exercise</td><td> <input type="text" name="exercise" ></td></tr>
-	<tr><td> Password: </td><td><input type="text" name="password"  ></td></tr>
+	<tr><td> Password: </td><td><input type="password" name="password"  ></td></tr>
      </table>
 			<input type="submit" value="Save">
 		

@@ -35,16 +35,6 @@
 			<input type="submit" value="Log In">
 		</p>	
 </form>
-<% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
-user.setName(request.getParameter("name"));
-user.setAge(Integer.valueOf(request.getParameter("age")));
-user.setHeight(Double.parseDouble(request.getParameter("height")));
-user.setWeight(Double.parseDouble(request.getParameter("weight")));
-user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
-user.setExercise(Integer.valueOf(request.getParameter("exercise")));
-user.setPassword(request.getParameter("password"));
-user.setEmail(request.getParameter("emailaddress"));
-DBConnect connect = new DBConnect();
-connect.pushUser(user);%>
+
 </body>
 </html>

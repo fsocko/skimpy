@@ -22,7 +22,7 @@ public class DBConnect extends HttpServlet{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/food_db", "root", "");
 			st = (Statement) con.createStatement();
 		}catch(Exception ex){
 			System.out.println("Error:"+ex );
@@ -43,50 +43,51 @@ public class DBConnect extends HttpServlet{
 	}
 	
 	//fairly sure this won't work since ID is saved as an int in SQLDB
-	public Food getFoodData(String ID){
-		try{
-			rs = st.executeQuery("select * FROM fooditems WHERE ID=" + ID + ";");
-			
-			String name = null;
-			String units = null;
-			int amount = 0;
-			double serving = 0;
-			double tescoPrice = 0;
-			double asdaPrice = 0;
-			double calories = 0;
-			double protein = 0;
-			double carbs = 0;
-			double sugars = 0;
-			double fats = 0;
-			double saturates = 0;
-			double fibre = 0;
-			double salt = 0;	
-			
-			while (rs.next()){
-				name = rs.getString("Name");
-				units = rs.getString("Units");
-				amount = rs.getInt("Amount");
-				serving = rs.getDouble("Serving");
-				tescoPrice = rs.getDouble("tesco_price");
-				asdaPrice = rs.getDouble("asda_price");
-				calories = rs.getDouble("Calories");
-				protein = rs.getDouble("Protein");
-				carbs = rs.getDouble("Carbs");
-				sugars = rs.getDouble("Sugars");
-				fats = rs.getDouble("Fat");
-				saturates = rs.getDouble("Saturates");
-				fibre = rs.getDouble("Fibre");
-				salt = rs.getDouble("Salt");		
+			public Food getFoodData(String table, String ID){
+				try{
+					String query = "select * FROM "+ table +"WHERE ID=" + ID + ";"; 
+					rs = st.executeQuery(query);
+					
+					String name = null;
+					String units = null;
+					int amount = 0;
+					double serving = 0;
+					double tescoPrice = 0;
+					double asdaPrice = 0;
+					double calories = 0;
+					double protein = 0;
+					double carbs = 0;
+					double sugars = 0;
+					double fats = 0;
+					double saturates = 0;
+					double fibre = 0;
+					double salt = 0;	
+					
+					while (rs.next()){
+						name = rs.getString("Name");
+						units = rs.getString("Units");
+						amount = rs.getInt("Amount");
+						serving = rs.getDouble("Serving");
+						tescoPrice = rs.getDouble("tesco_price");
+						asdaPrice = rs.getDouble("asda_price");
+						calories = rs.getDouble("Calories");
+						protein = rs.getDouble("Protein");
+						carbs = rs.getDouble("Carbs");
+						sugars = rs.getDouble("Sugars");
+						fats = rs.getDouble("Fat");
+						saturates = rs.getDouble("Saturates");
+						fibre = rs.getDouble("Fibre");
+						salt = rs.getDouble("Salt");		
+					}
+					
+					Food item = new Food(name, units, amount, serving, tescoPrice, asdaPrice, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
+					return item;
+				
+				}catch(Exception ex){
+					System.out.println(ex);
+					return null;
+				}
 			}
-			
-			Food item = new Food(name, units, amount, serving, tescoPrice, asdaPrice, calories, protein, carbs, sugars, fats, saturates, fibre, salt);
-			return item;
-		
-		}catch(Exception ex){
-			System.out.println(ex);
-			return null;
-		}
-	}
 	
 	
 	public void pushFood(DBFood food)
@@ -198,6 +199,35 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	
+	
+	public void findCat(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name))
+		    	 {
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
 	
 	public void recommend(String val, String coloumn){
 		try{
