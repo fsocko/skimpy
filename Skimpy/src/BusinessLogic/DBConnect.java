@@ -7,9 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import javax.servlet.http.HttpServlet;
-
 import com.mysql.jdbc.*;
 
 public class DBConnect extends HttpServlet{
@@ -30,20 +28,7 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public DBConnect(String db) //db is the name of the database. 
-	{
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"+ db, "root", "");
-			st = (Statement) con.createStatement();
-		}catch(Exception ex){
-			System.out.println("Error:"+ex );
-		}
-	}
-	
-	
-	public void getFoodDataN(String table, int ID)
+	public void getFoodData(String table, int ID)
 	{
 		try{
 			
@@ -71,8 +56,6 @@ public class DBConnect extends HttpServlet{
 			
 			while(rs.next())
 			{
-				
-				ID = rs.getInt("ID");
 				shopID = rs.getString("shopID");
 				name = rs.getString("Name");
 				unit = rs.getString("Units");
@@ -102,7 +85,7 @@ public class DBConnect extends HttpServlet{
 		
 	}	
 	
-	public void pushFood(DBFood food)
+	public void pushFood(Food food)
 	{
 		pushFoodN(food, "skimpy");
 	}
@@ -110,7 +93,7 @@ public class DBConnect extends HttpServlet{
 	
 		
 	//Push food object with nutrition data to DB
-	public void pushFoodN(DBFood food, String dataBaseName)
+	public void pushFoodN(Food food, String dataBaseName)
 	{
 		if(food != null)
 		{

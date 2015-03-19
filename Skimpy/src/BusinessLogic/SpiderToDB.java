@@ -176,7 +176,7 @@ public class SpiderToDB extends HttpServlet{
 
 	 	//Takes a record string, returns a food object. You probably want to read a record with readRecord(int)
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
-		 public DBFood formatRecord(String record)
+		 public Food formatRecord(String record)
 		 {
 //Parse Strings via findColon			 
 			
@@ -248,7 +248,7 @@ public class SpiderToDB extends HttpServlet{
 						 "\nSalt:" + salt);
 				 */	
 				 
-				DBFood currentRec = new DBFood(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, 'x', toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, 'x', toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 
@@ -302,7 +302,6 @@ public class SpiderToDB extends HttpServlet{
 			 return formatPPU(field, false);
 			 
 		 }
-		//asdf
 
 		 
 		 public String formatMassUnit(String name, boolean returnMass)

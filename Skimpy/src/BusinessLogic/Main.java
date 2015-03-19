@@ -15,50 +15,59 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-
-		//this will open a class in which all your meal plan methods from main are now.
-		//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master branch.
-		//It makes it easier to comment out other people's work which may or may not be needed.
-			
-		//Run meal plan methods
-		//MealPlanMain testPlan = new MealPlanMain();
-		//testPlan.testMealPlan();
-				
-		//Connect run  = new DBConnect();
-		//run.search("bread");
-
-		
-//TODO: Not touch this-FPS
-
-		
 		//Scraper Output to DB - Tesco
 		SpiderToDB path = new SpiderToDB();
-		StdMain run = new StdMain();
-		
-		//System.out.println(path.tescoPath);
-		//run.pushToDB(path.tescoPath, "food_db","tesco_scraped");
-		
-		
-		
-		//System.out.println(path.asdaPath);
-		//run.pushToDB(path.asdaPath, "food_db","asda_scraped");	
-		
-	
-
-
-		//PortionSizes
-		
-		//StdMain portions = new StdMain(); 
-		//portions.portionSizeToDB("food_db", "portion_sizes");
-		
 		DBConnect pull = new DBConnect("food_db");
-		pull.getFoodDataN("tesco_scraped", 2);
-		
-		//DBConnectTest
-		//DBConnect test1 = new DBConnect();
-		//test1.getFoodData("asda_scraped", "2");
-		
+		pull.getFoodData("tesco_scraped", 2);
     }
+	
+	public void examineRecord(String path, String db, String table, int record)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect toDB = new DBConnect(db);
+		System.out.println(std.readRecord(path, record));
+		Food foodItem = std.formatRecord(std.readRecord(path, record));
+		if(foodItem != null)
+		{
+			System.out.println(foodItem.toString());
+			toDB.pushFoodN(foodItem, table);
+		}		
+	}
+	
+	public void portionSizeToDB(String db, String table)
+	{
+		
+		SpiderToDB std = new SpiderToDB();
+		DBConnect dbCon = new DBConnect("food_db");
+		ArrayList portions = new ArrayList(std.readAllRecords(std.portionPath));
+		
+		int i = 1;
+		while(i < std.countLines(std.portionPath))
+		{
+			System.out.println("\n i is:" + i + "\n");
+			System.out.println(portions.get(i).toString().trim());
+			PortionSize portion = std.parsePortion(portions.get(i).toString().trim());
+			System.out.println(portion.toString());
+			dbCon.pushPortionSizes("portion_sizes", portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
+			i++;
+		}
+	}
+	
+	public void pushToDB(String path, String db, String table)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect toDB = new DBConnect(db);
+		ArrayList Items = new ArrayList(std.readAllRecords(path));
+		int i = 1;
+		while(i < std.countLines(path)){
+			System.out.println("\n i is:" + i + "\n");
+			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
+			if(foodItem != null)
+			{
+				System.out.println(foodItem.toString());
+				toDB.pushFoodN(foodItem, table);
+			}
+			i++;
+		}
+	}
 }
-
-
