@@ -16,6 +16,15 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		
+		//Push foodCat2
+		SpiderToDB std = new SpiderToDB();
+		//pushToDB(std.tescoPath, "skimpy", "tesco");
+		for(int i = 1; i<5548; i++)
+		{
+			pullFromDB("tesco", i);
+		
+		}
+		System.out.println("Pulled all records");
     }
 	 
 	public void examineRecord(String path, String table, int record)
@@ -51,7 +60,7 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public void pushToDB(String path, String db, String table)
+	public static void pushToDB(String path, String db, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
@@ -67,5 +76,13 @@ public class Main extends HttpServlet{
 			}
 			i++;
 		}
+	}
+	
+	public static void pullFromDB(String table, int ID)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect pullDB = new DBConnect();
+		System.out.println(pullDB.pullFood(table, ID).toString());
+	
 	}
 }

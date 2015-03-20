@@ -6,6 +6,7 @@ package BusinessLogic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,6 @@ public class DBConnect extends HttpServlet{
 	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
 			st = (Statement) con.createStatement();
 		}
@@ -30,6 +30,38 @@ public class DBConnect extends HttpServlet{
 			System.out.println("Error:"+ex );
 		}
 	}
+	
+	public void closeConnections()
+	{
+		try 
+		{
+			rs.close();
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try 
+		{
+			st.close();
+		} 
+		catch (SQLException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+				con.close();
+			} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+	}
+	
 	
 	public Food pullFood(String table, int ID)
 	{
@@ -48,6 +80,7 @@ public class DBConnect extends HttpServlet{
 			double PPUPrice = -1;
 			String PPUUnit = null;
 			String foodCat = null;
+			String foodCat2 = null;
 			String supermarket = "X";
 			double calories = -1;
 			double proteins = -1;
@@ -68,6 +101,7 @@ public class DBConnect extends HttpServlet{
 				PPUPrice = rs.getDouble("PPUPrice");
 				PPUUnit = rs.getString("PPUUnit");
 				foodCat = rs.getString("FoodCat");
+				foodCat2 = rs.getString("FoodCat2");
 				supermarket = rs.getString("SuperMarket");
 				calories = rs.getDouble("Calories");
 				proteins = rs.getDouble("Proteins");
@@ -79,13 +113,20 @@ public class DBConnect extends HttpServlet{
 				fibre = rs.getDouble("Fibre");
 				}
 			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
-									foodCat, supermarket, calories, proteins, carbs, sugars,
-									fats, saturates, fibre, salt);		
+									foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
+									fats, saturates, fibre, salt);	
+			
 		} 
 		catch(Exception ex) 
 		{
 			System.out.println("Error:"+ex );	
 		}	
+		//close connections.
+		finally 
+		{
+			closeConnections();
+		}
+
 		return returnedFood;	
 	}	
 		
@@ -96,12 +137,12 @@ public class DBConnect extends HttpServlet{
 		{
 			try{
 				String query = "insert into " + tableName 
-								+ "(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, Supermarket,"
+								+ "(shopID, Name, Unit, Mass, Price, PPUPrice, PPUUnit, FoodCat, FoodCat2, Supermarket,"
 								+ " Calories, Proteins, Carbs, Sugars, Fats, Saturates, Salt, Fibre)"
 								+ " values(\" " + food.getShopID() + "\", \"" + food.getName() + "\", \"" 
 								+ food.getUnit() + "\", \"" + food.getMass()  + "\", \"" + food.getPrice() 
 								+ "\", \"" + food.getPricePU() + "\", \"" + food.getPPUUnit() + "\", \"" 
-								+ food.getFoodCat() + "\", \""  + food.getSupermarket() + "\", \"" 
+								+ food.getFoodCat() + "\", \"" + food.getFoodCat2() + "\", \"" + food.getSupermarket() + "\", \"" 
 								+ food.getCalories() + "\", \"" + food.getProteins() + "\", \"" 
 								+ food.getCarbs() + "\", \"" + food.getSugars() + "\", \"" 
 								+ food.getFats() + "\", \"" + food.getSaturates() + "\", \"" 
@@ -112,6 +153,10 @@ public class DBConnect extends HttpServlet{
 							
 			} catch(Exception ex){
 					System.out.println(ex);
+			}
+			finally 
+			{
+				closeConnections();
 			}
 		}
 	}
@@ -134,6 +179,10 @@ public class DBConnect extends HttpServlet{
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 		
@@ -167,6 +216,10 @@ public class DBConnect extends HttpServlet{
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeConnections();
+		}
 	}
 	public void pullPortionSizes(String itemSearch)
 	{
@@ -187,6 +240,10 @@ public class DBConnect extends HttpServlet{
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 	public void search(String qu)
@@ -214,6 +271,10 @@ public class DBConnect extends HttpServlet{
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeConnections();
+		}
 	}
 	
 	public void recommend(String val, String coloumn)
@@ -240,6 +301,10 @@ public class DBConnect extends HttpServlet{
 			 
 		} catch(Exception ex){
 			System.out.println(ex);
+		}
+		finally 
+		{
+			closeConnections();
 		}
 	}
 	
