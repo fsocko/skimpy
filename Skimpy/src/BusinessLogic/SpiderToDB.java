@@ -190,15 +190,16 @@ public class SpiderToDB extends HttpServlet{
 				 String PPUPrice;
 				 String PPUUnit;
 				 String foodCat = record.substring(findColon(record, 3), findColon(record, 4));
-//Nutrition				 
-				 String calories = record.substring(findColon(record, 4), findColon(record, 5));
-				 String proteins = record.substring(findColon(record, 5), findColon(record, 6));
-				 String carbs = record.substring(findColon(record, 6), findColon(record, 7));
-				 String sugars = record.substring(findColon(record, 7), findColon(record, 8));
-				 String fats = record.substring(findColon(record, 8), findColon(record, 9));
-				 String saturates = record.substring(findColon(record, 9), findColon(record, 10));
-				 String fibre = record.substring(findColon(record, 10), findColon(record, 11));
-				 String salt = record.substring(findColon(record, 11), record.length());
+				 String foodCat2 = record.substring(findColon(record, 4), findColon(record, 5));
+				 //Nutrition				 
+				 String calories = record.substring(findColon(record, 5), findColon(record, 6));
+				 String proteins = record.substring(findColon(record, 6), findColon(record, 7));
+				 String carbs = record.substring(findColon(record, 7), findColon(record, 8));
+				 String sugars = record.substring(findColon(record, 8), findColon(record, 9));
+				 String fats = record.substring(findColon(record, 9), findColon(record, 10));
+				 String saturates = record.substring(findColon(record, 10), findColon(record, 11));
+				 String fibre = record.substring(findColon(record, 11), findColon(record, 12));
+				 String salt = record.substring(findColon(record, 12), record.length());
 	
 	
 				 
@@ -218,6 +219,9 @@ public class SpiderToDB extends HttpServlet{
 	//foodCat	 	 
 				 foodCat = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
 				 foodCat = foodCat.replaceAll(";"," ");
+			
+    //foodCat2
+				 foodCat2 = foodCat2.replaceAll(";","");
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
@@ -228,27 +232,8 @@ public class SpiderToDB extends HttpServlet{
 	//Salts------------NO CHANGE
 	//Fibre------------NO CHANGE
 	
-				 //check the output
-				/* System.out.println(
-						 "\nshopID:" + shopID + 
-						 "\nname:"+name + 
-						 "\nmass:" + mass +
-						 "\nunit:" + unit + 
-						 "\nprice:"+price + 
-						 "\nPPUPrice:" + PPUPrice + 
-						 "\nPPUUnit:"+ PPUUnit + 
-						 "\nFoodcat" + foodCat + 
-						 "\nCalories:" + calories + 
-						 "\nProteins:"+proteins + 
-						 "\n Carbs:" + carbs + 
-						 "\nSugars:"+ sugars +
-						 "\nFats:" + fats + 
-						 "\n Saturates:" + saturates + 
-						 "\nFibre:"+ fibre + 
-						 "\nSalt:" + salt);
-				 */	
-				 
-				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, "x", toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+	
+				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, "x", toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 

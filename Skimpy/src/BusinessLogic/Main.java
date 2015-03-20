@@ -1,6 +1,5 @@
 package BusinessLogic;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -16,9 +15,13 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		
+		//test search
+		search("cheese");
+		
+		
     }
 	
-	public void examineRecord(String path, String table, int record)
+	public static void examineRecord(String path, String table, int record)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
@@ -31,7 +34,7 @@ public class Main extends HttpServlet{
 		}		
 	}
 	
-	public void portionSizeToDB(String db, String table)
+	public static void portionSizeToDB(String db, String table)
 	{
 		
 		SpiderToDB std = new SpiderToDB();
@@ -51,7 +54,7 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public void pushToDB(String path, String db, String table)
+	public static void pushToDB(String path, String db, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
@@ -68,4 +71,27 @@ public class Main extends HttpServlet{
 			i++;
 		}
 	}
+	
+	public static String pullFromDB(String table, int ID)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect pullDB = new DBConnect();
+		return pullDB.pullFood(table, ID).toString();
+	
+	}
+	
+	public static void search(String query)
+	{
+		DBConnect s = new DBConnect();
+		ArrayList<Integer> searchResults = s.search("tesco", query);
+		System.out.println("Items which contain the query \" " + query+ "\" are the following:\n");
+		int j = 0;
+		while (j < searchResults.size()) 
+		{
+			System.out.println(pullFromDB("tesco", searchResults.get(j)));
+			j++;
+		}
+		
+	}
+	
 }

@@ -12,6 +12,7 @@ public class Food extends HttpServlet{
 	private double pricePU;
 	private String PPUUnit;
 	private String foodCat;
+	private String foodCat2;
 	private String supermarket;
 	private double calories;
 	private double proteins;
@@ -23,7 +24,7 @@ public class Food extends HttpServlet{
 	private double salt;
 	
 	public Food(String shopID, String name, double mass, String unit,
-				double price, double pricePU, String pPUUnit, String foodCat, String supermarket,
+				double price, double pricePU, String pPUUnit, String foodCat, String foodCat2, String supermarket,
 				double calories, double proteins, double carbs,
 				double sugars, double fats, double saturates, double fibre,
 				double salt) 
@@ -36,6 +37,7 @@ public class Food extends HttpServlet{
 		this.pricePU = pricePU;
 		PPUUnit = pPUUnit;
 		this.foodCat = foodCat;
+		this.foodCat2 = foodCat2;
 		this.supermarket = "x"; //TODO: add supermarket data to the DB
 		this.calories = calories;
 		this.proteins = proteins;
@@ -47,184 +49,161 @@ public class Food extends HttpServlet{
 		this.salt = salt;
 	}
 
-	public String getShopID() 
-	{
+	public String getShopID() {
 		return shopID;
 	}
 
-	public void setShopID(String shopID) 
-	{
+	public void setShopID(String shopID) {
 		this.shopID = shopID;
 	}
 
-	public String getName() 
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) 
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public double getMass() 
-	{
+	public double getMass() {
 		return mass;
 	}
 
-	public void setMass(double mass) 
-	{
+	public void setMass(double mass) {
 		this.mass = mass;
 	}
 
-	public String getUnit() 
-	{
+	public String getUnit() {
 		return unit;
 	}
 
-	public void setUnit(String unit) 
-	{
+	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 
-	public double getPrice() 
-	{
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) 
-	{
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	public double getPricePU() 
-	{
+	public double getPricePU() {
 		return pricePU;
 	}
 
-	public void setPricePU(double pricePU) 
-	{
+	public void setPricePU(double pricePU) {
 		this.pricePU = pricePU;
 	}
 
-	public String getPPUUnit() 
-	{
+	public String getPPUUnit() {
 		return PPUUnit;
 	}
 
-	public void setPPUUnit(String pPUUnit) 
-	{
+	public void setPPUUnit(String pPUUnit) {
 		PPUUnit = pPUUnit;
 	}
 
-	public String getFoodCat() 
-	{
+	public String getFoodCat() {
 		return foodCat;
 	}
 
-	public void setFoodCat(String foodCat) 
-	{
+	public void setFoodCat(String foodCat) {
 		this.foodCat = foodCat;
 	}
 
-	public String getSupermarket() 
-	{
+	public String getFoodCat2() {
+		return foodCat2;
+	}
+
+	public void setFoodCat2(String foodCat2) {
+		this.foodCat2 = foodCat2;
+	}
+
+	public String getSupermarket() {
 		return supermarket;
 	}
 
-	public void setSupermarket(String supermarket)
-	{
+	public void setSupermarket(String supermarket) {
 		this.supermarket = supermarket;
 	}
 
-	public double getCalories()
-	{
+	public double getCalories() {
 		return calories;
 	}
 
-	public void setCalories(double calories)
-	{
+	public void setCalories(double calories) {
 		this.calories = calories;
 	}
 
-	public double getProteins()
-	{
+	public double getProteins() {
 		return proteins;
 	}
 
-	public void setProteins(double proteins)
-	{
+	public void setProteins(double proteins) {
 		this.proteins = proteins;
 	}
 
-	public double getCarbs()
-	{
+	public double getCarbs() {
 		return carbs;
 	}
 
-	public void setCarbs(double carbs)
-	{
+	public void setCarbs(double carbs) {
 		this.carbs = carbs;
 	}
 
-	public double getSugars()
-	{
+	public double getSugars() {
 		return sugars;
 	}
 
-	public void setSugars(double sugars)
-	{
+	public void setSugars(double sugars) {
 		this.sugars = sugars;
 	}
 
-	public double getFats()
-	{
+	public double getFats() {
 		return fats;
 	}
 
-	public void setFats(double fats)
-	{
+	public void setFats(double fats) {
 		this.fats = fats;
 	}
 
-	public double getSaturates()
-	{
+	public double getSaturates() {
 		return saturates;
 	}
 
-	public void setSaturates(double saturates)
-	{
+	public void setSaturates(double saturates) {
 		this.saturates = saturates;
 	}
 
-	public double getFibre()
-	{
+	public double getFibre() {
 		return fibre;
 	}
 
-	public void setFibre(double fibre)
-	{
+	public void setFibre(double fibre) {
 		this.fibre = fibre;
 	}
 
-	public double getSalt()
-	{
+	public double getSalt() {
 		return salt;
 	}
 
-	public void setSalt(double salt)
-	{
+	public void setSalt(double salt) {
 		this.salt = salt;
 	}
 
 	@Override
 	public String toString() {
-		return "DBFood [shopID=" + shopID + ", name=" + name + ", mass=" + mass
+		return "Food [shopID=" + shopID + ", name=" + name + ", mass=" + mass
 				+ ", unit=" + unit + ", price=" + price + ", pricePU="
 				+ pricePU + ", PPUUnit=" + PPUUnit + ", foodCat=" + foodCat
-				+ ", supermarket=" + supermarket + ", calories=" + calories
-				+ ", proteins=" + proteins + ", carbs=" + carbs + ", sugars="
-				+ sugars + ", fats=" + fats + ", saturates=" + saturates
-				+ ", fibre=" + fibre + ", salt=" + salt + "]";
+				+ ", foodCat2=" + foodCat2 + ", supermarket=" + supermarket
+				+ ", calories=" + calories + ", proteins=" + proteins
+				+ ", carbs=" + carbs + ", sugars=" + sugars + ", fats=" + fats
+				+ ", saturates=" + saturates + ", fibre=" + fibre + ", salt="
+				+ salt + "]";
 	}
+
+	
 }
