@@ -42,15 +42,8 @@ public class DBConnect extends HttpServlet{
 	
 	public void closeConnections()
 	{
-		try 
-		{
-			rs.close();
-		} 
-		catch (SQLException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("Trying to close all connections to DB.");
+
 		try 
 		{
 			st.close();
@@ -68,7 +61,7 @@ public class DBConnect extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		finally{System.out.println("Connections closed.");}		
 	}
 	
 	
@@ -255,22 +248,23 @@ public class DBConnect extends HttpServlet{
 			closeConnections();
 		}
 	}
-	public void search(String qu)
+
+	public void search(String table, String qu)
 	{
 		try{
 			ArrayList<String> query = new ArrayList<String>();
-			query.add("SELECT * FROM tesco WHERE Name = '" + qu + "';");
-			query.add("SELECT * FROM tesco WHERE FoodCat = '" + qu + "';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 = '" + qu + "';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 = '" + qu + "';");
-			query.add("SELECT * FROM tesco WHERE Name LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM tesco WHERE FoodCat LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM tesco WHERE Name LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM tesco WHERE FoodCat LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM tesco WHERE FoodCat2 LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE Name LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
 			
 			Map<String, Integer> resultsHash = new HashMap<String, Integer>();
 			ArrayList<String> results = new ArrayList<String>();
@@ -288,8 +282,6 @@ public class DBConnect extends HttpServlet{
 //			    		System.out.println(name);
 			    	}
 			    }
-			   
-			    
 			    System.out.println();
 			}
 			
@@ -298,7 +290,6 @@ public class DBConnect extends HttpServlet{
 			for(String s: mySet){
 				resultsHash.put(s, Collections.frequency(results, s));
 			}
-	
 			
 			List<Entry<String, Integer>> sortedRes = new ArrayList<Entry<String, Integer>>();
 			sortedRes = entriesSortedByValues(resultsHash);
@@ -311,10 +302,10 @@ public class DBConnect extends HttpServlet{
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
-//		finally 
-//		{
-//			closeConnections();
-//		}
+		finally 
+		{
+			closeConnections();
+		}
 	}
 	static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
 	

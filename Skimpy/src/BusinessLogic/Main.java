@@ -1,6 +1,5 @@
 package BusinessLogic;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -16,23 +15,10 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		DBConnect con = new DBConnect();
-		con.search("apple");
+		con.search("tesco", "apple");
     }
-	 
-	public void examineRecord(String path, String table, int record)
-	{
-		SpiderToDB std = new SpiderToDB();
-		DBConnect toDB = new DBConnect();
-		System.out.println(std.readRecord(path, record));
-		Food foodItem = std.formatRecord(std.readRecord(path, record));
-		if(foodItem != null)
-		{
-			System.out.println(foodItem.toString());
-			toDB.pushFood(foodItem, table);
-		}		
-	}
 	
-	public void portionSizeToDB(String db, String table)
+	public static void portionSizeToDB(String db, String table)
 	{
 		
 		SpiderToDB std = new SpiderToDB();
@@ -70,11 +56,12 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public static void pullFromDB(String table, int ID)
+	public static String pullFromDB(String table, int ID)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
-		System.out.println(pullDB.pullFood(table, ID).toString());
+		return pullDB.pullFood(table, ID).toString();
 	
 	}
+	
 }
