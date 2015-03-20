@@ -26,7 +26,7 @@ public class DBConnect extends HttpServlet{
 	private Statement st;
 	private ResultSet rs;
 	
-	public DBConnect()
+	public DBConnect() //Open Con
 	{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -39,9 +39,24 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void closeConnections()
+	public void openCon() //I think we should open and close all connections, so we don't get SQL errors. So DBConnect needs another cleanup
 	{
-		System.out.println("Trying to close all connections to DB.");
+		System.out.print("Opening a connection to SQL DB...");
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
+			st = (Statement) con.createStatement();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error:"+ex );
+		}
+		System.out.print("Done\n");
+	}
+	
+	public void closeCon() //close Con
+	{
+		System.out.print("Trying to close all Connections to DB...");
 
 		try 
 		{
@@ -60,15 +75,15 @@ public class DBConnect extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{System.out.println("Connections closed.");}		
+		finally{System.out.print("Done\n");}		
 	}
 	
 	
 	public Food pullFood(String table, int ID)
 	{
+		openCon();
 		Food returnedFood = null;
 		try{
-			
 			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 			System.out.println(query);
 			rs = st.executeQuery(query);
@@ -122,10 +137,10 @@ public class DBConnect extends HttpServlet{
 		{
 			System.out.println("Error:"+ex );	
 		}	
-		//close connections.
+		//close Con.
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 
 		return returnedFood;	
@@ -134,6 +149,7 @@ public class DBConnect extends HttpServlet{
 	//Push food object with nutrition data to DB
 	public void pushFood(Food food, String tableName)
 	{
+		openCon();
 		if(food != null)
 		{
 			try{
@@ -155,10 +171,7 @@ public class DBConnect extends HttpServlet{
 			} catch(Exception ex){
 					System.out.println(ex);
 			}
-			finally 
-			{
-				closeConnections();
-			}
+			 finally{closeCon();}
 		}
 	}
 	
@@ -183,7 +196,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 		
@@ -204,10 +217,11 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 
-	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit)
+	public void pushPortionSizes(String foodCat, String item, double mass, String unit)
 	{
+		openCon();
 		try{
-			String query = "INSERT INTO "+ table +" (FoodCat, Item, Mass, Unit) VALUES (\"" + 
+			String query = "INSERT INTO portion_sizes (FoodCat, Item, Mass, Unit) VALUES (\"" + 
 							foodCat +  "\", \"" + item + "\", \""  + mass + "\", \"" + unit  + "\");";
 			
 			System.out.println(query);
@@ -219,7 +233,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	public void pullPortionSizes(String itemSearch)
@@ -244,11 +258,11 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 
-	//ROOSEARCH
+	//ROOSEARCH(tm) -- Jesus Christ, some comments would have been really helpful
 	public void search(String table, String qu)
 	{
 		try{
@@ -270,44 +284,38 @@ public class DBConnect extends HttpServlet{
 			ArrayList<String> results = new ArrayList<String>();
 			String temp = "";
 		    String name = "";
-			for(String q: query){
+			for(String q: query)
+			{
 				ResultSet rs = st.executeQuery(q);
-			    while (rs.next()) {
-
+			    while (rs.next()) 
+			    {
 			    	temp = name;
 			    	name = rs.getString("Name");
 			    	//stops duplicates
 			    	if(!temp.equals(name)){
 			    		results.add(name);
-//			    		System.out.println(name);
 			    	}
 			    }
-			   
-			    
 			    System.out.println();
 			}
 			
 			
 			Set<String> mySet = new HashSet<String>(results);
-			for(String s: mySet){
+			for(String s: mySet)
+			{
 				resultsHash.put(s, Collections.frequency(results, s));
 			}
-	
-			
+
 			List<Entry<String, Integer>> sortedRes = new ArrayList<Entry<String, Integer>>();
-			sortedRes = entriesSortedByValues(resultsHash);
+			sortedRes = entriesSortedByValues(resultsHash); //sort by Frequency
 			System.out.println(sortedRes);
-//			for (Map.Entry<String,Integer> entry : sortedRes) {
-//			    if (entry.getValue() == 1) {
-//			        System.out.println(entry);
-//			    }
-//			}
+
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
@@ -361,7 +369,7 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 		finally{
-				closeConnections();
+				closeCon();
 			   }
 		
 		return results;
@@ -396,7 +404,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	

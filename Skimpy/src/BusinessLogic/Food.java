@@ -38,7 +38,7 @@ public class Food extends HttpServlet{
 		PPUUnit = pPUUnit;
 		this.foodCat = foodCat;
 		this.foodCat2 = foodCat2;
-		this.supermarket = "x"; //TODO: add supermarket data to the DB
+		this.supermarket = supermarket; //TODO: add supermarket data to the DB
 		this.calories = calories;
 		this.proteins = proteins;
 		this.carbs = carbs;
