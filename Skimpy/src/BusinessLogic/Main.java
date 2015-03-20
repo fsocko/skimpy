@@ -16,7 +16,10 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) {
 		
 		//test search
-		search("cheese");
+		//search("cheese");
+		//roo
+		DBConnect con = new DBConnect();
+		con.search("tesco","bread");
 		
 		
     }
@@ -80,10 +83,10 @@ public class Main extends HttpServlet{
 	
 	}
 	
-	public static void search(String query)
+	public static void searchForID(String query)
 	{
 		DBConnect s = new DBConnect();
-		ArrayList<Integer> searchResults = s.search("tesco", query);
+		ArrayList<Integer> searchResults = s.searchForID("tesco", query);
 		System.out.println("Items which contain the query \" " + query+ "\" are the following:\n");
 		int j = 0;
 		while (j < searchResults.size()) 
