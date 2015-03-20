@@ -9,6 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import javax.servlet.http.HttpServlet;
 
 import com.mysql.jdbc.*;
@@ -239,50 +248,76 @@ public class DBConnect extends HttpServlet{
 			closeConnections();
 		}
 	}
-	//Search doesn't do what it should. It will now return an arraylist of IDs, so we can use pullFood()
-	//to get the items by ID when needed.
-	//Also, we need to be able to select a table.
-	public ArrayList<Integer> search(String table, String qu)
+
+	public void search(String table, String qu)
 	{
-		SpiderToDB formatResult = new SpiderToDB();
-		ArrayList<Integer> results = new ArrayList<Integer>(); //Array list of IDs which match the search
 		try{
-			 String query ="SELECT * FROM " + table + " WHERE name LIKE '%" + qu + " %';";
-		 
-		     ResultSet rs = st.executeQuery(query);		     
-		     int tempID = -1;
-		     int foundID = -1;
-		     boolean found = false;
-		     while (rs.next()) 
-		     {
-		    	 found = true;
-		    	 tempID = foundID;
-		    	 foundID = rs.getInt("ID");
-		    	 results.add(foundID);
-		    	 
-		    	 if(!(tempID == foundID))
-		    	 {
-		    		 System.out.println("ID for a matching item:" + foundID);
-		    	 }
-		    	 else{break;}
-		     }
-		     if(!found)
-		     {
-		    	 System.out.println("No results were found for the query: " + qu);
-		    	 return results;
-		     }
-			 
-		} 
-		catch(Exception ex){
+			ArrayList<String> query = new ArrayList<String>();
+			query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
+			query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+			query.add("SELECT * FROM " + table + " WHERE Name LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+			
+			Map<String, Integer> resultsHash = new HashMap<String, Integer>();
+			ArrayList<String> results = new ArrayList<String>();
+			String temp = "";
+		    String name = "";
+			for(String q: query){
+				ResultSet rs = st.executeQuery(q);
+			    while (rs.next()) {
+
+			    	temp = name;
+			    	name = rs.getString("Name");
+			    	//stops duplicates
+			    	if(!temp.equals(name)){
+			    		results.add(name);
+//			    		System.out.println(name);
+			    	}
+			    }
+			    System.out.println();
+			}
+			
+			
+			Set<String> mySet = new HashSet<String>(results);
+			for(String s: mySet){
+				resultsHash.put(s, Collections.frequency(results, s));
+			}
+			
+			List<Entry<String, Integer>> sortedRes = new ArrayList<Entry<String, Integer>>();
+			sortedRes = entriesSortedByValues(resultsHash);
+			System.out.println(sortedRes);
+//			for (Map.Entry<String,Integer> entry : sortedRes) {
+//			    if (entry.getValue() == 1) {
+//			        System.out.println(entry);
+//			    }
+//			}
+		} catch(Exception ex){
 			System.out.println(ex);
 		}
-		finally{
-				closeConnections();
-			   }
-		
-		return results;
-		
-		
+		finally 
+		{
+			closeConnections();
+		}
+	}
+	static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
+	
+		List<Entry<K,V>> sortedEntries = new ArrayList<Entry<K,V>>(map.entrySet());
+	
+		Collections.sort(sortedEntries, new Comparator<Entry<K,V>>() {@Override public int compare(Entry<K,V> e1, Entry<K,V> e2) 
+			{
+				return e2.getValue().compareTo(e1.getValue());
+			}
+	    });
+	
+		return sortedEntries;
 	}
 	
 	public void recommend(String val, String coloumn)

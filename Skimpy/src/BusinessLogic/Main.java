@@ -14,25 +14,9 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		
-		//test search
-		search("cheese");
-		
-		
+		DBConnect con = new DBConnect();
+		con.search("tesco", "apple");
     }
-	
-	public static void examineRecord(String path, String table, int record)
-	{
-		SpiderToDB std = new SpiderToDB();
-		DBConnect toDB = new DBConnect();
-		System.out.println(std.readRecord(path, record));
-		Food foodItem = std.formatRecord(std.readRecord(path, record));
-		if(foodItem != null)
-		{
-			System.out.println(foodItem.toString());
-			toDB.pushFood(foodItem, table);
-		}		
-	}
 	
 	public static void portionSizeToDB(String db, String table)
 	{
@@ -78,20 +62,6 @@ public class Main extends HttpServlet{
 		DBConnect pullDB = new DBConnect();
 		return pullDB.pullFood(table, ID).toString();
 	
-	}
-	
-	public static void search(String query)
-	{
-		DBConnect s = new DBConnect();
-		ArrayList<Integer> searchResults = s.search("tesco", query);
-		System.out.println("Items which contain the query \" " + query+ "\" are the following:\n");
-		int j = 0;
-		while (j < searchResults.size()) 
-		{
-			System.out.println(pullFromDB("tesco", searchResults.get(j)));
-			j++;
-		}
-		
 	}
 	
 }
