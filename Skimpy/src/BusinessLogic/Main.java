@@ -16,7 +16,7 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		DBConnect con = new DBConnect();
-		con.search("bread");
+		con.search("apple");
     }
 	 
 	public void examineRecord(String path, String table, int record)
