@@ -21,22 +21,30 @@
 </script>
 
 <script>
-function myFunction() {
-	searchItem = document.getElementById("ing").value;
-    var person = prompt("Please enter your food", searchItem);
+function myFunction(sender) {
+	var i = sender.id.split(",")[0];
+	var j = sender.id.split(",")[1];
+	var searchItem = document.getElementById("ing" + i + "" + j).value;
+
     
-    if (person != null) {
-        document.getElementById("ingredients").innerHTML +=  person + "<br>";
-        mySecFun();
+    if (searchItem != null) {
+        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem + " </br></a>";
+        document.getElementById("ingred" + i + "" + j).value = (document.getElementById("ingred" + i + "" + j).getAttribute("value") + searchItem +";");
+  
     }
 }
 
- function mySecFun(){
-	 alert("ok");
-	 var connect=new Packages.BusinessLogic.DBConnect("food_db");
-	 connect.search(searchItem);
-	
- }
+function reove(sender) {
+	var i = sender.id[0];
+	var j = sender.id[1];
+	var text = sender.innerHTML;
+	text = text.substring(0, text.length - 5);
+	document.getElementById("ingred" + i + "" + j).value = document.getElementById("ingred" + i + "" + j).value.replace(";" + text + ";", ";");
+	sender.remove()
+	alert(text);
+}
+
+ 
 
 /* DBConnect connect = new DBConnect("food_db");
 connect.search(searchItem); */
@@ -66,11 +74,12 @@ connect.search(searchItem); */
 			<%for (int j = 0; j < 7; j++) {%>
            <td align="center">
 				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
-				   <input type="text" id="<%=j%>,<%=i %>" size="21" name="mealname" value=" Meal Name " />
-                   <input autocomplete = "on" id="ing" type="text" name="ingredients" style="width:150px;"> 
-                   <input  value="" onclick="myFunction()" style="border-style: none;
-                    background: url(images/searchbutton3.gif) no-repeat; width: 24px; height: 20px;">
-                   <p id="ingredients"></p>
+				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
+                <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> 
+                <input  id="<%=j%>,<%=i %>" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
+                    background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
+                <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred" value=";">
+                <ul id="ingredients<%=j%><%=i %>"></ul>
 			   </td>
 			
 			<%}%>
