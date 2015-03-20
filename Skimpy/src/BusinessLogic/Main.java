@@ -19,7 +19,7 @@ public class Main extends HttpServlet{
 		
 		SpiderToDB std = new SpiderToDB();
 		pushPortionSizes();
-		pushToDB(std.tescoPath, "tesco");
+		//pushToDB(std.tescoPath, "tesco");
 		
 		
 		
@@ -88,7 +88,7 @@ public class Main extends HttpServlet{
 	public static void searchForID(String query)
 	{
 		DBConnect s = new DBConnect();
-		ArrayList<Integer> searchResults = s.searchForID("tesco", query);
+		ArrayList<Integer> searchResults = s.searchForID("tesco","name", query);
 		System.out.println("Items which contain the query \" " + query+ "\" are the following:\n");
 		int j = 0;
 		while (j < searchResults.size()) 

@@ -331,15 +331,13 @@ public class DBConnect extends HttpServlet{
 		return sortedEntries;
 	}
 	
-	
-	
 	//Search which looks for keywords, returns ID of food item if found.
-	public ArrayList<Integer> searchForID(String table, String qu)
+	public ArrayList<Integer> searchForID(String table, String field, String qu)
 	{
 		SpiderToDB formatResult = new SpiderToDB();
 		ArrayList<Integer> results = new ArrayList<Integer>(); //Array list of IDs which match the search
 		try{
-			 String query ="SELECT * FROM " + table + " WHERE name LIKE '%" + qu + " %';";
+			 String query ="SELECT * FROM " + table + " WHERE "+field+" LIKE '%" + qu + " %';";
 		 
 		     ResultSet rs = st.executeQuery(query);		     
 		     int tempID = -1;
@@ -373,9 +371,33 @@ public class DBConnect extends HttpServlet{
 			   }
 		
 		return results;
-		
-		
 	}
+	
+	//take search results, figure out which category it will be, find correct portionSize
+	//@ruaraidhMacfarlane, can your search return an ordered list of Food IDs, so I can use the top result as the
+	//argument for this function?
+		public int findCorrectPortion(ArrayList<Integer> foods)
+		{
+			openCon();
+			int portionID = -1;
+			//How to rank search results? Probably hashmap but I forgot how to write those @ruaraidhMacfarlane
+			Food topSearch = pullFood("tesco", foods.get(1));
+			String foodCat1 = topSearch.getFoodCat();
+			String foodCat2 = topSearch.getFoodCat2();
+			//find most common foodCat 1 and 2 in foodSearch
+			String qu = "";
+			
+			//Run search query on table portion_sizes
+			 String query = ""; 
+			 query ="SELECT * FROM portion_sizes WHERE FoodCat LIKE '%" + qu + " %';";
+			 query ="SELECT * FROM portion_sizes WHERE Item LIKE '%" + qu + " %';";
+			
+			//should return correct portion type
+			//return portionSizeID, we can pull it later
+	
+			return portionID;
+		}
+	
 	
 	public void recommend(String val, String coloumn)
 	{
