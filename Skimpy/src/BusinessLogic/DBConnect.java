@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
 
 import com.mysql.jdbc.*;
@@ -33,15 +33,8 @@ public class DBConnect extends HttpServlet{
 	
 	public void closeConnections()
 	{
-		try 
-		{
-			rs.close();
-		} 
-		catch (SQLException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		System.out.println("Trying to close all connections to DB.");
+
 		try 
 		{
 			st.close();
@@ -59,7 +52,7 @@ public class DBConnect extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		finally{System.out.println("Connections closed.");}		
 	}
 	
 	
@@ -246,35 +239,50 @@ public class DBConnect extends HttpServlet{
 			closeConnections();
 		}
 	}
-	public void search(String qu)
+	//Search doesn't do what it should. It will now return an arraylist of IDs, so we can use pullFood()
+	//to get the items by ID when needed.
+	//Also, we need to be able to select a table.
+	public ArrayList<Integer> search(String table, String qu)
 	{
+		SpiderToDB formatResult = new SpiderToDB();
+		ArrayList<Integer> results = new ArrayList<Integer>(); //Array list of IDs which match the search
 		try{
-			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+			 String query ="SELECT * FROM " + table + " WHERE name LIKE '%" + qu + " %';";
 		 
-		     ResultSet rs = st.executeQuery(query);
-		     String temp = "";
-		     String name = "";
+		     ResultSet rs = st.executeQuery(query);		     
+		     int tempID = -1;
+		     int foundID = -1;
 		     boolean found = false;
-		     while (rs.next()) {
+		     while (rs.next()) 
+		     {
 		    	 found = true;
-		    	 temp = name;
-		    	 name = rs.getString("name");
-		    	 if(!temp.equals(name)){
-		    		 System.out.println(name+"  ");
+		    	 tempID = foundID;
+		    	 foundID = rs.getInt("ID");
+		    	 results.add(foundID);
+		    	 
+		    	 if(!(tempID == foundID))
+		    	 {
+		    		 System.out.println("ID for a matching item:" + foundID);
 		    	 }
+		    	 else{break;}
 		     }
-		     if(!found){
-		    	 System.out.println("No results for query: " + qu);
+		     if(!found)
+		     {
+		    	 System.out.println("No results were found for the query: " + qu);
+		    	 return results;
 		     }
-		     System.out.println();
 			 
-		} catch(Exception ex){
+		} 
+		catch(Exception ex){
 			System.out.println(ex);
 		}
-		finally 
-		{
-			closeConnections();
-		}
+		finally{
+				closeConnections();
+			   }
+		
+		return results;
+		
+		
 	}
 	
 	public void recommend(String val, String coloumn)
