@@ -15,16 +15,8 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		
-		//Push foodCat2
-		SpiderToDB std = new SpiderToDB();
-		//pushToDB(std.tescoPath, "skimpy", "tesco");
-		for(int i = 1; i<5548; i++)
-		{
-			pullFromDB("tesco", i);
-		
-		}
-		System.out.println("Pulled all records");
+		DBConnect con = new DBConnect();
+		con.search("bread");
     }
 	 
 	public void examineRecord(String path, String table, int record)
