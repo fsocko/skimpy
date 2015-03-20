@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -8,15 +9,22 @@ import javax.servlet.http.HttpServlet;
  * Main class that brings all the other classes together.
  */
 public class Main extends HttpServlet{
-	/**
-	 * Will create a Person object, Food and the create a MealPlanner and add the Food.
-	 * @param args
-	 */
-	
+
 	public static void main(String[] args) {
 		
 		//test search
-		search("cheese");
+		//search("cheese");
+
+		//DBConnect con = new DBConnect();
+		//con.search("tesco","apple");
+		
+		SpiderToDB std = new SpiderToDB();
+		//pushToDB(std.tescoPath, "tesco");
+		//pushPortionSizes();
+		
+		DBConnect dbc = new DBConnect();
+		dbc.findCorrectPortion(dbc.searchForID("tesco", "Name", "bread"));
+		
 		
 		
     }
@@ -26,7 +34,7 @@ public class Main extends HttpServlet{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
 		System.out.println(std.readRecord(path, record));
-		Food foodItem = std.formatRecord(std.readRecord(path, record));
+		Food foodItem = std.formatRecord(path, std.readRecord(path, record));
 		if(foodItem != null)
 		{
 			System.out.println(foodItem.toString());
@@ -34,12 +42,11 @@ public class Main extends HttpServlet{
 		}		
 	}
 	
-	public static void portionSizeToDB(String db, String table)
+	public static void pushPortionSizes()
 	{
 		
 		SpiderToDB std = new SpiderToDB();
 		DBConnect dbCon = new DBConnect();
-		@SuppressWarnings({ "unchecked", "rawtypes" })
 		ArrayList portions = new ArrayList(std.readAllRecords(std.portionPath));
 		
 		int i = 1;
@@ -49,12 +56,13 @@ public class Main extends HttpServlet{
 			System.out.println(portions.get(i).toString().trim());
 			PortionSize portion = std.parsePortion(portions.get(i).toString().trim());
 			System.out.println(portion.toString());
-			dbCon.pushPortionSizes("portion_sizes", portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
+			dbCon.pushPortionSizes(portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
 			i++;
 		}
+		System.out.println("Done");
 	}
 	
-	public static void pushToDB(String path, String db, String table)
+	public static void pushToDB(String path, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
@@ -62,7 +70,7 @@ public class Main extends HttpServlet{
 		int i = 1;
 		while(i < std.countLines(path)){
 			System.out.println("\n i is:" + i + "\n");
-			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
+			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());
 			if(foodItem != null)
 			{
 				System.out.println(foodItem.toString());
@@ -70,20 +78,21 @@ public class Main extends HttpServlet{
 			}
 			i++;
 		}
+		System.out.println("Done");
 	}
 	
 	public static String pullFromDB(String table, int ID)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
+		System.out.println("Done");
 		return pullDB.pullFood(table, ID).toString();
-	
 	}
 	
-	public static void search(String query)
+	public static void searchForID(String query)
 	{
 		DBConnect s = new DBConnect();
-		ArrayList<Integer> searchResults = s.search("tesco", query);
+		ArrayList<Integer> searchResults = s.searchForID("tesco","name", query);
 		System.out.println("Items which contain the query \" " + query+ "\" are the following:\n");
 		int j = 0;
 		while (j < searchResults.size()) 
@@ -91,7 +100,7 @@ public class Main extends HttpServlet{
 			System.out.println(pullFromDB("tesco", searchResults.get(j)));
 			j++;
 		}
-		
+		System.out.println("Done");
 	}
 	
 }

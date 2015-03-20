@@ -176,7 +176,7 @@ public class SpiderToDB extends HttpServlet{
 
 	 	//Takes a record string, returns a food object. You probably want to read a record with readRecord(int)
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
-		 public Food formatRecord(String record)
+		 public Food formatRecord(String path, String record)
 		 {
 //Parse Strings via findColon			 
 			
@@ -207,6 +207,7 @@ public class SpiderToDB extends HttpServlet{
 	//Name-----------NO CHANGE		
 				 name = name.replaceAll(";"," ");
 	//Mass, Unit
+				 //TODO: make sure the units are consistent, eg. compare price/1kg to price/1kg to price/1l not 100g
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
 	//Price			 		 
@@ -222,6 +223,12 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
+	//Supermarket
+				 String supermarket = "x";
+				 if(path.equals(asdaPath)){supermarket = "A";}
+				 if(path.equals(tescoPath)){supermarket = "T";}
+				 if(path.equals(sainsPath)){supermarket = "S";}
+				 
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
@@ -233,10 +240,8 @@ public class SpiderToDB extends HttpServlet{
 	//Fibre------------NO CHANGE
 	
 	
-				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, "x", toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
-				 
-			 
 		 }
 		 
 		 public PortionSize parsePortion(String portion)
