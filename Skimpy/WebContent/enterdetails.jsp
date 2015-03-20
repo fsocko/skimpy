@@ -66,7 +66,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-<form action="login.jsp" method="post" id="myForm">
+<form action="signupdets.jsp" method="post" id="myForm">
  <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>
 	<h1> Please enter your details:</h1>
 	<br><table>

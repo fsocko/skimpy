@@ -23,23 +23,23 @@ public class MealInterface extends HttpServlet {
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/index.jsp").forward(request,response);
 		
-		HttpSession session = request.getSession();
+	/**	HttpSession session = request.getSession();
 		session.removeAttribute("username");
-		response.sendRedirect("login.jsp"); 
+		response.sendRedirect("login.jsp"); */
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	/**protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
 			if(username.equals(username) && password.equals(password)){
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username);
-				response.sendRedirect("welcome.jsp");
+				response.sendRedirect("login.jsp");
 			}else{
 				request.setAttribute("message", "Account is invalid");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 	}
-	
+	*/
 }

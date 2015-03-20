@@ -164,9 +164,9 @@ public class DBConnect extends HttpServlet{
 		try{
 			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
 					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", \""  + user.getPassword() + "\", \"" +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", \"" + 
-							user.getExercise() + "\");";
+							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
+							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
@@ -174,5 +174,4 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
-
 }
