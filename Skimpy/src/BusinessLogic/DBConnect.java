@@ -111,7 +111,7 @@ public class DBConnect extends HttpServlet{
 			{
 				shopID = rs.getString("shopID");
 				name = rs.getString("Name");
-				unit = rs.getString("Units");
+				unit = rs.getString("Unit");
 				mass = rs.getDouble("Mass");
 				price = rs.getDouble("Price");
 				PPUPrice = rs.getDouble("PPUPrice");
@@ -389,11 +389,13 @@ public class DBConnect extends HttpServlet{
 			
 			//Run search query on table portion_sizes
 			//String table, String field, String qu)
+			openCon();
 			int topPortionID = searchForID("portion_sizes","Item",foodCat1).get(1); 
 			
 			
 			//should return correct portion type
 			//return portionSizeID, we can pull it later
+			openCon();
 			pullPortionSizes(topPortionID);
 			return portionID;
 		}

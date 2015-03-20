@@ -19,8 +19,8 @@ public class Main extends HttpServlet{
 		//con.search("tesco","apple");
 		
 		SpiderToDB std = new SpiderToDB();
-		pushToDB(std.tescoPath, "tesco");
-		pushPortionSizes();
+		//pushToDB(std.tescoPath, "tesco");
+		//pushPortionSizes();
 		
 		DBConnect dbc = new DBConnect();
 		dbc.findCorrectPortion(dbc.searchForID("tesco", "Name", "bread"));
