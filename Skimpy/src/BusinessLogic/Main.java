@@ -17,7 +17,7 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) {
 		
     }
-	
+	 
 	public void examineRecord(String path, String table, int record)
 	{
 		SpiderToDB std = new SpiderToDB();
