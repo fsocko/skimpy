@@ -236,11 +236,11 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
-	public void pullPortionSizes(String itemSearch)
+	public void pullPortionSizes(int ID)
 	{
 		try{
 			System.out.println("Records from Database:");
-			rs = st.executeQuery("select * FROM user_info WHERE item=" + itemSearch);
+			rs = st.executeQuery("select * FROM user_info WHERE ID= " + ID + ";");
 			while (rs.next()){
 				String foodCat = rs.getString("FoodCat");
 				String item = rs.getString("Item");
@@ -376,7 +376,7 @@ public class DBConnect extends HttpServlet{
 	//take search results, figure out which category it will be, find correct portionSize
 	//@ruaraidhMacfarlane, can your search return an ordered list of Food IDs, so I can use the top result as the
 	//argument for this function?
-		public int findCorrectPortion(ArrayList<Integer> foods)
+		public int findCorrectPortion(ArrayList<Integer> foods)//take a list of search results
 		{
 			openCon();
 			int portionID = -1;
@@ -388,13 +388,13 @@ public class DBConnect extends HttpServlet{
 			String qu = "";
 			
 			//Run search query on table portion_sizes
-			 String query = ""; 
-			 query ="SELECT * FROM portion_sizes WHERE FoodCat LIKE '%" + qu + " %';";
-			 query ="SELECT * FROM portion_sizes WHERE Item LIKE '%" + qu + " %';";
+			//String table, String field, String qu)
+			int topPortionID = searchForID("portion_sizes","Item",foodCat1).get(1); 
+			
 			
 			//should return correct portion type
 			//return portionSizeID, we can pull it later
-	
+			pullPortionSizes(topPortionID);
 			return portionID;
 		}
 	

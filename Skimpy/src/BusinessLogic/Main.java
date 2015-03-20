@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -18,8 +19,11 @@ public class Main extends HttpServlet{
 		//con.search("tesco","apple");
 		
 		SpiderToDB std = new SpiderToDB();
+		pushToDB(std.tescoPath, "tesco");
 		pushPortionSizes();
-		//pushToDB(std.tescoPath, "tesco");
+		
+		DBConnect dbc = new DBConnect();
+		dbc.findCorrectPortion(dbc.searchForID("tesco", "Name", "bread"));
 		
 		
 		
