@@ -40,7 +40,21 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void closeConnections()
+	public void openCon()
+	{
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Skimpy", "root", "");
+			st = (Statement) con.createStatement();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error:"+ex );
+		}
+		
+	}
+	
+	public void closeCon()
 	{
 		System.out.println("Trying to close all connections to DB.");
 
@@ -67,6 +81,7 @@ public class DBConnect extends HttpServlet{
 	
 	public Food pullFood(String table, int ID)
 	{
+		openCon();
 		Food returnedFood = null;
 		try{
 			
@@ -126,7 +141,7 @@ public class DBConnect extends HttpServlet{
 		//close connections.
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 
 		return returnedFood;	
@@ -134,7 +149,8 @@ public class DBConnect extends HttpServlet{
 		
 	//Push food object with nutrition data to DB
 	public void pushFood(Food food, String tableName)
-	{
+	{	
+		openCon();
 		if(food != null)
 		{
 			try{
@@ -158,13 +174,14 @@ public class DBConnect extends HttpServlet{
 			}
 			finally 
 			{
-				closeConnections();
+				closeCon();
 			}
 		}
 	}
 	
 	public void pullUser(String ID)
 	{
+		openCon();
 		try{
 			System.out.println("Records from Database");
 			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
@@ -184,12 +201,13 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 		
 	public void pushUser(Person user)
 	{
+		openCon();
 		try{
 			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\","
 							+ " \"Weight\", \"Gender\", \"Exercise\")"+ "VALUES (\"" 
@@ -207,6 +225,7 @@ public class DBConnect extends HttpServlet{
 
 	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit)
 	{
+		openCon();
 		try{
 			String query = "INSERT INTO "+ table +" (FoodCat, Item, Mass, Unit) VALUES (\"" + 
 							foodCat +  "\", \"" + item + "\", \""  + mass + "\", \"" + unit  + "\");";
@@ -220,11 +239,12 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	public void pullPortionSizes(String itemSearch)
 	{
+		openCon();
 		try{
 			System.out.println("Records from Database:");
 			rs = st.executeQuery("select * FROM user_info WHERE item=" + itemSearch);
@@ -245,7 +265,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 
@@ -304,7 +324,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
@@ -322,6 +342,7 @@ public class DBConnect extends HttpServlet{
 	
 	public void recommend(String val, String coloumn)
 	{
+		openCon();
 		try{
 			 String query ="SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
 		 
@@ -347,7 +368,7 @@ public class DBConnect extends HttpServlet{
 		}
 		finally 
 		{
-			closeConnections();
+			closeCon();
 		}
 	}
 	

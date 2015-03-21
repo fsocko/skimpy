@@ -39,6 +39,14 @@ public class SpiderToDB extends HttpServlet{
 
 		 }
 
+		 //get a food object, examine it to check if it parses
+		 public String examineObject(String file, int recNum)
+		 {
+			 String record = readRecord(file, recNum);
+			 Food checkFood = formatRecord(record);
+			 
+			 return checkFood.toString();
+		 }
 		 
 		//Sequential will be slightly faster than arrayList method
 		 public String readRecord(String file, int recNum)

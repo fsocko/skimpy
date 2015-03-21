@@ -14,8 +14,14 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		DBConnect con = new DBConnect();
-		con.search("tesco", "apple");
+		//DBConnect con = new DBConnect();
+		//con.search("tesco", "apple");
+		SpiderToDB std = new SpiderToDB();
+		
+		//System.out.println(std.readRecord(std.sainsPath, 1));
+		
+		pushToDB(std.sainsPath, "sains");
+		//pushToDB(std.tescoPath, "tesco");
     }
 	
 	public static void portionSizeToDB(String db, String table)
@@ -38,7 +44,7 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public static void pushToDB(String path, String db, String table)
+	public static void pushToDB(String path, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
@@ -63,5 +69,7 @@ public class Main extends HttpServlet{
 		return pullDB.pullFood(table, ID).toString();
 	
 	}
+	
+	
 	
 }
