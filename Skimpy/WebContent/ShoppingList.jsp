@@ -43,9 +43,14 @@
         String fing = Ingredients[0];
         String result = fing.substring(1,fing.length()-1);
         DBConnect con = new DBConnect();
-        con.search(result);%>
+        String ids = con.search("tesco_scraped", result).toString();
+       //String item_id =Integer.toString(con.search("tesco_scraped", result).get(0));
+      // Food item = con.getFoodData("tesco_scraped", "720");
+       // String item_result = item.getName(); %>
         <%=ingredients %>
         <%=result %>
+        <%=ids %>
+        
  	<%--  <% String ingrList = "";
  	    for (int i=0; i<Ingredients.length;i++){
  		    ingrList = Ingredients[i] ; 

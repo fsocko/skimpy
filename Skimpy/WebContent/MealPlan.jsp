@@ -25,10 +25,11 @@ function myFunction(sender) {
 	var i = sender.id.split(",")[0];
 	var j = sender.id.split(",")[1];
 	var searchItem = document.getElementById("ing" + i + "" + j).value;
+	document.getElementById("ing" + i + "" + j).value = "";
 
     
-    if (searchItem != null) {
-        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem + " </br></a>";
+    if (searchItem != "") {
+        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem +  " <img src =\"images/delete.png\" height=\"15\" width=\"15\"></br></a>";
         document.getElementById("ingred" + i + "" + j).value = (document.getElementById("ingred" + i + "" + j).getAttribute("value") + searchItem +";");
   
     }
@@ -40,8 +41,7 @@ function reove(sender) {
 	var text = sender.innerHTML;
 	text = text.substring(0, text.length - 5);
 	document.getElementById("ingred" + i + "" + j).value = document.getElementById("ingred" + i + "" + j).value.replace(";" + text + ";", ";");
-	sender.remove()
-	alert(text);
+	sender.remove();
 }
 
  
@@ -79,7 +79,7 @@ connect.search(searchItem); */
                 <input  id="<%=j%>,<%=i %>" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
                 <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred" value=";">
-                <ul id="ingredients<%=j%><%=i %>"></ul>
+                <p id="ingredients<%=j%><%=i %>"></p>
 			   </td>
 			
 			<%}%>

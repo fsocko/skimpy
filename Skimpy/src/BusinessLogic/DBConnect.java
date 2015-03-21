@@ -6,7 +6,9 @@ package BusinessLogic;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
 
@@ -41,6 +43,29 @@ public class DBConnect extends HttpServlet{
 			System.out.println("Error:"+ex );
 		}
 	}
+	public void closeConnections()
+	{
+		System.out.println("Trying to close all connections to DB.");
+
+		try 
+		{
+			st.close();
+		} 
+		catch (SQLException e1) 
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+				con.close();
+			} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{System.out.println("Connections closed.");}		
+	}
 	
 	//fairly sure this won't work since ID is saved as an int in SQLDB
 			public Food getFoodData(String table, String ID){
@@ -68,8 +93,6 @@ public class DBConnect extends HttpServlet{
 						units = rs.getString("Units");
 						amount = rs.getInt("Amount");
 						serving = rs.getDouble("Serving");
-						tescoPrice = rs.getDouble("tesco_price");
-						asdaPrice = rs.getDouble("asda_price");
 						calories = rs.getDouble("Calories");
 						protein = rs.getDouble("Protein");
 						carbs = rs.getDouble("Carbs");
@@ -174,30 +197,47 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
-	public void search(String qu){
+	public ArrayList<Integer> search(String table, String qu)
+	{
+		SpiderToDB formatResult = new SpiderToDB();
+		ArrayList<Integer> results = new ArrayList<Integer>(); //Array list of IDs which match the search
 		try{
-			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+			 String query ="SELECT * FROM " + table + " WHERE name LIKE '%" + qu + " %';";
 		 
-		     ResultSet rs = st.executeQuery(query);
-		     String temp = "";
-		     String name = "";
+		     ResultSet rs = st.executeQuery(query);		     
+		     int tempID = -1;
+		     int foundID = -1;
 		     boolean found = false;
-		     while (rs.next()) {
+		     while (rs.next()) 
+		     {
 		    	 found = true;
-		    	 temp = name;
-		    	 name = rs.getString("name");
-		    	 if(!temp.equals(name)){
-		    		 System.out.println(name+"  ");
+		    	 tempID = foundID;
+		    	 foundID = rs.getInt("ID");
+		    	 results.add(foundID);
+		    	 
+		    	 if(!(tempID == foundID))
+		    	 {
+		    		 System.out.println("ID for a matching item:" + foundID);
 		    	 }
+		    	 else{break;}
 		     }
-		     if(!found){
-		    	 System.out.println("No results for query: " + qu);
+		     if(!found)
+		     {
+		    	 System.out.println("No results were found for the query: " + qu);
+		    	 return results;
 		     }
-		     System.out.println();
 			 
-		} catch(Exception ex){
+		} 
+		catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally{
+				closeConnections();
+			   }
+		
+		return results;
+		
+		
 	}
 	
 	
