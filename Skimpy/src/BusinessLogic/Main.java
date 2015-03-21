@@ -14,10 +14,13 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
+		
+		SpiderToDB std = new SpiderToDB();
+		pushToDB(std.sainsPath, "sains");
+		
 		DBConnect con = new DBConnect();
 		con.search("sains", "apple");
-		
-    }
+	}
 	
 	public static void portionSizeToDB(String db, String table)
 	{
@@ -50,6 +53,7 @@ public class Main extends HttpServlet{
 		while(i < std.countLines(path)){
 			System.out.println("\n i is:" + i + "\n");
 			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
+
 			if(foodItem != null)
 			{
 				System.out.println(foodItem.toString());
