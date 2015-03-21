@@ -14,14 +14,9 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		//DBConnect con = new DBConnect();
-		//con.search("tesco", "apple");
-		SpiderToDB std = new SpiderToDB();
+		DBConnect con = new DBConnect();
+		con.search("sains", "apple");
 		
-		//System.out.println(std.readRecord(std.sainsPath, 1));
-		
-		pushToDB(std.sainsPath, "sains");
-		//pushToDB(std.tescoPath, "tesco");
     }
 	
 	public static void portionSizeToDB(String db, String table)
@@ -55,17 +50,6 @@ public class Main extends HttpServlet{
 		while(i < std.countLines(path)){
 			System.out.println("\n i is:" + i + "\n");
 			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
-			
-			if(path.equals(std.sainsPath))
-			{
-				//switchfoodcat1 and 2 -- HAX! TODO: have Lee sort out the output to do this
-				String foodCat1 = foodItem.getFoodCat();
-				String foodCat2 = foodItem.getFoodCat2();
-				String temp = foodCat1;
-				foodCat1 = foodCat2;
-				foodCat2 = temp;
-			}
-			
 			if(foodItem != null)
 			{
 				System.out.println(foodItem.toString());
