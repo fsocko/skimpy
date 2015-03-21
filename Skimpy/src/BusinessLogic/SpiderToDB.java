@@ -3,6 +3,7 @@
 package BusinessLogic;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.regex.*;
 
@@ -230,6 +231,9 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
+		
+				
+				 
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE

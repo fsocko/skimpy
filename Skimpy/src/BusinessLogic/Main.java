@@ -44,15 +44,28 @@ public class Main extends HttpServlet{
 		}
 	}
 	
+
 	public static void pushToDB(String path, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
 		ArrayList Items = new ArrayList(std.readAllRecords(path));
+
 		int i = 1;
 		while(i < std.countLines(path)){
 			System.out.println("\n i is:" + i + "\n");
 			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
+			
+			if(path.equals(std.sainsPath))
+			{
+				//switchfoodcat1 and 2 -- HAX! TODO: have Lee sort out the output to do this
+				String foodCat1 = foodItem.getFoodCat();
+				String foodCat2 = foodItem.getFoodCat2();
+				String temp = foodCat1;
+				foodCat1 = foodCat2;
+				foodCat2 = temp;
+			}
+			
 			if(foodItem != null)
 			{
 				System.out.println(foodItem.toString());
