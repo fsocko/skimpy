@@ -29,7 +29,8 @@ public class TescoProductExtractor implements Runnable {
 		List<String> productURLs = new ArrayList<String>();
 		allProducts = new ArrayList<Product>();
 		
-		Elements productsNodes = getHTML(gridPageURL).select("div.productLists ul li");
+		Document gridPage = getHTML(gridPageURL);
+		Elements productsNodes = gridPage.select("div.productLists ul li");
 		for (Element p : productsNodes) {
 			
 			String url = p.select("a").attr("href");
@@ -39,7 +40,7 @@ public class TescoProductExtractor implements Runnable {
 				productURLs.add("http://www.tesco.com" + p.select("a").attr("href"));
 			}
 		}
-
+		
 		for (String productURL : productURLs) {
 			Thread t = new Thread(new TescoProductExtractor(productURL, this.departmentName, this.categoryName));
 			runningThreads.add(t);
@@ -75,7 +76,7 @@ public class TescoProductExtractor implements Runnable {
 		}
 		
 		try {
-			pricePerUnit = productPage.select("span.linePriceAbbr").first().text().trim();
+			pricePerUnit = productPage.select("span.linePriceAbbr").first().text().replace("(", "").replace(")", "").trim();
 		}
 		catch (NullPointerException npe) {
 			pricePerUnit = productPage.select("span.linePriceAbbr").text().trim();
@@ -96,25 +97,25 @@ public class TescoProductExtractor implements Runnable {
 				}
 			}
 			else if (rowHeader.matches("[Pp]rotein")) {
-				nutriValues[1] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[1] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Cc]arbohydrates")) {
-				nutriValues[2] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[2] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Ss]ugar[s]{0,1}")) {
-				nutriValues[3] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[3] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Ff]at[s]{0,1}")) {
-				nutriValues[4] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[4] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Ss]aturates")) {
-				nutriValues[5] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[5] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Ff]ibre")) {
-				nutriValues[6] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[6] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 			else if (rowHeader.matches("[Ss]alt")) {
-				nutriValues[7] = row.select("td").first().text().replace("g", "").trim();
+				nutriValues[7] = row.select("td").first().text().replace("g", "").replace("<",  "").trim();
 			}
 		}
 				

@@ -43,11 +43,17 @@ public class TescoSpider extends WebSpider
 		
 		Elements shelvesNodes = this.getHTML(categoryGridURL).select("#filterWidgetGrid ul.tertNav li");
 		
-		for (Element sh: shelvesNodes) {
+		for (Element sh : shelvesNodes) {
 			String name = sh.select("a").text();
 			String link = sh.select("a").attr("href");
 			Shelf shelf = new Shelf(link, name);
 			allShelves.add(shelf);
+			
+			String nextPageURL = this.getHTML(link).select("div#multipleAdd div.pagination ul.clearfix li.nextWrap p.next").select("a").attr("href");
+			while (!nextPageURL.equals("")) {
+				allShelves.add(new Shelf(nextPageURL, name));
+				nextPageURL = this.getHTML(nextPageURL).select("div#multipleAdd div.pagination ul.clearfix li.nextWrap p.next").select("a").attr("href");
+			}
 		}
 		return allShelves;
 	}
