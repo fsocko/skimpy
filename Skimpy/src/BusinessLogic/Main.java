@@ -15,11 +15,8 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		
-		SpiderToDB std = new SpiderToDB();
-		pushToDB(std.tescoPath, "tesco");
-		
-		//DBConnect con = new DBConnect();
-		//con.search("sains", "apple");
+		DBConnect con = new DBConnect();
+		con.search("sains", "apple");
 	}
 	
 	public static void portionSizeToDB(String db, String table)
