@@ -9,8 +9,8 @@
 <html>
 <head>
 <title>Meal Planner</title>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion({

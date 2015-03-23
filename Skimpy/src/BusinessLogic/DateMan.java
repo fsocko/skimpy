@@ -65,4 +65,3 @@ public class DateMan extends HttpServlet
     }
     
 }
-

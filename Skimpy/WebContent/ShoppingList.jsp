@@ -21,17 +21,17 @@
 </head>
 <body>
 <p>Here's the list of ingredients you need for this week:</p>
- 	<% MealPlanner plan = CreateMealPlan.create();	
-    	ArrayList<ArrayList<Food>> list = plan.getShoppingList();
+ 	 <% MealPlanner plan = MealPlanCreator.parseMealPlan(request.getParameterValues("mealname"), request.getParameterValues("ingred"));%>	
+    	<%-- ArrayList<ArrayList<Food>> list = plan.getShoppingList();
      	for (int i=0; i < list.size(); i++){
      		 for(Food f : list.get(i)){
 			   String item = f.getName() + "<br>"; %>
  	         <%= item  %>
  	<%} %>
- 	<%} %>
+ 	<%} %>  --%>
   	<%  String [][] MealIngredients = new String[21][2];
  	    String [] MealName = request.getParameterValues("mealname");
-	    String [] Ingredients =  request.getParameterValues("ingredients");
+	    String [] Ingredients =  request.getParameterValues("ingred");
  	       for (int j=0; j<21; j++){
  	    	  
  		    MealIngredients[j][0]= MealName[j]; 
@@ -39,7 +39,13 @@
  		    
  		String mealIngredients = java.util.Arrays.deepToString(MealIngredients);
     	String mealName = java.util.Arrays.deepToString(MealName);
-        String ingredients = java.util.Arrays.deepToString(Ingredients); %>
+        String ingredients = java.util.Arrays.deepToString(Ingredients);
+        String fing = Ingredients[0];
+        String result = fing.substring(1,fing.length()-1);
+        DBConnect con = new DBConnect();
+        con.search(result);%>
+        <%=ingredients %>
+        <%=result %>
  	<%--  <% String ingrList = "";
  	    for (int i=0; i<Ingredients.length;i++){
  		    ingrList = Ingredients[i] ; 
@@ -51,12 +57,10 @@
  	String content = mealIngredients;
  	String userID = user.getID() + ".txt";
 	File file = new File(userID);
-
 	// if file doesnt exists, then create it
 	if (!file.exists()) {
 		file.createNewFile();
 	}
-
 	FileWriter fw = new FileWriter(file.getAbsoluteFile());
 	BufferedWriter bw = new BufferedWriter(fw);
 	bw.write(content);
@@ -65,7 +69,7 @@
  	<p>Go back if you want to make some changes or click 
  	"Get Prices" button to get prices comparison and the best deal!
  	</p><input type="button" name="MealPlan" 
- 	value="Go Back" onclick="document.location.href='showBrowser.jsp'">
+ 	value="Go Back" onclick="javascript:history.go(-1)">
  	<input type="button" name="PComp" value="Get Prices" onclick="document.location.href='Price.jsp'">
  	<input type="button" value="Log Out" onclick="document.location.href='logout.jsp'">
 </body>

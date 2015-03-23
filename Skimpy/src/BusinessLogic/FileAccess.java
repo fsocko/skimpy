@@ -27,7 +27,6 @@ public class FileAccess extends HttpServlet
                 RandomAccessFile raf = new RandomAccessFile("/home/ruaraidh/Documents/CS3024/src/FoodStorageTable.raf", "r");
                 //TODO: read header
             } 
-
         catch (IOException ex) {
                  ex.printStackTrace();
                  System.out.println("could not open File.");
@@ -119,7 +118,6 @@ public class FileAccess extends HttpServlet
     //get Name from a captured record
     /**
      * DONT DOCUMENT THIS
-
      */
     public String getNameFromRec(String rec)
     {

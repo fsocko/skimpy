@@ -95,8 +95,8 @@ public class Food extends HttpServlet{
     public String toString(){
     	String s = "The item's name is: " + name + 
     			"\n" +
-    			"\nThe price at Tesco is: £" + tescoPrice +
-    			"\nThe price at ASDA is: £" + asdaPrice +
+    			"\nThe price at Tesco is: Â£" + tescoPrice +
+    			"\nThe price at ASDA is: Â£" + asdaPrice +
     			"\nThe amount is: " + amount +
     			"\nThe units of item are: " + units +
     			"\nThe serving size is" + serving +

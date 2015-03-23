@@ -13,7 +13,7 @@ public class Person extends HttpServlet{
 	private String ID;
 	private String name;
 	private String email;
-	private String password; 
+	private String password; //needs encripting
 	private int age;
 	private double height;
 	private double weight;
@@ -75,6 +75,10 @@ public class Person extends HttpServlet{
 	public String getName(){
 		return name;
 	}
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
 	public int getAge(){
 		return age;
 	}
@@ -92,9 +96,6 @@ public class Person extends HttpServlet{
 	}
 	public MealPlanner getMealplan(){
 		return mealplan;
-	}
-	public String getPassword(){
-		return password;
 	}
 
 	//use these setters if user changes age weight etc.
