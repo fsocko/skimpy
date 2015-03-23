@@ -24,8 +24,9 @@ public class MealPlanCreator {
 		for (int i = 0; i < mealNames.length; i++) {
 			ArrayList<Food> foods = new ArrayList<Food>();
 			for (String s: mealIngredients[i]) {
-				Food food = db.getFoodData("asda_scraped", s);
-				foods.add(food);
+				//you will need to use the pull food method in DBConnect
+//				Food food = db.getFoodData("asda_scraped", s);
+//				foods.add(food);
 			}
 			Meal meal = new Meal(mealNames[i], foods);
 			mealPlanner.add(meal, days[day], times[time]);

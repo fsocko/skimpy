@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
 /**
  *
- * @author ruaraidh
+ * @author ruaraidh, FPS
  *
  */
 /**
  *  Represents a Meal
  *
  */
+//TODO: make this work with our database
 public class Meal extends HttpServlet{
 	/**
 	 * Will be used in creating a MealPlanner . Then can be compared to the user's GDA.
@@ -22,7 +23,8 @@ public class Meal extends HttpServlet{
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients){
+	public Meal(String name, ArrayList<Food> ingredients)
+	{
 		this.name = name;
 		this.ingredients = new ArrayList<Food>();
 		for(Food f : ingredients){
@@ -54,14 +56,14 @@ public class Meal extends HttpServlet{
 	public double mealTescoPrice(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getTescoPrice();
+			result += f.getPrice();
 		}
 		return result;
 	}
 	public double mealAsdaPrice(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getAsdaPrice();
+			result += f.getPrice();
 		}
 		return result;
 	}
@@ -80,7 +82,7 @@ public class Meal extends HttpServlet{
 	public double mealProt(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getProtein();
+			result += f.getProteins();
 		}
 		return result;
 	}
@@ -101,7 +103,7 @@ public class Meal extends HttpServlet{
 	public double mealFat(){
 		double result = 0;
 		for(Food f : ingredients){
-			result += f.getFat();
+			result += f.getFats();
 		}
 		return result;
 	}

@@ -1,6 +1,5 @@
 package BusinessLogic;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -15,29 +14,60 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-
-		//this will open a class in which all your meal plan methods from main are now.
-		//@ruaraidh I suggest we adopt this as standard practice for testing methods in the master branch.
-		//It makes it easier to comment out other people's work which may or may not be needed.
-			
-		//Run meal plan methods
-		//MealPlanMain testPlan = new MealPlanMain();
-		//testPlan.testMealPlan();
 		
-
-//		StdMain run = new StdMain(); 	
-//		run.testMethods();	
+		DBConnect con = new DBConnect();
+		con.search("sains", "apple");
+	}
+	
+	public static void portionSizeToDB(String db, String table)
+	{
 		
-		DBConnect run  = new DBConnect();
-		run.search("bread");
+		SpiderToDB std = new SpiderToDB();
+		DBConnect dbCon = new DBConnect();
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		ArrayList portions = new ArrayList(std.readAllRecords(std.portionPath));
 		
+		int i = 1;
+		while(i < std.countLines(std.portionPath))
+		{
+			System.out.println("\n i is:" + i + "\n");
+			System.out.println(portions.get(i).toString().trim());
+			PortionSize portion = std.parsePortion(portions.get(i).toString().trim());
+			System.out.println(portion.toString());
+			dbCon.pushPortionSizes("portion_sizes", portion.getFoodCat(), portion.getFoodItem(), portion.getMass(), portion.getUnit());
+			i++;
+		}
+	}
+	
 
-		//Scraper Output to DB
+	public static void pushToDB(String path, String table)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect toDB = new DBConnect();
+		ArrayList Items = new ArrayList(std.readAllRecords(path));
 
-		//run.pushTesco("food_db","tesco_scraped");	
-		//run.pushSains("food_db","sains_scraped");
+		int i = 1;
+		while(i < std.countLines(path)){
+			System.out.println("\n i is:" + i + "\n");
+			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
 
-    }
+			if(foodItem != null)
+			{
+				System.out.println(foodItem.toString());
+				toDB.pushFood(foodItem, table);
+			}
+			i++;
+		}
+	}
+	
+	public static String pullFromDB(String table, int ID)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect pullDB = new DBConnect();
+		return pullDB.pullFood(table, ID).toString();
+	
+	}
+	
+	
+	
 }
-
-
