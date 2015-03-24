@@ -1,5 +1,6 @@
 package ProductExtractor;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.jsoup.nodes.Document;
@@ -21,7 +22,21 @@ public class TescoManualScraper {
 			List<Shelf> shelves = tesco.listShelves(c.url);
 			for (Shelf s : shelves) {
 				TescoProductExtractor tpex = new TescoProductExtractor(s.url, c.name, s.name);
-				tpex.extract(s.url);
+				try {
+					tpex.extract(s.url);
+				} catch (IOException ioe) {
+					try {
+						// If it blocks, wait for ten seconds, then try again.
+						System.out.println("An error occurred. Possibly 403.");
+						Thread.sleep(10000);
+						tpex.extract(s.url);
+					} catch(InterruptedException i) {
+						i.printStackTrace();
+					}
+					catch (IOException ioex) {
+						ioex.printStackTrace();
+					}
+				}
 			}
 		}
 	}

@@ -24,7 +24,7 @@ public class TescoProductExtractor implements Runnable {
 		this.categoryName = categoryName;
 	}
 
-	public void extract(String gridPageURL) {
+	public void extract(String gridPageURL) throws IOException {
 		List<Thread> runningThreads = new ArrayList<Thread>();
 		List<String> productURLs = new ArrayList<String>();
 		allProducts = new ArrayList<Product>();
@@ -70,7 +70,14 @@ public class TescoProductExtractor implements Runnable {
 	}
 
 	public void run() {
-		Document productPage = getHTML(this.productPageURL);
+		Document productPage;
+		try {
+			productPage = getHTML(this.productPageURL);
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
 		String productName = productPage.select("h1").text();
 		String price;
 		String pricePerUnit;
@@ -159,7 +166,7 @@ public class TescoProductExtractor implements Runnable {
         }
 	}
 
-	public static Document getHTML(String url)
+	public static Document getHTML(String url) throws IOException
 	{
 		URL obj;
 		HttpURLConnection conn;
@@ -167,34 +174,21 @@ public class TescoProductExtractor implements Runnable {
 		String inputLine;
 		StringBuffer response;
 
-		try
-		{
-			obj = new URL(url);
-			conn = (HttpURLConnection)obj.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-			System.out.println("GET " + url + System.lineSeparator());
+		obj = new URL(url);
+		conn = (HttpURLConnection)obj.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+		System.out.println("GET " + url + System.lineSeparator());
 
-			inBuff = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	
-			response = new StringBuffer();
+		inBuff = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-			while ((inputLine = inBuff.readLine()) != null)
-			{
-				response.append(inputLine);
-			}
-			inBuff.close();
-		}
-		catch (MalformedURLException mal)
+		response = new StringBuffer();
+
+		while ((inputLine = inBuff.readLine()) != null)
 		{
-			mal.printStackTrace();
-			return null;
+			response.append(inputLine);
 		}
-		catch (IOException ioe)
-		{
-			ioe.printStackTrace();
-			return null;
-		}
+		inBuff.close();
 
 		Document html = Jsoup.parse(response.toString());
 		return html;
