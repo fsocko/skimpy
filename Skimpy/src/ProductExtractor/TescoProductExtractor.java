@@ -41,17 +41,30 @@ public class TescoProductExtractor implements Runnable {
 			}
 		}
 		
-		for (String productURL : productURLs) {
-			Thread t = new Thread(new TescoProductExtractor(productURL, this.departmentName, this.categoryName));
-			runningThreads.add(t);
-			t.start();
+		List<List<String>> partitions = new ArrayList<List<String>>();
+		int numOfPartitions = productURLs.size() / 20;
+		int lastPartitionSize = productURLs.size() % 20;
+		
+		for (int i = 0; i < numOfPartitions; i++) {
+			partitions.add(i, productURLs.subList(20 * i, 20 * (i + 1)));
+		}
+		if (lastPartitionSize > 0) {
+			partitions.add(numOfPartitions, productURLs.subList(20 * numOfPartitions, 20 * numOfPartitions + lastPartitionSize));
 		}
 		
-		for (Thread t : runningThreads) {
-			try {
-				t.join();
-			} catch (InterruptedException ie) {
-				ie.printStackTrace();
+		for (List<String> partition : partitions) {
+			for (String productURL : partition) {
+				Thread t = new Thread(new TescoProductExtractor(productURL, this.departmentName, this.categoryName));
+				runningThreads.add(t);
+				t.start();
+			}
+
+			for (Thread t : runningThreads) {
+				try {
+					t.join();
+				} catch (InterruptedException ie) {
+					ie.printStackTrace();
+				}
 			}
 		}
 	}

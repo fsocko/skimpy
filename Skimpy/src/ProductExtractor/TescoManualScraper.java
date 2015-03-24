@@ -12,7 +12,10 @@ public class TescoManualScraper {
 		Document tescoRootPage = tesco.getHTML(tesco.rootPageURL);
 		System.out.println(tesco.getDocumentTitle(tescoRootPage) + System.lineSeparator());
 		
-		Department chosenDept = tesco.listDepartments().get(2);
+		/*
+		 * The department to be scraped can be specified here.
+		 */
+		Department chosenDept = tesco.listDepartments().get(0);
 		List<Category> categories = tesco.listCategories(chosenDept.url);
 		for (Category c : categories) {
 			List<Shelf> shelves = tesco.listShelves(c.url);
