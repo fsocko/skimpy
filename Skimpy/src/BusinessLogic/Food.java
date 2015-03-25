@@ -48,7 +48,7 @@ public class Food extends HttpServlet{
 		this.fibre = fibre;
 		this.salt = salt;
 	}
-
+//
 	public String getShopID() {
 		return shopID;
 	}
