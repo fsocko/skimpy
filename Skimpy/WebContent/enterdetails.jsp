@@ -66,13 +66,8 @@ $(document).ready(function(){
 </head>
 <body>
 
-<<<<<<< HEAD
-<form action="Signed.jsp" method="post">
- <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, 'M', 0); %> --%>
-=======
 <form action="signupdets.jsp" method="post" id="myForm">
  <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>
->>>>>>> refs/remotes/origin/master-interface-login-signup
 	<h1> Please enter your details:</h1>
 	<br><table>
 	<tr> <td> Name:</td><td> <input type="text" name="name" ><p class="MyErrors"></p></td></tr>
@@ -81,20 +76,12 @@ $(document).ready(function(){
                                     <option value="male">Male</option> 
                                     <option value="female">Female</option>
                                 </select></td></tr>
-<<<<<<< HEAD
-	<tr><td> Age: </td><td><input type="text" name="age" ></td></tr>
-	<tr><td> Weight:</td><td><input type="text" name="weight"></td></tr>
-	<tr> <td>Height: </td> <td><input type="text" name="height" ></td></tr>
-	<tr><td> Exercise</td><td> <input type="text" name="exercise" ></td></tr>
-	<tr><td> Password: </td><td><input type="password" name="password"  ></td></tr>
-=======
                                 
 	<tr><td> Age: </td><td><input type="text" name="age" ><p class="MyErrors"></p></td></tr>
 	<tr><td> Weight:</td><td><input type="text" name="weight"><p class="MyErrors"></p></td></tr>
 	<tr> <td>Height: </td> <td><input type="text" name="height" ><p class="MyErrors"></p></td></tr>
 	<tr><td> Exercise</td><td> <input type="text" name="exercise" ><p class="MyErrors"></p></td></tr>
 	<tr><td> Password: </td><td><input type="text" name="password"  ><p class="MyErrors"></p></td></tr>
->>>>>>> refs/remotes/origin/master-interface-login-signup
      </table>
 			<input type="submit" value="Save">
 		

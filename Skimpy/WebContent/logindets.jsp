@@ -27,7 +27,7 @@ ResultSet rs = null;
 
 
 String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3307/Skimpy";
+String url = "jdbc:mysql://localhost:3306/Skimpy";
 String user = "root";
 String psw = "";
 

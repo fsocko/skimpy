@@ -60,10 +60,5 @@ $(document).ready(function(){
 </table>
 </fieldset>
 </form>
-<<<<<<< HEAD
-
 </body>
 </html>
-=======
-</body>
->>>>>>> refs/remotes/origin/master-interface-login-signup
