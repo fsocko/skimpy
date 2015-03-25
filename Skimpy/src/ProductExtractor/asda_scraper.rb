@@ -4,7 +4,7 @@ wbdrv = Selenium::WebDriver.for :firefox
 wbdrv.manage.timeouts.implicit_wait = 10
 
 links = File.open(ARGV[0]).read
-products = File.new("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_asda_products#{ARGV[1]}.txt", "w")
+products = File.new("#{Time.now.strftime("%Y%m%d%H%M%S")}_asda_products.txt", "w")
 
 category = String.new
 links.each_line do |ln|
