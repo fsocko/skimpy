@@ -24,12 +24,13 @@ food_nav_links.each do |fd|
       wbdrv.get aisle
       shelves = wbdrv.find_elements(:css, "ul.menu_shelf li a")
       shelves.collect! { |a| a.attribute("href") }
+      subcat = wbdrv.find_element(:css, "h1").text
 
       shelves.each do |shlf|
         begin
           wbdrv.get shlf
           listings = wbdrv.find_elements(:css, "#listings .listing .title a")
-          puts wbdrv.find_element(:css, "h1").text
+          puts "#{subcat}; #{wbdrv.find_element(:css, "h1").text}"
           listings.each do |a|
             puts a.attribute("href")
           end
