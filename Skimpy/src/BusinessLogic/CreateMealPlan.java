@@ -12,7 +12,7 @@ public class CreateMealPlan extends HttpServlet{
 		
 		//moved this here for now so that we can make meals from database
 		DBConnect connection = new DBConnect();
-    	
+
     	Food ID1 = connection.pullFood("tesco", 1);
     	Food ID2 = connection.pullFood("tesco", 2);
     	Food ID3 = connection.pullFood("tesco", 3);

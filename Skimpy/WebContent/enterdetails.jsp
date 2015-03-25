@@ -14,28 +14,108 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery.validator.setDefaults({
+// where to display the error relative to the element
+	errorPlacement: function(error, element) {
+	error.appendTo(element.parent().find('p.myErrors'));
+ }
+});
+
+		$("#myForm").validate({
+				rules:{
+					name:{
+						required:true
+					},
+					
+					emailaddress:{
+						required : true,
+						email: true
+					},
+					
+					age:"required",
+					
+					weight:"required",
+						
+					height:"required",
+					
+					exercise:"required",
+					
+					password:{
+						required: true
+					},		
+				}
+		});
+	});
+
+
+
+
+</script>
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" />
+<style>
+	.myErrors {
+	color:red;
+	}
+</style>
+
 </head>
 <body>
 
-<form action="login.jsp" method="post">
+<<<<<<< HEAD
+<form action="Signed.jsp" method="post">
  <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, 'M', 0); %> --%>
+=======
+<form action="signupdets.jsp" method="post" id="myForm">
+ <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>
+>>>>>>> refs/remotes/origin/master-interface-login-signup
 	<h1> Please enter your details:</h1>
 	<br><table>
-	<tr> <td> Name:</td><td> <input type="text" name="name" > </td></tr>
-	<tr><td>  Email:</td><td> <input type="text" name="emailaddress"> (Use format name@company.com) </td></tr>
+	<tr> <td> Name:</td><td> <input type="text" name="name" ><p class="MyErrors"></p></td></tr>
+	<tr><td>  Email:</td><td> <input type="text" name="emailaddress"><p class="MyErrors"></td></tr>
     <tr><td>  Gender: </td><td> <select name="gender">
                                     <option value="male">Male</option> 
                                     <option value="female">Female</option>
                                 </select></td></tr>
+<<<<<<< HEAD
 	<tr><td> Age: </td><td><input type="text" name="age" ></td></tr>
 	<tr><td> Weight:</td><td><input type="text" name="weight"></td></tr>
 	<tr> <td>Height: </td> <td><input type="text" name="height" ></td></tr>
 	<tr><td> Exercise</td><td> <input type="text" name="exercise" ></td></tr>
-	<tr><td> Password: </td><td><input type="text" name="password"  ></td></tr>
+	<tr><td> Password: </td><td><input type="password" name="password"  ></td></tr>
+=======
+                                
+	<tr><td> Age: </td><td><input type="text" name="age" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Weight:</td><td><input type="text" name="weight"><p class="MyErrors"></p></td></tr>
+	<tr> <td>Height: </td> <td><input type="text" name="height" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Exercise</td><td> <input type="text" name="exercise" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Password: </td><td><input type="text" name="password"  ><p class="MyErrors"></p></td></tr>
+>>>>>>> refs/remotes/origin/master-interface-login-signup
      </table>
 			<input type="submit" value="Save">
 		
 </form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

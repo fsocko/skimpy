@@ -14,7 +14,6 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		
 		DBConnect con = new DBConnect();
 		SpiderToDB std = new SpiderToDB();
 		//con.search("sains", "apple");
@@ -88,7 +87,4 @@ public class Main extends HttpServlet{
 		return pullDB.pullFood(table, ID).toString();
 	
 	}
-	
-	
-	
 }
