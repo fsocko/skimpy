@@ -34,15 +34,25 @@ food_nav_links.each do |fd|
           listings.each do |a|
             puts a.attribute("href")
           end
-          next_page_btn = wbdrv.find_element(:css, "#listings-pagination-container a.button.forward-listing")
-          next_page_btn.click
-          listings = wbdrv.find_elements(:css, "#listings .listing .title a")
-          puts "#{subcat}; #{wbdrv.find_element(:css, "h1").text}"
-          listings.each do |a|
-            puts a.attribute("href")
+          counter = wbdrv.find_element(:css, 'p.itemCount').text
+          p = /-(d+)/.match(counter)[1].to_i
+          t = /of (d+)/.match(counter)[1].to_i
+          while p < t
+            puts "Going to the next page"
+            wbdrv.find_element(:css, '#listings-pagination-container .listings-pagination-wrapper a.button.forward-listing'.click)
+            listings = wbdrv.find_elements(:css, "#listings .listing .title a")
+            puts "#{subcat}; #{wbdrv.find_element(:css, "h1").text}"
+            listings.each do |a|
+              puts a.attribute("href")
+            end
+            counter = drv.find_element(:css, 'p.itemCount').text
+            p = /-(d+)/.match(counter)[1].to_i
+            t = /of (d+)/.match(counter)[1].to_i
           end
         rescue Selenium::WebDriver::Error::NoSuchElementError
-          
+          puts "Something went wrong at #{shlf}"          
+        rescue NoMethodError
+          # Doing nothing
         end
       end
     end
