@@ -34,8 +34,15 @@ food_nav_links.each do |fd|
           listings.each do |a|
             puts a.attribute("href")
           end
+          next_page_btn = wbdrv.find_element(:css, "#listings-pagination-container a.button.forward-listing")
+          next_page_btn.click
+          listings = wbdrv.find_elements(:css, "#listings .listing .title a")
+          puts "#{subcat}; #{wbdrv.find_element(:css, "h1").text}"
+          listings.each do |a|
+            puts a.attribute("href")
+          end
         rescue Selenium::WebDriver::Error::NoSuchElementError
-          puts "Something went wrong at #{shlf}"
+          
         end
       end
     end
