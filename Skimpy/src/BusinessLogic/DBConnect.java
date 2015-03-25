@@ -128,25 +128,25 @@ public class DBConnect extends HttpServlet{
 				saturates = rs.getDouble("Saturates");
 				salt = rs.getDouble("Salt");
 				fibre = rs.getDouble("Fibre");
-				}
+			}
 			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
-									foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
-									fats, saturates, fibre, salt);	
-			
-		} 
-		catch(Exception ex) 
-		{
-			System.out.println("Error:"+ex );	
-		}	
-		//close connections.
-		finally 
-		{
-			closeCon();
-		}
+					foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
+					fats, saturates, fibre, salt);	
 
-		return returnedFood;	
-	}	
-		
+			} 
+			catch(Exception ex) 
+			{
+			System.out.println("Error:"+ex );	
+			}	
+			//close connections.
+			finally 
+			{
+			closeCon();
+			}
+			
+			return returnedFood;
+	}
+
 	//Push food object with nutrition data to DB
 	public void pushFood(Food food, String tableName)
 	{	
@@ -205,17 +205,14 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 		
-	public void pushUser(Person user)
-	{
-		openCon();
-		try{
 
-			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\","
-							+ " \"Weight\", \"Gender\", \"Exercise\")"+ "VALUES (\"" 
-							+ user.getName() +  "\", \"" + user.getEmail() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() 
-							+ ", \"" + user.getGender() + "\", " + user.getExercise() + ")";
-			
+	public void pushUser(Person user){
+		try{
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
+					+ "VALUES (\"" + 
+							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
+							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
@@ -223,6 +220,35 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	//I think this is unused
+	public void findCat(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name))
+		    	 {
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
+	
 
 	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit)
 	{
