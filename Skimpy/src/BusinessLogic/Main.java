@@ -16,7 +16,28 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) {
 		
 		DBConnect con = new DBConnect();
-		con.search("sains", "apple");
+		SpiderToDB std = new SpiderToDB();
+		//con.search("sains", "apple");
+		pushToDB(std.tescoPath, "tesco");
+		pushToDB(std.sainsPath, "sains");
+		
+	}
+	//return URL
+	public static String getURL(Food input)
+	{
+		String supermarket = input.getSupermarket().trim();
+		String shopID = input.getShopID().trim();
+		String url = "";
+		if(supermarket.toUpperCase().equals("T"))
+		{url = "http://www.tesco.com/groceries/product/details/?id=";}
+		else if(supermarket.toUpperCase().equals("S"))
+		{url = "";}	
+		else if(supermarket.toUpperCase().equals("A"))
+		{url = "";}
+		else{return null;}
+
+		return url;
+		
 	}
 	
 	public static void portionSizeToDB(String db, String table)
