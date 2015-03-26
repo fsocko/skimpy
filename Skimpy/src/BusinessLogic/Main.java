@@ -17,8 +17,8 @@ public class Main extends HttpServlet{
 		DBConnect con = new DBConnect();
 		SpiderToDB std = new SpiderToDB();
 		//con.search("sains", "apple");
-		pushToDB(std.tescoPath, "tesco");
-		pushToDB(std.sainsPath, "sains");
+		//pushToDB(std.tescoPath, "tesco");
+		//pushToDB(std.sainsPath, "sains");
 		
 	}
 	//return URL

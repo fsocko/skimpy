@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
