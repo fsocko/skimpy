@@ -13,17 +13,17 @@ public class CreateMealPlan extends HttpServlet{
 		//moved this here for now so that we can make meals from database
 		DBConnect connection = new DBConnect();
     	
-    	Food ID1 = connection.pullFood("tesco", 1);
-    	Food ID2 = connection.pullFood("tesco", 2);
-    	Food ID3 = connection.pullFood("tesco", 3);
-    	Food ID4 = connection.pullFood("tesco", 4);
-    	Food ID5 = connection.pullFood("tesco", 5);
-    	Food ID6 = connection.pullFood("tesco", 6);
-    	Food ID7 = connection.pullFood("tesco", 7);
-    	Food ID8 = connection.pullFood("tesco", 8);
-    	Food ID9 = connection.pullFood("tesco", 9);
-    	Food ID10 = connection.pullFood("tesco", 10);
-    	Food ID11 = connection.pullFood("tesco", 11);
+    	Food ID1 = connection.pullFood("tesco", "1");
+    	Food ID2 = connection.pullFood("tesco", "2");
+    	Food ID3 = connection.pullFood("tesco", "3");
+    	Food ID4 = connection.pullFood("tesco", "4");
+    	Food ID5 = connection.pullFood("tesco", "5");
+    	Food ID6 = connection.pullFood("tesco", "6");
+    	Food ID7 = connection.pullFood("tesco", "7");
+    	Food ID8 = connection.pullFood("tesco", "8");
+    	Food ID9 = connection.pullFood("tesco", "9");
+    	Food ID10 = connection.pullFood("tesco", "10");
+    	Food ID11 = connection.pullFood("tesco", "11");
     	
 		ArrayList<Food> ing1B = new ArrayList<Food>();
     	ArrayList<Food> ing1L = new ArrayList<Food>();
