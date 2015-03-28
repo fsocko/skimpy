@@ -273,18 +273,59 @@ public class DBConnect extends HttpServlet{
 		openCon();
 		try{
 			ArrayList<String> query = new ArrayList<String>();
-			query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
-			query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
-			query.add("SELECT * FROM " + table + " WHERE Name LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
-			query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+			//exact match
+			for(int i = 0; i < 5; i++){
+				query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");;
+			}
+			for(int i = 0; i < 5; i++){
+				query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
+			}
+			for(int i = 0; i < 5; i++){
+				query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
+			}
+			if(qu.contains(" ")){
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE Name LIKE '%" + qu + "%';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '%" + qu + "%';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+				}
+			}
+			else{
+				for(int i = 0; i < 3; i++){
+					query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 4; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE Name LIKE '%" + qu + "%';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '%" + qu + "%';");
+				}
+				for(int i = 0; i < 1; i++){
+					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '%" + qu + "%';");
+				}
+			}
+			
+			
+			
 			
 			Map<String, Integer> resultsHash = new HashMap<String, Integer>();
 			ArrayList<String> results = new ArrayList<String>();
