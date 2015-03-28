@@ -56,7 +56,7 @@ public class DBConnect extends HttpServlet{
 	
 	public void closeCon()
 	{
-		System.out.println("Trying to close all connections to DB.");
+//		System.out.println("Trying to close all connections to DB.");
 
 		try 
 		{
@@ -75,18 +75,17 @@ public class DBConnect extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{System.out.println("Connections closed.");}		
+//		finally{System.out.println("Connections closed.");}		
 	}
 	
-	
-	public Food pullFood(String table, int ID)
+	public Food pullFood(String table, String ID)
 	{
 		openCon();
 		Food returnedFood = null;
 		try{
 			
-			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
-			System.out.println(query);
+			String query = "select * FROM " + table + " WHERE ShopID=" + ID + ";";
+//			System.out.println(query);
 			rs = st.executeQuery(query);
 			
 			String shopID = null;
@@ -112,7 +111,7 @@ public class DBConnect extends HttpServlet{
 			{
 				shopID = rs.getString("shopID");
 				name = rs.getString("Name");
-				unit = rs.getString("Units");
+				unit = rs.getString("Unit");
 				mass = rs.getDouble("Mass");
 				price = rs.getDouble("Price");
 				PPUPrice = rs.getDouble("PPUPrice");
@@ -269,8 +268,9 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 
-	public void search(String table, String qu)
+	public ArrayList<Food> search(String table, String qu)
 	{
+		openCon();
 		try{
 			ArrayList<String> query = new ArrayList<String>();
 			query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");
@@ -289,20 +289,18 @@ public class DBConnect extends HttpServlet{
 			Map<String, Integer> resultsHash = new HashMap<String, Integer>();
 			ArrayList<String> results = new ArrayList<String>();
 			String temp = "";
-		    String name = "";
+		    String nameID = "";
 			for(String q: query){
 				ResultSet rs = st.executeQuery(q);
 			    while (rs.next()) {
 
-			    	temp = name;
-			    	name = rs.getString("Name");
+			    	temp = nameID;
+			    	nameID = rs.getString("ShopID");
 			    	//stops duplicates
-			    	if(!temp.equals(name)){
-			    		results.add(name);
-//			    		System.out.println(name);
+			    	if(!temp.equals(nameID)){
+			    		results.add(nameID);
 			    	}
 			    }
-			    System.out.println();
 			}
 			
 			
@@ -313,14 +311,15 @@ public class DBConnect extends HttpServlet{
 			
 			List<Entry<String, Integer>> sortedRes = new ArrayList<Entry<String, Integer>>();
 			sortedRes = entriesSortedByValues(resultsHash);
-			System.out.println(sortedRes);
-//			for (Map.Entry<String,Integer> entry : sortedRes) {
-//			    if (entry.getValue() == 1) {
-//			        System.out.println(entry);
-//			    }
-//			}
+			ArrayList<Food> foodArr = new ArrayList<>();
+			for (Map.Entry<String,Integer> entry : sortedRes) {
+			    foodArr.add(pullFood(table, entry.getKey()));
+			    
+			}
+			return foodArr;
 		} catch(Exception ex){
 			System.out.println(ex);
+			return null;
 		}
 		finally 
 		{
@@ -339,6 +338,58 @@ public class DBConnect extends HttpServlet{
 	
 		return sortedEntries;
 	}
+	
+//	public Food foodBySearch(String table, String name){
+//		String q = ("SELECT * FROM " + table + " WHERE Name = '" + name + "';");
+//		ResultSet rs = st.executeQuery(q);
+//		
+//	    while (rs.next()) {
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	    	temp = name;
+//	    	name = rs.getString("Name");
+//	    	if(!temp.equals(name)){
+//	    		results.add(name);
+//	    	}
+//	}
 	
 	public void recommend(String val, String coloumn)
 	{
