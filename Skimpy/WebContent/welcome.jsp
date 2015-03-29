@@ -13,7 +13,7 @@
 	 %>
 
 <h3> Welcome, <%=session.getAttribute("username") %></h3>
-<form action="MealPlan.jsp" method="post">
+<form action="search.jsp" method="post">
 	<input type="submit" value="Create Meal Plan">
 </form>
 </body>
