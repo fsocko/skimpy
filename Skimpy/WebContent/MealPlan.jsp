@@ -11,6 +11,7 @@
 <title>Meal Planner</title>
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion({
@@ -55,7 +56,7 @@ connect.search(searchItem); */
     Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
     String userID = user.getID(); %>
     
-	<p> Hey User, here's a default meal plan for you. Feel free to
+	<p> Hey <%=session.getAttribute("username") %>, here's a default meal plan for you. Feel free to
 		change everything in it or keep it if you like it. Just click on the
 		cells you want to alter and enter ingredients so we can create an
 		optimised shopping list for you.</p>

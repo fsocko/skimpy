@@ -36,14 +36,19 @@
  	    	  
  		    MealIngredients[j][0]= MealName[j]; 
  		    MealIngredients[j][1]=Ingredients[j];}
- 		    
+ 		//to do: if ingredients are empty   
  		String mealIngredients = java.util.Arrays.deepToString(MealIngredients);
     	String mealName = java.util.Arrays.deepToString(MealName);
         String ingredients = java.util.Arrays.deepToString(Ingredients);
         String fing = Ingredients[0];
         String result = fing.substring(1,fing.length()-1);
-        DBConnect con = new DBConnect();
-        con.search(result);%>
+        
+        
+        for (int i=0; i<Ingredients.length; i++){
+        	DBConnect con = new DBConnect();
+        	con.search("tesco", Ingredients[i]);
+        }
+        %>
         <%=ingredients %>
         <%=result %>
  	<%--  <% String ingrList = "";
