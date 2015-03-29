@@ -18,10 +18,12 @@
 	response.sendRedirect("login.jsp");
 }
 	 %>
-<%DBConnect con = new DBConnect();
-con.search("tesco", Ingredients[i]); %>
+<%
+String [] Ingredients =  request.getParameterValues("ingred");
+DBConnect con = new DBConnect();
+con.search("tesco", Ingredients[0] ); %>
 <h3> Welcome, <%=session.getAttribute("username") %></h3>
-<form action="search.jsp" method="post">
+<form action="search.jsp" method="post" name="ingred">
 	<input type="text" value="Enter a product">
 </form>
 </body>
