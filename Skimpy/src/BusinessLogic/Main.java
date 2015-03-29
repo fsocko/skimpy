@@ -15,11 +15,23 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		DBConnect con = new DBConnect();
-		SpiderToDB std = new SpiderToDB();
+
+		//SpiderToDB std = new SpiderToDB();
 		//con.search("sains", "apple");
 		//pushToDB(std.tescoPath, "tesco");
 		//pushToDB(std.sainsPath, "sains");
 		
+
+		ArrayList<Food> list = con.search("tesco", "rolls");
+		printFoodListSearch(list);
+	}
+	
+	//Ruaraidh's test for search
+	public static void printFoodListSearch(ArrayList<Food> list){
+		for(Food f : list){
+			System.out.println(f.getName());
+		}
+
 	}
 	//return URL
 	public static String getURL(Food input)
@@ -80,7 +92,7 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public static String pullFromDB(String table, int ID)
+	public static String pullFromDB(String table, String ID)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
