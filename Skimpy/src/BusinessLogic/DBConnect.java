@@ -305,13 +305,13 @@ public class DBConnect extends HttpServlet{
 		try{
 			ArrayList<String> query = new ArrayList<String>();
 			//exact match
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");;
 			}
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
 			}
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
 			}
 			if(qu.contains(" ")){
@@ -335,13 +335,13 @@ public class DBConnect extends HttpServlet{
 				}
 			}
 			else{
-				for(int i = 0; i < 3; i++){
+				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
 				}
 				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
 				}
-				for(int i = 0; i < 4; i++){
+				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
 				}
 				for(int i = 0; i < 1; i++){

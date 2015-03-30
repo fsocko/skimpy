@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 	 <% String ing =  request.getParameter("ingreds");
 	    String [] ings = ing.split(";");
-	 for(int i=0; i <ings.length;i++ ){
+	    for(int i=0; i <ings.length;i++ ){
 	
         DBConnect con = new DBConnect();
         ArrayList<Food> foods = new ArrayList<Food>();
