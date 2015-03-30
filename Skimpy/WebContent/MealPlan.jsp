@@ -77,7 +77,7 @@ connect.search(searchItem); */
 				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
 				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
                 <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> 
-                <input  id="<%=j%>,<%=i %>" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
+                <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
                 <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred" value=";">
                 <p id="ingredients<%=j%><%=i %>"></p>
