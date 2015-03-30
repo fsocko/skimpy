@@ -16,14 +16,15 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) {
 		DBConnect con = new DBConnect();
 
-		//SpiderToDB std = new SpiderToDB();
-		//con.search("sains", "apple");
-		//pushToDB(std.tescoPath, "tesco");
-		//pushToDB(std.sainsPath, "sains");
-		
-
 		ArrayList<Food> list = con.search("tesco", "rolls");
 		printFoodListSearch(list);
+		
+	
+		SpiderToDB std = new SpiderToDB();
+		pushToDB(std.tescoPath, "tesco");
+		pushToDB(std.asdaPath, "asda");
+		pushToDB(std.sainsPath, "sains");
+		
 	}
 	
 	//Ruaraidh's test for search
