@@ -464,4 +464,59 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
+	public ArrayList<Food> findSimilarTo(Food f) {
+		String query = "SELECT DISTINCT * FROM asda WHERE Name REGEXP '";
+		ArrayList<Food> result = new ArrayList<Food>();
+		String[] wordsInName = f.getName().split("\\s");
+		for (int i = 0; i < wordsInName.length; i++) {
+			if (i < wordsInName.length - 1) {
+				query += wordsInName[i] + ".*";
+			}
+			else {
+				query += wordsInName[i];
+			}
+		}
+		
+/*		if (!f.getUnit().equals("NULL")) {
+			query += f.getMass();
+		}
+		else {
+			query += "\\d+";
+		}
+*/
+		query += "'";
+		
+		openCon();
+		try {
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				// A hacky temporary solution
+				Food temp = new Food(rs.getString(1),  // Indices start at 1 !!!
+									 rs.getString(2),
+									 rs.getDouble(3),
+									 rs.getString(4),
+									 rs.getDouble(5),
+									 rs.getDouble(6),
+									 rs.getString(7),
+									 rs.getString(8),
+									 rs.getString(9),
+									 rs.getString(10),
+									 rs.getDouble(11),
+									 rs.getDouble(12),
+									 rs.getDouble(13),
+									 rs.getDouble(14),
+									 rs.getDouble(15),
+									 rs.getDouble(16),
+									 rs.getDouble(17),
+									 rs.getDouble(18));
+				result.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		closeCon();
+		
+		return result;
+	}
+	
 }
