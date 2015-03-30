@@ -81,7 +81,7 @@ $(document).ready(function(){
 	<tr><td> Weight:</td><td><input type="text" name="weight"><p class="MyErrors"></p></td></tr>
 	<tr> <td>Height: </td> <td><input type="text" name="height" ><p class="MyErrors"></p></td></tr>
 	<tr><td> Exercise</td><td> <input type="text" name="exercise" ><p class="MyErrors"></p></td></tr>
-	<tr><td> Password: </td><td><input type="text" name="password"  ><p class="MyErrors"></p></td></tr>
+	<tr><td> Password: </td><td><input type="password" name="password"  ><p class="MyErrors"></p></td></tr>
      </table>
 			<input type="submit" value="Save">
 		

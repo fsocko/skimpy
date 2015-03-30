@@ -40,6 +40,7 @@ function reove(sender) {
 <title>Search</title>
 </head>
 <body>
+<<<<<<< HEAD
 
  
 <h3> Welcome, <%=session.getAttribute("username")%> </h3>
@@ -52,5 +53,19 @@ function reove(sender) {
 	<input type="submit" value="Search">
 </form> 
 
+=======
+<%if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
+	 %>
+<%
+/* String [] Ingredients =  request.getParameterValues("ingred");
+DBConnect con = new DBConnect();
+con.search("tesco", Ingredients[0] ); */ %> 
+<h3> Welcome, <%=session.getAttribute("username") %></h3>
+<form action="search.jsp" method="post" name="ingred">
+	<input type="text" value="Enter a product">
+</form>
+>>>>>>> 7f0954c392095156f35c2ff622bdb9074f4733d2
 </body>
 </html>
