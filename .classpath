@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="library/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="library/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="library/jsoup-1.8.1.jar"/>
+	<classpathentry kind="lib" path="library/mysql-connector-java-5.1.23-bin.jar"/>
+	<classpathentry kind="lib" path="library/rt.jar"/>
+	<classpathentry kind="lib" path="library/servlet-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
