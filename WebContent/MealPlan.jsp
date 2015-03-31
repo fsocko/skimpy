@@ -53,8 +53,8 @@ connect.search(searchItem); */
 </head>
 <body>
 <%  //MealPlanner plan = CreateMealPlan.create();
-    Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
-    String userID = user.getID(); %>
+    //Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
+    //String userID = user.getID(); %>
     
 	<p> Hey <%=session.getAttribute("username") %>, here's a default meal plan for you. Feel free to
 		change everything in it or keep it if you like it. Just click on the
