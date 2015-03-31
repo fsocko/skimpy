@@ -24,7 +24,7 @@ public class CreateMealPlan extends HttpServlet{
     	Food ID9 = connection.pullFood("tesco", "9");
     	Food ID10 = connection.pullFood("tesco", "10");
     	Food ID11 = connection.pullFood("tesco", "11");
-    	
+
 		ArrayList<Food> ing1B = new ArrayList<Food>();
     	ArrayList<Food> ing1L = new ArrayList<Food>();
     	ArrayList<Food> ing1D = new ArrayList<Food>();

@@ -14,9 +14,7 @@ public class Main extends HttpServlet{
 	 */
 	
 	public static void main(String[] args) {
-		
 		DBConnect con = new DBConnect();
-		con.getFoodCategories();
 		
 	}
 	
@@ -25,6 +23,7 @@ public class Main extends HttpServlet{
 		for(Food f : list){
 			System.out.println(f.getName());
 		}
+
 	}
 	//return URL
 	public static String getURL(Food input)
@@ -92,7 +91,4 @@ public class Main extends HttpServlet{
 		return pullDB.pullFood(table, ID).toString();
 	
 	}
-	
-	
-	
 }

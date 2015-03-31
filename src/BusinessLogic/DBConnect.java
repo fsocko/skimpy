@@ -55,6 +55,7 @@ public class DBConnect extends HttpServlet{
 	}
 	
 	public void closeCon()
+
 	{
 //		System.out.println("Trying to close all connections to DB.");
 
@@ -77,8 +78,10 @@ public class DBConnect extends HttpServlet{
 		}
 //		finally{System.out.println("Connections closed.");}		
 	}
+
 	
 	public Food pullFood(String table, String ID)
+
 	{
 		openCon();
 		Food returnedFood = null;
@@ -127,25 +130,25 @@ public class DBConnect extends HttpServlet{
 				saturates = rs.getDouble("Saturates");
 				salt = rs.getDouble("Salt");
 				fibre = rs.getDouble("Fibre");
-				}
+			}
 			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
-									foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
-									fats, saturates, fibre, salt);	
-			
-		} 
-		catch(Exception ex) 
-		{
-			System.out.println("Error:"+ex );	
-		}	
-		//close connections.
-		finally 
-		{
-			closeCon();
-		}
+					foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
+					fats, saturates, fibre, salt);	
 
-		return returnedFood;	
-	}	
-		
+			} 
+			catch(Exception ex) 
+			{
+			System.out.println("Error:"+ex );	
+			}	
+			//close connections.
+			finally 
+			{
+			closeCon();
+			}
+			
+			return returnedFood;
+	}
+
 	//Push food object with nutrition data to DB
 	public void pushFood(Food food, String tableName)
 	{	
@@ -204,16 +207,14 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 		
-	public void pushUser(Person user)
-	{
-		openCon();
+
+	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO \"user_info\" (\"UserName\", \"UserEmail\", \"Age\", \"Height\","
-							+ " \"Weight\", \"Gender\", \"Exercise\")"+ "VALUES (\"" 
-							+ user.getName() +  "\", \"" + user.getEmail() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() 
-							+ ", \"" + user.getGender() + "\", " + user.getExercise() + ")";
-			
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
+					+ "VALUES (\"" + 
+							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
+							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
+							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
@@ -221,6 +222,35 @@ public class DBConnect extends HttpServlet{
 			System.out.println(ex);
 		}
 	}
+	//I think this is unused
+	public void findCat(String qu){
+		try{
+			 String query ="SELECT * FROM sains_scraped WHERE name LIKE '%" + qu + " %';";
+		 
+		     ResultSet rs = st.executeQuery(query);
+		     String temp = "";
+		     String name = "";
+		     boolean found = false;
+		     while (rs.next()) {
+		    	 found = true;
+		    	 temp = name;
+		    	 name = rs.getString("name");
+		    	 if(!temp.equals(name))
+		    	 {
+		    		 System.out.println(name+"  ");
+		    	 }
+		     }
+		     if(!found){
+		    	 System.out.println("No results for query: " + qu);
+		     }
+		     System.out.println();
+			 
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+	}
+	
+	
 
 	public void pushPortionSizes(String table, String foodCat, String item, double mass, String unit)
 	{
@@ -241,6 +271,7 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
+
 	public void pullPortionSizes(String itemSearch)
 	{
 		openCon();
@@ -274,13 +305,13 @@ public class DBConnect extends HttpServlet{
 		try{
 			ArrayList<String> query = new ArrayList<String>();
 			//exact match
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE Name = '" + qu + "';");;
 			}
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE FoodCat2 = '" + qu + "';");
 			}
-			for(int i = 0; i < 5; i++){
+			for(int i = 0; i < 1; i++){
 				query.add("SELECT * FROM " + table + " WHERE FoodCat = '" + qu + "';");
 			}
 			if(qu.contains(" ")){
@@ -304,13 +335,13 @@ public class DBConnect extends HttpServlet{
 				}
 			}
 			else{
-				for(int i = 0; i < 3; i++){
+				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE Name LIKE '% " + qu + " %';");
 				}
 				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE FoodCat LIKE '% " + qu + " %';");
 				}
-				for(int i = 0; i < 4; i++){
+				for(int i = 0; i < 1; i++){
 					query.add("SELECT * FROM " + table + " WHERE FoodCat2 LIKE '% " + qu + " %';");
 				}
 				for(int i = 0; i < 1; i++){
@@ -352,12 +383,14 @@ public class DBConnect extends HttpServlet{
 			
 			List<Entry<String, Integer>> sortedRes = new ArrayList<Entry<String, Integer>>();
 			sortedRes = entriesSortedByValues(resultsHash);
+
 			ArrayList<Food> foodArr = new ArrayList<>();
 			for (Map.Entry<String,Integer> entry : sortedRes) {
 			    foodArr.add(pullFood(table, entry.getKey()));
 			    
 			}
 			return foodArr;
+
 		} catch(Exception ex){
 			System.out.println(ex);
 			return null;
@@ -368,7 +401,7 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	static <K,V extends Comparable<? super V>> List<Entry<K, V>> entriesSortedByValues(Map<K,V> map) {
-	
+		
 		List<Entry<K,V>> sortedEntries = new ArrayList<Entry<K,V>>(map.entrySet());
 	
 		Collections.sort(sortedEntries, new Comparator<Entry<K,V>>() {@Override public int compare(Entry<K,V> e1, Entry<K,V> e2) 
@@ -379,6 +412,7 @@ public class DBConnect extends HttpServlet{
 	
 		return sortedEntries;
 	}
+
 	
 //	public Food foodBySearch(String table, String name){
 //		String q = ("SELECT * FROM " + table + " WHERE Name = '" + name + "';");

@@ -75,6 +75,10 @@ public class Person extends HttpServlet{
 	public String getName(){
 		return name;
 	}
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
 	public int getAge(){
 		return age;
 	}
@@ -119,5 +123,7 @@ public class Person extends HttpServlet{
 	public void setPassword(String password){
 		this.password = password;
 	}
+
+
 	
 }

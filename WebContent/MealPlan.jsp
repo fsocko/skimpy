@@ -9,8 +9,9 @@
 <html>
 <head>
 <title>Meal Planner</title>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
 	$(function() {
 		$("#accordion").accordion({
@@ -19,13 +20,43 @@
 		});
 	});
 </script>
+
+<script>
+function myFunction(sender) {
+	var i = sender.id.split(",")[0];
+	var j = sender.id.split(",")[1];
+	var searchItem = document.getElementById("ing" + i + "" + j).value;
+	document.getElementById("ing" + i + "" + j).value = "";
+
+    
+    if (searchItem != "") {
+        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem +  " <img src =\"images/delete.png\" height=\"15\" width=\"15\"></br></a>";
+        document.getElementById("ingred" + i + "" + j).value = (document.getElementById("ingred" + i + "" + j).getAttribute("value") + searchItem +";");
+  
+    }
+}
+
+function reove(sender) {
+	var i = sender.id[0];
+	var j = sender.id[1];
+	var text = sender.innerHTML;
+	text = text.substring(0, text.length - 5);
+	document.getElementById("ingred" + i + "" + j).value = document.getElementById("ingred" + i + "" + j).value.replace(";" + text + ";", ";");
+	sender.remove();
+}
+
+ 
+
+/* DBConnect connect = new DBConnect("food_db");
+connect.search(searchItem); */
+</script>
 </head>
 <body>
-<%  MealPlanner plan = CreateMealPlan.create();
+<%  //MealPlanner plan = CreateMealPlan.create();
     Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
     String userID = user.getID(); %>
     
-	<p> Hey User, here's a default meal plan for you. Feel free to
+	<p> Hey <%=session.getAttribute("username") %>, here's a default meal plan for you. Feel free to
 		change everything in it or keep it if you like it. Just click on the
 		cells you want to alter and enter ingredients so we can create an
 		optimised shopping list for you.</p>
@@ -40,13 +71,18 @@
 	<th>Saturday</th>
 	<th>Sunday</th></tr>
         <%for (int i = 0; i < 3; i++) {%>
-		<tr>
+		<tr >
 			<%for (int j = 0; j < 7; j++) {%>
-                <td>
-				<%   String mealname = plan.getMeal(j, i).getName();%>
-					<input type="text" id="<%=j%>,<%=i %>" size="21" name="mealname" value="<%=mealname%>" />
-					<textarea cols="20" id="<%=j%>,<%=i %>" name="ingredients" rows="5"> Your ingredients</textarea>
+           <td align="center">
+				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
+				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
+                <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> 
+                <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
+                    background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
+                <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred" value=";">
+                <p id="ingredients<%=j%><%=i %>"></p>
 			   </td>
+			
 			<%}%>
 		</tr> 
 		<%}%>
@@ -55,15 +91,15 @@
   <h3>Your daily calories intake:</h3>
   <div>
     <p>
-    <%String dayResult = NutritionOptimisation.compareCalories(user, plan);%>
-     <%= dayResult %>
+<%--     <%String dayResult = NutritionOptimisation.compareCalories(user, plan);%>
+     <%= dayResult %> --%>
     </p>
   </div>
   <h3>Your weekly calories intake:</h3>
   <div>
     <p>
-<%String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);%>
- 	<%= weekResult %>
+<%-- <%String weekResult = NutritionOptimisation.compareToGDAWeek(user, plan);%>
+ 	<%= weekResult %> --%>
     </p>
   </div>
   <h3>Items Recommended to you:</h3>
