@@ -466,6 +466,57 @@ public class DBConnect extends HttpServlet{
 //	    	}
 //	}
 	
+	public void getFoodCategories(){
+		openCon();
+		try{
+			String supermarket = "portion_sizes";
+			String query = "select * FROM " + supermarket + 
+						" ORDER BY " + supermarket + ".`FoodCat` ASC;";
+			rs = st.executeQuery(query);
+			
+			ArrayList<String> categories = new ArrayList<>();
+			String temp = "";
+			String cat = "";
+			while(rs.next())
+			{	
+				cat = rs.getString("FoodCat");
+//				System.out.println(cat);
+//				System.out.println(temp);
+//				
+				if(!temp.equals(cat)){
+					categories.add(cat);
+				}	
+				temp = cat;
+			}
+			temp = "";
+			rs = st.executeQuery("SELECT * FROM " + supermarket + 
+								" ORDER BY " + supermarket + ".`Item` ASC");
+			for(String s: categories){
+				System.out.println("> " + s);
+				rs = st.executeQuery("SELECT * FROM " + supermarket + " WHERE FoodCat = '" + s + "'"
+						+ " ORDER BY " + supermarket + ".`Item` ASC;");
+				
+				while(rs.next()){
+					cat = rs.getString("Item");
+					if(!temp.equals(cat)){
+						System.out.println("\t * " + cat);
+					}
+					temp = cat;
+				}
+			}
+			
+		} 
+		catch(Exception ex) 
+		{
+			System.out.println("Error:"+ex );	
+		}	
+		//close connections.
+		finally 
+		{
+			closeCon();
+		}	
+	}
+	
 	public void recommend(String val, String coloumn)
 	{
 		openCon();
