@@ -15,13 +15,8 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) {
 		
-		//DBConnect con = new DBConnect();
-		//ArrayList<Food> list = con.search("tesco", "rolls");
-		//printFoodListSearch(list);
-		SpiderToDB std = new SpiderToDB();
-		pushToDB(std.tescoPath, "tesco");
-		pushToDB(std.asdaPath, "asda");
-		pushToDB(std.sainsPath, "sains");
+		DBConnect con = new DBConnect();
+		con.getFoodCategories();
 		
 	}
 	
