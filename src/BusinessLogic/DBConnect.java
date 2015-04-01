@@ -90,7 +90,7 @@ public class DBConnect extends HttpServlet{
 		Food returnedFood = null;
 		try{
 			
-			String query = "select * FROM " + table + " WHERE ShopID=" + ID + ";";
+			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 //			System.out.println(query);
 			rs = st.executeQuery(query);
 			
@@ -415,6 +415,7 @@ public class DBConnect extends HttpServlet{
 	
 		return sortedEntries;
 	}
+	
 	public void getFoodCategories(){
 		openCon();
 		try{
@@ -465,6 +466,7 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}	
 	}
+
 	
 //	public Food foodBySearch(String table, String name){
 //		String q = ("SELECT * FROM " + table + " WHERE Name = '" + name + "';");
@@ -517,6 +519,7 @@ public class DBConnect extends HttpServlet{
 //	    		results.add(name);
 //	    	}
 //	}
+
 	
 	public void recommend(String val, String coloumn)
 	{

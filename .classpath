@@ -28,6 +28,6 @@
 	<classpathentry kind="lib" path="library/servlet-api.jar"/>
 	<classpathentry kind="lib" path="library/xalan-2.7.1.jar"/>
 	<classpathentry kind="lib" path="library/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="library/xml-apis-1.4.01.jar"/>
+	<classpathentry exported="true" kind="lib" path="library/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
