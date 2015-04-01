@@ -1,3 +1,5 @@
+package DatabaseAuto;
+
 //@Author: FPS
 //Utility for automatically generating the correct database.
 //It uses the SQL files in the SQLFiles/auto directory.
