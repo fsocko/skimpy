@@ -520,38 +520,22 @@ public class DBConnect extends HttpServlet{
 	public void DBmanip(){
 		openCon();
 		try{
+			ArrayList<String> query = new ArrayList<String>();
 			String supermarket = "tesco";
-			String query = "INSERT INTO "+ supermarket +" (PortCat) VALUES ('Bakery Products');";
-			st.executeUpdate(query);
+			//PORTION CATEGORIES	
 			
-//			ArrayList<String> categories = new ArrayList<>();
-//			String temp = "";
-//			String cat = "";
-//			while(rs.next())
-//			{	
-//				cat = rs.getString("FoodCat");
-//				
-//				if(!temp.equals(cat)){
-//					categories.add(cat);
-//				}	
-//				temp = cat;
-//			}
-//			temp = "";
-//			rs = st.executeQuery("SELECT * FROM " + supermarket + 
-//								" ORDER BY " + supermarket + ".`Item` ASC");
-//			for(String s: categories){
-//				System.out.println("> " + s);
-//				rs = st.executeQuery("SELECT * FROM " + supermarket + " WHERE FoodCat = '" + s + "'"
-//						+ " ORDER BY " + supermarket + ".`Item` ASC;");
-//				
-//				while(rs.next()){
-//					cat = rs.getString("Item");
-//					if(!temp.equals(cat)){
-//						System.out.println("\t * " + cat);
-//					}
-//					temp = cat;
-//				}
-//			}
+			//Bakery
+			query.add("UPDATE portion_sizes SET FoodCat = 'Bakery' WHERE FoodCat = 'Bakery Products';");			
+			
+			//TESCO BAKERY
+			
+			//Match Portion Categories
+			query.add("UPDATE tesco SET PortCat = 'Bakery' WHERE FoodCat = 'Bread' OR "
+					+ "FoodCat = 'Bread Rolls & Bagels' OR FoodCat = 'Free From Bakery' OR FoodCat = 'Fresh Bakery;");
+			
+			for(String s : query){
+				st.executeUpdate(s);
+			}
 			
 		} 
 		catch(Exception ex) 
