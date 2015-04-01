@@ -23,6 +23,7 @@ public class Meal extends HttpServlet{
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
+	
 	public Meal(String name, ArrayList<Food> ingredients)
 	{
 		this.name = name;
@@ -53,14 +54,7 @@ public class Meal extends HttpServlet{
 	public void add(Food f){
 		ingredients.add(f);
 	}
-	public double mealTescoPrice(){
-		double result = 0;
-		for(Food f : ingredients){
-			result += f.getPrice();
-		}
-		return result;
-	}
-	public double mealAsdaPrice(){
+	public double Price(){
 		double result = 0;
 		for(Food f : ingredients){
 			result += f.getPrice();
