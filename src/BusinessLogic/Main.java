@@ -1,6 +1,7 @@
 package BusinessLogic;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
+
 /**
  * @author ruaraidh
  */
@@ -16,7 +17,9 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		DBConnect con = new DBConnect();
-		con.getFoodCategories();
+		System.out.println(con);
+		Food current = con.pullFood("tesco", "14");
+		System.out.println(current.toString());
 
 	}
 	
@@ -100,11 +103,8 @@ public class Main extends HttpServlet{
 	
 	public static Food pullFromDB(String table, String ID)
 	{
-		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
-		Food currentFood = pullDB.pullFood(table, ID);
-		return currentFood;
-	
+		return pullDB.pullFood(table, ID);
 	}
 	
 
