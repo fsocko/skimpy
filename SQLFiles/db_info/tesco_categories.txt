@@ -1,0 +1,439 @@
+>  Biscuits
+	 * Cereal Bars & Breakfast Biscuits
+	 * Lunchbox Biscuits
+	 * Savoury Biscuits
+	 * Seasonal Biscuits
+	 * Sweet Biscuits
+>  Bread
+	 * Breads of the World
+	 * Brown Bread
+	 * Fresh Brown & Granary Bread
+	 * Fresh French Bread & Rolls
+	 * Fresh Speciality Bread
+	 * Fresh White Bread
+	 * Half & Half Bread
+	 * Healthier Bread
+	 * Seeded Bread
+	 * White Bread
+>  Bread Rolls & Bagels
+	 * Bagels
+	 * Bread Rolls
+>  Cakes & Pies
+	 * Birthday & Celebration Cakes
+	 * Flapjacks & Traybakes
+	 * Fruit Pies & Tarts
+	 * Healthier & Organic Cakes
+	 * Large Sharing Cakes
+	 * Muffins
+	 * Seasonal Cakes
+	 * Small Cakes, Bites & Slices
+>  Cereals
+	 * Breakfast on the Go
+	 * Cereal Bars & Breakfast Biscuits
+	 * Childrens Cereals
+	 * Family Favourite Cereals
+	 * Healthier Cereal
+	 * Muesli & Granola
+	 * Porridge & Oats
+>  Cheese
+	 * Cheddar Cheese
+	 * Cheese Boards & Gifts
+	 * Cheese For Entertaining
+	 * Cheese Spreads & Snacks
+	 * Cottage & Soft Cheese
+	 * Regional Cheese
+	 * Sliced & Grated Cheese
+	 * Speciality & Continental Cheese
+>  Chilled Desserts
+	 * Fresh Cream Desserts
+	 * Individual Desserts
+	 * Indulgent Desserts
+	 * Low Fat Desserts
+	 * Mousses & Fools
+	 * Rice Puddings
+	 * Sponges, Pies & Puddings
+	 * Tortes & Tarts
+	 * Trifles & Cheesecakes
+>  Chilled Fish & Seafood
+	 * Chilled Fish
+	 * Chilled Seafood
+>  Chilled Fruit Juice & Smoothies
+	 * Chilled Fruit Juice & Smoothies
+>  Chilled Ready Meals
+	 * Al Fresco Meals
+	 * Caribbean Meals
+	 * Chinese Meals
+	 * Classic British Meals
+	 * Everyday Value Meals
+	 * Family Meals
+	 * Finest Meals
+	 * Fresh Soup & Lunch Pots
+	 * Healthy Ready Meals
+	 * Indian Meals
+	 * Italian Meals
+	 * Japanese Meals
+	 * Kids Meals
+	 * Meal Deals
+	 * Mexican & Tex Mex Meals
+	 * Microwavable Snacks
+	 * Party Food
+	 * Potato & Veg Side Dishes
+	 * Spanish Tapas
+	 * Thai Meals
+	 * Vegetarian Meals
+>  Chilled World Foods
+	 * Asian Food
+	 * Halal Meat & Dairy
+	 * Jamaican Food
+	 * Kosher Meat & Dairy
+	 * Polish Foods
+>  Chocolate
+	 * Block Chocolate
+	 * Chocolate Boxes & Gifts
+	 * Chocolate Pouches & Bags
+	 * Multipack Chocolate
+	 * Single Chocolate Bars & Bags
+>  Condiments & Table Sauces
+	 * Barbecue Sauce & Marinades
+	 * Ketchup
+	 * Mayonnaise & Salad Cream
+	 * Salad Dressing
+	 * Table Sauces
+	 * Vinegar
+>  Cooking Ingredients
+	 * Breadcrumbs & Stuffing
+	 * Gravy & Stock
+	 * Herbs, Spices & Salt
+	 * Oils & Fats
+	 * Packet Mixes & Pour Over Sauce Mixes
+	 * Speciality Ingredients
+>  Cooking Sauces & Meal Kits
+	 * Casserole & Cooking Sauces
+	 * Indian Sauces & Accompaniments
+	 * Japanese
+	 * Mexican Sauces & Kits
+	 * Moroccan Sauces
+	 * Oriental Sauces & Accompaniments
+	 * Pasta Sauce & Kits
+	 * Pizza Sauce & Kits
+>  Counters
+	 * Counter - Butchers
+	 * Counter - Cheese
+	 * Counter - Delicatessen Meats
+	 * Counter - Delicatessen Pies, Savouries
+	 * Counter - Fishmonger
+>  Crisps, Snacks & Nuts
+	 * Crisps & Snacks
+	 * Kids Snacking
+	 * Nuts
+	 * Popcorn
+>  Croissants, Brioche & Pain au Chocolat
+	 * Brioche
+	 * Croissants
+	 * Pain au Chocolat
+>  Crumpets, Muffins & Pancakes
+	 * Breakfast Muffins
+	 * Crumpets
+	 * Pancakes
+	 * Potato Cakes, Farls & Wheaten
+	 * Waffles
+>  Dairy Alternatives & Cholesterol Reducing
+	 * Cholesterol Reducing Dairy
+	 * Dairy Alternatives
+>  Deli & Cooked Meat
+	 * Continental Meat
+	 * Cooked Chicken
+	 * Cooked Ham Joints
+	 * Cooked Meat Snacks, Frankfurters & Cooked Sausage
+	 * Cooked Sliced Meat
+	 * Fresh Olives & Antipasti
+	 * Pate
+	 * Sandwich Fillers
+>  Desserts
+	 * Dessert Cases, Bases & Fillings
+	 * Dessert Toppings
+	 * Desserts
+	 * Ice Lollies
+>  Dried Pasta, Rice, Noodles & Cous Cous
+	 * Cous Cous
+	 * Noodles
+	 * Pasta & Spaghetti
+	 * Rice
+>  Easter Cakes & Treats
+	 * Hot Cross Buns
+>  Easter Chocolate & Sweets
+	 * Easter Chocolates & Sweets
+	 * Easter Eggs & Treats
+>  Food On The Go
+	 * Desserts & Snacks On The Go
+	 * Lunch On The Go
+>  Foodhall
+	 * Chanteroy
+>  Free From Bakery
+	 * Free From Bread
+	 * Free From Cakes & Cookies
+	 * Free From Crumpets, Breakfast Muffins & Pancakes
+	 * Free From Tea Cakes, Fruit Loaves & Scones
+	 * Free From Wraps, Bagels, Pitta & Crumpets
+>  Fresh Bakery
+	 * Fresh Brown & Granary Bread
+	 * Fresh Croissants & Pastries
+	 * Fresh Danish Pastries
+	 * Fresh French Bread & Rolls
+	 * Fresh Organic Bakery
+	 * Fresh Speciality Bread
+	 * Fresh Sweet Treats
+	 * Fresh Tea Cakes & Scones
+	 * Fresh White Bread
+>  Fresh Chicken & Poultry
+	 * Fresh Chicken & Breaded Chicken
+	 * Fresh Duck, Goose & Game
+	 * Fresh Poultry Stocks & Sauces
+	 * Fresh Ready to Cook Poultry
+	 * Fresh Turkey
+>  Fresh Fruit
+	 * Apples, Pears & Rhubarb
+	 * Avocados
+	 * Bananas
+	 * Berries & Cherries
+	 * Citrus Fruit
+	 * Dried Fruit & Nuts
+	 * Fresh Cut Fruit
+	 * Grapes
+	 * Kiwi & Mango
+	 * Melons & Pineapples
+	 * Nectarines & Peaches
+	 * Organic Fruit
+	 * Plums & Apricots
+	 * Tropical & Exotic Fruit
+>  Fresh Meat
+	 * Fresh Bacon & Gammon
+	 * Fresh Beef
+	 * Fresh Lamb
+	 * Fresh Meat Stocks, Sauces & Stuffing
+	 * Fresh Offal
+	 * Fresh Pork
+	 * Fresh Ready to Cook Meat
+	 * Venison & Veal
+>  Fresh Pizza, Pasta & Garlic Bread
+	 * Fresh Garlic & Cheese Breads
+	 * Fresh Pasta
+	 * Fresh Pasta Sauce & Pesto
+	 * Fresh Pizza
+>  Fresh Ready To Cook Meat & Poultry
+	 * Ready To Cook Meat
+	 * Ready To Cook Poultry
+	 * Slow Cooked Meat & Poultry
+>  Fresh Vegetables
+	 * Baby Vegetables
+	 * Broccoli, Brussel Sprouts, Cabbage & Cauliflower
+	 * Carrots & Root Veg
+	 * Chillies, Garlic & Ginger
+	 * Courgettes, Aubergines & Asparagus
+	 * Mushrooms
+	 * Onions & Shallots
+	 * Organic Vegetables
+	 * Peas, Beans & Sweetcorn
+	 * Potatoes
+	 * Prepared Vegetables
+	 * Seasonal Veg
+	 * Spinach, Greens & kale
+	 * Stir Fry
+	 * World Vegetables
+>  Frozen Chips, Potatoes & Onion Rings
+	 * Frozen Chips
+	 * Frozen Onion Rings
+	 * Frozen Potatoes
+>  Frozen Desserts, Fruit & Pastry
+	 * Frozen Desserts
+	 * Frozen Fruit
+	 * Frozen Pastry & Homebaking
+>  Frozen Fish & Seafood
+	 * Frozen Battered Fish
+	 * Frozen Breaded Fish
+	 * Frozen Fish Fillets
+	 * Frozen Fish Fingers
+	 * Frozen Fish in Sauce
+	 * Frozen Fishcakes
+	 * Frozen Prawns & Shellfish
+	 * Frozen Scampi
+>  Frozen Free From
+	 * Frozen Dairy Free
+	 * Frozen Gluten & Dairy Free
+	 * Frozen Gluten Free
+>  Frozen Meat & Poultry
+	 * Frozen BBQ Meat
+	 * Frozen Breaded Poultry
+	 * Frozen Burgers
+	 * Frozen Meat
+	 * Frozen Meat & Poultry Simply Range
+	 * Frozen Poultry
+	 * Frozen Sausages
+>  Frozen Meat Free & Vegetarian
+	 * Frozen Meat Free & Vegetarian
+>  Frozen Pies
+	 * Frozen Pies
+>  Frozen Pizza & Garlic Bread
+	 * Frozen Dough Balls
+	 * Frozen Garlic Bread
+	 * Frozen Pizza
+>  Frozen Ready Meals
+	 * Frozen Classics & Roast Dinners
+	 * Frozen Curries, Rice & Noodle Dishes
+	 * Frozen Fish Pies & Fish Meals
+	 * Frozen Hotpots, Cottage Pies & Shepherds Pies
+	 * Frozen Lasagne, Spaghetti Bolognese & Pasta
+	 * Frozen Stir Cook Ready Meals
+	 * Frozen Weight Watchers & Healthy Meals
+>  Frozen Rice, Pasta & Vegetables
+	 * Frozen Pasta
+	 * Frozen Rice & Risotto
+	 * Frozen Vegetables
+>  Frozen Sausage Rolls & Party Food
+	 * Frozen Sausage Rolls & Party Food
+>  Frozen World Foods
+	 * Asian Ice Cream & Desserts
+	 * Frozen Asia Products
+	 * Frozen Asian Breaded Poultry
+	 * Frozen Asian Breads & Pizzas
+	 * Frozen Asian Vegetables
+	 * Frozen Halal Burgers, Sausages & Kebabs
+	 * Frozen Halal Chicken & Lamb
+	 * Frozen Samosas
+>  Frozen Yorkshire Puddings & Stuffing
+	 * Frozen Stuffing
+	 * Frozen Yorkshire Puddings
+>  Home Baking
+	 * Baking
+	 * Baking Mixes
+	 * Dried Fruit & Nuts
+	 * Flour & Suet
+	 * Fruit Snacking
+	 * Seasonal Baking
+>  Ice Cream & Frozen Yoghurt
+	 * Adult Refreshment
+	 * Family Ice Lollies
+	 * Frozen Yoghurt
+	 * Ice Cream Bars, Cones & Sandwiches
+	 * Ice Cream Desserts
+	 * Ice Cream Minis
+	 * Ice Cream Tubs
+	 * Indulgent Ice Cream Chocolate Sticks
+	 * Light & Dietary Needs Ice Cream
+	 * Sorbet
+>  Ice Cubes & Frozen Cocktails
+	 * Ice Cubes
+>  Iced Buns, Muffins & Doughnuts
+	 * Doughnuts
+	 * Iced Buns
+	 * Muffins
+>  Jams, Sweet & Savoury Spreads
+	 * Honey
+	 * Jam & Marmalade
+	 * Savoury Spreads & Pastes
+	 * Sweet Spreads
+>  Milk, Butter & Eggs
+	 * Butter, Spreads & Margarine
+	 * Dairy Cooks Ingredients
+	 * Eggs
+	 * Fresh Cream & Custard
+	 * Fresh Milk
+	 * Fresh Pastry & Fresh Baking
+>  Non Chilled Ready Meals
+	 * Non Chilled Ready Meals
+>  Organic & Free From
+	 * Food Cupboard Free From
+	 * Organic Range
+>  Part Baked Bread
+	 * Part Baked Bread
+>  Pickles, Chutneys & Olives
+	 * Antipasti
+	 * Olives
+	 * Pickles
+	 * Relishes & Chutneys
+>  Pies & Savouries
+	 * Pies, Quiche & Pasties
+	 * Sausage Rolls, Cocktail Sausages & Scotch Eggs
+	 * Vegetarian Rolls
+>  Salad Vegetables
+	 * Avocado
+	 * Beetroot
+	 * Celery & Spring Onions
+	 * Cucumber
+	 * Fresh Herbs & Chillies
+	 * Lettuce & Chicory
+	 * Peppers
+	 * Radish & Cress
+	 * Salad Bags
+	 * Salad Potatoes
+	 * Tomatoes
+>  Sausages, Burgers & BBQ Meat
+	 * BBQ Meat & Poultry
+	 * Burgers & Meatballs
+	 * Sausages
+>  Side Salads & Dips
+	 * Chilled Dips
+	 * Coleslaw & Potato Salad
+	 * Dressings & Toppers
+	 * Prepared Salad & Pasta
+>  Sugar & Sweeteners
+	 * Baking Sugars
+	 * Caster Sugar
+	 * Demerara Sugar
+	 * Granulated Sugar
+	 * Icing Sugar
+	 * Jam & Preserving Sugars
+	 * Sugar Cubes & Coffee Crystals
+	 * Sweeteners
+>  Sweets, Mints & Chewing Gum
+	 * Boiled Sweets
+	 * Chewing Gum
+	 * Chewy Sweets
+	 * Jelly & Soft Sweets
+	 * Kids Sweets
+	 * Liquorice
+	 * Mints
+	 * Party Packs
+	 * Toffees & Fudge
+>  Tea Cakes, Fruit Loaves & Scones
+	 * Fruit Loaves
+	 * Hot Cross Buns
+	 * Scones
+	 * Tea Cakes
+>  Tins, Cans & Packets
+	 * Baked Beans
+	 * Packet Snack Meals
+	 * Pulses, Lentils & Beans
+	 * Tinned Fish & Seafood
+	 * Tinned Fruit
+	 * Tinned Meat
+	 * Tinned Meat Pies
+	 * Tinned Ready Meals
+	 * Tinned Soup
+	 * Tinned Spaghetti & Pasta
+	 * Tinned Tomatoes & Puree
+	 * Tinned Vegetables
+	 * Wholefood bread, dried fruits, nuts & seeds
+>  World Foods
+	 * African Groceries
+	 * American Groceries
+	 * Asian Groceries
+	 * Caribbean Groceries
+	 * Cypriot Groceries
+	 * Greek Groceries
+	 * Irish Groceries
+	 * Korean Groceries
+	 * Kosher Groceries
+	 * Latin American Groceries
+	 * Mediterranean Groceries
+	 * Oriental Groceries
+	 * Polish Foods
+	 * Turkish Groceries
+>  Wraps, Pitta, Naan & Thins
+	 * Naan
+	 * Pitta
+	 * Sandwich Thins
+	 * Wraps
+>  Yoghurt
+	 * Yoghurt Drinks
+	 * Yoghurts

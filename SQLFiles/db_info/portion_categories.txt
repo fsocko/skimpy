@@ -1,0 +1,199 @@
+> Bakery Products
+	 * Bagels, tea biscuits, scones, rolls, buns, croissants, tortillas, soft bread sticks, soft pretzels, corn bread
+	 * Brownies
+	 * Cake (heavy weight), cheese cake, pineapple upside-down, cake
+	 * Cake (light weight), angel food, chiffon, sponge cake
+	 * Cake (medium weight)light weight cake icing, Boston cream pie, cupcakes, eclairs, cream puffs
+	 * Cocoa, chocolate milk
+	 * Coffee
+	 * Coffee cake, doughnut, danish, sweet roll, sweet bread, muffins
+	 * Cookies, wafers
+	 * Crackers, hard bread sticks, melba toast
+	 * Croutons
+	 * drink, beverages, iced tea, wine coolers
+	 * Dry breads, matzo, rusks
+	 * Flaky pastry
+	 * flavoured and sweetened tea
+	 * French toast, pancakes, waffles
+	 * Grain-based bars with filling
+	 * Grain-based bars, without filling
+	 * Ice cream cones
+	 * Pies, tarts, cobblers, turnovers, pastry
+	 * Pita
+	 * regular and instant tea
+	 * Rice cakes, corn cakes
+	 * Sports drinks and water
+	 * Taco shell
+	 * Toaster pastries
+> Bakery ProductsBakery Products
+	 * Pizza crust
+> Cereals and Other Grain Products
+	 * Bran and wheat germ
+	 * breakfast cereals, fruit and nut, granola
+	 * breakfast cereals, puffed
+	 * Cheese used as an ingredient, such as dry cottage cheese or ricotta cheese
+	 * Cheese, cream cheese, cheese spread
+	 * Cottage cheese
+	 * Cream and cream substitute
+	 * Cream and cream substitute, aerosol or whipped
+	 * Cream and cream substitute, powder
+	 * Drinkable yogurt
+	 * Dry Hot breakfast cereals, Dry oatmeal, Dry cream of wheat
+	 * Eggnog
+	 * Flour, cornmeal
+	 * Grains, such as rice or barley
+	 * Hard cheese, grated, such as parmesan or romano
+	 * Milk, evaporated or condensed
+	 * Milled flax seeds
+	 * Milled hemp seeds
+	 * Pastas without sauce
+	 * Pastas, dry and ready-to-eat, such as fried canned chow mein noodles
+	 * Plant-based beverages, milk, buttermilk and milk-based drinks, such as chocolate milk
+	 * Prepared Hot breakfast cereals, prepared oatmeal, Prepared cream of wheat
+	 * Quark, fresh cheese and fresh dairy desserts
+	 * Ready-to-eat breakfast cereals, puffed and coated, flaked, extruded
+	 * Shakes and shake substitutes such as dairy shake mix
+	 * Smoothie (if whey/dairy is a main ingredient)
+	 * Sour cream
+	 * Starch, such as cornstarch, potato starch, tapioca starch or wheat starch
+	 * Stuffing
+	 * Yogurt
+> Combination Dishes
+	 * Dish measurable with a cup but net quantity and serving size declared in grams
+	 * Hors d'oeuvres
+	 * Measurable with a cup, such as casserole, hash, macaroni and cheese with or without meat, pot pie, spaghetti with sauce, stir fry, meat or poultry casserole, baked or refried beans, wieners and beans, meat chili, chili with beans, creamed chipped beef, beef or poultry ravioli in sauce, beef stroganoff, poultry à la king, Brunswick stew, goulash, stew, ragout or poutine,rice and vegetables, butter chicken with rice
+	 * Meat-filled cannelloni, no sauce
+	 * Not measurable with a cup, such as burritos, egg rolls, enchiladas, pizza (considered to be without sauce), pizza rolls, sausage rolls, pastry rolls, cabbage rolls, quiche, sandwiches, crackers and meat or poultry lunch-type packages, gyros, burger on a bun, frank on a bun, calzones, tacos, pockets stuffed with meat, lasagna, chicken cordon bleu, stuffed vegetables with meat or poultry, shish kabobs (if combination of meat and vegetables), empanadas, fajitas, souvlaki (if combination of meat and vegetables), meat pie or tourtière
+	 * Stuffed chicken
+	 * Stuffed turkey roast
+> Dessert Toppings and Fillings
+	 * Cake frostings and icings
+	 * Dessert toppings, maple butter and marshmallow cream
+	 * Pie fillings
+	 * Streusal topping
+> Desserts
+	 * Custard, gelatin and pudding
+	 * Dairy desserts, frozen, such as cakes, bars, sandwiches or cones
+	 * Ice cream, ice milk, frozen yogurt, sherbet
+	 * Non-dairy desserts sold in tub
+	 * Non-dairy desserts, frozen, such as flavoured and sweetened ice or pops, frozen fruit juices in bars or cups
+	 * Sundaes
+> Egg and Egg Substitutes
+	 * Egg mixtures, such as egg foo young, scrambled eggs, omelets
+	 * Egg substitutes
+	 * Eggs,including eggs in the shell, liquid eggs and liquid egg whites
+> Fats and Oils
+	 * Butter replacement, powder
+	 * Butter, margarine, shortening, lard
+	 * Butter-flavoured spread (mostly vegetable oil)
+	 * Dressings for salad
+	 * Mayonnaise, sandwich spread and mayonnaise-type dressing
+	 * Oil, spray type
+	 * Vegetable oil
+> Fruits and Fruit Juices
+	 * Avocado, used as an ingredient
+	 * Candied or pickled fruit 
+	 * Cranberries, lemons and limes, used as ingredients
+	 * Dried fruit, such as raisins, dates or figs
+	 * Fruit for garnish or flavour, such as maraschino cherries 
+	 * Fruit relishes
+	 * Fruit, fresh, canned or frozen, coated or uncoated
+	 * Juices, nectars and fruit drinks represented for use as substitutes for fruit juices
+	 * Juices, used as ingredients, such as lemon juice or lime juice
+	 * Watermelon, cantaloupe, honeydew and other melons
+> Legumes
+	 * Bean curd (tofu) or tempeh 
+	 * Beans, peas and lentils, such as white beans, kidney beans, romano beans, soybeans or chick peas
+> Marine and Fresh Water Animals
+	 * Canned anchovies, anchovy paste and caviar 
+	 * Marine and fresh water animals with sauce, such as fish with cream sauce or shrimp with lobster sauce
+	 * Marine and fresh water animals, canned
+	 * Marine and fresh water animals, smoked or pickled, or spreads 
+	 * Raw fish with sauce
+> Meat, Poultry, Their Products and Substitutes 
+	 * Beef, pork and poultry breakfast strips
+	 * Canned meat and poultry 
+	 * Corn dog on a stick (breaded)
+	 * Cured meat products such as cured ham, dry cured ham, back bacon, cured pork back, dry cured cappicolo, corned beef, pastrami, country ham, cured pork shoulder picnic, cured poultry ham products, smoked meat or pickled meat
+	 * Cuts of meat and poultry without sauce, and ready-to-cook cuts, with or without breading or batter, including marinated, tenderized and injected cuts
+	 * Dried meat and poultry, such as jerky, dried beef or parma ham, as well as sausage products with a water activity of 0.90 or less, such as salami, dried thuringer or cervelat
+	 * Falafels
+	 * Luncheon meats such as bologna, blood pudding, minced luncheon roll, liver sausage, mortadella, ham and cheese loaf or headcheese
+	 * Meat and poultry with sauce, such as meat in barbecue sauce or turkey with gravy, but excluding combination dishes
+	 * Patties (including veggie burger patties), cutlettes, chopettes, steakettes, meatballs, sausage meat and ground meat, with or without breading or batter
+	 * Pork rinds and bacon
+	 * Sausage made with combination of seafood and pork (mostly seafood)
+	 * Sausage products, such as linked sausage, Vienna sausage, wieners, breakfast sausage, frankfurters, pork sausage, bratwurst, kielbasa, Polish sausage, summer sausage, smoked sausage, smoked country sausage, pepperoni, knackwurst, thuringer and cervelat
+	 * Shish kebab (only marinated meat, no vegetables)
+	 * Turkey roast (no stuffing)
+	 * Whole chicken (no stuffing)
+> Miscellaneous category
+	 * Baking decorations, such as coloured sugars or sprinkles for cookies
+	 * Baking powder, baking soda, pectinand yeast
+	 * Bread crumbs and batter mixes
+	 * Chewing gum
+	 * Cocoa powder
+	 * Cooking wine
+	 * Non-alcoholic drink mixers, such as pina colada or daiquiri
+	 * Salad and potato toppers, such as salad crunchies, salad crispins or substitutes for bacon bits
+	 * Salt and salt substitute, as well as seasoned salt such as garlic salt
+	 * Spices and herbs (no salt)
+> Nuts and Seeds
+	 * Butters, pastes and creams, other than peanut butter
+	 * Flours, such as coconut flour
+	 * Nuts and seeds, not for use as snacks: whole, chopped, sliced, slivered or ground
+	 * Peanut butter
+> Potatoes, Sweet Potatoes and Yams
+	 * French fries, hash browns, skins and pancakes
+	 * Fresh Potato, Frozen Potato
+	 * Potato Canned
+	 * Potato vacuum packed
+> Salads
+	 * Gelatin salad
+	 * Pasta or potato salad
+	 * Salads, egg, fish, shellfish, bean, fruit, vegetable, meat, ham or poultry salad, except those listed as a separate item
+> Sauces, Dips, Gravies and Condiments
+	 * Dips, such as legume or dairy-based
+	 * Liquid smoke
+	 * main entrée sauce, spaghetti sauce
+	 * Major condiments, such as ketchup, steak sauce, soy sauce, vinegar, teriyaki sauce or marinades
+	 * Minor condiments, such as horseradish, hot sauce, mustard, or Worcestershire sauce
+	 * Minor main entrée sauce, pizza sauce, pesto sauce, or other sauces used as toppings such as white sauce, cheese sauce, salsa, cocktail sauce or gravy
+	 * Sauces for dipping, such as barbecue, hollandaise, tartar, mustard or sweet and sour sauce
+> Snacks
+	 * Chips, pretzels, popcorn, extruded snacks, grain-based snack mixes and fruit-based snacks, such as fruit chips
+	 * Meat or poultry snack food sticks
+	 * Nuts or seeds for use as snacks, shelled
+	 * Pita chips
+> Soups
+	 * Soup
+> Sugars and Sweets
+	 * Baking candies, chocolate chips
+	 * Bread spreads, honey, molasses
+	 * Breath mints
+	 * Candies, chocolate bars, other chocolate product
+	 * Confectioner's sugar, icing sugar
+	 * Hard candies
+	 * Jams, jellies, marmalades, fruit butters, spreads
+	 * Marshmallows
+	 * mini hard candies
+	 * Sugars
+	 * Syrup, chocolate syrup, maple syrup, corn syrup
+> Vegetables
+	 * Artichoke hearts
+	 * Breaded zucchini sticks
+	 * Chili pepper and green onion
+	 * Dehydrated mushrooms
+	 * Lettuce and sprouts
+	 * Olives
+	 * Onion rings
+	 * Pickles
+	 * Relish
+	 * Seaweed
+	 * Sun-dried tomato packed in oil
+	 * Vegetable juice and vegetable drink
+	 * Vegetable paste
+	 * Vegetable sauce or purée
+	 * Vegetables primarily used for garnish or flavouring, fresh, canned or frozen, but not dried, such as parsley or garlic
+	 * Vegetables with sauce
+	 * Vegetables without sauce, including cream style corn and stewed tomatoes
