@@ -1,5 +1,5 @@
 /**
- * @author Ruaraidh, FPS
+ * @author Ruaraidh, FPS, Greg
  */
 package BusinessLogic;
 
@@ -21,6 +21,9 @@ import java.util.Set;
 import javax.servlet.http.HttpServlet;
 
 import com.mysql.jdbc.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class DBConnect extends HttpServlet{
 	private Connection con;
@@ -466,62 +469,11 @@ public class DBConnect extends HttpServlet{
 //	    	}
 //	}
 	
-	public void getFoodCategories(){
-		openCon();
-		try{
-			String supermarket = "portion_sizes";
-			String query = "select * FROM " + supermarket + 
-						" ORDER BY " + supermarket + ".`FoodCat` ASC;";
-			rs = st.executeQuery(query);
-			
-			ArrayList<String> categories = new ArrayList<>();
-			String temp = "";
-			String cat = "";
-			while(rs.next())
-			{	
-				cat = rs.getString("FoodCat");
-//				System.out.println(cat);
-//				System.out.println(temp);
-//				
-				if(!temp.equals(cat)){
-					categories.add(cat);
-				}	
-				temp = cat;
-			}
-			temp = "";
-			rs = st.executeQuery("SELECT * FROM " + supermarket + 
-								" ORDER BY " + supermarket + ".`Item` ASC");
-			for(String s: categories){
-				System.out.println("> " + s);
-				rs = st.executeQuery("SELECT * FROM " + supermarket + " WHERE FoodCat = '" + s + "'"
-						+ " ORDER BY " + supermarket + ".`Item` ASC;");
-				
-				while(rs.next()){
-					cat = rs.getString("Item");
-					if(!temp.equals(cat)){
-						System.out.println("\t * " + cat);
-					}
-					temp = cat;
-				}
-			}
-			
-		} 
-		catch(Exception ex) 
-		{
-			System.out.println("Error:"+ex );	
-		}	
-		//close connections.
-		finally 
-		{
-			closeCon();
-		}	
-	}
-	
 	public void recommend(String val, String coloumn)
 	{
 		openCon();
 		try{
-			 String query ="SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
+			 String query = "SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
 		 
 		     ResultSet rs = st.executeQuery(query);
 		     String temp = "";
@@ -549,4 +501,46 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
+	public String testSearch(String phrase) {
+		JSONArray results = new JSONArray();
+		String tQuery = String.format(
+			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
+			phrase, phrase, phrase);
+		String sQuery = String.format(
+			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s'",
+			phrase, phrase, phrase);
+		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 10";
+		
+		String moreGeneralQuery_1 = String.format(
+			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL'",
+			phrase, phrase);
+		String moreGeneralQuery_2 = String.format(
+			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$'",
+			phrase, phrase);
+		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
+				+ " ORDER BY Price ASC LIMIT 10";
+		
+		try {
+			openCon();
+			rs = st.executeQuery(query);
+			if (rs.next()) {
+				do {
+					results.put(rs.getString(3).trim());
+				} while (rs.next());
+			}
+			else {
+				rs = st.executeQuery(moreGeneralQuery);
+				while (rs.next()) {
+					results.put(rs.getString(3).trim());
+				}
+			}
+		}
+		catch (SQLException sqlex) {
+			sqlex.printStackTrace();
+		}
+		finally {
+			closeCon();
+		}
+		return results.toString();
+	}
 }
