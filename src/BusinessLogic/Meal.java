@@ -164,7 +164,4 @@ public class Meal extends HttpServlet{
 	{
 		return ingredients;
 	}
-	
-
-	
 }
