@@ -467,60 +467,6 @@ public class DBConnect extends HttpServlet{
 		}	
 	}
 
-	
-//	public Food foodBySearch(String table, String name){
-//		String q = ("SELECT * FROM " + table + " WHERE Name = '" + name + "';");
-//		ResultSet rs = st.executeQuery(q);
-//		
-//	    while (rs.next()) {
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	    	temp = name;
-//	    	name = rs.getString("Name");
-//	    	if(!temp.equals(name)){
-//	    		results.add(name);
-//	    	}
-//	}
-
-	
 	public void recommend(String val, String coloumn)
 	{
 		openCon();
