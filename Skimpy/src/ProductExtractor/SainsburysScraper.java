@@ -147,7 +147,58 @@ public class SainsburysScraper {
 		return "";
 	}
 	
+	public static void runScraper(int maxthreads, boolean getnutrition) {
+		java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
+		java.util.logging.Logger.getLogger("org.apache").setLevel(Level.OFF);
+		ThreadControl tc = new ThreadControl(maxthreads);
+		try {
+			final WebClient webClient = new WebClient(BrowserVersion.CHROME);
+			products = new ArrayList<String>();
+			for (String s: urls) {
+				Thread t = new Thread(new GetCategories(s, tc));
+				tc.addThread(t);
+			}
+			getNutrition = getnutrition;
+			tc.run();
+			webClient.closeAllWindows();
+			System.out.println("\nDone");
+			java.util.Collections.sort(products);
+		    int i = 0;
+		    PrintWriter writer = new PrintWriter("data/sainsburys.txt");
+		    for (String s: products) {
+		    	System.out.println(i + ":> " + s);
+		    	writer.println(s);
+		    	i++;
+		    }
+		    writer.close();
+		} catch (FailingHttpStatusCodeException f) {
+			// TODO Auto-generated catch block
+			f.printStackTrace();
+		} catch (IOException f) {
+			// TODO Auto-generated catch block
+			f.printStackTrace();
+		}
+	}
+	
 	public static void main(String args[]) {
+		if (args.length < 2) {
+			System.out.println("The format required is <maxthreads> <getnutrition>");
+			return;
+		}
+		
+		int maxthreads;
+		boolean getnutrition;
+		try {
+			maxthreads = Integer.parseInt(args[0]);
+			getnutrition = Boolean.parseBoolean(args[0]);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		runScraper(maxthreads, getnutrition);
+	}
+	
+	public static void mainold(String args[]) {
 		int maxthreads = 15;
 		boolean getnutrition = true;
 		java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
