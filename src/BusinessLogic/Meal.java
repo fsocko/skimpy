@@ -38,12 +38,18 @@ public class Meal extends HttpServlet{
 		 for(int i = 0; i<ingredients.size(); i++)
 		 {
 			 Food foodLookup = ingredients.get(i);
-			 System.out.println(foodLookup.toString());
 			 result.append("\n* "+ foodLookup.getName());
 		 }
 
 		String s = "Meal Name: " + name +
 				"\nIngredients: " + result.toString();
+		
+		s += "\nMeal Properties:\n"+ "\nMeal Price:" + mealPrice()+ "\nMeal Calories:"+ mealCal() +
+		"\nMeal Proteins:" + mealProt() + "\nMeal Carbs:"+ mealCarb()+
+		"\nMeal Sugar:" + mealSugar()+"\nMeal Fat:"+mealFat() 
+		+"\nMeal Saturates:" + mealSat() +"\nMeal Fibre:"+mealFibr()+ 
+		"\nMeal Salt:" + mealSalt();
+
 		return s;
 	}
 	
@@ -154,5 +160,7 @@ public class Meal extends HttpServlet{
 	{
 		return ingredients;
 	}
+	
+
 	
 }

@@ -17,9 +17,9 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		DBConnect con = new DBConnect();
-		System.out.println(con);
-		Food current = con.pullFood("tesco", "14");
-		System.out.println(current.toString());
+		Meal testMeal = createMeal();
+		System.out.println(testMeal.toString());
+		
 
 	}
 	
@@ -31,7 +31,6 @@ public class Main extends HttpServlet{
 		ingredients.add(pullFromDB("tesco", "3897"));
 		
 		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
-		System.out.println(currentMeal.toString());
 		return currentMeal;
 	}
 	

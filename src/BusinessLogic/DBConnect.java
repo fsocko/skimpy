@@ -87,7 +87,7 @@ public class DBConnect extends HttpServlet{
 		Food returnedFood = null;
 		try{
 			
-			String query = "select * FROM " + table + " WHERE ShopID=" + ID + ";";
+			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 //			System.out.println(query);
 			rs = st.executeQuery(query);
 			
