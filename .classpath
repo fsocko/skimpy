@@ -7,7 +7,7 @@
 	<classpathentry exported="true" kind="lib" path="library/mysql-connector-java-5.1.23-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="library/rt.jar"/>
 	<classpathentry exported="true" kind="lib" path="library/servlet-api.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_31">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>

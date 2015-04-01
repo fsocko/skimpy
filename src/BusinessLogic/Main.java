@@ -1,6 +1,5 @@
 package BusinessLogic;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -103,8 +102,7 @@ public class Main extends HttpServlet{
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
-		String record = pullDB.pullFood(table, ID).toString();
-		Food currentFood = std.formatRecord(record);
+		Food currentFood = pullDB.pullFood(table, ID);
 		return currentFood;
 	
 	}
