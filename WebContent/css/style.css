@@ -3,5 +3,3 @@
 .pagination li a{   display:block; padding:3px 5px; color:#fff; background-color:#44b0dd; text-decoration:none;}  
 .pagination li a.active {border:1px solid #000; color:#000; background-color:#fff;}  
 .pagination li a.inactive {background-color:#eee; color:#777; border:1px solid #ccc;}  
-
-    
