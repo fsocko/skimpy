@@ -15,8 +15,8 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) 
 	{
-		//DBConnect con = new DBConnect();
-		createMeal();
+		DBConnect con = new DBConnect();
+		con.getFoodCategories();
 
 	}
 	
