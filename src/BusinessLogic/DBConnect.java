@@ -530,8 +530,14 @@ public class DBConnect extends HttpServlet{
 			//TESCO BAKERY
 			
 			//Match Portion Categories
-			query.add("UPDATE tesco SET PortCat = 'Bakery' WHERE FoodCat = 'Bread' OR "
-					+ "FoodCat = 'Bread Rolls & Bagels' OR FoodCat = 'Free From Bakery' OR FoodCat = 'Fresh Bakery;");
+			query.add("UPDATE tesco SET PortCat = 'Bakery' WHERE "
+					+ "FoodCat = ' Bread' OR "
+					+ "FoodCat = ' Bread Rolls & Bagels' OR "
+					+ "FoodCat = ' Free From Bakery' OR "
+					+ "FoodCat = ' Fresh Bakery';");
+			
+			//Change bread rolls & bagels to suit
+			query.add("UPDATE tesco SET FoodCat = 'Rolls & Bagels' WHERE FoodCat = ' Bread Rolls & Bagels';");
 			
 			for(String s : query){
 				st.executeUpdate(s);
