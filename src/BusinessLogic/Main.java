@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 /**
  * @author ruaraidh
@@ -13,9 +14,23 @@ public class Main extends HttpServlet{
 	 * @param args
 	 */
 	
-	public static void main(String[] args) {
-		DBConnect con = new DBConnect();
+	public static void main(String[] args) 
+	{
+		//DBConnect con = new DBConnect();
+		createMeal();
+
+	}
+	
+	public static Meal createMeal()
+	{
+		ArrayList<Food> ingredients = new ArrayList<Food>();
+		ingredients.add(pullFromDB("tesco", "3057"));
+		ingredients.add(pullFromDB("tesco", "3806"));
+		ingredients.add(pullFromDB("tesco", "3897"));
 		
+		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
+		System.out.println(currentMeal.toString());
+		return currentMeal;
 	}
 	
 	//Ruaraidh's test for search
@@ -84,11 +99,15 @@ public class Main extends HttpServlet{
 		}
 	}
 	
-	public static String pullFromDB(String table, String ID)
+	public static Food pullFromDB(String table, String ID)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect pullDB = new DBConnect();
-		return pullDB.pullFood(table, ID).toString();
+		String record = pullDB.pullFood(table, ID).toString();
+		Food currentFood = std.formatRecord(record);
+		return currentFood;
 	
 	}
+	
+
 }
