@@ -548,5 +548,4 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
-	
 }

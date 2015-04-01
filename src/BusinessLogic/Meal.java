@@ -25,7 +25,11 @@ public class Meal extends HttpServlet{
 	public Meal(String name, ArrayList<Food> ingredients)
 	{
 		this.name = name;
-		this.ingredients = ingredients;
+		this.ingredients = new ArrayList<Food>();
+				for(Food f : ingredients)
+		{
+					this.ingredients.add(f);
+		}			
 	}	
 	/**
 	 * Displays the Meal as a String
