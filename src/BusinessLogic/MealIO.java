@@ -4,32 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class MealIO {
+
 	
-	//TODO: ID must be in Food object, otherwise we can't look up foods when saving a meal plan
-	public String formatMeal(Meal fMeal)
-	{
-		//Write Format:
-		//mealName;DBID;DBID;DBID;\n
-		
-		String record = "";
-		String name = "";
-		name = fMeal.getName();
-		StringBuffer ingRecord = new StringBuffer();
-		
-		ArrayList<Food> ingredients = new ArrayList<Food>();
-		ingredients = fMeal.getIngredients();
-		
-		for(int i = 0; i<ingredients.size(); i++)
-		{
-			 Food foodLookup = ingredients.get(i);
-			 foodLookup.getDBID();
-			 ingRecord.append(foodLookup.getDBID()+";");
-		}
-		record = name + ";" + ingRecord + "\n";
-		return record;
-	}
-	
-	//TODO: incorporate formatMeal into this method before try block
 	public void writeMeal(Meal fMeal)
 	{
 		//Record Format:
@@ -37,6 +13,8 @@ public class MealIO {
 		
 		String record = "";
 		String name = fMeal.getName();
+		name = name.replaceAll(";",",").trim();	//the only thing that will really break the file is ; or \n
+		name = name.replaceAll("\n","");
 		StringBuffer ingRecord = new StringBuffer();
 		
 		ArrayList<Food> ingredients = new ArrayList<Food>();
@@ -68,8 +46,64 @@ public class MealIO {
 		 System.out.print("Done");
 	}
 	
-	public void readMeal()
-	{}
 	
-
+	//reads all meals in the file, outputs them to arrayList which is then formatted.
+	public ArrayList readFile()
+	    { 
+			 
+		 	ArrayList meals = new ArrayList();
+			 
+			 FileInputStream fs = null;
+			 try
+			 { 
+				 SpiderToDB std = new SpiderToDB();
+				 fs= new FileInputStream("data/meals.txt");
+				 BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+				 
+				 for(int i = 0; i<std.countLines("data/meals.txt"); i++)
+				 {
+				   meals.add(br.readLine());
+				 }
+				 br.close();
+			 }
+			 catch(FileNotFoundException F)
+			 { System.out.println("IOexception while reading.");}
+			 
+			 catch (IOException e)
+	         {
+	             e.printStackTrace();
+	             System.out.println("could not read file.");
+	         }   
+			 
+			 finally 
+			 {
+			     if (fs != null)
+			     {
+			    	 try
+			    	 {
+			    		 fs.close();
+			    	 }
+			    	 catch(IOException e2)
+			    	 { System.out.println("IOException while closing.");}
+			     }	     	     
+			 }
+			 return meals;	 
+	    }
+		
+		public Meal recordToMeal(ArrayList readFile)
+		{
+			//Record Format:
+			//mealName;DBID;DBID;DBID;\n
+			ArrayList<Meal>
+			ArrayList<Food> addIngredients = new ArrayList();
+		//1: get a record from arrlist
+		//2: 1st semicolon is name, others are ingredients
+			//format
+			//iterate array
+			
+			Meal currentMeal = new Meal(name, addIngredients);
+ 
+			
+		}
+	
 }

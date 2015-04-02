@@ -19,8 +19,8 @@ public class Main extends HttpServlet{
 		DBConnect con = new DBConnect();
 		MealIO write = new MealIO();
 		Meal tuna = createMeal();
-		System.out.println(tuna.toString());
-		write.writeMeal(tuna);
+		//write.writeMeal(tuna);
+		System.out.println(write.readFile().toString());
 	}
 	
 	public static Meal createMeal()
@@ -29,7 +29,6 @@ public class Main extends HttpServlet{
 		ingredients.add(pullFromDB("tesco", "3057"));
 		ingredients.add(pullFromDB("tesco", "3806"));
 		ingredients.add(pullFromDB("tesco", "3897"));
-		
 		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
 		return currentMeal;
 	}
