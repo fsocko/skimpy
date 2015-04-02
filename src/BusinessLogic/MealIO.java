@@ -9,7 +9,7 @@ public class MealIO {
 	public void writeMeal(Meal fMeal)
 	{
 		//Record Format:
-		//mealName;DBID;DBID;DBID;\n
+		//meal.toString();
 		
 		String record = "";
 		String name = fMeal.getName();
@@ -22,9 +22,9 @@ public class MealIO {
 		
 		for(int i = 0; i<ingredients.size(); i++)
 		{
-			 Food foodLookup = ingredients.get(i);
-			 foodLookup.getDBID();
-			 ingRecord.append(foodLookup.getDBID()+";");
+			 Food foodLookup = ingredients.get(i); 
+			 ingRecord.append(foodLookup.getDBID() + "/");
+			 ingRecord.append(foodLookup.getSupermarket() + ";");
 		}
 		record = name + ";" + ingRecord + "\n";
 	    
@@ -87,23 +87,12 @@ public class MealIO {
 			    	 { System.out.println("IOException while closing.");}
 			     }	     	     
 			 }
+			 //output: Record formatted into array list.
+			 //Each array entry is a record. for example:
+			 //readFile<Food>.get(2) == "name;food;food;food;"
 			 return meals;	 
 	    }
 		
-		public Meal recordToMeal(ArrayList readFile)
-		{
-			//Record Format:
-			//mealName;DBID;DBID;DBID;\n
-			ArrayList<Meal>
-			ArrayList<Food> addIngredients = new ArrayList();
-		//1: get a record from arrlist
-		//2: 1st semicolon is name, others are ingredients
-			//format
-			//iterate array
-			
-			Meal currentMeal = new Meal(name, addIngredients);
- 
-			
-		}
+	
 	
 }

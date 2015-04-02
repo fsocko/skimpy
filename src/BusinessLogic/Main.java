@@ -19,7 +19,9 @@ public class Main extends HttpServlet{
 		DBConnect con = new DBConnect();
 		MealIO write = new MealIO();
 		Meal tuna = createMeal();
+		Meal test2 = createMeal();
 		//write.writeMeal(tuna);
+		write.writeMeal(tuna);
 		System.out.println(write.readFile().toString());
 	}
 	
