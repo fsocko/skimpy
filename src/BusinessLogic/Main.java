@@ -17,6 +17,10 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		DBConnect con = new DBConnect();
+		MealIO write = new MealIO();
+		Meal tuna = createMeal();
+		System.out.println(tuna.toString());
+		write.writeMeal(tuna);
 	}
 	
 	public static Meal createMeal()
