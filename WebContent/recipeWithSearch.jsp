@@ -151,11 +151,11 @@
           </div>
           <div class="col-xs-1 col-md-1">
             <div class="btn-toolbar">
-              <div class="btn-group">
+             <!--  <div class="btn-group">
                 <a class="btn btn-default btn-xs">+</a>
-              </div>
-              <div class="btn-group"></div>
-            </div>
+              </div> -->
+             <!--  <div class="btn-group"></div>
+            </div> -->
           </div>
           <ul class="list-group"></ul>
         </div>
