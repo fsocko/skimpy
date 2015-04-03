@@ -17,18 +17,21 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		DBConnect con = new DBConnect();
-		/*
+		
 		MealIO write = new MealIO();
 		Meal tuna = createMeal();
 		Meal test2 = createMeal();
 		//write.writeMeal(tuna);
-		write.writeMeal(tuna);
-		System.out.println(write.readFile().toString());
-		*/
+		//write.writeMeal(tuna);
+		System.out.println("The read meal object:" + write.readFile().toString());
+		write.formatMeal(write.readFile());
+		
+		/*
 		SpiderToDB std = new SpiderToDB();
 		pushToDB(std.tescoPath, "tesco");
 		pushToDB(std.asdaPath, "asda");
 		pushToDB(std.sainsPath, "sains");
+		*/
 		
 	}
 	
