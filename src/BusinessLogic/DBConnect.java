@@ -60,15 +60,12 @@ public class DBConnect extends HttpServlet{
 	public void closeCon()
 
 	{
-//		System.out.println("Trying to close all connections to DB.");
-
 		try 
 		{
 			st.close();
 		} 
 		catch (SQLException e1) 
 		{
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -76,10 +73,8 @@ public class DBConnect extends HttpServlet{
 			} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-//		finally{System.out.println("Connections closed.");}		
+		}	
 	}
 
 	
