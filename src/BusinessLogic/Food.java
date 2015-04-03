@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 
 public class Food extends HttpServlet{
 
+	private int DBID;
 	private String shopID;
 	private String name;
 	private double mass;
@@ -23,12 +24,13 @@ public class Food extends HttpServlet{
 	private double fibre;
 	private double salt;
 	
-	public Food(String shopID, String name, double mass, String unit,
+	public Food(int DBID, String shopID, String name, double mass, String unit,
 				double price, double pricePU, String pPUUnit, String foodCat, String foodCat2, String supermarket,
 				double calories, double proteins, double carbs,
 				double sugars, double fats, double saturates, double fibre,
 				double salt) 
 	{
+		this.DBID = DBID;
 		this.shopID = shopID;
 		this.name = name;
 		this.mass = mass;
@@ -38,7 +40,7 @@ public class Food extends HttpServlet{
 		PPUUnit = pPUUnit;
 		this.foodCat = foodCat;
 		this.foodCat2 = foodCat2;
-		this.supermarket = "x"; //TODO: add supermarket data to the DB
+		this.supermarket = supermarket;
 		this.calories = calories;
 		this.proteins = proteins;
 		this.carbs = carbs;
@@ -47,6 +49,10 @@ public class Food extends HttpServlet{
 		this.saturates = saturates;
 		this.fibre = fibre;
 		this.salt = salt;
+	}
+	
+	public int getDBID() {
+		return DBID;
 	}
 	
 	public String getShopID() {

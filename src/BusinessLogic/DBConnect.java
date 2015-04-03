@@ -60,15 +60,12 @@ public class DBConnect extends HttpServlet{
 	public void closeCon()
 
 	{
-//		System.out.println("Trying to close all connections to DB.");
-
 		try 
 		{
 			st.close();
 		} 
 		catch (SQLException e1) 
 		{
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -76,10 +73,8 @@ public class DBConnect extends HttpServlet{
 			} 
 		catch (SQLException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-//		finally{System.out.println("Connections closed.");}		
+		}	
 	}
 
 	
@@ -94,6 +89,7 @@ public class DBConnect extends HttpServlet{
 //			System.out.println(query);
 			rs = st.executeQuery(query);
 			
+			int DBID = -1;
 			String shopID = null;
 			String name = null;
 			double mass = -1;
@@ -115,6 +111,7 @@ public class DBConnect extends HttpServlet{
 			
 			while(rs.next())
 			{
+				DBID = rs.getInt("ID");
 				shopID = rs.getString("shopID");
 				name = rs.getString("Name");
 				unit = rs.getString("Unit");
@@ -134,7 +131,7 @@ public class DBConnect extends HttpServlet{
 				salt = rs.getDouble("Salt");
 				fibre = rs.getDouble("Fibre");
 			}
-			returnedFood = new Food(shopID, name, mass, unit, price, PPUPrice, PPUUnit,
+			returnedFood = new Food(DBID, shopID, name, mass, unit, price, PPUPrice, PPUUnit,
 					foodCat, foodCat2, supermarket, calories, proteins, carbs, sugars,
 					fats, saturates, fibre, salt);	
 

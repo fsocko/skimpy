@@ -176,7 +176,7 @@ public class SpiderToDB extends HttpServlet{
 
 	 	//Takes a record string, returns a food object. You probably want to read a record with readRecord(int)
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
-		 public Food formatRecord(String record)
+		 public Food formatRecord(String path, String record)
 		 {
 //Parse Strings via findColon			 
 			
@@ -191,6 +191,13 @@ public class SpiderToDB extends HttpServlet{
 				 String PPUUnit;
 				 String foodCat = record.substring(findColon(record, 3), findColon(record, 4));
 				 String foodCat2 = record.substring(findColon(record, 4), findColon(record, 5));
+				 String supermarket = "x";
+				 if(path.equals(tescoPath))
+				 {supermarket = "T";}
+				 else if(path.equals(asdaPath))
+				 {supermarket = "A";}
+				 else if(path.equals(sainsPath))
+				 {supermarket = "S";}	 
 				 //Nutrition				 
 				 String calories = record.substring(findColon(record, 5), findColon(record, 6));
 				 String proteins = record.substring(findColon(record, 6), findColon(record, 7));
@@ -236,7 +243,7 @@ public class SpiderToDB extends HttpServlet{
 	//Fibre------------NO CHANGE
 	
 	
-				Food currentRec = new Food(shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, "x", toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				return currentRec;
 				 
 			 

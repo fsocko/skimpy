@@ -17,6 +17,22 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		DBConnect con = new DBConnect();
+		
+		MealIO write = new MealIO();
+		Meal tuna = createMeal();
+		Meal test2 = createMeal();
+		//write.writeMeal(tuna);
+		//write.writeMeal(tuna);
+		System.out.println("The read meal object:" + write.readFile().toString());
+		write.formatMeal(write.readFile());
+		
+		/*
+		SpiderToDB std = new SpiderToDB();
+		pushToDB(std.tescoPath, "tesco");
+		pushToDB(std.asdaPath, "asda");
+		pushToDB(std.sainsPath, "sains");
+		*/
+		
 	}
 	
 	public static Meal createMeal()
@@ -25,7 +41,6 @@ public class Main extends HttpServlet{
 		ingredients.add(pullFromDB("tesco", "3057"));
 		ingredients.add(pullFromDB("tesco", "3806"));
 		ingredients.add(pullFromDB("tesco", "3897"));
-		
 		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
 		return currentMeal;
 	}
@@ -85,7 +100,7 @@ public class Main extends HttpServlet{
 		int i = 1;
 		while(i < std.countLines(path)){
 			System.out.println("\n i is:" + i + "\n");
-			Food foodItem = std.formatRecord(Items.get(i).toString().trim());
+			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());
 
 			if(foodItem != null)
 			{
