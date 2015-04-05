@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServlet;
 
 /**
- * @author ruaraidh
+ * @author ruaraidh, FPS, Lee
  */
 /**
  * Main class that brings all the other classes together.
@@ -29,7 +29,7 @@ public class Main extends HttpServlet{
 		
 	}
 	
-	public static void createMealPlan() {
+	public static void testXML() {
 		XMLParser writeX = new XMLParser();
 		ArrayList<Food> ing1 = new ArrayList<Food>();
 		ing1.add(new Food(1290, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
@@ -38,7 +38,6 @@ public class Main extends HttpServlet{
 		ing2.add(new Food(120, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
 		ing2.add(new Food(340, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
 		ing2.add(new Food(109, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
-		// TODO Auto-generated method stub
 		ArrayList<Meal> meals = new ArrayList<Meal>();
 		meals.add(new Meal("Cereal", ing1));
 		meals.add(new Meal("Lunch", ing2));

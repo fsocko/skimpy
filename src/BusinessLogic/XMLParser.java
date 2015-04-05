@@ -21,7 +21,7 @@ public class XMLParser {
 	/*
 	 * Returns an arraylist of meals from the file meals.xml
 	 */
-	public static ArrayList<Meal> readMeals() {
+	public ArrayList<Meal> readMeals() {
 		DBConnect dbcon = new DBConnect();
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -58,7 +58,7 @@ public class XMLParser {
 	/*
 	 * Writes an arraylist of meals to the file meals.xml
 	 */
-	public static void writeMeals(ArrayList<Meal> meals) {
+	public void writeMeals(ArrayList<Meal> meals) {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -96,7 +96,7 @@ public class XMLParser {
 	/*
 	 * Reads an arraylist of mealplans from the file mealplans.xml
 	 */
-	public static ArrayList<MealPlanner> readMealPlans() {
+	public ArrayList<MealPlanner> readMealPlans() {
 		DBConnect dbcon = new DBConnect();
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -144,7 +144,7 @@ public class XMLParser {
 	/*
 	 * writes an arraylist of mealplans to the file mealplans.xml
 	 */
-	public static void writeMealPlans(ArrayList<MealPlanner> mealplanners) {
+	public void writeMealPlans(ArrayList<MealPlanner> mealplanners) {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
