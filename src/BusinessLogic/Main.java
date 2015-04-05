@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpServlet;
 
 /**
@@ -18,13 +19,6 @@ public class Main extends HttpServlet{
 	{
 		DBConnect con = new DBConnect();
 		
-		MealIO write = new MealIO();
-		Meal tuna = createMeal();
-		Meal test2 = createMeal();
-		//write.writeMeal(tuna);
-		//write.writeMeal(tuna);
-		System.out.println("The read meal object:" + write.readFile().toString());
-		write.formatMeal(write.readFile());
 		
 		/*
 		SpiderToDB std = new SpiderToDB();
@@ -34,6 +28,38 @@ public class Main extends HttpServlet{
 		*/
 		
 	}
+	
+	public static void createMealPlan() {
+		XMLParser writeX = new XMLParser();
+		ArrayList<Food> ing1 = new ArrayList<Food>();
+		ing1.add(new Food(1290, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
+		ing1.add(new Food(1212, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
+		ArrayList<Food> ing2 = new ArrayList<Food>();
+		ing2.add(new Food(120, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
+		ing2.add(new Food(340, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
+		ing2.add(new Food(109, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
+		// TODO Auto-generated method stub
+		ArrayList<Meal> meals = new ArrayList<Meal>();
+		meals.add(new Meal("Cereal", ing1));
+		meals.add(new Meal("Lunch", ing2));
+		meals.add(new Meal("Dinner", ing2));
+		ArrayList<MealPlanner> mps = new ArrayList<MealPlanner>();
+		for (int i = 0; i < 2; i++) {
+		MealPlanner mp = new MealPlanner();
+		String[] dayValues = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+		String[] timeValues = {"Breakfast", "Lunch", "Dinner"};
+		for (String s: dayValues) {
+			int j = 0;
+			for (String t: timeValues) {
+				mp.add(meals.get(j), s, t);
+				j++;
+			}
+		}
+		mps.add(mp);
+		}
+		writeX.writeMealPlans(mps);
+	}
+	
 	
 	public static Meal createMeal()
 	{
