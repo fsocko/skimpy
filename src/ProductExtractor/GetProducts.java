@@ -47,8 +47,7 @@ public class GetProducts implements Runnable {
 				    //HtmlElement productData = temp.getOneHtmlElementByAttribute("li", "class", "gridItem");
 				    String productString = "";
 				    String prodUrl = temp.getOneHtmlElementByAttribute("div", "class", "productNameAndPromotions").getFirstElementChild().getFirstElementChild().getAttribute("href");
-				    String[] urls = prodUrl.split("/");
-				    productString += urls[urls.length - 1];
+				    productString += prodUrl;
 				    try {
 				    String name = temp.getOneHtmlElementByAttribute("div", "class", "productNameAndPromotions").getFirstElementChild().getFirstElementChild().asText();
 				    productString += ";" + name;
