@@ -79,19 +79,19 @@ public class MealPlanner extends HttpServlet{
 	 */
 	public int writeToDay(String day){
 		int dayNo = -1;
-		if(day == "Mon")
+		if(day.equals("Mon"))
 			dayNo = 0;
-		if(day == "Tue")
+		if(day.equals("Tue"))
 			dayNo = 1;
-		if(day == "Wed")
+		if(day.equals("Wed"))
 			dayNo = 2;
-		if(day == "Thu")
+		if(day.equals("Thu"))
 			dayNo = 3;
-		if(day == "Fri")
+		if(day.equals("Fri"))
 			dayNo = 4;
-		if(day == "Sat")
+		if(day.equals("Sat"))
 			dayNo = 5;
-		if(day == "Sun")
+		if(day.equals("Sun"))
 			dayNo = 6;
 		return dayNo;
 	}
