@@ -517,7 +517,7 @@ public class DBConnect extends HttpServlet{
 		
 		try {
 			openCon();
-			rs = st.executeQuery(query);
+			rs = st.executeQuery(tQuery);
 			if (rs.next()) {
 				do {
 					results.put(rs.getString(3).trim());
