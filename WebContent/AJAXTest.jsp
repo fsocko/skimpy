@@ -10,6 +10,16 @@
   .ui-autocomplete-loading {
     background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
   }
+  .ui-autocomplete {
+    max-height: 480px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  * html .ui-autocomplete {
+    height: 480px;
+  }
+  
   #city { width: 600px; }
   </style>
   <script>
