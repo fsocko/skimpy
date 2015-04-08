@@ -1,0 +1,93 @@
+#search {
+	width: 712px;
+	font-size: 18px;
+	padding: 4px 0 4px 8px;
+}
+
+#log {
+	height: 300px;
+	width: 700px;
+	padding: 0 10px 0 10px;
+	overflow: auto;
+	border: 1px solid #CCC;
+}
+
+::-webkit-input-placeholder {
+   color: #CCC;
+   font-style: italic;
+}
+
+:-moz-placeholder {
+   color: #CCC;  
+}
+
+::-moz-placeholder {
+   color: #CCC; 
+}
+
+:-ms-input-placeholder {  
+   color: #CCC;  
+}
+
+.ui-autocomplete {
+	border: 1px solid #CCC;
+	max-height: 480px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: #FFF;
+}
+
+* html .ui-autocomplete {
+	height: 480px;
+}
+
+.ui-menu-item {
+	height: 32px;
+}
+
+.list-entry {
+	height: 24px;
+	margin: 6px 0 6px 0;
+}
+
+.product-name {
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 85%;
+}
+
+.product-price {
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 10%;
+	text-align: center;
+}
+
+.tesco-price {
+	color: #0000FF
+}
+
+.sains-price {
+	color: #FF0000
+}
+
+.asda-price {
+	color: #00FF00
+}
+
+.action-remove {
+	position: relative;
+	float: left;
+	width: 5%;
+}
+
+.button-remove {
+	width: 100%;
+	color: #999;
+}
+
+.button-remove:hover {
+	color: #444;
+}
