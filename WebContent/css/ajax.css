@@ -23,14 +23,17 @@ body {
 
 :-moz-placeholder {
    color: #CCC;  
+   font-style: italic;
 }
 
 ::-moz-placeholder {
    color: #CCC; 
+   font-style: italic;
 }
 
 :-ms-input-placeholder {  
    color: #CCC;  
+   font-style: italic;
 }
 
 .ui-autocomplete {

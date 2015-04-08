@@ -11,7 +11,7 @@
   <script>
   $(function() {
     function log( productName, productPrice, shop_code ) {
-    	var shop_class = "generic";
+    	/* var shop_class = "generic";
     	if (shop_code == "t") {
     		shop_class = "tesco-price";
     	}
@@ -20,12 +20,12 @@
     	}
     	else if (shop_code == "a") {
     		shop_class = "asda-price";
-    	}
+    	} */
     	
    	  $( '#log' ).append(
    		$('<div>').addClass('list-entry')
    		  .append($('<span>').addClass('product-name').text(productName))
-   		  .append($('<span>').addClass('product-price').addClass(shop_class).text(productPrice))
+   		  .append($('<span>').addClass('product-price')/* .addClass(shop_class) */.text(productPrice))
    		  .append($('<span>').addClass('action-remove').append(
    			 $("<i class='fa fa-times button-remove'>"))
    		 ));
