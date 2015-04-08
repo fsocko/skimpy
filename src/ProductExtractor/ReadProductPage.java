@@ -36,8 +36,7 @@ public class ReadProductPage implements Runnable {
 			final HtmlPage page = webClient.getPage(url);
 			HtmlElement productSummary = page.getBody().getOneHtmlElementByAttribute("div", "class", "productSummary");
 			String productString = "";
-			String[] urls = url.split("/");
-		    productString += urls[urls.length - 1];
+		    productString += url;
 		    try {
 		    	String name = productSummary.getFirstElementChild().getTextContent();
 		    	productString += ";" + name;
