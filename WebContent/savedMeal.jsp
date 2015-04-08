@@ -27,15 +27,18 @@
         String ingredients = java.util.Arrays.deepToString(Ingredients);
         DBConnect con = new DBConnect();
     	
-    		/*  ArrayList<Food> f_ingredients = new ArrayList<Food>();
-    		for (String f: Ingredients){
-    		f_ingredients.add(con.pullFood("tesco", f));
-    		String bla = con.pullFood("tesco", "1").getName(); */%>
-    		<%-- <%=bla %> --%>
-    		<%-- <%}
+    		ArrayList<Food> f_ingredients = new ArrayList<Food>();
+    		for (int i =1; i<7;i++){
+    		f_ingredients.add(con.pullFood("tesco", Integer.toString(i))); }
+    		
     		Meal currentMeal = new Meal(MealName, f_ingredients); 
-   %> --%>
+    		ArrayList<Meal> meals = new ArrayList<Meal>();
+    		meals.add(currentMeal);
+    		XMLParser writeX = new XMLParser();
+    	    writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
+   %>
         <%=ingredients %>
+        <%=currentMeal.toString() %>
         <%=MealName %>
         
  
@@ -44,6 +47,7 @@
  	</p><input type="button" name="MealPlan" 
  	value="Go Back" onclick="javascript:history.go(-1)">
  	<input type="button" name="PComp" value="Get Prices" onclick="document.location.href='Price.jsp'">
+ 	<input type="button" name="PComp" value="Go to MealPlanner" onclick="document.location.href='MealPlan.jsp'">
  	<input type="button" value="Log Out" onclick="document.location.href='logout.jsp'">
 </body>
 </html>
