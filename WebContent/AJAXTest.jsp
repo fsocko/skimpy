@@ -9,6 +9,20 @@
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
   <script>
+  	function updateCategories(phrase) {
+  		$.getJSON("CategorySearch.jsp", { q: phrase }, function(data) {
+  		    $("#categories-list option").remove(); // Remove all <option> child tags.
+  		    $.each(data, function(index, item) { // Iterates through a collection
+  		        $("#categories-list").append( // Append an object to the inside of the select box
+  		            $("<option></option>") // Yes you can do this.
+  		            	.text(item)
+  		                /* .text(item.Description)
+  		                .val(item.Id) */
+  		        );
+  		    });
+  		});
+	}
+  
   $(function() {
     function log( productName, productPrice, shop_code ) {
     	/* var shop_class = "generic";
@@ -54,6 +68,7 @@
       },
       open: function() {
         $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+        updateCategories($('#search').val());
       },
       close: function() {
         $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
@@ -65,6 +80,7 @@
 </head>
 <body>
 	<script>
+		
 		$(document).ready(function() {
 			$('#log').on( 'click', '.button-remove', function() {
 				$(this).closest('.list-entry').remove();
@@ -72,6 +88,12 @@
 		});
 	</script>
  
+<div>
+	<select id="categories-list">
+		<option value="bread">Bread</option>
+		<option value="in-store_bakery">In-Store Bakery</option>
+	</select>
+</div>
 <div class="ui-widget">
 	  <input id="search" placeholder="Search for products across many supermarkets">
 </div>

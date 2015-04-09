@@ -496,11 +496,8 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public String testSearch(String phrase) {
-		// SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' bread | bread$' AND FoodCat REGEXP ' bread | bread$' AND Price NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC
-		JSONArray resultsProducts = new JSONArray();
-		JSONArray resultsCategories = new JSONArray();
-		JSONArray resultsCombined = new JSONArray();
+	public String productSearch(String phrase) {
+		JSONArray results = new JSONArray();
 		
 		String[] words = phrase.split("\\s");
 		String regexpPhrase = "";
@@ -508,13 +505,6 @@ public class DBConnect extends HttpServlet{
 			regexpPhrase += words[i] + ".*";
 		}
 		regexpPhrase += words[words.length - 1];
-		
-		String tCatQuery = String.format(
-			"SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-			regexpPhrase, regexpPhrase, regexpPhrase);
-		String tCatMoreGeneral = String.format(
-				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase);
 		
 		String tQuery = String.format(
 			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
@@ -538,25 +528,54 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				do {
-					resultsProducts.put(rs.getString(3).trim());
+					results.put(rs.getString(3).trim());
 				} while (rs.next());
-				
-				// Search for categories
-				rs = st.executeQuery(tCatQuery);
-				while (rs.next()) {
-					resultsCategories.put(rs.getString(1).trim());
-				}
 			}
 			else {
 				rs = st.executeQuery(moreGeneralQuery);
 				while (rs.next()) {
-					resultsProducts.put(rs.getString(3).trim());
+					results.put(rs.getString(3).trim());
 				}
-				
-				// Search for categories
+			}
+		}
+		catch (SQLException sqlex) {
+			sqlex.printStackTrace();
+		}
+		finally {
+			closeCon();
+		}
+		return results.toString();
+	}
+	
+	public String categorySearch(String phrase) {
+		JSONArray results = new JSONArray();
+		
+		String[] words = phrase.split("\\s");
+		String regexpPhrase = "";
+		for (int i = 0; i < words.length - 1; i++) {
+			regexpPhrase += words[i] + ".*";
+		}
+		regexpPhrase += words[words.length - 1];
+		
+		String tCatQuery = String.format(
+				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase, regexpPhrase, regexpPhrase);
+		String tCatMoreGeneral = String.format(
+				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT DISTINCT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase, regexpPhrase);
+		
+		try {
+			openCon();
+			rs = st.executeQuery(tCatQuery);
+			if (rs.next()) {
+				do {
+					results.put(rs.getString(1).trim());
+				} while (rs.next());
+			}
+			else {
 				rs = st.executeQuery(tCatMoreGeneral);
 				while (rs.next()) {
-					resultsCategories.put(rs.getString(1).trim());
+					results.put(rs.getString(1).trim());
 				}
 			}
 		}
@@ -567,13 +586,6 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 		
-		for (int i = 0; i < resultsCategories.length(); i++) {
-			resultsCombined.put("Search in " + resultsCategories.getString(i));
-		}
-		for (int i = 0; i < resultsProducts.length(); i++) {
-			resultsCombined.put(resultsProducts.getString(i));
-		}
-		
-		return resultsCombined.toString();
+		return results.toString();
 	}
 }
