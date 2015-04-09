@@ -497,23 +497,32 @@ public class DBConnect extends HttpServlet{
 	}
 	
 	public String testSearch(String phrase) {
+		// SELECT Name, FoodCat, COUNT(DISTINCT Name) FROM tesco WHERE Name REGEXP 'tomato' GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC
 		JSONArray results = new JSONArray();
+		
+		String[] words = phrase.split("\\s");
+		String regexpPhrase = "";
+		for (int i = 0; i < words.length - 1; i++) {
+			regexpPhrase += words[i] + ".*";
+		}
+		regexpPhrase += words[words.length - 1];
+		
 		String tQuery = String.format(
 			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
-			phrase, phrase, phrase);
+			regexpPhrase, regexpPhrase, regexpPhrase);
 		String sQuery = String.format(
 			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s'",
-			phrase, phrase, phrase);
-		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 10";
+			regexpPhrase, regexpPhrase, regexpPhrase);
+		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 50";
 		
 		String moreGeneralQuery_1 = String.format(
 			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL'",
-			phrase, phrase);
+			regexpPhrase, regexpPhrase);
 		String moreGeneralQuery_2 = String.format(
 			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$'",
-			phrase, phrase);
+			regexpPhrase, regexpPhrase);
 		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
-				+ " ORDER BY Price ASC LIMIT 10";
+				+ " ORDER BY Price ASC LIMIT 50";
 		
 		try {
 			openCon();
