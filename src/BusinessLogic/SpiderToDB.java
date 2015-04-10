@@ -17,7 +17,7 @@ public class SpiderToDB extends HttpServlet{
 	 String sainsPath = "data/sains.txt";
 	 String asdaPath = "data/asda.txt";
 	 String portionPath = "data/portionSizeToJavaInit.txt";
-	 
+	 boolean rejectRecord = false;
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
 		 {
@@ -165,12 +165,14 @@ public class SpiderToDB extends HttpServlet{
 				 }
 		 
 				 else{
-					 	if(input.contains("trace"))
+					 	if(input.toUpperCase().contains("TRACE"))
+					 	{return 0;}
+					 	if(input.toUpperCase().contains("NIL"))
 					 	{return 0;}
 					 }
-				 
-		 
-		 return -1.69;
+		 		 
+		 		 rejectRecord = true;
+		 		 return -1.69;
 	 }
 	 
 
@@ -178,7 +180,8 @@ public class SpiderToDB extends HttpServlet{
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
 		 public Food formatRecord(String path, String record)
 		 {
-//Parse Strings via findColon			 
+			 rejectRecord = false;	
+			 //Parse Strings via findColon			 
 			
 				 String shopID = record.substring(0, findColon(record, 0));
 				 String name = record.substring(findColon(record, 0), findColon(record, 1));
@@ -210,9 +213,10 @@ public class SpiderToDB extends HttpServlet{
 	
 	
 				 
-	//ShopID---------NO CHANGE			 
+	//ShopID---------NO CHANGE
+				 shopID = shopID.replaceAll("\""," inch");
 	//Name-----------NO CHANGE		
-				 name = name.replaceAll(";"," ");
+				 name = name.replaceAll("\""," inch");
 	//Mass, Unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
@@ -229,9 +233,6 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
-		
-				
-				 
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
@@ -241,12 +242,14 @@ public class SpiderToDB extends HttpServlet{
 	//Saturates--------NO CHANGE
 	//Salts------------NO CHANGE
 	//Fibre------------NO CHANGE
-	
-	
-				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
-				return currentRec;
+		 
 				 
-			 
+				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				//simple test if anything parsed to double incorrectly. If this is the case, we reject the entire record. I seem to remember this rejects most of them though.
+				if(rejectRecord)
+				{return null;}
+				else{return currentRec;}
+				
 		 }
 		 
 		 public PortionSize parsePortion(String portion)
