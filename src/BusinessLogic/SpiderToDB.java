@@ -20,8 +20,7 @@ public class SpiderToDB extends HttpServlet{
 	 boolean rejectRecord = false;
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
-		 {
-			 System.out.print("Counting the number of lines in the file: " + inputFile + "..."); 
+		 { 
 			 int lines = 0;
 			  try {
 			   File file = new File(inputFile);
@@ -36,7 +35,6 @@ public class SpiderToDB extends HttpServlet{
 			  } catch (IOException e) {
 			   System.out.println("IOException Occured" + e.getMessage());
 			  }
-			  System.out.print("Done");
 			  return lines;
 
 		 }
@@ -86,7 +84,7 @@ public class SpiderToDB extends HttpServlet{
 	 //Takes about 2min, but it beats the 20mins or so in a sequential search.
 	 public ArrayList readAllRecords(String file)
 	    { 
-			System.out.print("Adding all lines of the file: " + file + "to an ArrayList.");
+			System.out.print("Adding all lines of the file: " + file + " to an ArrayList.");
 			System.out.print("\nThis usually takes 1-3 minutes...");
 		 	ArrayList allRec = new ArrayList();
 			 
