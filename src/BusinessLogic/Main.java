@@ -120,9 +120,10 @@ public class Main extends HttpServlet{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
 		ArrayList Items = new ArrayList(std.readAllRecords(path));
-
+		
 		int i = 1;
-		while(i < std.countLines(path)){
+		int t = std.countLines(path);
+		while(i < t){
 			System.out.println("\n i is:" + i + "\n");
 			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());
 
