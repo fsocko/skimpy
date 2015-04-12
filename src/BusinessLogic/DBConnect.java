@@ -547,6 +547,61 @@ public class DBConnect extends HttpServlet{
 		return results.toString();
 	}
 	
+	public String fullSearch(String phrase) {
+		JSONArray results = new JSONArray();
+		
+		String[] words = phrase.split("\\s");
+		String regexpPhrase = "";
+		for (int i = 0; i < words.length - 1; i++) {
+			regexpPhrase += words[i] + ".*";
+		}
+		regexpPhrase += words[words.length - 1];
+		
+		String tQuery = String.format(
+			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
+			regexpPhrase, regexpPhrase, regexpPhrase);
+		String sQuery = String.format(
+			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s'",
+			regexpPhrase, regexpPhrase, regexpPhrase);
+		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 50";
+		
+		String moreGeneralQuery_1 = String.format(
+			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL'",
+			regexpPhrase, regexpPhrase);
+		String moreGeneralQuery_2 = String.format(
+			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$'",
+			regexpPhrase, regexpPhrase);
+		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
+				+ " ORDER BY Price ASC LIMIT 50";
+		
+		try {
+			openCon();
+			rs = st.executeQuery(query);
+			if (rs.next()) {
+				do {
+					JSONObject temp = new JSONObject();
+					temp.put("name", rs.getString(3).trim());
+					temp.put("price", rs.getDouble(6));
+					
+					results.put(temp);
+				} while (rs.next());
+			}
+			else {
+				rs = st.executeQuery(moreGeneralQuery);
+				while (rs.next()) {
+					results.put(rs.getString(3).trim());
+				}
+			}
+		}
+		catch (SQLException sqlex) {
+			sqlex.printStackTrace();
+		}
+		finally {
+			closeCon();
+		}
+		return results.toString();
+	}
+	
 	public String categorySearch(String phrase) {
 		JSONArray results = new JSONArray();
 		
