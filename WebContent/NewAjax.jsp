@@ -15,7 +15,7 @@
 			for (c in categories) {
 				$('#categories-tickboxes').append(
 					$('<span>').addClass('category-tick')
-						.append($('<input>').addClass('category-checkbox').attr('type', 'checkbox'))
+						.append($('<input>').addClass('category-checkbox').attr('type', 'checkbox').attr('value', categories[c]))
 						.append($('<span>').addClass('category-name').text(categories[c]))
 					);
 			}
@@ -39,6 +39,7 @@
 <body>
 	<script>
 		var prevQuery = "";
+		var categoriesSearch = [];
 		$(document).ready(function(){
 			$('#search').keyup(function(){
 				$('#autocomplete-box').css("visibility", "visible");
@@ -77,9 +78,30 @@
 				}
 			);
 			
+			function pushCategories() {
+				$(".category-checkbox:checked").each(function()
+				{
+					categoriesSearch.push($(this).val());
+				});
+			}
+			
 			$('#categories-tickboxes').on('change', '.category-checkbox',
 				function() {
-					alert("Changed selection!");
+					categoriesSearch = [];
+					pushCategories();
+					alert(categoriesSearch);
+					$.ajax({
+			          url: "RefinedSearch.jsp",
+			          dataType: "json",
+			          data: {
+			            q: $('#search').val(),
+			            cat: categoriesSearch
+			          },
+			          success: function( data ) {
+			        	  $('#results').empty();
+			        	  fillResults(data);
+			          }
+			    	});
 				}
 			);
 			
