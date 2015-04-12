@@ -121,6 +121,12 @@
 					);
 				}
 			);
+			
+			$('#products-list').on('click', '.button-remove',
+				function() {
+					$(this).closest('.product-list-entry').remove();
+				}
+			);
 		});
 	</script>
 	<form method="get" action="ProductSearch.jsp">
