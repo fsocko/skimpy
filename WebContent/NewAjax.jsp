@@ -7,7 +7,7 @@
 	<title>Search</title>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="css/search.css">
-	<script src="js/jquery.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
 	<script>
 		function fillSearchCategories(categories) {
 			$('#categories-tickboxes').append(
@@ -15,7 +15,7 @@
 			for (c in categories) {
 				$('#categories-tickboxes').append(
 					$('<span>').addClass('category-tick')
-						.append($('<input>').attr('type', 'checkbox'))
+						.append($('<input>').addClass('category-checkbox').attr('type', 'checkbox'))
 						.append($('<span>').addClass('category-name').text(categories[c]))
 					);
 			}
@@ -69,15 +69,32 @@
 				}
 			});
 			
-			$('#results').click('.result-entry', function(){
-				alert("Clicked");
-			});
+			$('#autocomplete-box').on('click', '#close',
+				function() {
+					$('#categories-tickboxes').empty();
+					$('#results').empty();
+					$('#autocomplete-box').css("visibility", "hidden");
+				}
+			);
+			
+			$('#categories-tickboxes').on('change', '.category-checkbox',
+				function() {
+					alert("Changed selection!");
+				}
+			);
+			
+			$('#results').on('click', '.button-add',
+				function (event) {
+					alert("Clicked " + $(this).closest('.result-entry').text());
+				}
+			);
 		});
 	</script>
 	<form method="get" action="ProductSearch.jsp">
 		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
 	</form>
 	<div id="autocomplete-box">
+		<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
 		<div id="categories-tickboxes"></div>
 		<div id="results"></div>
 	</div>

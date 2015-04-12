@@ -557,7 +557,12 @@ public class DBConnect extends HttpServlet{
 		}
 		regexpPhrase += words[words.length - 1];
 		
-		String tQuery = String.format(
+		String query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP '%s' AND PPUUnit NOT LIKE 'NULL' "
+				+ "UNION "
+				+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP '%s' ORDER BY Price ASC",
+				regexpPhrase, regexpPhrase);
+		
+		/*String tQuery = String.format(
 			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
 			regexpPhrase, regexpPhrase, regexpPhrase);
 		String sQuery = String.format(
@@ -573,25 +578,23 @@ public class DBConnect extends HttpServlet{
 			regexpPhrase, regexpPhrase);
 		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
 				+ " ORDER BY Price ASC LIMIT 50";
-		
+		*/
 		try {
 			openCon();
 			rs = st.executeQuery(query);
-			if (rs.next()) {
-				do {
+			while (rs.next()) {
 					JSONObject temp = new JSONObject();
 					temp.put("name", rs.getString(3).trim());
 					temp.put("price", rs.getDouble(6));
 					
 					results.put(temp);
-				} while (rs.next());
 			}
-			else {
+			/*else {
 				rs = st.executeQuery(moreGeneralQuery);
 				while (rs.next()) {
 					results.put(rs.getString(3).trim());
 				}
-			}
+			}*/
 		}
 		catch (SQLException sqlex) {
 			sqlex.printStackTrace();
@@ -613,25 +616,22 @@ public class DBConnect extends HttpServlet{
 		regexpPhrase += words[words.length - 1];
 		
 		String tCatQuery = String.format(
-				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase, regexpPhrase);
-		String tCatMoreGeneral = String.format(
-				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT DISTINCT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase);
+				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP '%s'AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC LIMIT 5",
+				regexpPhrase);
+		String sainsCatQuery = String.format(
+				"SELECT FoodCat FROM sains WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP '%s'AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC LIMIT 5",
+				regexpPhrase);
 		
 		try {
 			openCon();
 			rs = st.executeQuery(tCatQuery);
-			if (rs.next()) {
-				do {
-					results.put(rs.getString(1).trim());
-				} while (rs.next());
+			while (rs.next()) {
+				results.put(rs.getString(1).trim());
 			}
-			else {
-				rs = st.executeQuery(tCatMoreGeneral);
-				while (rs.next()) {
-					results.put(rs.getString(1).trim());
-				}
+			
+			rs = st.executeQuery(sainsCatQuery);
+			while (rs.next()) {
+				results.put(rs.getString(1).trim());
 			}
 		}
 		catch (SQLException sqlex) {

@@ -1,3 +1,7 @@
+body {
+	font-family: sans-serif;
+}
+
 #autocomplete-box {
 	position: relative;
 	float: left;
@@ -109,4 +113,15 @@
 	color: #CCC;
 	margin: 8px 0 8px 0;
 	text-align: center;
+}
+
+#close {
+	position: relative;
+	float: right;
+	margin: 4px;
+	color: #CCC;
+}
+
+#close:hover {
+	color: #999;
 }
