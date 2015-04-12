@@ -107,7 +107,9 @@
 			
 			$('#results').on('click', '.button-add',
 				function (event) {
-					alert("Clicked " + $(this).closest('.result-entry').text());
+					$('#products-list').append(
+						$('<div>').addClass('product-list-entry').text(	
+							$(this).closest('.result-entry').text()));
 				}
 			);
 		});
@@ -119,6 +121,9 @@
 		<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
 		<div id="categories-tickboxes"></div>
 		<div id="results"></div>
+	</div>
+	
+	<div id="products-list">
 	</div>
 </body>
 </html>

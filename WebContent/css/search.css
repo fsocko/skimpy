@@ -128,3 +128,14 @@ body {
 #close:hover {
 	color: #999;
 }
+
+#products-list {
+	position: relative;
+	float: left;
+	width: 600px;
+	height: 480px;
+	overflow-y: auto;
+	overflow-x: auto;
+	border: 1px solid #CCC;
+	margin: 8px;
+}
