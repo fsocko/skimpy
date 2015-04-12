@@ -89,7 +89,6 @@
 				function() {
 					categoriesSearch = [];
 					pushCategories();
-					alert(categoriesSearch);
 					$.ajax({
 			          url: "RefinedSearch.jsp",
 			          dataType: "json",
@@ -108,8 +107,18 @@
 			$('#results').on('click', '.button-add',
 				function (event) {
 					$('#products-list').append(
-						$('<div>').addClass('product-list-entry').text(	
-							$(this).closest('.result-entry').text()));
+						$('<div>').addClass('product-list-entry').append(	
+							$('<span>').addClass('list-product-name').text(
+								$(this).closest('.result-entry').find('.product-name').text()))
+							.append(
+								$('<span>').addClass('list-product-price').text(
+									$(this).closest('.result-entry').find('.product-price').text())
+								)
+							.append(
+								$('<span>').addClass('button-remove')
+									.append($('<i>').addClass('fa').addClass('fa-times'))
+							)
+					);
 				}
 			);
 		});
