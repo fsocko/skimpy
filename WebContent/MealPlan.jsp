@@ -60,7 +60,20 @@ connect.search(searchItem); */
 		change everything in it or keep it if you like it. Just click on the
 		cells you want to alter and enter ingredients so we can create an
 		optimised shopping list for you.</p>
-		
+		 <%XMLParser writeX = new XMLParser();
+				//added file path as a parameter
+				//reading works
+      ArrayList<Meal> meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+				for (Meal m: meals){
+					String one_meal = m.toString();
+					//String all_meals = all_meals+ one_meal;%>
+					<%=one_meal
+					%><%} 
+				
+      String test = "test";%>
+  
+    <%=test %>
+    
 	<form action="ShoppingList.jsp" method="POST">
 	<table border="1">
 	<tr><th>Monday</th>
@@ -75,7 +88,7 @@ connect.search(searchItem); */
 			<%for (int j = 0; j < 7; j++) {%>
            <td align="center">
 				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
-				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
+				<%-- <input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " /> --%>
                 <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> 
                 <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
@@ -87,6 +100,7 @@ connect.search(searchItem); */
 		</tr> 
 		<%}%>
 	</table>
+	
 <div id="accordion">
   <h3>Your daily calories intake:</h3>
   <div>
