@@ -52,8 +52,6 @@ public class Recommend {
 		setSats(dayMeal());
 		setFibre(dayMeal());
 		setSalt(dayMeal());
-		
-		
 	}
 	
 	public boolean checkOpt(double userUnit, double recUnit){
@@ -207,4 +205,37 @@ public class Recommend {
 	public double getSaltRec(){
 		return saltRec;
 	}
+	
+	public boolean getCalOpt(){
+		return calOpt;
+	}
+	
+	public boolean getProtOpt(){
+		return protOpt;
+	}
+	
+	public boolean getCarbOpt(){
+		return carbsOpt;
+	}
+	
+	public boolean getSugarsOpt(){
+		return sugarsOpt;
+	}
+	
+	public boolean getFatsOpt(){
+		return fatsOpt;
+	}
+	
+	public boolean getSatsOpt(){
+		return saturatesOpt;
+	}
+	
+	public boolean getFibreOpt(){
+		return fibreOpt;
+	}
+	
+	public boolean getSaltOpt(){
+		return saltOpt;
+	}
+	
 }
