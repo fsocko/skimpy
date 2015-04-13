@@ -464,69 +464,173 @@ public class DBConnect extends HttpServlet{
 	public void DBmanip(){
 		openCon();
 		try{
+			
 			ArrayList<String> query = new ArrayList<String>();
-			String supermarket = "tesco";
-			//PORTION CATEGORIES	
 			
-			//Bakery
-//			query.add("UPDATE portion_sizes SET FoodCat = 'Bakery' WHERE FoodCat = 'Bakery Products';");			
+			query.add("UPDATE tesco set FoodCat = LTRIM(RTRIM(FoodCat))");
+			query.add("UPDATE asda set FoodCat = LTRIM(RTRIM(FoodCat))");
+			query.add("UPDATE sains set FoodCat = LTRIM(RTRIM(FoodCat))");
+			query.add("UPDATE tesco set FoodCat2 = LTRIM(RTRIM(FoodCat))");
+			query.add("UPDATE asda set FoodCat2 = LTRIM(RTRIM(FoodCat))");
+			query.add("UPDATE sains set FoodCat2 = LTRIM(RTRIM(FoodCat))");
 			
-			//TESCO 
+			//Change Portion Categories
+			query.add("UPDATE portion_sizes SET FoodCat = 'Bakery' WHERE FoodCat = 'Bakery Products';");
+			query.add("UPDATE portion_sizes SET FoodCat = 'Cereals and Grains' WHERE FoodCat = 'Cereals and Other Grain Products';");
 			
-			//BAKERY
+		//BAKERY
+		/**TESCO**/
+			
 			//Baguettes
 			query.add("UPDATE tesco SET FoodCat = 'Baguettes' WHERE "
-					+ "FoodCat2 = ' Part Baked Bread';");
-			
-			//Match Portion Categories
-//			query.add("UPDATE tesco SET PortCat = 'Bakery' WHERE "
-//					+ "FoodCat = ' Bread' OR "
-//					+ "FoodCat = ' Bread Rolls & Bagels' OR "
-//					+ "FoodCat = ' Free From Bakery' OR "
-//					+ "FoodCat = ' Fresh Bakery' OR "
-//					+ "FoodCat = ' Croissants, Brioche & Pain au Chocolat' OR "
-//					+ "FoodCat = ' Baguettes';");
+					+ "FoodCat2 = 'Part Baked Bread';");
 			
 			//Change bread rolls & bagels to suit
-//			query.add("UPDATE tesco SET FoodCat = 'Rolls & Bagels' WHERE FoodCat = ' Bread Rolls & Bagels';");
+			query.add("UPDATE tesco SET FoodCat = 'Rolls & Bagels' WHERE FoodCat = 'Bread Rolls & Bagels';");
 			
-			//ASDA 
 			
-			//CATEGORIES SWAP
+		/**ASDA**/
+
 			query.add("UPDATE asda SET FoodCat2 = FoodCat;");
 			
 			//Match Tesco Categories
 			
-			//Bagels & Rolls
-			query.add("UPDATE asda SET FoodCat = 'Roll & Bagels' WHERE "
-				+ "FoodCat2 = ' Bagels' OR "
-				+ "FoodCat2 = ' Bread Rolls' OR ");
-			
 			//Baguettes
 			query.add("UPDATE asda SET FoodCat = 'Baguettes' WHERE "
-				+ "FoodCat2 = ' Baguettes & Slices' OR "
-				+ "FoodCat2 = ' Baguettes & Speciality Bread';");
+				+ "FoodCat2 = 'Baguettes & Slices' OR "
+				+ "FoodCat2 = 'Baguettes & Speciality Bread';");
 			
 			//Bread
 			query.add("UPDATE asda SET FoodCat = 'Bread' WHERE "
-				+ "FoodCat2 = ' Bread' ");
+				+ "FoodCat2 = 'Bread' OR "
+				+ "FoodCat2 = 'Brown Bread' OR "
+				+ "FoodCat2 = '50/50 Bread';");
 			
-			//Criossants
+			//Croissants, Brioche & Pain au Chocolat
 			query.add("UPDATE asda SET FoodCat = 'Croissants, Brioche & Pain au Chocolat' WHERE "
-				+ "FoodCat2 = ' Brioche' OR "
-				+ "FoodCat2 = ' Croissants & Pain au Chocolat';");
-			
-			//Free From Bakery
-			
-			
+				+ "FoodCat2 = 'Brioche' OR "
+				+ "FoodCat2 = 'Croissants & Pain au Chocolat';");
+
 			//Fresh Bakery
+			query.add("UPDATE asda SET FoodCat = 'Fresh Bakery' AND FoodCat2 = 'Fresh Bread' WHERE "
+					+ "FoodCat2 = 'In Store Bakery Bread';");
+			query.add("UPDATE asda SET FoodCat = 'Fresh Bakery' AND FoodCat2 = 'Fresh Muffins & Pancakes' WHERE "
+					+ "FoodCat2 = 'In Store Bakery Muffins & Pancakes';");
+			query.add("UPDATE asda SET FoodCat = 'Fresh Bakery' AND FoodCat2 = 'Fresh Pastries & Brioche' WHERE "
+					+ "FoodCat2 = 'In Store Bakery Pastries & Brioche';");
+			query.add("UPDATE asda SET FoodCat = 'Fresh Bakery' AND FoodCat2 = 'Fresh Rolls & Bagels' WHERE "
+					+ "FoodCat2 = 'Rolls & Bagels';");
+
+			//Rolls & Bagels 
+			query.add("UPDATE asda SET FoodCat = 'Roll & Bagels' WHERE "
+				+ "FoodCat2 = 'Bagels' OR "
+				+ "FoodCat2 = 'Bread Rolls' OR "
+				+ "FoodCat2 = 'Rolls & Bagels';");
 			
-			//Match Portion Categories
-//			query.add("UPDATE asda SET PortCat = 'Bakery' WHERE "
-	//			+ "FoodCat = ' Bread' OR "
-	//			+ "FoodCat = ' Bread Rolls & Bagels' OR "
-	//			+ "FoodCat = ' Free From Bakery' OR "
-	//			+ "FoodCat = ' Fresh Bakery';");
+			//Tea Cakes, Fruit Loaves & Scones
+			query.add("UPDATE asda SET FoodCat = 'Tea Cakes, Fruit Loaves & Scones' WHERE "
+					+ "FoodCat2 = 'Fruit Loaves and Teacakes' OR "
+					+ "FoodCat2 = 'Bread Rolls' OR "
+					+ "FoodCat2 = 'Scones';");
+			
+			//Wraps, Pitta, Naan & Thins
+			query.add("UPDATE asda SET FoodCat = 'Wraps, Pitta, Naan & Thins' WHERE "
+					+ "FoodCat2 = 'Wraps' OR "
+					+ "FoodCat2 = 'Pittas' OR "
+					+ "FoodCat2 = 'Thin Pizza' OR "
+					+ "FoodCat2 = 'Speciality Bread' OR "
+					+ "FoodCat2 = 'Speciality Breads';");
+		
+			
+		//CAKES
+			
+			//Crumpets, Muffins & Pancakes
+			query.add("UPDATE asda SET FoodCat = 'Crumpets, Muffins & Pancakes' WHERE "
+					+ "FoodCat2 = 'Crumpets and Muffins';");
+			
+			for(String s : query){
+				st.executeUpdate(s);
+			}
+			
+		} 
+		catch(Exception ex) 
+		{
+			System.out.println("Error:"+ex );	
+		}	
+		//close connections.
+		finally 
+		{
+			closeCon();
+		}	
+	}
+	
+	public void setPortCat(){
+		openCon();
+		try{
+			ArrayList<String> query = new ArrayList<String>();
+			
+			//Bakery
+			query.add("UPDATE tesco SET PortCat = 'Bakery' AND "
+					+ "PortCat2 = 'Bagels, tea biscuits, scones, rolls, buns, croissants, tortillas, soft bread sticks, soft pretzels, corn bread' WHERE "
+					
+					+ "FoodCat = 'Baguettes' OR "
+					+ "FoodCat = 'Bread' OR "
+					+ "FoodCat = 'Croissants, Brioche & Pain au Chocolat' OR "
+					+ "FoodCat = 'Rolls & Bagels' OR "
+					+ "FoodCat = 'Tea Cakes, Fruit Loaves & Scones"
+					+ "FoodCat = 'Wraps, Pitta, Naan & Thins' OR "
+					
+					+ "FoodCat2 = 'Free From Bread' OR "
+					+ "FoodCat2 = 'Free From Tea Cakes, Fruit Loaves & Scones' OR "
+					+ "FoodCat2 = 'Free From Wraps, Bagels, Pitta & Crumpets' OR "
+					+ "FoodCat2 = 'Fresh Brown & Granary Bread' OR "
+					+ "FoodCat2 = 'Fresh Croissants & Pastries' OR "
+					+ "FoodCat2 = 'Fresh French Bread & Rolls' OR "
+					+ "FoodCat2 = 'Fresh Organic Bakery' OR "
+					+ "FoodCat2 = 'Fresh Speciality Bread' OR "
+					+ "FoodCat2 = 'Fresh Tea Cakes & Scones' OR"
+					+ "FoodCat2 = 'Fresh White Bread';");	
+			
+			query.add("UPDATE asda SET PortCat = 'Bakery' AND "
+					+ "PortCat2 = 'Bagels, tea biscuits, scones, rolls, buns, croissants, tortillas, soft bread sticks, soft pretzels, corn bread' WHERE "
+					
+					+ "FoodCat = 'Baguettes' OR "
+					+ "FoodCat = 'Bread' OR "
+					+ "FoodCat = 'Croissants, Brioche & Pain au Chocolat' OR "
+					+ "FoodCat = 'Rolls & Bagels' OR "
+					+ "FoodCat = 'Tea Cakes, Fruit Loaves & Scones"
+					+ "FoodCat = 'Wraps, Pitta, Naan & Thins' OR "
+					
+					+ "FoodCat2 = 'Fresh Bread' OR "
+					+ "FoodCat2 = 'Fresh Rolls & Bagels';");
+			
+			// MED CAKE
+//			+ "FoodCat = 'Crumpets, Muffins & Pancakes' OR "
+
+			
+				
+			
+			for(String s : query){
+				st.executeUpdate(s);
+			}
+			
+		} 
+		catch(Exception ex) 
+		{
+			System.out.println("Error:"+ex );	
+		}	
+		//close connections.
+		finally 
+		{
+			closeCon();
+		}	
+	}
+	
+	public void servingSizes(){
+		openCon();
+		try{
+			ArrayList<String> query = new ArrayList<String>();
+			
 			
 			for(String s : query){
 				st.executeUpdate(s);
