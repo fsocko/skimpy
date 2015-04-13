@@ -14,6 +14,15 @@ public class Recommend {
 	private double fibreRec;
 	private double saltRec;
 	
+	private boolean calOpt;
+	private boolean protOpt;
+	private boolean carbsOpt;
+	private boolean sugarsOpt;
+	private boolean fatsOpt;
+	private boolean saturatesOpt;
+	private boolean fibreOpt;
+	private boolean saltOpt;
+	
 	private Person user = null;
 	private int currDay;
 	private GDA userMacros = null;
@@ -43,8 +52,23 @@ public class Recommend {
 		setSats(dayMeal());
 		setFibre(dayMeal());
 		setSalt(dayMeal());
+		
+		
 	}
 	
+	public boolean checkOpt(double userUnit, double recUnit){
+		
+		double max = recUnit * 1.2;
+		double min = recUnit * 0.8;
+		
+		if(userUnit > max || userUnit < min){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+	}
 	
 	public ArrayList<Meal> dayMeal(){
 		ArrayList<Meal> dayMeal = new ArrayList<Meal>();
@@ -63,6 +87,8 @@ public class Recommend {
 			}
 		}
 		this.caloriesRec = cals - userMacros.getCalories();
+		
+		calOpt = checkOpt(cals, userMacros.getCalories());
 	}
 	
 	public void setProt(ArrayList<Meal> dayMeal){
@@ -73,6 +99,9 @@ public class Recommend {
 			}
 		}
 		this.proteinsRec = prot - userMacros.getProtein();
+		
+		protOpt = checkOpt(prot, userMacros.getProtein());
+		
 	}
 	
 	public void setCarbs(ArrayList<Meal> dayMeal){
@@ -83,16 +112,20 @@ public class Recommend {
 			}
 		}
 		this.carbsRec = carbs - userMacros.getCarbs();
+		
+		carbsOpt = checkOpt(carbs, userMacros.getCarbs());
 	}
 	
 	public void setSugars(ArrayList<Meal> dayMeal){
-		int sugar = 0;
+		int sugars = 0;
 		for(Meal m : dayMeal){
 			for(Food f : m.getIngredients()){
-				sugar += f.getSugars();
+				sugars += f.getSugars();
 			}
 		}
-		this.sugarsRec = sugar - userMacros.getSugars();
+		this.sugarsRec = sugars - userMacros.getSugars();
+		
+		sugarsOpt = checkOpt(sugars, userMacros.getSugars());
 	}
 	
 	public void setFats(ArrayList<Meal> dayMeal){
@@ -103,6 +136,8 @@ public class Recommend {
 			}
 		}
 		this.fatsRec = fats - userMacros.getFat();
+		
+		fatsOpt = checkOpt(fats, userMacros.getFat());
 	}
 	
 	public void setSats(ArrayList<Meal> dayMeal){
@@ -113,6 +148,8 @@ public class Recommend {
 			}
 		}
 		this.saturatesRec = sats - userMacros.getSaturates();
+		
+		saturatesOpt = checkOpt(sats, userMacros.getSaturates());
 	}
 	
 	public void setFibre(ArrayList<Meal> dayMeal){
@@ -123,6 +160,8 @@ public class Recommend {
 			}
 		}
 		this.fibreRec = fibre - userMacros.getFibre();
+		
+		fibreOpt = checkOpt(fibre, userMacros.getFibre());
 	}
 	
 	public void setSalt(ArrayList<Meal> dayMeal){
@@ -133,6 +172,8 @@ public class Recommend {
 			}
 		}
 		this.saltRec = salt - userMacros.getSalt();
+		
+		saltOpt = checkOpt(salt, userMacros.getSalt());
 	}
 	
 	public double getCaloriesRec(){
