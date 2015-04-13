@@ -36,10 +36,14 @@
     		meals.add(currentMeal);
     		XMLParser writeX = new XMLParser();
     	    writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
+    	    String path = getServletContext().getRealPath("");
+    	    writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    	    
    %>
         <%=ingredients %>
         <%=currentMeal.toString() %>
         <%=MealName %>
+        <%=path %>
         
  
  	<p>Go back if you want to make some changes or click 

@@ -61,11 +61,19 @@ connect.search(searchItem); */
 		cells you want to alter and enter ingredients so we can create an
 		optimised shopping list for you.</p>
 		 <%XMLParser writeX = new XMLParser();
-      ArrayList<Meal> meals = writeX.readMeals(); 
-      //String meals_string = meals.toString();
+				//added file path as a parameter
+				//reading works
+      ArrayList<Meal> meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+				for (Meal m: meals){
+					String one_meal = m.toString();
+					//String all_meals = all_meals+ one_meal;%>
+					<%=one_meal
+					%><%} 
+				
       String test = "test";%>
   
     <%=test %>
+    
 	<form action="ShoppingList.jsp" method="POST">
 	<table border="1">
 	<tr><th>Monday</th>

@@ -56,7 +56,7 @@ public class Main extends HttpServlet{
 		}
 		mps.add(mp);
 		}
-		writeX.writeMealPlans(mps);
+		//writeX.writeMealPlans(mps, getServletContext().getRealPath("") + "/meals.xml");
 	}
 	
 	

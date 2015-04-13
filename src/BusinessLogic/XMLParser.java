@@ -41,7 +41,9 @@ public class XMLParser {
 					String shopName = foodelem.getAttribute("shop");
 					String foodid = foodelem.getTextContent();
 					System.out.print(", " + shopName + ": " + foodid);
-					Food f = dbcon.pullFood(shopName, foodid);
+					//changed first parameter to tesco, to test whether that would work.
+					//as shopName returns shopID value, not shop name
+					Food f = dbcon.pullFood("tesco", foodid);
 					foods.add(f);
 				}
 				System.out.println("");
