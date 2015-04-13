@@ -33,6 +33,7 @@ public class XMLParser {
 			for (int i = 0; i < rawMeals.getLength(); i++) {
 				Element mealelem = (Element)rawMeals.item(i);
 				String name = mealelem.getElementsByTagName("Name").item(0).getTextContent();
+				int userId = Integer.parseInt(mealelem.getElementsByTagName("MealUserID").item(0).getTextContent());
 				NodeList rawFood = mealelem.getElementsByTagName("Food");
 				ArrayList<Food> foods = new ArrayList<Food>();
 				System.out.print(name + ": ");
@@ -47,7 +48,7 @@ public class XMLParser {
 					foods.add(f);
 				}
 				System.out.println("");
-				Meal m = new Meal(name, foods);
+				Meal m = new Meal(name, foods, userId);
 				meals.add(m);
 			}
 			return meals;
@@ -73,6 +74,9 @@ public class XMLParser {
 				Element name = doc.createElement("Name");
 				name.appendChild(doc.createTextNode(m.getName()));
 				meal.appendChild(name);
+				Element userid = doc.createElement("MealUserID");
+				userid.appendChild(doc.createTextNode("" + m.getUserId()));
+				meal.appendChild(userid);
 				Element ing = doc.createElement("Ingredients");
 				meal.appendChild(ing);
 				for (Food f: m.getIngredients()) {
@@ -110,9 +114,10 @@ public class XMLParser {
 			doc.getDocumentElement().normalize();
 			NodeList rawMealPlans = doc.getElementsByTagName("MealPlan");
 			ArrayList<MealPlanner> mealplans = new ArrayList<MealPlanner>();
-			MealPlanner mp = new MealPlanner();
 			for (int i = 0; i < rawMealPlans.getLength(); i++) {
 				Element mealplanelem = (Element)rawMealPlans.item(i);
+				int userId = Integer.parseInt(mealplanelem.getElementsByTagName("UserID").item(0).getTextContent());
+				MealPlanner mp = new MealPlanner(userId);
 				NodeList days = mealplanelem.getElementsByTagName("Day");
 				for (int j = 0; j < days.getLength(); j++) {
 					Element dayElem = (Element)days.item(j);
@@ -122,6 +127,7 @@ public class XMLParser {
 						Element timeElem = (Element)times.item(k);
 						String time = timeElem.getAttribute("value");
 						String name = timeElem.getElementsByTagName("Name").item(0).getTextContent();
+						int mealuserId = Integer.parseInt(timeElem.getElementsByTagName("MealUserID").item(0).getTextContent());
 						NodeList rawFood = timeElem.getElementsByTagName("Food");
 						ArrayList<Food> foods = new ArrayList<Food>();
 						System.out.print(day + " - " + time + ":> " + name + ", ");
@@ -134,7 +140,7 @@ public class XMLParser {
 							foods.add(f);
 						}
 						System.out.println("");
-						Meal m = new Meal(name, foods);
+						Meal m = new Meal(name, foods, mealuserId);
 						mp.add(m, day, time);
 					}
 				}
@@ -159,6 +165,9 @@ public class XMLParser {
 			for (MealPlanner mp : mealplanners) {
 				Element mealplan = doc.createElement("MealPlan");
 				root.appendChild(mealplan);
+				Element userId = doc.createElement("UserID");
+				userId.appendChild(doc.createTextNode("" + mp.getUserId()));
+				mealplan.appendChild(userId);
 				String[] dayValues = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 				String[] timeValues = {"Breakfast", "Lunch", "Dinner"};
 				for (int i = 0; i < dayValues.length; i++) {
@@ -179,6 +188,9 @@ public class XMLParser {
 						Element name = doc.createElement("Name");
 						name.appendChild(doc.createTextNode(m.getName()));
 						meal.appendChild(name);
+						Element mealuserid = doc.createElement("MealUserID");
+						mealuserid.appendChild(doc.createElement("" + m.getUserId()));
+						meal.appendChild(mealuserid);
 						Element ing = doc.createElement("Ingredients");
 						meal.appendChild(ing);
 						for (Food f: m.getIngredients()) {
@@ -200,7 +212,7 @@ public class XMLParser {
 			
 			t.transform(src, result);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
