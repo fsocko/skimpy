@@ -17,11 +17,11 @@ public class SpiderToDB extends HttpServlet{
 	 String sainsPath = "data/sains.txt";
 	 String asdaPath = "data/asda.txt";
 	 String portionPath = "data/portionSizeToJavaInit.txt";
-	 
+	 boolean rejectRecord = false;
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
-		 {
-			  int lines = 0;
+		 { 
+			 int lines = 0;
 			  try {
 			   File file = new File(inputFile);
 			   LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(file));
@@ -35,7 +35,6 @@ public class SpiderToDB extends HttpServlet{
 			  } catch (IOException e) {
 			   System.out.println("IOException Occured" + e.getMessage());
 			  }
-	
 			  return lines;
 
 		 }
@@ -85,7 +84,8 @@ public class SpiderToDB extends HttpServlet{
 	 //Takes about 2min, but it beats the 20mins or so in a sequential search.
 	 public ArrayList readAllRecords(String file)
 	    { 
-			 
+			System.out.print("Adding all lines of the file: " + file + " to an ArrayList.");
+			System.out.print("\nThis usually takes 1-3 minutes...");
 		 	ArrayList allRec = new ArrayList();
 			 
 			 FileInputStream fs = null;
@@ -121,7 +121,9 @@ public class SpiderToDB extends HttpServlet{
 			    	 { System.out.println("IOException while closing.");}
 			     }	     	     
 			 }
-			 return allRec;	 
+			 System.out.print("Done");
+			 return allRec;
+			 
 	    }
 	 
 	 
@@ -165,12 +167,14 @@ public class SpiderToDB extends HttpServlet{
 				 }
 		 
 				 else{
-					 	if(input.contains("trace"))
+					 	if(input.toUpperCase().contains("TRACE"))
+					 	{return 0;}
+					 	if(input.toUpperCase().contains("NIL"))
 					 	{return 0;}
 					 }
-				 
-		 
-		 return -1.69;
+		 		 
+		 		 rejectRecord = true;
+		 		 return 0;
 	 }
 	 
 
@@ -178,7 +182,8 @@ public class SpiderToDB extends HttpServlet{
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
 		 public Food formatRecord(String path, String record)
 		 {
-//Parse Strings via findColon			 
+			 rejectRecord = false;	
+			 //Parse Strings via findColon			 
 			
 				 String shopID = record.substring(0, findColon(record, 0));
 				 String name = record.substring(findColon(record, 0), findColon(record, 1));
@@ -210,9 +215,10 @@ public class SpiderToDB extends HttpServlet{
 	
 	
 				 
-	//ShopID---------NO CHANGE			 
+	//ShopID---------NO CHANGE
+				 shopID = shopID.replaceAll("\""," inch");
 	//Name-----------NO CHANGE		
-				 name = name.replaceAll(";"," ");
+				 name = name.replaceAll("\""," inch");
 	//Mass, Unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
@@ -229,9 +235,6 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
-		
-				
-				 
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
@@ -241,12 +244,14 @@ public class SpiderToDB extends HttpServlet{
 	//Saturates--------NO CHANGE
 	//Salts------------NO CHANGE
 	//Fibre------------NO CHANGE
-	
-	
-				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
-				return currentRec;
+		 
 				 
-			 
+				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
+				//simple test if anything parsed to double incorrectly. If this is the case, we reject the entire record. I seem to remember this rejects most of them though.
+				if(rejectRecord)
+				{System.out.println("Error: This record contains a null field.");}
+				return currentRec;
+				
 		 }
 		 
 		 public PortionSize parsePortion(String portion)

@@ -5,5 +5,5 @@
 
 <%
 	DBConnect dbConn = new DBConnect();
-	out.println(dbConn.productSearch(request.getParameter("q")));
+	out.println(dbConn.fullSearch(request.getParameter("q")));
 %>
