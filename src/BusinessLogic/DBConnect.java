@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,8 +20,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServlet;
-
-import com.mysql.jdbc.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -190,12 +189,12 @@ public class DBConnect extends HttpServlet{
 			while (rs.next()){
 				String userName = rs.getString("UserName");
 				String userEmail = rs.getString("UserEmail");
-				int age = rs.getInt("Age");
+			    Date dob = rs.getDate("DateOfBirth");
 				float weight = rs.getFloat("Weight");
 				String gender = rs.getString("Gender");
 				float exercise = rs.getFloat("Exercise");
 				
-				System.out.println(ID + userName + userEmail + age + weight + gender + exercise);
+				System.out.println(ID + userName + userEmail + dob + weight + gender + exercise);
 			}
 	
 		} catch(Exception ex){
@@ -210,10 +209,10 @@ public class DBConnect extends HttpServlet{
 
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Height, Weight, Gender, Exercise)"
 					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
+							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", \""  +
+							new java.sql.Date(user.getDob().getTime()) + "\", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
 							user.getExercise() + ")";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
