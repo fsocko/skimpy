@@ -50,7 +50,7 @@
               <a href="MealPlan.jsp">Meal Planner</a>
             </li>
             <li>
-              <a href="recipe.jsp">Recipe Creator</a>
+              <a href="recipeWithSearch.jsp">Recipe Creator</a>
             </li>
             <li>
               <a href="#">Recipe Explorer</a>
@@ -59,7 +59,7 @@
           <div class="media">
               <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:44px;height:44px;"></a>
               <div class="media-body pull-right">
-                <h4 class="media-heading">Username</h4>
+                <h4 class="media-heading"><%=session.getAttribute("username") %></h4>
                 <a href="#">log out</a>
               </div>
             </div>
