@@ -25,9 +25,24 @@
 			$('#results').append(
 					$('<div>').addClass('separator').text('Search results'));
 			for (x in data) {
+				var link_to_page = "";
+				if (data[x].supermarket == 'T') {
+					link_to_page = "http://www.tesco.com/groceries/product/details/?id=" + data[x].shopID;
+				}
+				else if (data[x].supermarket == 'S') {
+					if (data[x].shopID.indexOf('ProductDisplay?') == 0) {
+						link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/" + data[x].shopID;
+					}
+					else {
+						link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/"
+							+ data[x].shelf + '/' + data[x].shopID;
+					}
+				}
+				
 				$('#results').append(
 				  $('<div>').addClass('result-entry')
-					.append($('<span>').addClass('product-name').text(data[x].name))
+					.append($('<a>').attr('href', link_to_page)
+							.append($('<span>').addClass('product-name').text(data[x].name)))
 					.append($('<span>').addClass('product-price').text(data[x].price))
 					.append($('<span>').addClass('button-add').append(
 						$('<i>').addClass('fa').addClass('fa-plus')))
@@ -75,6 +90,7 @@
 					$('#categories-tickboxes').empty();
 					$('#results').empty();
 					$('#autocomplete-box').css("visibility", "hidden");
+					$('#search').val('');
 				}
 			);
 			
@@ -107,9 +123,10 @@
 			$('#results').on('click', '.button-add',
 				function (event) {
 					$('#products-list').append(
-						$('<div>').addClass('product-list-entry').append(	
+						$('<div>').addClass('product-list-entry').append(
+								$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
 							$('<span>').addClass('list-product-name').text(
-								$(this).closest('.result-entry').find('.product-name').text()))
+								$(this).closest('.result-entry').find('.product-name').text())))
 							.append(
 								$('<span>').addClass('list-product-price').text(
 									$(this).closest('.result-entry').find('.product-price').text())
