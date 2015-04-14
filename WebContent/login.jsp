@@ -91,13 +91,13 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><b>Skimpy</b></a>
+            <a href="index.jsp" class="navbar-brand"><b>Skimpy</b></a>
           </div>
           <div class="collapse navbar-collapse pull-left">
             <ul class="nav navbar-nav"></ul>
           </div>
           <div class="pull-right btn-group btn-group-sm"></div>
-          <a class="btn pull-right btn-success btn-lg">Sign Up</a>
+          <a href="signup.jsp" class="btn pull-right btn-success btn-lg">Sign Up</a>
         </div>
       </div>
     </div>
