@@ -1,140 +1,177 @@
+<%@include file="home.jsp" %>
 <!doctype html>
 
 <html>
   
   <head>
-    <title>Narrow Jumbotron</title>
-    <meta name="viewport" content="width=device-width">
+    <title>New Meal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-      /* Space out content a bit */
-      body {
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-      /* Everything but the jumbotron gets side spacing for mobile first views */
-      .header, .marketing, .footer {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-      /* Custom page header */
-      .header {
-        border-bottom: 1px solid #e5e5e5;
-      }
-      /* Make the masthead heading the same height as the navigation */
-      .header h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-      }
-      /* Custom page footer */
-      .footer {
-        padding-top: 19px;
-        color: #777;
-        border-top: 1px solid #e5e5e5;
-      }
-      /* Customize container */
-      @media(min-width: 768px) {
-        .container {
-          max-width: 730px;
-        }
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        text-align: center;
-        border-bottom: 1px solid #e5e5e5;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-      /* Supporting marketing content */
-      .marketing {
-        margin: 40px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-      /* Responsive: Portrait tablets and up */
-      @media screen and(min-width: 768px) {
-        /* Remove the padding we set earlier */
-        .header, .marketing, .footer {
-          padding-left: 0;
-          padding-right: 0;
-        }
-        /* Space out the masthead */
-        .header {
-          margin-bottom: 30px;
-        }
-        /* Remove the bottom border on the jumbotron for visual effect */
-        .jumbotron {
-          border-bottom: 0;
-        }
-      }
-    </style>
+    	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="css/search.css">
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script>
+		function fillSearchCategories(categories) {
+			$('#categories-tickboxes').append(
+				$('<div>').addClass('separator').text('Refine by category'));
+			for (c in categories) {
+				$('#categories-tickboxes').append(
+					$('<span>').addClass('category-tick')
+						.append($('<input>').addClass('category-checkbox').attr('type', 'checkbox').attr('value', categories[c]))
+						.append($('<span>').addClass('category-name').text(categories[c]))
+					);
+			}
+		}
+		
+		function fillResults(data) {
+			$('#results').append(
+					$('<div>').addClass('separator').text('Search results'));
+			for (x in data) {
+				var link_to_page = "";
+				if (data[x].supermarket == 'T') {
+					link_to_page = "http://www.tesco.com/groceries/product/details/?id=" + data[x].shopID;
+				}
+				else if (data[x].supermarket == 'S') {
+					if (data[x].shopID.indexOf('ProductDisplay?') == 0) {
+						link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/" + data[x].shopID;
+					}
+					else {
+						link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/"
+							+ data[x].shelf + '/' + data[x].shopID;
+					}
+				}
+				
+				$('#results').append(
+				  $('<div>').addClass('result-entry')
+					.append($('<a>').attr('href', link_to_page)
+							.append($('<span>').addClass('product-name').text(data[x].name)))
+					.append($('<span>').addClass('product-price').text(data[x].price))
+					.append($('<span>').addClass('button-add').append(
+						$('<i>').addClass('fa').addClass('fa-plus')))
+				);
+			}
+		}
+	</script>
+   
   </head>
   
   <body>
+  <script>
+		var prevQuery = "";
+		var categoriesSearch = [];
+		$(document).ready(function(){
+			$('#search').keyup(function(){
+				$('#autocomplete-box').css("visibility", "visible");
+				if ($('#search').val() != prevQuery && $('#search').val().length > 2) {
+					prevQuery = $('#search').val();
+					$.ajax({
+				          url: "CategorySearch.jsp",
+				          dataType: "json",
+				          data: {
+				            q: $('#search').val()
+				          },
+				          success: function( data ) {
+				        	  $('#categories-tickboxes').empty();
+				        	  fillSearchCategories(data);
+				          }
+				    });
+					$.ajax({
+				          url: "FullSearch.jsp",
+				          dataType: "json",
+				          data: {
+				            q: $('#search').val()
+				          },
+				          success: function( data ) {
+				        	  $('#results').empty();
+				        	  fillResults(data);
+				          }
+				    });
+				}
+			});
+			
+			$('#autocomplete-box').on('click', '#close',
+				function() {
+					$('#categories-tickboxes').empty();
+					$('#results').empty();
+					$('#autocomplete-box').css("visibility", "hidden");
+					$('#search').val('');
+				}
+			);
+			
+			function pushCategories() {
+				$(".category-checkbox:checked").each(function()
+				{
+					categoriesSearch.push($(this).val());
+				});
+			}
+			
+			$('#categories-tickboxes').on('change', '.category-checkbox',
+				function() {
+					categoriesSearch = [];
+					pushCategories();
+					$.ajax({
+			          url: "RefinedSearch.jsp",
+			          dataType: "json",
+			          data: {
+			            q: $('#search').val(),
+			            cat: categoriesSearch
+			          },
+			          success: function( data ) {
+			        	  $('#results').empty();
+			        	  fillResults(data);
+			          }
+			    	});
+				}
+			);
+			
+			$('#results').on('click', '.button-add',
+				function (event) {
+					$('#products-list').append(
+						$('<div>').addClass('product-list-entry').append(
+								$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
+							$('<span>').addClass('list-product-name').text(
+								$(this).closest('.result-entry').find('.product-name').text())))
+							.append(
+								$('<span>').addClass('list-product-price').text(
+									$(this).closest('.result-entry').find('.product-price').text())
+								)
+							.append(
+								$('<span>').addClass('button-remove')
+									.append($('<i>').addClass('fa').addClass('fa-times'))
+							)
+					);
+				}
+			);
+			
+			$('#products-list').on('click', '.button-remove',
+				function() {
+					$(this).closest('.product-list-entry').remove();
+				}
+			);
+		});
+	</script>
+	
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">Skimpy</h3>
-      </div>
-      <div class="jumbotron">
-        <h2 class="text-left">Create a Meal</h2>
-        <p></p>
-        <div class="container">
-          <div class="row"></div>
-          <div class="col-xs-9 col-md-4">
-            <textarea class="form-control"></textarea>
-          </div>
-          <div class="col-xs-1 col-md-1">
-            <div class="btn-toolbar">
-              <div class="btn-group">
-                <a class="btn btn-default btn-xs">+</a>
-              </div>
-              <div class="btn-group"></div>
-            </div>
-          </div>
-          <ul class="list-group"></ul>
-        </div>
-        <div class="container">
-          <ul class="list-group">
-            <li class="list-group-item">First Item</li>
-          </ul>
-        </div>
-        <ul class="list-group"></ul>
-        <div class="container-fluid">
-          <a class="btn pull-left btn-success">Search</a>
-          <div class="btn-toolbar">
-            <div class="btn-group"></div>
-            <div class="btn-group"></div>
-          </div>
-        </div>
-        <div class="container">
-          <h3 class="text-left">Nutrition Data</h3>
-          <h3 class="text-left">Price Comparison</h3>
-        </div>
-        <a></a>
-      </div>
+    <h2 class="text-left">Create a Meal</h2>
+  <form method="get" action="ProductSearch.jsp">
+      <div id ="search-container">
+        
+         <input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
+          <div id="autocomplete-box">
+		<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+		<div id="categories-tickboxes"></div>
+		<div id="results"></div>
+	</div></div> 
+	<div id="recipe">
+	<input class="recipe-name" name="mealname" placeholder="Meal Name">
+	<div class="products-mass">
+	<div id="products-list"></div>
+	</div></div>
+ 
+      </form>
     </div>
-    <!-- /container -->
   </body>
 
 </html>
