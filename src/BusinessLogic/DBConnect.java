@@ -496,8 +496,8 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public String productSearch(String phrase) {
-		JSONArray results = new JSONArray();
+	public List<Food> productSearch(String phrase) {
+		List<Food> results = new ArrayList<Food>();
 		
 		String[] words = phrase.split("\\s");
 		String regexpPhrase = "";
@@ -525,16 +525,58 @@ public class DBConnect extends HttpServlet{
 		
 		try {
 			openCon();
-			rs = st.executeQuery(tQuery);
+			rs = st.executeQuery(query);
 			if (rs.next()) {
 				do {
-					results.put(rs.getString(3).trim());
+					Food temp = new Food(
+							rs.getInt("ID"),
+							rs.getString("shopID"),
+							rs.getString("Name"),
+							rs.getDouble("Mass"),
+							rs.getString("Unit"),
+							rs.getDouble("Price"),
+							rs.getDouble("PPUPrice"),
+							rs.getString("PPUUnit"),
+							rs.getString("FoodCat"),
+							rs.getString("FoodCat2"),
+							rs.getString("SuperMarket"),
+							rs.getDouble("Calories"),
+							rs.getDouble("Proteins"),
+							rs.getDouble("Carbs"),
+							rs.getDouble("Sugars"),
+							rs.getDouble("Fats"),
+							rs.getDouble("Saturates"),
+							rs.getDouble("Fibre"),
+							rs.getDouble("Salt"));
+					
+					results.add(temp);
 				} while (rs.next());
 			}
 			else {
 				rs = st.executeQuery(moreGeneralQuery);
 				while (rs.next()) {
-					results.put(rs.getString(3).trim());
+					Food temp = new Food(
+							rs.getInt("ID"),
+							rs.getString("shopID"),
+							rs.getString("Name"),
+							rs.getDouble("Mass"),
+							rs.getString("Unit"),
+							rs.getDouble("Price"),
+							rs.getDouble("PPUPrice"),
+							rs.getString("PPUUnit"),
+							rs.getString("FoodCat"),
+							rs.getString("FoodCat2"),
+							rs.getString("SuperMarket"),
+							rs.getDouble("Calories"),
+							rs.getDouble("Proteins"),
+							rs.getDouble("Carbs"),
+							rs.getDouble("Sugars"),
+							rs.getDouble("Fats"),
+							rs.getDouble("Saturates"),
+							rs.getDouble("Fibre"),
+							rs.getDouble("Salt"));
+					
+					results.add(temp);
 				}
 			}
 		}
@@ -544,7 +586,7 @@ public class DBConnect extends HttpServlet{
 		finally {
 			closeCon();
 		}
-		return results.toString();
+		return results;
 	}
 	
 	public String fullSearch(String phrase) {
