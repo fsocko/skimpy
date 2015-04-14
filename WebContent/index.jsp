@@ -47,8 +47,18 @@
         </div>
         <div class="col-sm-4">
           <div class="well">
-            <h1>Pictures</h1>
-            <p>Deleniti numquam id illo possimus dolores laboris earum, inventore, molestias impedit laudantium blanditiis quidem sed nam. Velit natus accusamus cum aute, dolore, quas adipisci mollitia dignissimos adipisicing. Et repellendus minus proident necessitatibus magnam autem magnam natus amet illo laboris dicta.</p>
+            <h1>We Compare</h1>
+            <div class="row">
+              <div class="col-md-4">
+                <a href = "http://www.asda.com" target = "_blank"><img src="http://www.cashforkids.uk.com/wp-content/uploads/2013/07/150a7caf80eb3a2140_xqm6b9pfp.jpg" alt="Asda" style = "width:100%;height:100px"></a>
+              </div>
+              <div class="col-md-4">
+                <a href = "http://www.tesco.com" target = "_blank"><img src="http://2t4u21l1g1dmvlj83x5yim1ct6.wpengine.netdna-cdn.com/files/2012/06/tesco-logo.jpg" alt="Tesco" style = "width:100%;height:100px"></a>
+              </div>
+              <div class="col-md-4">
+                <a href = "http://www.sainsburys.co.uk" target = "_blank"><img src="https://www.eurocarparks.com/wp-content/uploads/2014/03/sainsbury_s.jpg" alt="Sainsbury's" style = "width:100%;height:100px"></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
