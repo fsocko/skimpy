@@ -4,6 +4,9 @@
 <%@ page import="BusinessLogic.*" %>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
+<%@page import ="java.text.SimpleDateFormat" %>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,16 +19,20 @@
 <body>
 <form action="login.jsp" method ="post">
 </form>
-<% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
+<% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", new Date(), -1, -1, 'M', -1);
 user.setName(request.getParameter("name"));
 user.setEmail(request.getParameter("emailaddress"));
 user.setPassword(request.getParameter("password"));
-user.setAge(Integer.valueOf(request.getParameter("age")));
-user.setHeight(Double.parseDouble(request.getParameter("height")));
-user.setWeight(Double.parseDouble(request.getParameter("weight")));
 user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
-user.setExercise(Integer.valueOf(request.getParameter("exercise")));
 DBConnect connect = new DBConnect();
-connect.pushUser(user);%>
+String date = request.getParameter("date");
+String month = request.getParameter("month");
+String year = request.getParameter("year"); 
+String dobString = year +"-"+month+"-"+date;
+Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
+user.setDob(dob);
+connect.pushUser(user);
+%>
+
 </body>
 </html>
