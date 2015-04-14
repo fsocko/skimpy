@@ -1,20 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
+
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1> Welcome to Skimpy!</h1>
-<form action="enterdetails.jsp" >
-	<input type="submit" value="Sign Up" >
-</form>
-<br>
-<br>
-<form action="login.jsp">
-	<input type="submit" value="Log In">
-</form>
-</body>
+  
+  <head>
+    <title>Welcome!</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .navbar {
+        padding: 5px 10px;
+      }
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        background-color: transparent;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container-fluid">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand"><b>Skimpy</b></a>
+        </div>
+        <div class="pull-right btn-group btn-group-lg">
+          <a href = "http://localhost:8080/Skimpy/login.jsp" class="btn btn-primary btn-lg">Log In</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="jumbotron">
+            <h1>Welcome!</h1>
+            <p class="lead">Skimpy is an application that will help you manage your health and your wallet.<br>
+              Skimpy compares the prices of foods with the three of the UK's leading supermarkets.</p>
+            <p><a class="btn btn-lg btn-success" href="http://localhost:8080/Skimpy/signup.jsp">Sign Up Today!</a></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <h1>Pictures</h1>
+            <p>Deleniti numquam id illo possimus dolores laboris earum, inventore, molestias impedit laudantium blanditiis quidem sed nam. Velit natus accusamus cum aute, dolore, quas adipisci mollitia dignissimos adipisicing. Et repellendus minus proident necessitatibus magnam autem magnam natus amet illo laboris dicta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
 </html>
