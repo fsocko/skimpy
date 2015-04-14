@@ -77,10 +77,10 @@ $(document).ready(function(){
                                     <option value="female">Female</option>
                                 </select></td></tr>
                                 
-	<tr><td> Age: </td><td><input type="text" name="age" ><p class="MyErrors"></p></td></tr>
-	<tr><td> Weight:</td><td><input type="text" name="weight"><p class="MyErrors"></p></td></tr>
-	<tr> <td>Height: </td> <td><input type="text" name="height" ><p class="MyErrors"></p></td></tr>
-	<tr><td> Exercise</td><td> <input type="text" name="exercise" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Age: </td><td><input type="number" name="age" min="1" max="100" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Weight:</td><td><input type="number" name="weight" step="any"><p class="MyErrors"></p></td></tr>
+	<tr> <td>Height: </td> <td><input type="number" name="height" step="any"><p class="MyErrors"></p></td></tr>
+	<tr><td> Exercise</td><td> <input type="number" name="exercise" min="1" max="10" ><p class="MyErrors"></p></td></tr>
 	<tr><td> Password: </td><td><input type="password" name="password"  ><p class="MyErrors"></p></td></tr>
      </table>
 			<input type="submit" value="Save">
