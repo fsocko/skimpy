@@ -1,3 +1,4 @@
+<%@include file="home.jsp" %>
 <!doctype html>
 
 <html>
@@ -13,10 +14,10 @@
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    <style type="text/css"> 
        /* Space out content a bit */
-      body {
+      /* body {
         padding-top: 20px;
         padding-bottom: 20px;
-      }
+      } */
       /* Everything but the jumbotron gets side spacing for mobile first views */
       .header, .marketing, .footer {
         padding-left: 15px;
@@ -127,27 +128,13 @@
   </head>
   
   <body>
-   
+   <%if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
+	 %>
   <div class="container">
-      <div class="header">
-
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">Skimpy</h3>
-     
-</div>
       <div class="jumbotron"> 
-
-        <h2 class="text-left">Create a Meal</h2>
+       <h2 class="text-left">Create a Meal</h2>
         <p></p>
        <form action="savedMeal.jsp" method="POST">
   <div class="container">

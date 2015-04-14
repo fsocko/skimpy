@@ -49,7 +49,7 @@ try{
 			session.setAttribute("email", username);
 			session.setAttribute("password", userdbPswd);
 			session.setAttribute("username", userdbN);
-			session.setMaxInactiveInterval(30);
+			session.setMaxInactiveInterval(300);
 			response.sendRedirect("welcome.jsp");
 		} else {
 			response.sendRedirect("error.jsp");
