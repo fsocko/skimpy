@@ -626,8 +626,11 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 					JSONObject temp = new JSONObject();
-					temp.put("name", rs.getString(3).trim());
-					temp.put("price", rs.getDouble(6));
+					temp.put("name", rs.getString("Name").trim());
+					temp.put("price", rs.getDouble("Price"));
+					temp.put("shopID", rs.getString("ShopID").trim());
+					temp.put("supermarket", rs.getString("SuperMarket"));
+					temp.put("shelf", rs.getString("FoodCat2").trim());
 					
 					results.put(temp);
 			}
@@ -679,9 +682,12 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
+				temp.put("name", rs.getString("Name").trim());
+				temp.put("price", rs.getDouble("Price"));
+				temp.put("shopID", rs.getString("ShopID").trim());
+				temp.put("supermarket", rs.getString("SuperMarket"));
+				temp.put("shelf", rs.getString("FoodCat2").trim());
 				
-				temp.put("name", rs.getString(3).trim());
-				temp.put("price", rs.getDouble(6));
 				results.put(temp);
 			}
 		}
