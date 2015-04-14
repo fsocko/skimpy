@@ -6,6 +6,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
+<%@include file="home.jsp" %>
 
 <%-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,6 +66,10 @@ $(document).ready(function(){
 
 </head>
 <body>
+<%if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
+	 %>
 
 <form action="signupdets.jsp" method="post" id="myForm">
  <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>

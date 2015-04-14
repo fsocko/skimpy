@@ -47,6 +47,9 @@
               <a href="#">Home</a>
             </li>
             <li>
+              <a href="enterdetails.jsp">Profile</a>
+            </li>
+            <li>
               <a href="MealPlan.jsp">Meal Planner</a>
             </li>
             <li>
@@ -60,7 +63,7 @@
               <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:44px;height:44px;"></a>
               <div class="media-body pull-right">
                 <h4 class="media-heading"><%=session.getAttribute("username") %></h4>
-                <a href="#">log out</a>
+                <a href="index.jsp">log out</a>
               </div>
             </div>
         </div>
