@@ -17,21 +17,27 @@ public class Meal extends HttpServlet{
 	 */
 	private String name;
 	private ArrayList<Food> ingredients;
-	private int userId;
+	private ArrayList<Integer> masses;
+	private int serves;
 	/**
 	 * Constructs a default Meal.
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients, int userId)
+	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Integer> masses)
 	{
 		this.name = name;
 		this.ingredients = new ArrayList<Food>();
 				for(Food f : ingredients)
 		{
 					this.ingredients.add(f);
-		}			
-		this.userId = userId;
+		}		
+		this.masses = new ArrayList<Integer>();
+			for(Integer g : masses)
+			{
+					masses.add(g);
+			}
+				
 	}	
 	/**
 	 * Displays the Meal as a String
@@ -165,9 +171,5 @@ public class Meal extends HttpServlet{
 	public ArrayList<Food> getIngredients()
 	{
 		return ingredients;
-	}
-	public int getUserId()
-	{
-		return userId;
 	}
 }
