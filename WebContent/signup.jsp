@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
-
-<%-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
- <jsp:useBean id="userdetails" scope="session" class = "BusinessLogic.Person" /> 
-<jsp:useBean id="person" scope="session" class="BusinessLogic.Main" />  --%>
  
   <head>
     <title>Sign Up</title>
@@ -45,7 +38,7 @@
 
               birthday:"required",
               
-              sex:"required",
+              gender:"required",
             }
         });
       });
@@ -108,17 +101,16 @@
       </div>
     </div>
     <div class="container">
-      <form>
-        <div class="form-signup" action = "signupdets.jsp" method = "post" id = "myForm">
-          <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>
+      <form action="signupdets.jsp" method="post" id="myForm" >
+        <div class="form-signup">
           <div class="controls">
-            <input type="text" name = "name" class="form-control" placeholder="Username"><p class="MyErrors"></p></td>
-            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="MyErrors"></p></td>
-            <input type="password" name = "password" class="form-control" placeholder="Password"><p class="MyErrors"></p></td>
+            <input type="text" name = "name" class="form-control" placeholder="Username"><p class="MyErrors"></p>
+            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="MyErrors"></p>
+            <input type="password" name = "password" class="form-control" placeholder="Password"><p class="MyErrors"></p>
             <label class="form-label">Birthday</label>
             <div class="birthday-drop">
-              <select class="form-control">
-                <option value="0" selected="1">Day</option>
+              <select name ="date" class="form-control">
+                <option value="0" selected>Day</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -151,8 +143,8 @@
                 <option value="30">30</option>
                 <option value="31">31</option>
               </select>
-              <select class="form-control">
-                <option value="0" selected="1">Month</option>
+              <select name="month" class="form-control">
+                <option value="0" selected>Month</option>
                 <option value="1">Jan</option>
                 <option value="2">Feb</option>
                 <option value="3">Mar</option>
@@ -166,8 +158,8 @@
                 <option value="11">Nov</option>
                 <option value="12">Dec</option>
               </select>
-              <select class="form-control">
-                <option value="0" selected="1">Year</option>
+              <select name="year" class="form-control">
+                <option value="0" selected>Year</option>
                 <option value="2015">2015</option>
                 <option value="2014">2014</option>
                 <option value="2013">2013</option>
@@ -281,8 +273,13 @@
                 <option value="1905">1905</option>
               </select>
             </div>
-              <input type="radio" name="sex" value="female">Female
-              <input type="radio" name="sex" value="male">Male
+              <select name="gender"  class="form-control">
+              <option value="0" selected>Gender</option>
+              <option value="male">Male</option> 
+              <option value="female">Female</option>
+              </select>
+              <br>
+             
             <button class="btn btn-block btn-success btn-lg" type="submit">Sign up</button>
           </div>
         </div>

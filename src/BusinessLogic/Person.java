@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import javax.servlet.http.HttpServlet;
+import java.util.Date;
 
 /**
  *  @author Ruaraidh
@@ -14,7 +15,7 @@ public class Person extends HttpServlet{
 	private String name;
 	private String email;
 	private String password; //needs encripting
-	private int age;
+	private Date dob;
 	private double height;
 	private double weight;
 	private char gender;
@@ -36,12 +37,12 @@ public class Person extends HttpServlet{
 	 * 4 = 7-21hrs/week of strenuous exercise/work
 	*/
 	
-	public Person(String name, String email, String password, int age, double height, double weight, char gender, int exercise){
+	public Person(String name, String email, String password, Date dob, double height, double weight, char gender, int exercise){
 		
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.age = age;
+		this.dob = dob;
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
@@ -57,7 +58,7 @@ public class Person extends HttpServlet{
 
 	public String toString(){
 		String s ="Name: " + name +
-				"\nAge: " + age + 
+				"\nBirthday: " + dob + 
 				"\nHeight: " + height + " cm" +
 				"\nWeight: " + weight + " kg" +
 				"\nGender: " + gender + 
@@ -79,8 +80,8 @@ public class Person extends HttpServlet{
 		// TODO Auto-generated method stub
 		return password;
 	}
-	public int getAge(){
-		return age;
+	public Date getDob(){
+		return dob;
 	}
 	public double getHeight(){
 		return height;
@@ -102,8 +103,8 @@ public class Person extends HttpServlet{
 	public void setName(String name){
 		this.name = name;
 	}
-	public void setAge(int age){
-		this.age = age;
+	public void setDob(Date dob){
+		this.dob = dob;
 	}
 	public void setEmail(String email){
 		this.email = email;
