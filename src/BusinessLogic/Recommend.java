@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Recommend {
 	
+	//positive if under recommended
 	private double caloriesRec;
 	private double proteinsRec;
 	private double carbsRec;
@@ -52,6 +53,7 @@ public class Recommend {
 		setSats(dayMeal());
 		setFibre(dayMeal());
 		setSalt(dayMeal());
+		
 	}
 	
 	public boolean checkOpt(double userUnit, double recUnit){
@@ -84,7 +86,7 @@ public class Recommend {
 				cals += f.getCalories();
 			}
 		}
-		this.caloriesRec = cals - userMacros.getCalories();
+		this.caloriesRec = userMacros.getCalories() - cals;
 		
 		calOpt = checkOpt(cals, userMacros.getCalories());
 	}
@@ -96,7 +98,7 @@ public class Recommend {
 				prot += f.getProteins();
 			}
 		}
-		this.proteinsRec = prot - userMacros.getProtein();
+		this.proteinsRec = userMacros.getProtein() - prot;
 		
 		protOpt = checkOpt(prot, userMacros.getProtein());
 		
@@ -109,7 +111,7 @@ public class Recommend {
 				carbs += f.getCarbs();
 			}
 		}
-		this.carbsRec = carbs - userMacros.getCarbs();
+		this.carbsRec = userMacros.getCarbs() - carbs;
 		
 		carbsOpt = checkOpt(carbs, userMacros.getCarbs());
 	}
@@ -121,7 +123,7 @@ public class Recommend {
 				sugars += f.getSugars();
 			}
 		}
-		this.sugarsRec = sugars - userMacros.getSugars();
+		this.sugarsRec = userMacros.getSugars() - sugars;
 		
 		sugarsOpt = checkOpt(sugars, userMacros.getSugars());
 	}
@@ -133,7 +135,7 @@ public class Recommend {
 				fats += f.getFats();
 			}
 		}
-		this.fatsRec = fats - userMacros.getFat();
+		this.fatsRec = userMacros.getFat() - fats;
 		
 		fatsOpt = checkOpt(fats, userMacros.getFat());
 	}
@@ -145,7 +147,7 @@ public class Recommend {
 				sats += f.getSaturates();
 			}
 		}
-		this.saturatesRec = sats - userMacros.getSaturates();
+		this.saturatesRec = userMacros.getSaturates() - sats;
 		
 		saturatesOpt = checkOpt(sats, userMacros.getSaturates());
 	}
@@ -157,7 +159,7 @@ public class Recommend {
 				fibre += f.getFibre();
 			}
 		}
-		this.fibreRec = fibre - userMacros.getFibre();
+		this.fibreRec = userMacros.getFibre() - fibre;
 		
 		fibreOpt = checkOpt(fibre, userMacros.getFibre());
 	}
@@ -169,7 +171,7 @@ public class Recommend {
 				salt += f.getSalt();
 			}
 		}
-		this.saltRec = salt - userMacros.getSalt();
+		this.saltRec = userMacros.getSalt() - salt;
 		
 		saltOpt = checkOpt(salt, userMacros.getSalt());
 	}

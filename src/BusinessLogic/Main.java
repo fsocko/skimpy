@@ -14,19 +14,13 @@ public class Main extends HttpServlet{
 	 * Will create a Person object, Food and the create a MealPlanner and add the Food.
 	 * @param args
 	 */
+	DBConnect con = new DBConnect();
 	
 	public static void main(String[] args) 
 	{
 		
-		
-		
-		DBConnect con = new DBConnect();
-		SpiderToDB std = new SpiderToDB();
-		pushToDB(std.tescoPath, "tesco");
-		pushToDB(std.asdaPath, "asda");
-		pushToDB(std.sainsPath, "sains");
-				
 	}
+	
 	
 	public static void testXML() {
 		XMLParser writeX = new XMLParser();

@@ -464,13 +464,92 @@ public class DBConnect extends HttpServlet{
 		}	
 	}
 
-	public void recommend(String val, String coloumn)
+	public void recommend(Person user, int day)
 	{
 		openCon();
 		try{
-			 String query = "SELECT * FROM fooditems WHERE " + coloumn + " LIKE '" + val + "';";
-		 
-		     ResultSet rs = st.executeQuery(query);
+			Recommend rec = new Recommend(user, day);
+			boolean foodFound = false;
+			ArrayList<Integer> foodIDs = new ArrayList<Integer>();
+			
+			String query = "";
+			
+			if(rec.getCalOpt() && rec.getCaloriesRec() > 0){
+				query = "SELECT * FROM tesco WHERE Calories BETWEEN "
+						+ rec.getCaloriesRec() * 0.8 + " AND "
+						+ rec.getCaloriesRec() * 1.2;
+			}
+			else{
+				//find something low in cals (small percentage of total cals)
+			}
+			if(rec.getProtOpt() && rec.getCaloriesRec() > 0){
+				query += "AND Proteins BETWEEN "
+						+ rec.getProteinsRec() * 0.8 + " AND "
+						+ rec.getProteinsRec() * 1.2;
+			}
+			else{
+				//find something low in prot (small percentage of cals)
+			}
+			if(rec.getCarbOpt() && rec.getCarbsRec() > 0){
+				query += "AND Carbs BETWEEN "
+						+ rec.getCarbsRec() * 0.8 + " AND "
+						+ rec.getCarbsRec() * 1.2;
+			}
+			else{
+				//find something low in carbs
+			}
+			if(rec.getSugarsOpt() && rec.getSugarsRec() > 0){
+				query += "AND Sugars BETWEEN "
+						+ rec.getSugarsRec() * 0.8 + " AND "
+						+ rec.getSugarsRec() * 1.2;
+			}
+			else{
+				//find something low in sugars
+			}
+			if(rec.getFatsOpt() && rec.getFatsRec() > 0){
+				query += "AND Fats BETWEEN "
+						+ rec.getFatsRec() * 0.8 + " AND "
+						+ rec.getFatsRec() * 1.2;
+			}
+			else{
+				//find something low in fat
+			}
+			if(rec.getSatsOpt() && rec.getSaturatesRec() > 0){
+				query += "AND Saturates BETWEEN "
+						+ rec.getSaturatesRec() * 0.8 + " AND "
+						+ rec.getSaturatesRec() * 1.2;
+			}
+			else{
+				//find something low in sats
+			}
+			if(rec.getFibreOpt() && rec.getFibreRec() > 0){
+				query += "AND Fibre BETWEEN "
+						+ rec.getFibreRec() * 0.8 + " AND "
+						+ rec.getFibreRec() * 1.2;
+			}
+			else{
+				//find something low in fibre
+			}
+			if(rec.getSaltOpt() && rec.getSaltRec() > 0){
+				query += "AND Salt BETWEEN "
+						+ rec.getSaltRec() * 0.8 + " AND "
+						+ rec.getSaltRec() * 1.2;
+			}
+			else{
+				//find something low in salt
+			}
+			
+			query += ";";
+			
+			if(!query.equals("")){
+				ResultSet rs = st.executeQuery(query);
+				while(rs.next()){
+					foodFound = true;
+					
+				}
+			}
+			
+		     
 		     String temp = "";
 		     String name = "";
 		     boolean found = false;
@@ -482,9 +561,9 @@ public class DBConnect extends HttpServlet{
 		    		 System.out.println(name+"  ");
 		    	 }
 		     }
-		     if(!found){
-		    	 System.out.println("No results for query: " + val);
-		     }
+//		     if(!found){
+//		    	 System.out.println("No results for query: " + val);
+//		     }
 		     System.out.println();
 			 
 		} catch(Exception ex){
