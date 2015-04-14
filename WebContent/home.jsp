@@ -47,10 +47,10 @@
               <a href="#">Home</a>
             </li>
             <li>
-              <a href="#">Meal Planner</a>
+              <a href="MealPlan.jsp">Meal Planner</a>
             </li>
             <li>
-              <a href="#">Recipe Creator</a>
+              <a href="recipe.jsp">Recipe Creator</a>
             </li>
             <li>
               <a href="#">Recipe Explorer</a>
