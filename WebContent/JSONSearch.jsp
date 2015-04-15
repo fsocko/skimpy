@@ -5,5 +5,5 @@
 
 <%
 	DBConnect dbConn = new DBConnect();
-	out.println(dbConn.fullSearch(request.getParameter("q")));
+	out.println(dbConn.jsonSearch(request.getParameter("q"), request.getParameterValues("cat[]")));
 %>

@@ -48,7 +48,7 @@
 					mass = "-";
 				}
 				else {
-					mass = data[x].mass + data[x].unit;
+					mass = data[x].mass + data[x].unit.toLowerCase();
 				}
 				
 				$('#results').append(
@@ -89,7 +89,7 @@
 				          }
 				    });
 					$.ajax({
-				          url: "FullSearch.jsp",
+				          url: "JSONSearch.jsp",
 				          dataType: "json",
 				          data: {
 				            q: $('#search').val()
@@ -99,6 +99,9 @@
 				        	  fillResults(data);
 				          }
 				    });
+				}
+				else if ($('#search').val() == "") {
+					$('#autocomplete-box').css("visibility", "hidden");
 				}
 			});
 			
@@ -123,7 +126,7 @@
 					categoriesSearch = [];
 					pushCategories();
 					$.ajax({
-			          url: "RefinedSearch.jsp",
+			          url: "JSONSearch.jsp",
 			          dataType: "json",
 			          data: {
 			            q: $('#search').val(),
@@ -166,23 +169,23 @@
 	</script>
 	
     <div class="container">
-    <h2 class="text-left">Create a Meal</h2>
-  <form method="get" action="ProductSearch.jsp">
-      <div id ="search-container">
-        
-         <input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
-          <div id="autocomplete-box">
-		<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
-		<div id="categories-tickboxes"></div>
-		<div id="results"></div>
-	</div></div> 
-	<div id="recipe">
-	<input class="recipe-name" name="mealname" placeholder="Meal Name">
-	<div class="products-mass">
-	<div id="products-list"></div>
-	</div></div>
- 
-      </form>
+    	<h2 class="text-left">Create a Meal</h2>
+    
+    	<div id ="search-container">
+    		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
+    		<div id="autocomplete-box">
+				<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+				<div id="categories-tickboxes"></div>
+				<div id="results"></div>
+			</div>
+		</div> 
+	
+		<div id="recipe">
+			<input class="recipe-name" name="mealname" placeholder="Meal Name">
+			<div class="products-mass">
+				<div id="products-list"></div>
+			</div>
+		</div>
     </div>
   </body>
 
