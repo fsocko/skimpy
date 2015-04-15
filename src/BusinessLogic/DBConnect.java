@@ -194,8 +194,8 @@ public class DBConnect extends HttpServlet{
 				String userEmail = rs.getString("UserEmail");
 				String password = rs.getString("Password");
 			    Date dob = rs.getDate("DateOfBirth");
-				double weight = rs.getFloat("Weight");
-				double height = rs.getFloat("Height");
+				double weight = rs.getDouble("Weight");
+				double height = rs.getDouble("Height");
 				char gender = rs.getString("Gender").charAt(0);
 				int exercise = rs.getInt("Exercise");
 				
@@ -219,11 +219,11 @@ public class DBConnect extends HttpServlet{
 
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Height, Weight, Gender, Exercise)"
-					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", \""  +
-							new java.sql.Date(user.getDob().getTime()) + "\", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
-							user.getExercise() + ")";
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
+					+ "VALUES ('" + 
+							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
+							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + "')";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
