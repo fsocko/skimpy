@@ -82,7 +82,7 @@ body {
 .product-name {
 	position: relative;
 	float: left;
-	width: 80%;
+	width: 75%;
 	height: 100%;
 }
 
@@ -94,10 +94,18 @@ body {
 	color: #838383;
 }
 
-.button-add {
+.product-mass {
 	position: relative;
 	float: left;
 	width: 10%;
+	height: 100%;
+	color: #838383;
+}
+
+.button-add {
+	position: relative;
+	float: left;
+	width: 5%;
 	height: 100%;
 	visibility: hidden;
 	color: #CCC;
@@ -184,7 +192,7 @@ body {
 .list-product-name {
 	position: relative;
 	float: left;
-	width: 80%;
+	width: 75%;
 	height: 100%;
 }
 
@@ -196,10 +204,18 @@ body {
 	color: #838383;
 }
 
-.button-remove {
+.list-product-mass {
 	position: relative;
 	float: left;
 	width: 10%;
+	height: 100%;
+	color: #838383;
+}
+
+.button-remove {
+	position: relative;
+	float: left;
+	width: 5%;
 	height: 100%;
 	color: #CCC;
 }

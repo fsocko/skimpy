@@ -43,11 +43,22 @@
 					}
 				}
 				
+				var mass;
+				if (data[x].mass == "1.69") {
+					mass = "-";
+				}
+				else {
+					mass = data[x].mass + data[x].unit;
+				}
+				
 				$('#results').append(
 				  $('<div>').addClass('result-entry')
 					.append($('<a>').attr('href', link_to_page)
 							.append($('<span>').addClass('product-name').text(data[x].name)))
-					.append($('<span>').addClass('product-price').text(data[x].price))
+					.append(
+						$('<span>').addClass('product-mass').text(mass))
+					.append(
+						$('<span>').addClass('product-price').text("£" + data[x].price.toFixed(2)))
 					.append($('<span>').addClass('button-add').append(
 						$('<i>').addClass('fa').addClass('fa-plus')))
 				);
@@ -134,13 +145,14 @@
 							$('<span>').addClass('list-product-name').text(
 								$(this).closest('.result-entry').find('.product-name').text())))
 							.append(
+								$('<span>').addClass('list-product-mass').text(
+									$(this).closest('.result-entry').find('.product-mass').text()))
+							.append(
 								$('<span>').addClass('list-product-price').text(
-									$(this).closest('.result-entry').find('.product-price').text())
-								)
+									$(this).closest('.result-entry').find('.product-price').text()))
 							.append(
 								$('<span>').addClass('button-remove')
-									.append($('<i>').addClass('fa').addClass('fa-times'))
-							)
+									.append($('<i>').addClass('fa').addClass('fa-times')))
 					);
 				}
 			);
