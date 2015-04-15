@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -180,20 +181,24 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public Person pullUser(String ID)
+	public Person pullUser(String UserID)
 	{
 		openCon();
 		try{
 			Person user = null;
 			boolean foundUser = false;
 			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
+			rs = st.executeQuery("select * FROM user_info WHERE UserID=" + UserID);
 			while (rs.next()){
 				foundUser = true;
 				String userName = rs.getString("UserName");
+				
 				String userEmail = rs.getString("UserEmail");
-				String password = rs.getString("Password");
-			    Date dob = rs.getDate("DateOfBirth");
+				String password = rs.getString("UserPassword");
+				
+				Date sqlD = rs.getTimestamp("DateOfBirth");
+				
+			    java.util.Date dob = new java.util.Date(sqlD.getTime());
 				double weight = rs.getDouble("Weight");
 				double height = rs.getDouble("Height");
 				char gender = rs.getString("Gender").charAt(0);

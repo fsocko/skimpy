@@ -19,13 +19,18 @@
 <body>
 <form action="welcome.jsp" method ="post">
 </form>
-<%String userID = (String)session.getAttribute("userID"); 
- DBConnect connect = new DBConnect();
+<%String userID = (String)session.getAttribute("ID"); 
+System.out.println(userID);
+DBConnect connect = new DBConnect();
 Person user = connect.pullUser(userID);
+user.toString();
 user.setName(request.getParameter("name"));
 user.setEmail(request.getParameter("emailaddress"));
 user.setPassword(request.getParameter("password"));
+user.setHeight(Double.parseDouble(request.getParameter("height")));
+user.setWeight(Double.parseDouble(request.getParameter("weight")));
 user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
+user.setExercise(Integer.valueOf(request.getParameter("exercise")));
 
 String date = request.getParameter("date");
 String month = request.getParameter("month");

@@ -118,8 +118,9 @@ $(document).ready(function(){
           <div class="controls">
 	<h1> Change your details:</h1>
 	<br>
-    <div class="birthday-drop">Name:<input type="text" class="form-control" name="name" placeholder="<%=session.getAttribute("username") %>"><p class="MyErrors"></p></div>
-	<div class="birthday-drop">Email:<input type="text" class="form-control" name="emailaddress" placeholder="<%=session.getAttribute("email") %>"><p class="MyErrors"></p></div>
+    <div class="birthday-drop">Name:<input type="text" class="form-control" name="name" value="<%=session.getAttribute("username") %>"><p class="MyErrors"></p></div>
+	<div class="birthday-drop">Email:<input type="text" class="form-control" name="emailaddress" value="<%=session.getAttribute("email") %>"><p class="MyErrors"></p></div>
+	<div class="birthday-drop">Password:<input type="password" class="form-control" name="password"><p class="MyErrors"></p></div>
 	<div class="birthday-drop">Gender:<select name="gender"  class="form-control">
               <option value="0" selected>Gender</option>
               <option value="male">Male</option> 
@@ -292,7 +293,7 @@ $(document).ready(function(){
 	<div class="birthday-drop"> Weight:<input type="text" class="form-control" name="weight" placeholder="<%=session.getAttribute("weight") %>"><p class="MyErrors"></p></div>
 	<div class="birthday-drop">Height:<input type="text" class="form-control" name="height" placeholder="<%=session.getAttribute("height") %>" ><p class="MyErrors"></p></div>
 	<div class="birthday-drop">Exercise:<input type="text" class="form-control" name="exercise" autocomplete="off" placeholder="<%=session.getAttribute("exercise") %>" ><p class="MyErrors"></p></div>
-	<div class="birthday-drop">Password:<input type="password" class="form-control" name="password"><p class="MyErrors"></p></div>
+	
    
 			<input type="submit" value="Save">
 		</div></div>

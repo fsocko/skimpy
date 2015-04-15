@@ -21,10 +21,10 @@
 	String userdbPswd;
 	String userdbN;
 	Date userdbDOB;
-	Float userdbWeight;
-	String userdbGender;
-	Float userdbEx;
-	Float userdbHeight;
+	double userdbWeight;
+	char userdbGender;
+	int userdbEx;
+	double userdbHeight;
 	String userID;
 %>
 <% 
@@ -50,27 +50,29 @@ try{
 	if(rs.next()){
 		
 		userID = rs.getString("UserID");
-		userdbName = rs.getString("UserEmail");
 		userdbN = rs.getString("UserName");
-		userdbDOB =rs.getDate("DateOfBirth");
-		userdbWeight = rs.getFloat("Weight");
-		userdbGender = rs.getString("Gender");
-		userdbEx= rs.getFloat("Exercise");
+		userdbName = rs.getString("UserEmail");
 		userdbHeight = rs.getFloat("Height");
-		
-		
+		userdbEx= rs.getInt("Exercise");
+		userdbWeight = rs.getFloat("Weight");
+		userdbGender = rs.getString("Gender").charAt(0);
+		/* userdbDOB =rs.getDate("DateOfBirth"); 
+		java.util.Date DOB = new Date(userdbDOB.getTime()); */
+
 		
 		System.out.println(userdbN);
+		System.out.println(userID);
 		userdbPswd = rs.getString("UserPassword");
 		if(username.equals(userdbName) && password.equals(userdbPswd)){
 			session.setAttribute("email", username);
 			session.setAttribute("password", userdbPswd);
 			session.setAttribute("username", userdbN);
-			session.setAttribute("dob", userdbDOB);
+  			session.setAttribute("dob", userdbDOB);
 			session.setAttribute("exercise", userdbEx);
 			session.setAttribute("weight", userdbWeight);
 			session.setAttribute("height", userdbHeight);
 			session.setAttribute("gender", userdbGender);
+			session.setAttribute("ID", userID);
 			
 			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("welcome.jsp");
