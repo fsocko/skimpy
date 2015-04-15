@@ -192,13 +192,14 @@ public class DBConnect extends HttpServlet{
 				foundUser = true;
 				String userName = rs.getString("UserName");
 				String userEmail = rs.getString("UserEmail");
+				String password = rs.getString("Password");
 			    Date dob = rs.getDate("DateOfBirth");
 				double weight = rs.getFloat("Weight");
 				double height = rs.getFloat("Height");
 				char gender = rs.getString("Gender").charAt(0);
 				int exercise = rs.getInt("Exercise");
 				
-				user = new Person(userName, userEmail, "", dob, weight, height, gender, exercise);
+				user = new Person(userName, userEmail, password, dob, weight, height, gender, exercise);
 			}
 			if(foundUser){
 				return user;
