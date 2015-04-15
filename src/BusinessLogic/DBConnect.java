@@ -180,25 +180,34 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void pullUser(String ID)
+	public Person pullUser(String ID)
 	{
 		openCon();
 		try{
+			Person user = null;
+			boolean foundUser = false;
 			System.out.println("Records from Database");
 			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
 			while (rs.next()){
+				foundUser = true;
 				String userName = rs.getString("UserName");
 				String userEmail = rs.getString("UserEmail");
 			    Date dob = rs.getDate("DateOfBirth");
-				float weight = rs.getFloat("Weight");
-				String gender = rs.getString("Gender");
-				float exercise = rs.getFloat("Exercise");
+				double weight = rs.getFloat("Weight");
+				double height = rs.getFloat("Height");
+				char gender = rs.getString("Gender").charAt(0);
+				int exercise = rs.getInt("Exercise");
 				
-				System.out.println(ID + userName + userEmail + dob + weight + gender + exercise);
+				user = new Person(userName, userEmail, "", dob, weight, height, gender, exercise);
 			}
+			if(foundUser){
+				return user;
+			}
+			return null;
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+			return null;
 		}
 		finally 
 		{
