@@ -196,9 +196,7 @@ public class DBConnect extends HttpServlet{
 				String userEmail = rs.getString("UserEmail");
 				String password = rs.getString("UserPassword");
 				
-				Date sqlD = rs.getTimestamp("DateOfBirth");
-				
-			    java.util.Date dob = new java.util.Date(sqlD.getTime());
+				Date dob = rs.getTimestamp("DateOfBirth");
 				double weight = rs.getDouble("Weight");
 				double height = rs.getDouble("Height");
 				char gender = rs.getString("Gender").charAt(0);
