@@ -1,17 +1,10 @@
 package DatabaseAuto;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.Statement;
-
 import com.mysql.jdbc.*;
 
 
@@ -21,37 +14,41 @@ import com.mysql.jdbc.*;
 public class AutoDB
 {
 	 // JDBC driver name and database URL
-	   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	   static final String DB_URL = "jdbc:mysql://localhost/";
-
+	   static final String localHost = "jdbc:mysql://localhost/";
 	   //  Database credentials
-	   static final String USER = "root";
-	   static final String PASS = "";
+	   static final String user = "root";
+	   static final String pass = "";
 	   
-	   public void dropDB() 
+	   public void initialiseDB(String SQLfilePath)
+	   {
+		   //Initialise as skimpy by default. pass a String with a different DBname for testing. 
+		   initialiseDB("skimpy", SQLfilePath);
+	   }
+	   
+	   public void initialiseDB(String DBName, String SQLfileName) 
 	   {
 	   Connection conn = null;
 	   Statement stmt = null;
 	   try{
-	      //STEP 2: Register JDBC driver
+	      //Register JDBC driver
 	      Class.forName("com.mysql.jdbc.Driver");
 
-	      //STEP 3: Open a connection
-	      System.out.print("Connecting to " + DB_URL + "...");
-	      conn = DriverManager.getConnection(DB_URL, USER, PASS);
+	      //Open a connection
+	      System.out.print("Connecting to " + localHost + "...");
+	      conn = DriverManager.getConnection(localHost, user, pass);
 	      System.out.print("Done\n");
 	      
-	      //STEP 4: Execute a query - Drop Database
+	      //Execute a query - Drop Database
 	      stmt = conn.createStatement();
 	      
-	      String drop = "DROP DATABASE IF EXISTS skimpy_test;";
-	      System.out.print("Dropping skimpy_test database if it exists...");
+	      String drop = "DROP DATABASE IF EXISTS " +DBName +";";
+	      System.out.print("Dropping " +DBName+ "database if it exists...");
 	      stmt.executeUpdate(drop);
 	      System.out.print("Done\n");
 	      
 	      //STEP 5: Create Skimpy test DB
-	      System.out.print("Creating skimpy_test database...");
-	      String add = "CREATE DATABASE skimpy_test;";
+	      System.out.print("Creating database: "+ DBName +" ...");
+	      String add = "CREATE DATABASE "+DBName+ ";";
 	      stmt.executeUpdate(add);
 	      System.out.print("Done\n");
 	      
@@ -64,7 +61,7 @@ public class AutoDB
 			   finally{
 			      try{
 			         if(conn!=null)
-			        	 System.out.print("Closing original Connection to DB...");
+			        	 System.out.print("Closing original Connection to "+ localHost + "...");
 			        	 conn.close();
 			        	 System.out.print("Done\n");
 				      }catch(SQLException se)
@@ -74,15 +71,16 @@ public class AutoDB
 			      
  
 		 //STEP 7: Select skimpy_test
-		 System.out.print("Selecting skimpy_test database...");
+		 System.out.print("Selecting "+DBName+ " database...");
 		 conn = null;
 		 try{
-			 conn = DriverManager.getConnection("jdbc:mysql://localhost/skimpy_test", USER, PASS);
+			 conn = DriverManager.getConnection("jdbc:mysql://localhost/" + DBName, user, pass);
 			 System.out.print("Done\n");
 
 	      //STEP 6: Setup scriptRunner class to add all tables as read from an SQL template
-	      System.out.print("Adding tables as defined in data/skimpy_T.sql...\n\n");
-	      File file = new File("data/skimpy_T.sql");
+	      System.out.print("Adding tables as defined in " +SQLfileName+"...\n\n");
+	      File file = new File("data/" + SQLfileName); //TODO:This is the line to change 
+	      //if the default SQL file is not in data
 	      file.createNewFile();
 	      FileReader fr = new FileReader(file);
 	      ScriptRunner sr = new ScriptRunner(conn, false, true);
