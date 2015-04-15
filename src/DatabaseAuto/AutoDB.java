@@ -85,7 +85,7 @@ public class AutoDB
 	      FileReader fr = new FileReader(file);
 	      ScriptRunner sr = new ScriptRunner(conn, false, true);
 	      sr.runScript(fr);
-	      System.out.print("Done\n");
+	      System.out.print("\nDone. Database initialised with no errors.\n");
 	      
 	      
 	   }catch(SQLException se){

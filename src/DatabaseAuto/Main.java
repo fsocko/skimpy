@@ -6,7 +6,7 @@ public class Main {
 	{
 		AutoDB atb = new AutoDB();
 		//System.out.println(atb.SkimpyExists());
-		atb.dropDB();
+		atb.initialiseDB("skimpy_test2", "skimpy_T.sql");
 		
 	}
 
