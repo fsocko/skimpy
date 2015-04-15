@@ -717,6 +717,69 @@ public class DBConnect extends HttpServlet{
 		return results.toString();
 	}
 	
+	public String jsonSearch(String phrase, String[] categories) {
+		JSONArray results = new JSONArray();
+		String query;
+		
+		String[] words = phrase.split("\\s");
+		String regexpPhrase = "";
+		for (int i = 0; i < words.length - 1; i++) {
+			regexpPhrase += words[i] + ".*";
+		}
+		regexpPhrase += words[words.length - 1];
+		
+		if (categories != null) {
+			String tQuery = "SELECT DISTINCT * FROM tesco WHERE ";
+			String sQuery = "SELECT DISTINCT * FROM sains WHERE ";
+			
+			for (int i = 0; i < categories.length - 1; i++) {
+				tQuery += String.format("PPUPrice NOT LIKE 'NULL' AND Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, regexpPhrase, categories[i]);
+				sQuery += String.format("Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, regexpPhrase, categories[i]);
+			}
+			
+			tQuery += String.format("PPUPrice NOT LIKE 'NULL' AND Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s'",
+					regexpPhrase, regexpPhrase, categories[categories.length - 1]);
+			sQuery += String.format("Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' ",
+					regexpPhrase, regexpPhrase, categories[categories.length - 1]);
+			
+			query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
+		}
+		else {
+			query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL' "
+					+ "UNION "
+					+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' ORDER BY Price ASC",
+					regexpPhrase, regexpPhrase, regexpPhrase, regexpPhrase);
+		}
+		
+		
+		try {
+			openCon();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				JSONObject temp = new JSONObject();
+				temp.put("name", rs.getString("Name").trim());
+				temp.put("price", rs.getDouble("Price"));
+				temp.put("shopID", rs.getString("ShopID").trim());
+				temp.put("supermarket", rs.getString("SuperMarket"));
+				temp.put("shelf", rs.getString("FoodCat2").trim());
+				temp.put("mass", rs.getString("Mass").trim());
+				temp.put("unit", rs.getString("Unit").trim());
+				
+				results.put(temp);
+			}
+		}
+		catch (SQLException sqlex) {
+			sqlex.printStackTrace();
+		}
+		finally {
+			closeCon();
+		}
+		
+		return results.toString();
+	}
+	
 	public String categorySearch(String phrase) {
 		JSONArray results = new JSONArray();
 		
