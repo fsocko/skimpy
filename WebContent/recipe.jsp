@@ -166,23 +166,23 @@
 	</script>
 	
     <div class="container">
-    <h2 class="text-left">Create a Meal</h2>
-  <form method="get" action="ProductSearch.jsp">
-      <div id ="search-container">
-        
-         <input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
-          <div id="autocomplete-box">
-		<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
-		<div id="categories-tickboxes"></div>
-		<div id="results"></div>
-	</div></div> 
-	<div id="recipe">
-	<input class="recipe-name" name="mealname" placeholder="Meal Name">
-	<div class="products-mass">
-	<div id="products-list"></div>
-	</div></div>
- 
-      </form>
+    	<h2 class="text-left">Create a Meal</h2>
+    
+    	<div id ="search-container">
+    		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
+    		<div id="autocomplete-box">
+				<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+				<div id="categories-tickboxes"></div>
+				<div id="results"></div>
+			</div>
+		</div> 
+	
+		<div id="recipe">
+			<input class="recipe-name" name="mealname" placeholder="Meal Name">
+			<div class="products-mass">
+				<div id="products-list"></div>
+			</div>
+		</div>
     </div>
   </body>
 
