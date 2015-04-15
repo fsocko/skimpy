@@ -644,7 +644,7 @@ public class DBConnect extends HttpServlet{
 					temp.put("supermarket", rs.getString("SuperMarket"));
 					temp.put("shelf", rs.getString("FoodCat2").trim());
 					temp.put("mass", rs.getString("Mass").trim());
-					temp.put("unit", rs.getString("PPUUnit").trim());
+					temp.put("unit", rs.getString("Unit").trim());
 					
 					results.put(temp);
 			}
@@ -702,7 +702,7 @@ public class DBConnect extends HttpServlet{
 				temp.put("supermarket", rs.getString("SuperMarket"));
 				temp.put("shelf", rs.getString("FoodCat2").trim());
 				temp.put("mass", rs.getString("Mass").trim());
-				temp.put("unit", rs.getString("PPUUnit").trim());
+				temp.put("unit", rs.getString("Unit").trim());
 				
 				results.put(temp);
 			}
