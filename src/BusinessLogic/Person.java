@@ -1,6 +1,9 @@
 package BusinessLogic;
 
 import javax.servlet.http.HttpServlet;
+
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,6 +19,7 @@ public class Person extends HttpServlet{
 	private String email;
 	private String password; //needs encripting
 	private Date dob;
+	private int age;
 	private double height;
 	private double weight;
 	private char gender;
@@ -43,6 +47,7 @@ public class Person extends HttpServlet{
 		this.email = email;
 		this.password = password;
 		this.dob = dob;
+		setAge();
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
@@ -50,6 +55,20 @@ public class Person extends HttpServlet{
 		
 		//DBConnect connect = new DBConnect();
     	//connect.pushUser(this);
+	}
+	
+	public int setAge(){
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(dob);  
+		Calendar today = Calendar.getInstance();  
+		int age = today.get(Calendar.YEAR) - cal.get(Calendar.YEAR);  
+		if (today.get(Calendar.MONTH) < cal.get(Calendar.MONTH)) {
+		  age--;  
+		} else if (today.get(Calendar.MONTH) == cal.get(Calendar.MONTH)
+		    && today.get(Calendar.DAY_OF_MONTH) < cal.get(Calendar.DAY_OF_MONTH)) {
+		  age--;  
+		}
+		return age;
 	}
 	
 	public void setMealplan(MealPlanner mealplan){
@@ -83,6 +102,9 @@ public class Person extends HttpServlet{
 	public Date getDob(){
 		return dob;
 	}
+	public int getAge(){
+		return age;
+	}
 	public double getHeight(){
 		return height;
 	}
@@ -98,6 +120,7 @@ public class Person extends HttpServlet{
 	public MealPlanner getMealplan(){
 		return mealplan;
 	}
+	
 
 	//use these setters if user changes age weight etc.
 	public void setName(String name){
