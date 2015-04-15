@@ -47,7 +47,7 @@ public class Person extends HttpServlet{
 		this.email = email;
 		this.password = password;
 		this.dob = dob;
-		this.age = getAge();
+		setAge();
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
@@ -57,7 +57,7 @@ public class Person extends HttpServlet{
     	//connect.pushUser(this);
 	}
 	
-	public int getAge(){
+	public int setAge(){
 		Calendar cal = Calendar.getInstance();  
 		cal.setTime(dob);  
 		Calendar today = Calendar.getInstance();  
@@ -101,6 +101,9 @@ public class Person extends HttpServlet{
 	}
 	public Date getDob(){
 		return dob;
+	}
+	public int getAge(){
+		return age;
 	}
 	public double getHeight(){
 		return height;
