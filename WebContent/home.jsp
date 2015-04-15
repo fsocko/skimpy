@@ -44,7 +44,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a href="#">Home</a>
+              <a href="welcome.jsp">Home</a>
             </li>
             <li>
               <a href="enterdetails.jsp">Profile</a>

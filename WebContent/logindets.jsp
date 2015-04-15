@@ -4,6 +4,7 @@
 <%@ page import="BusinessLogic.*" %>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date" %>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.sql.*"%>
@@ -19,6 +20,12 @@
 <%! String userdbName;
 	String userdbPswd;
 	String userdbN;
+	Date userdbDOB;
+	Float userdbWeight;
+	String userdbGender;
+	Float userdbEx;
+	Float userdbHeight;
+	String userID;
 %>
 <% 
 Connection con = null;
@@ -41,15 +48,31 @@ try{
 	st = con.prepareStatement(sql);
 	rs = st.executeQuery(sql);
 	if(rs.next()){
+		
+		userID = rs.getString("UserID");
 		userdbName = rs.getString("UserEmail");
 		userdbN = rs.getString("UserName");
+		userdbDOB =rs.getDate("DateOfBirth");
+		userdbWeight = rs.getFloat("Weight");
+		userdbGender = rs.getString("Gender");
+		userdbEx= rs.getFloat("Exercise");
+		userdbHeight = rs.getFloat("Height");
+		
+		
+		
 		System.out.println(userdbN);
 		userdbPswd = rs.getString("UserPassword");
 		if(username.equals(userdbName) && password.equals(userdbPswd)){
 			session.setAttribute("email", username);
 			session.setAttribute("password", userdbPswd);
 			session.setAttribute("username", userdbN);
-			session.setMaxInactiveInterval(300);
+			session.setAttribute("dob", userdbDOB);
+			session.setAttribute("exercise", userdbEx);
+			session.setAttribute("weight", userdbWeight);
+			session.setAttribute("height", userdbHeight);
+			session.setAttribute("gender", userdbGender);
+			
+			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("welcome.jsp");
 		} else {
 			response.sendRedirect("error.jsp");
