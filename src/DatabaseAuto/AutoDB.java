@@ -50,15 +50,38 @@ public class AutoDB
 	      System.out.print("Done\n");
 	      
 	      //STEP 5: Create Skimpy test DB
-	      System.out.print("creating skimpy_test database...");
-	      String add = "";
+	      System.out.print("Creating skimpy_test database...");
+	      String add = "CREATE DATABASE skimpy_test;";
 	      stmt.executeUpdate(add);
 	      System.out.print("Done\n");
 	      
-	      
-	      
+	      //STEP 6: Close original conn
+	   	  }
+		   catch(SQLException se)
+		   {se.printStackTrace();}
+		   catch(Exception e)
+		   {e.printStackTrace();}
+			   finally{
+			      try{
+			         if(conn!=null)
+			        	 System.out.print("Closing original Connection to DB...");
+			        	 conn.close();
+			        	 System.out.print("Done\n");
+				      }catch(SQLException se)
+				      {
+				         se.printStackTrace();
+				      }
+			      
+ 
+		 //STEP 7: Select skimpy_test
+		 System.out.print("Selecting skimpy_test database...");
+		 conn = null;
+		 try{
+			 conn = DriverManager.getConnection("jdbc:mysql://localhost/skimpy_test", USER, PASS);
+			 System.out.print("Done\n");
+
 	      //STEP 6: Setup scriptRunner class to add all tables as read from an SQL template
-	      System.out.print("Adding tables as defined in data/skimpy_T.sql...");
+	      System.out.print("Adding tables as defined in data/skimpy_T.sql...\n\n");
 	      File file = new File("data/skimpy_T.sql");
 	      file.createNewFile();
 	      FileReader fr = new FileReader(file);
@@ -86,6 +109,7 @@ public class AutoDB
 	      }
 	   }
 	}
+   }
 }
 
 
