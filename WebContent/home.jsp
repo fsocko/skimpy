@@ -63,6 +63,12 @@
                         <p>0</p>
                       </div>
                       <div class="col-sm-4">
+                        <span class="label label-info">Carbohydrates</span>
+                      </div>
+                      <div class="col-sm-8">
+                        <p>0</p>
+                      </div>
+                      <div class="col-sm-4">
                         <span class="label label-info">Sugar</span>
                       </div>
                       <div class="col-sm-8">
@@ -187,12 +193,6 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <span class="label label-info">BMI</span>
-                  </div>
-                  <div class="col-sm-8">
-                    <p>0</p>
-                  </div>
-                  <div class="col-sm-4">
-                    <span class="label label-info">TDEE</span>
                   </div>
                   <div class="col-sm-8">
                     <p>0</p>
