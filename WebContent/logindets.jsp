@@ -25,6 +25,7 @@
 	char userdbGender;
 	int userdbEx;
 	double userdbHeight;
+	int userdbAge;
 	String userID;
 %>
 <% 
@@ -52,10 +53,11 @@ try{
 		userID = rs.getString("UserID");
 		userdbN = rs.getString("UserName");
 		userdbName = rs.getString("UserEmail");
-		userdbHeight = rs.getFloat("Height");
+		userdbHeight = rs.getDouble("Height");
 		userdbEx= rs.getInt("Exercise");
-		userdbWeight = rs.getFloat("Weight");
+		userdbWeight = rs.getDouble("Weight");
 		userdbGender = rs.getString("Gender").charAt(0);
+		userdbAge = rs.getInt("Age");
 		/* userdbDOB =rs.getDate("DateOfBirth"); 
 		java.util.Date DOB = new Date(userdbDOB.getTime()); */
 
@@ -68,6 +70,7 @@ try{
 			session.setAttribute("password", userdbPswd);
 			session.setAttribute("username", userdbN);
   			session.setAttribute("dob", userdbDOB);
+  			session.setAttribute("age", userdbAge);
 			session.setAttribute("exercise", userdbEx);
 			session.setAttribute("weight", userdbWeight);
 			session.setAttribute("height", userdbHeight);

@@ -1,5 +1,8 @@
 <!doctype html>
 <%@include file="header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="BusinessLogic.*" %>
+
 <html>
   
   <head>
@@ -30,6 +33,11 @@
   </head>
   
   <body>
+  	<%	
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+	}
+  	%>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-5">
@@ -133,7 +141,7 @@
                   <div class="media-body">
                     <div class="row">
                       <div class="col-sm-8">
-                        <h4>Username</h4>
+                        <h4><%=session.getAttribute("username") %></h4>
                       </div>
                       <div class="col-sm-4">
                         <a href = "edit.jsp" class="btn pull-right btn-primary btn-xs">Edit</a>
@@ -141,12 +149,7 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <p>Name surname</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <p>email</p>
+                        <p><%=session.getAttribute("email")%></p>
                       </div>
                     </div>
                   </div>
@@ -158,25 +161,25 @@
                     <span class="label label-info">Height</span>
                   </div>
                   <div class="col-sm-8">
-                    <p>0</p>
+                    <p><%=session.getAttribute("height") %></p>
                   </div>
                   <div class="col-sm-4">
                     <span class="label label-info">Weight</span>
                   </div>
                   <div class="col-sm-8">
-                    <p>0</p>
+                    <p><%=session.getAttribute("weight") %> kg</p>
                   </div>
                   <div class="col-sm-4">
                     <span class="label label-info">Exercise Level</span>
                   </div>
                   <div class="col-sm-8">
-                    <p>0</p>
+                    <p><%=session.getAttribute("exercise") %> cm</p>
                   </div>
                   <div class="col-sm-4">
                     <span class="label label-info">Age</span>
                   </div>
                   <div class="col-sm-8">
-                    <p>0</p>
+                    <p><%=session.getAttribute("age") %></p>
                   </div>
                 </div>
               </div>
@@ -192,7 +195,7 @@
                     <span class="label label-info">TDEE</span>
                   </div>
                   <div class="col-sm-8">
-                    <p style>0</p>
+                    <p>0</p>
                   </div>
                 </div>
               </div>
