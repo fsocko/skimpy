@@ -111,6 +111,7 @@
 					$('#results').empty();
 					$('#autocomplete-box').css("visibility", "hidden");
 					$('#search').val('');
+					$('#search').focus();
 				}
 			);
 			
