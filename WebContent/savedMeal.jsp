@@ -27,19 +27,23 @@
         String ingredients = java.util.Arrays.deepToString(Ingredients);
         String [] mass = request.getParameterValues("mass");
         String masses = java.util.Arrays.deepToString(mass);
-        /* DBConnect con = new DBConnect();
-    	
+        DBConnect con = new DBConnect();
+    	   
     		ArrayList<Food> f_ingredients = new ArrayList<Food>();
-    		for (int i =1; i<7;i++){
-    		f_ingredients.add(con.pullFood("tesco", Integer.toString(i))); }
+    		for (String s: Ingredients){
+    	       con.productSearch(s);
+    		for (int i = 0; i < con.productSearch(s).size(); i++) {
+    			System.out.println(con.productSearch(s).get(i).toString());
+    		}
+    		}
     		
-    		Meal currentMeal = new Meal(MealName, f_ingredients); 
+    		/* Meal currentMeal = new Meal(MealName, f_ingredients); 
     		ArrayList<Meal> meals = new ArrayList<Meal>();
     		meals.add(currentMeal);
     		XMLParser writeX = new XMLParser();
     	    writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
     	    String path = getServletContext().getRealPath("");
-    	    writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); */
+    	    writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); */ 
     	    
    %>
         <%=ingredients %>
