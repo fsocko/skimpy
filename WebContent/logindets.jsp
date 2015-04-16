@@ -75,7 +75,7 @@ try{
 			session.setAttribute("ID", userID);
 			
 			session.setMaxInactiveInterval(3000);
-			response.sendRedirect("welcome.jsp");
+			response.sendRedirect("home.jsp");
 		} else {
 			response.sendRedirect("error.jsp");
 			rs.close();

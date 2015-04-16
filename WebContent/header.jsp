@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a href="#">Home</a>
+              <a href="home.jsp">Home</a>
             </li>
             <li>
               <a href="#">My Shopping List</a>
