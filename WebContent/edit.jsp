@@ -1,5 +1,7 @@
 <!doctype html>
 <%@include file="header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="BusinessLogic.*" %>
 <html>
   
   <head>
@@ -52,6 +54,11 @@
   </head>
   
   <body>
+    <%	
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+	}
+  	%>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-5">
@@ -68,61 +75,69 @@
                         <span class="label label-info">Calories</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("calories") %> kcal</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Protein</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("protein") %> g</p>
+                      </div>
+                      <div class="col-sm-6">
+                        <span class="label label-info">Carbohydrates</span>
+                      </div>
+                      <div class="col-sm-6">
+                        <p><%=session.getAttribute("carbs") %> g</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Sugar</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("sugar") %> g</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Fat</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("fat") %> g</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Saturates</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("saturates") %> g</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Fibre</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("fibre") %> g</p>
                       </div>
                       <div class="col-sm-6">
                         <span class="label label-info">Salt</span>
                       </div>
                       <div class="col-sm-6">
-                        <p>0</p>
+                        <p><%=session.getAttribute("salt") %> g</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-sm-12">
                   <h4>Price Optimisation</h4>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-12">
                   <div class="progress">
                     <div class="progress-bar" style="width: 40%;"></div>
                   </div>
                 </div>
-                <div class="col-md-4">
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
                   <h4>Nutrition Optimisation</h4>
                 </div>
-                <div class="col-md-4">
+                <div class="col-sm-12">
                   <div class="progress">
                     <div class="progress-bar" style="width: 40%;"></div>
                   </div>
@@ -157,7 +172,7 @@
                       <span class="label label-info">Username</span>
                     </div>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control input-sm">
+                      <input type="text" class="form-control input-sm" value = "<%=session.getAttribute("username") %>">
                     </div>
                   </div>
                   <div class="row">
@@ -165,7 +180,7 @@
                       <span class="label label-info">e-mail</span>
                     </div>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control input-sm">
+                      <input type="text" class="form-control input-sm" value = "<%=session.getAttribute("email") %>">
                     </div>
                   </div>
                   <div class="row">
@@ -173,7 +188,7 @@
                       <span class="label label-info">Height</span>
                     </div>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control input-sm">
+                      <input type="text" class="form-control input-sm" value = "<%=session.getAttribute("height") %>">
                     </div>
                   </div>
                   <div class="row">
@@ -181,7 +196,7 @@
                       <span class="label label-info">Weight</span>
                     </div>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control input-sm">
+                      <input type="text" class="form-control input-sm" value = "<%=session.getAttribute("weight") %>">
                     </div>
                   </div>
                   <div class="row">
@@ -190,7 +205,8 @@
                     </div>
                     <div class="col-sm-8">
                       <div class="birthday-drop">
-                        <select name="exercise" class="form-control">
+                        <select name="exercise" class="form-control" >
+                          <option value="<%=session.getAttribute("exerciseNo") %>" selected><%=session.getAttribute("exercise") %></option>
                           <option value="1">Desk job with little exercise</option>
                           <option value="2">1-3hrs/week of light exercise</option>
                           <option value="3">3-5hrs/week of moderate exercise</option>
@@ -207,7 +223,7 @@
                     <div class="col-sm-8">
                       <div class="birthday-drop">
                         <select name="date" class="form-control">
-                          <option value="0" selected>DD</option>
+                          <option value="<%=session.getAttribute("DD") %>" selected><%=session.getAttribute("Day") %></option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -241,7 +257,7 @@
                           <option value="31">31</option>
                         </select>
                         <select name="month" class="form-control">
-                          <option value="0" selected>MM</option>
+                          <option value="<%=session.getAttribute("MM") %>" selected><%=session.getAttribute("Month") %></option>
                           <option value="1">Jan</option>
                           <option value="2">Feb</option>
                           <option value="3">Mar</option>
@@ -256,7 +272,7 @@
                           <option value="12">Dec</option>
                         </select>
                         <select name="year" class="form-control">
-                          <option value="0" selected>YYYY</option>
+                          <option value="<%=session.getAttribute("YYYY") %>" selected><%=session.getAttribute("Year") %></option>
                           <option value="2015">2015</option>
                           <option value="2014">2014</option>
                           <option value="2013">2013</option>
@@ -379,9 +395,9 @@
                     <div class="col-sm-8">
                       <div class="birthday-drop">
                         <select name="gender" class="form-control">
-                          <option value="0" selected>Gender</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
+                          <option value="<%=session.getAttribute("genderChar") %>" selected><%=session.getAttribute("genderDisp") %></option>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
                         </select>
                       </div>
                     </div>

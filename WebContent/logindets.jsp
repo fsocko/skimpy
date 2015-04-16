@@ -45,6 +45,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 	userdbPswd = sessionUser.getPassword();
 	userdbHeight = sessionUser.getHeight();
 	userdbEx = sessionUser.getExerciseDisplay();
+	int userdbExNo = sessionUser.getExercise();
 	userdbWeight = sessionUser.getWeight();
 	userdbGender = sessionUser.getGender();
 	userdbAge = sessionUser.getAge();
@@ -59,11 +60,21 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
  		session.setAttribute("dob", userdbDOB);
  		session.setAttribute("age", userdbAge);
 		session.setAttribute("exercise", userdbEx);
+		session.setAttribute("exerciseNo", userdbExNo);
 		session.setAttribute("weight", userdbWeight);
 		session.setAttribute("height", userdbHeight);
-		session.setAttribute("gender", userdbGender);
+		session.setAttribute("genderChar", userdbGender);
+		session.setAttribute("genderDisp", sessionUser.getGenderDisp(userdbGender));
 		session.setAttribute("ID", userID);
 		session.setAttribute("BMI", userdbBMI);
+		
+		session.setAttribute("Day", sessionUser.getDay(userdbDOB));
+		session.setAttribute("Month", sessionUser.getMonth(userdbDOB));
+		session.setAttribute("Year", sessionUser.getYear(userdbDOB));
+		
+		session.setAttribute("DD", String.valueOf(sessionUser.getDay(userdbDOB)));
+		session.setAttribute("MM", sessionUser.getMonthNo(userdbDOB));
+		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(userdbDOB)));
 		
 		session.setAttribute("calories", macros.getCalories());
 		session.setAttribute("protein", macros.getProtein());
