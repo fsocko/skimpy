@@ -222,11 +222,16 @@ public class DBConnect extends HttpServlet{
 
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
+			GDA macros = new GDA(user);
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
+					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
 					+ "VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
 							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
-							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + "')";
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
+							"', '" + macros.getBMR() + "', '" + macros.getCalories() + "', '" + macros.getProtein() +
+							"', '" + macros.getCarbs() + "', '" + macros.getSugars() + "', '" + macros.getFat() +
+							"', '" + macros.getSaturates() + "', '" + macros.getFibre() + "', '" + macros.getSalt() +"')";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			

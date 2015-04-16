@@ -24,6 +24,7 @@ public class GDA extends HttpServlet {
 	private double saturates;
 	private double fibre;
 	private double salt;
+	private double BMR;
 	/**
 	 * Constructs the GDA model for a user. Calculates each as a ratio of calories and converts to grams.
 	 * @param p takes in a user.
@@ -90,6 +91,7 @@ public class GDA extends HttpServlet {
 		//7-21hrs/week of strenuous exercise/work
 		if(p.getExercise() == 5)
 			TDEE = 1.9 * BMR;
+		this.BMR = BMR;
 		return TDEE;
 	}
 	/**
@@ -114,7 +116,9 @@ public class GDA extends HttpServlet {
 		int multiplier = 100;
 		return Math.round(x * multiplier)/ (double)multiplier;
 	}
-
+	public double getBMR(){
+		return BMR;
+	}
 	public double getCalories() {
 		return calories;
 	}
