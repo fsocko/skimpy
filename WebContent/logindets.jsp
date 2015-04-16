@@ -12,86 +12,64 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/welcome.jsp" />
-<title>Insert title here</title>
+<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/home.jsp" />
+<title>Log In</title>
 </head>
 <body>
 <form action="welcome.jsp" method="post"></form>
-<%! String userdbName;
+<%! String userdbEmail;
 	String userdbPswd;
 	String userdbN;
 	Date userdbDOB;
 	double userdbWeight;
 	char userdbGender;
-	int userdbEx;
+	String userdbEx;
 	double userdbHeight;
 	int userdbAge;
 	String userID;
+	
+	DBConnect con = new DBConnect();
+	Person sessionUser = null;
 %>
 <% 
-Connection con = null;
-Statement st = null;
-ResultSet rs = null;
 
-
-String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/Skimpy";
-String user = "root";
-String psw = "";
-
-String username = request.getParameter("email");
+String email = request.getParameter("email");
 String password = request.getParameter("password");
-String sql = "select * FROM user_info where UserEmail LIKE'" + username + "'";
-if((!(username.equals(null) || username.equals("")) && !(password.equals(null) || password.equals("")) )){
-try{
-	Class.forName(driverName);
-	con = DriverManager.getConnection(url, user, psw);
-	st = con.prepareStatement(sql);
-	rs = st.executeQuery(sql);
-	if(rs.next()){
-		
-		userID = rs.getString("UserID");
-		userdbN = rs.getString("UserName");
-		userdbName = rs.getString("UserEmail");
-		userdbHeight = rs.getDouble("Height");
-		userdbEx= rs.getInt("Exercise");
-		userdbWeight = rs.getDouble("Weight");
-		userdbGender = rs.getString("Gender").charAt(0);
-		userdbAge = rs.getInt("Age");
-		/* userdbDOB =rs.getDate("DateOfBirth"); 
-		java.util.Date DOB = new Date(userdbDOB.getTime()); */
+sessionUser = con.pullUser(email);
 
+//if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
+if(true){
+	userID = sessionUser.getID();
+	userdbN = sessionUser.getName();
+	userdbEmail = sessionUser.getEmail();
+	userdbHeight = sessionUser.getHeight();
+	userdbEx= sessionUser.getExerciseDisplay();
+	userdbWeight = sessionUser.getWeight();
+	userdbGender = sessionUser.getGender();
+	userdbAge = sessionUser.getAge();
+	userdbDOB = sessionUser.getDob(); 
+	System.out.println(email);
+	System.out.println(userdbEmail);
+//	java.util.Date DOB = new Date(userdbDOB.getTime());
+	if(email.equals(userdbEmail) && password.equals(userdbPswd)){
+		System.out.println("Step Two");
+		session.setAttribute("email", email);
+		session.setAttribute("password", userdbPswd);
+		session.setAttribute("username", userdbN);
+ 		session.setAttribute("dob", userdbDOB);
+ 		session.setAttribute("age", userdbAge);
+		session.setAttribute("exercise", userdbEx);
+		session.setAttribute("weight", userdbWeight);
+		session.setAttribute("height", userdbHeight);
+		session.setAttribute("gender", userdbGender);
+		session.setAttribute("ID", userID);
 		
-		System.out.println(userdbN);
-		System.out.println(userID);
-		userdbPswd = rs.getString("UserPassword");
-		if(username.equals(userdbName) && password.equals(userdbPswd)){
-			session.setAttribute("email", username);
-			session.setAttribute("password", userdbPswd);
-			session.setAttribute("username", userdbN);
-  			session.setAttribute("dob", userdbDOB);
-  			session.setAttribute("age", userdbAge);
-			session.setAttribute("exercise", userdbEx);
-			session.setAttribute("weight", userdbWeight);
-			session.setAttribute("height", userdbHeight);
-			session.setAttribute("gender", userdbGender);
-			session.setAttribute("ID", userID);
-			
-			session.setMaxInactiveInterval(3000);
-			response.sendRedirect("home.jsp");
-		} else {
-			response.sendRedirect("error.jsp");
-			rs.close();
-			st.close();
-		}
-	}
-	else
+		session.setMaxInactiveInterval(3000);
+		response.sendRedirect("home.jsp");
+	} else {
 		response.sendRedirect("error.jsp");
-		rs.close();
-		st.close();
-}catch(Exception ex){
-	System.out.println(ex);
-}
+		con.closeCon();
+	}
 }else{
 %>
 	<center><p style="color:red">Error In Login</p></center>

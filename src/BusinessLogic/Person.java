@@ -51,10 +51,29 @@ public class Person extends HttpServlet{
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
-		this.exercise = exercise;	
+		this.exercise = exercise;
 		
 		//DBConnect connect = new DBConnect();
     	//connect.pushUser(this);
+	}
+	
+	public String decodeEx(int exercise){
+		String s = null;
+		if(exercise == 1)
+			s ="Desk job with little exercise";
+	    //1-3hrs/week of light this.exercise
+	    if(exercise == 2)
+	      s = "1-3hrs/week of light exercise";
+	    //3-5hrs/week of moderate this.exercise
+	    if(exercise == 3)
+	      s = "3-5hrs/week of moderate exercise";
+	    //5-6hrs/week of strenuous this.exercise
+	    if(exercise == 4)
+	      s = "5-6hrs/week of strenuous exercise";
+	    //7-21hrs/week of strenuous this.exercise/work
+	    if(exercise == 5)
+	      s = "7-21hrs/week of strenuous exercise/work";
+		return s;
 	}
 	
 	public int setAge(){
@@ -116,6 +135,9 @@ public class Person extends HttpServlet{
 	}
 	public int getExercise(){
 		return exercise;
+	}
+	public String getExerciseDisplay(){
+		return decodeEx(exercise);
 	}
 	public MealPlanner getMealplan(){
 		return mealplan;

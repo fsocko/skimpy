@@ -167,7 +167,7 @@
                     <span class="label label-info">Height</span>
                   </div>
                   <div class="col-sm-8">
-                    <p><%=session.getAttribute("height") %></p>
+                    <p><%=session.getAttribute("height") %> cm</p>
                   </div>
                   <div class="col-sm-4">
                     <span class="label label-info">Weight</span>
@@ -179,7 +179,7 @@
                     <span class="label label-info">Exercise Level</span>
                   </div>
                   <div class="col-sm-8">
-                    <p><%=session.getAttribute("exercise") %> cm</p>
+                    <p><%=session.getAttribute("exercise") %></p>
                   </div>
                   <div class="col-sm-4">
                     <span class="label label-info">Age</span>
