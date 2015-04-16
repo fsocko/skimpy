@@ -26,14 +26,19 @@
 		}
 		
 		function fillResults(data) {
+			var mass;
+			var supermarket_class;
+			
 			$('#results').append(
 					$('<div>').addClass('separator').text('Search results'));
 			for (x in data) {
 				var link_to_page = "";
 				if (data[x].supermarket == 'T') {
+					supermarket_class = 'tesco-price';
 					link_to_page = "http://www.tesco.com/groceries/product/details/?id=" + data[x].shopID;
 				}
 				else if (data[x].supermarket == 'S') {
+					supermarket_class = 'sains-price';
 					if (data[x].shopID.indexOf('ProductDisplay?') == 0) {
 						link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/" + data[x].shopID;
 					}
@@ -43,7 +48,7 @@
 					}
 				}
 				
-				var mass;
+				
 				if (data[x].mass == "1.69") {
 					mass = "-";
 				}
@@ -58,7 +63,8 @@
 					.append(
 						$('<span>').addClass('product-mass').text(mass))
 					.append(
-						$('<span>').addClass('product-price').text("£" + data[x].price.toFixed(2)))
+						$('<span>').addClass('product-price').addClass(supermarket_class)
+						.text("£" + data[x].price.toFixed(2)))
 					.append($('<span>').addClass('button-add').append(
 						$('<i>').addClass('fa').addClass('fa-plus')))
 				);
@@ -111,6 +117,7 @@
 					$('#results').empty();
 					$('#autocomplete-box').css("visibility", "hidden");
 					$('#search').val('');
+					$('#search').focus();
 				}
 			);
 			

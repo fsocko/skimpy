@@ -224,3 +224,15 @@ body {
 .serving-size {
 	width: 64px;
 }
+
+.asda-price {
+	color: #78be20;
+}
+
+.sains-price {
+	color: #f26334;
+}
+
+.tesco-price {
+	color: #00539F;
+}
