@@ -54,49 +54,49 @@
                         <span class="label label-info">Calories</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("calories") %> kcal</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Protein</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("protein") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Carbohydrates</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("carbs") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Sugar</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("sugar") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Fat</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("fat") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Saturates</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("saturates") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Fibre</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("fibre") %> g</p>
                       </div>
                       <div class="col-sm-4">
                         <span class="label label-info">Salt</span>
                       </div>
                       <div class="col-sm-8">
-                        <p>0</p>
+                        <p><%=session.getAttribute("salt") %> g</p>
                       </div>
                     </div>
                   </div>
@@ -195,7 +195,7 @@
                     <span class="label label-info">BMI</span>
                   </div>
                   <div class="col-sm-8">
-                    <p>0</p>
+                    <p><%=session.getAttribute("BMI") %></p>
                   </div>
                 </div>
               </div>

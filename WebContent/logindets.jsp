@@ -30,29 +30,29 @@
 	
 	DBConnect con = new DBConnect();
 	Person sessionUser = null;
+	GDA macros = null;
 %>
 <% 
 
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 sessionUser = con.pullUser(email);
-
+macros = new GDA(sessionUser);
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	userID = sessionUser.getID();
 	userdbN = sessionUser.getName();
 	userdbEmail = sessionUser.getEmail();
 	userdbPswd = sessionUser.getPassword();
 	userdbHeight = sessionUser.getHeight();
-	userdbEx= sessionUser.getExerciseDisplay();
+	userdbEx = sessionUser.getExerciseDisplay();
 	userdbWeight = sessionUser.getWeight();
 	userdbGender = sessionUser.getGender();
 	userdbAge = sessionUser.getAge();
 	userdbDOB = sessionUser.getDob(); 
-	System.out.println(email);
-	System.out.println(userdbEmail);
+	double userdbBMI = macros.getBMR();
+
 //	java.util.Date DOB = new Date(userdbDOB.getTime());
 	if(email.equals(userdbEmail) && password.equals(userdbPswd)){
-		System.out.println("Step Two");
 		session.setAttribute("email", email);
 		session.setAttribute("password", userdbPswd);
 		session.setAttribute("username", userdbN);
@@ -63,6 +63,16 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 		session.setAttribute("height", userdbHeight);
 		session.setAttribute("gender", userdbGender);
 		session.setAttribute("ID", userID);
+		session.setAttribute("BMI", userdbBMI);
+		
+		session.setAttribute("calories", macros.getCalories());
+		session.setAttribute("protein", macros.getProtein());
+		session.setAttribute("carbs", macros.getCarbs());
+ 		session.setAttribute("sugar", macros.getSugars());
+ 		session.setAttribute("fat", macros.getFat());
+		session.setAttribute("saturates",macros.getSaturates());
+		session.setAttribute("fibre", macros.getFibre());
+		session.setAttribute("salt", macros.getSalt());
 		
 		session.setMaxInactiveInterval(3000);
 		response.sendRedirect("home.jsp");

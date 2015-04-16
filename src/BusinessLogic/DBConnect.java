@@ -203,7 +203,7 @@ public class DBConnect extends HttpServlet{
 				int exercise = rs.getInt("Exercise");
 				
 				
-				user = new Person(userName, userEmail, password, dob, weight, height, gender, exercise);
+				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
 			}
 			if(foundUser){
 				return user;

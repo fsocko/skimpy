@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.servlet.http.HttpServlet;
 
 /**
@@ -94,6 +97,13 @@ public class GDA extends HttpServlet {
 		this.BMR = BMR;
 		return TDEE;
 	}
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
 	/**
 	 * Formats the ratios from calories to convert them to grams then round them to 2 decimal places.
 	 * @param x The ratio of calories that needs to be formatted.
@@ -117,37 +127,37 @@ public class GDA extends HttpServlet {
 		return Math.round(x * multiplier)/ (double)multiplier;
 	}
 	public double getBMR(){
-		return BMR;
+		return round(BMR, 2);
 	}
 	public double getCalories() {
-		return calories;
+		return round(calories, 2);
 	}
 
 	public double getProtein() {
-		return protein;
+		return round(protein, 2);
 	}
 
 	public double getCarbs() {
-		return carbs;
+		return round(carbs, 2);
 	}
 
 	public double getSugars() {
-		return sugars;
+		return round(sugars, 2);
 	}
 
 	public double getFat() {
-		return fat;
+		return round(fat, 2);
 	}
 
 	public double getSaturates() {
-		return saturates;
+		return round(saturates, 2);
 	}
 
 	public double getFibre() {
-		return fibre;
+		return round(fibre, 2);
 	}
 
 	public double getSalt() {
-		return salt;
+		return round(salt, 2);
 	}
 }

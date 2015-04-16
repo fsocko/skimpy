@@ -47,7 +47,7 @@ public class Person extends HttpServlet{
 		this.email = email;
 		this.password = password;
 		this.dob = dob;
-		setAge();
+		this.age = setAge();
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
