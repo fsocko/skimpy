@@ -25,7 +25,9 @@
  	    String MealName = request.getParameter("mealname");
 	    String [] Ingredients =  request.getParameterValues("ingred");
         String ingredients = java.util.Arrays.deepToString(Ingredients);
-        DBConnect con = new DBConnect();
+        String [] mass = request.getParameterValues("mass");
+        String masses = java.util.Arrays.deepToString(mass);
+        /* DBConnect con = new DBConnect();
     	
     		ArrayList<Food> f_ingredients = new ArrayList<Food>();
     		for (int i =1; i<7;i++){
@@ -37,13 +39,14 @@
     		XMLParser writeX = new XMLParser();
     	    writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
     	    String path = getServletContext().getRealPath("");
-    	    writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    	    writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); */
     	    
    %>
         <%=ingredients %>
-        <%=currentMeal.toString() %>
+        <%=masses %>
+        <%-- <%=currentMeal.toString() %> --%>
         <%=MealName %>
-        <%=path %>
+        <%-- <%=path %> --%>
         
  
  	<p>Go back if you want to make some changes or click 

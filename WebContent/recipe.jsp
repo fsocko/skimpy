@@ -142,6 +142,7 @@
 			
 			$('#results').on('click', '.button-add',
 				function (event) {
+				    $('#ingred').val($('#ingred').val() + $(this).closest('.result-entry').find('.product-name').text() + ";");
 					$('#products-list').append(
 						$('<div>').addClass('product-list-entry').append(
 								$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
@@ -155,7 +156,7 @@
 									.append($('<i>').addClass('fa').addClass('fa-times')))
 							.append(
 								$('<span>').addClass('list-product-mass').text('Serving size: ')
-									.append($('<input>').addClass('serving-size')
+									.append($('<input id="mass" name = "mass">').addClass('serving-size')
 										.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text())))
 					);
 				}
@@ -171,7 +172,7 @@
 	
     <div class="container">
     	<h2 class="text-left">Create a Meal</h2>
-    
+    <form action="savedMeal.jsp" method="POST">
     	<div id ="search-container">
     		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
     		<div id="autocomplete-box">
@@ -185,8 +186,11 @@
 			<input class="recipe-name" name="mealname" placeholder="Meal Name">
 			<div class="products-mass">
 				<div id="products-list"></div>
+				<input class="list-group"  id="ingred" type="hidden" name="ingred" value="">
 			</div>
 		</div>
+		<input type="submit" class="btn btn-block btn-success btn-lg" style="width:150px" value="Save Your Meal" />
+		</form>
     </div>
   </body>
 

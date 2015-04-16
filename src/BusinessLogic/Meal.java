@@ -16,21 +16,29 @@ public class Meal extends HttpServlet{
 	 * Will be used in creating a MealPlanner . Then can be compared to the user's GDA.
 	 */
 	private String name;
+	private int serves;
 	private ArrayList<Food> ingredients;
+	private ArrayList<Integer> masses;
 	private int userId;
 	/**
 	 * Constructs a default Meal.
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients, int userId)
+	public Meal(String name, int serves, ArrayList<Food> ingredients, ArrayList<Integer> masses, int userId)
 	{
 		this.name = name;
+		this.serves = serves;
 		this.ingredients = new ArrayList<Food>();
 				for(Food f : ingredients)
 		{
 					this.ingredients.add(f);
-		}			
+		}
+				this.ingredients = new ArrayList<Food>();
+				for(Integer m : masses)
+		{
+					this.masses.add(m);
+		}
 		this.userId = userId;
 	}	
 	/**
@@ -162,9 +170,17 @@ public class Meal extends HttpServlet{
 	{
 		return this.name;
 	}
+	public int getServings()
+	{
+		return serves;
+	}
 	public ArrayList<Food> getIngredients()
 	{
 		return ingredients;
+	}
+	public ArrayList<Integer> getIngMasses()
+	{
+		return masses;
 	}
 	public int getUserId()
 	{
