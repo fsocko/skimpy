@@ -181,28 +181,29 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public Person pullUser(String UserID)
+	public Person pullUser(String userEmail)
 	{
 		openCon();
 		try{
 			Person user = null;
 			boolean foundUser = false;
 			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE UserID=" + UserID);
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + userEmail + "';");
 			while (rs.next()){
 				foundUser = true;
 				String userName = rs.getString("UserName");
 				
-				String userEmail = rs.getString("UserEmail");
+//				String userEmail = rs.getString("UserEmail");
 				String password = rs.getString("UserPassword");
 				
-				Date dob = rs.getTimestamp("DateOfBirth");
+				Date dob = rs.getDate("DateOfBirth");
 				double weight = rs.getDouble("Weight");
 				double height = rs.getDouble("Height");
 				char gender = rs.getString("Gender").charAt(0);
 				int exercise = rs.getInt("Exercise");
 				
-				user = new Person(userName, userEmail, password, dob, weight, height, gender, exercise);
+				
+				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
 			}
 			if(foundUser){
 				return user;
@@ -222,11 +223,16 @@ public class DBConnect extends HttpServlet{
 
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
+			GDA macros = new GDA(user);
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
+					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
 					+ "VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
 							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
-							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + "')";
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
+							"', '" + macros.getBMR() + "', '" + macros.getCalories() + "', '" + macros.getProtein() +
+							"', '" + macros.getCarbs() + "', '" + macros.getSugars() + "', '" + macros.getFat() +
+							"', '" + macros.getSaturates() + "', '" + macros.getFibre() + "', '" + macros.getSalt() +"')";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			

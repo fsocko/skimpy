@@ -104,7 +104,7 @@
     <div class="container">
       <form class="form-signin" action="logindets.jsp" method="post">
         <h2 class="form-signin-heading">Login</h2>
-        <input type="text" name = "email" class="form-control" placeholder="Username or Email"><p class="my-errors"></p>
+        <input type="text" name = "email" class="form-control" placeholder="Email"><p class="my-errors"></p>
         <input type="password" name = "password" class="form-control" placeholder="Password"><p class="my-errors"></p>
         <label class="checkbox">
           <input type="checkbox" value="remember-me">Remember me</label>

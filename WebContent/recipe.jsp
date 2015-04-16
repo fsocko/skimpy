@@ -1,4 +1,4 @@
-<%@include file="home.jsp" %>
+<%@include file="header.jsp" %>
 <!doctype html>
 
 <html>
