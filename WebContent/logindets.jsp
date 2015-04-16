@@ -37,11 +37,11 @@ String email = request.getParameter("email");
 String password = request.getParameter("password");
 sessionUser = con.pullUser(email);
 
-//if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
-if(true){
+if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	userID = sessionUser.getID();
 	userdbN = sessionUser.getName();
 	userdbEmail = sessionUser.getEmail();
+	userdbPswd = sessionUser.getPassword();
 	userdbHeight = sessionUser.getHeight();
 	userdbEx= sessionUser.getExerciseDisplay();
 	userdbWeight = sessionUser.getWeight();
