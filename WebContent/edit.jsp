@@ -159,7 +159,7 @@
                         <a> Change Password </a>
                       </div>
                       <div class="col-sm-4">
-                        <a class="btn pull-right btn-success btn-xs">Save</a>
+                        <a class="btn pull-right btn-success btn-md">Save</a>
                       </div>
                     </div>
                   </div>

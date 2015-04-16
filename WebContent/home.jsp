@@ -150,7 +150,7 @@
                         <h4><%=session.getAttribute("username") %></h4>
                       </div>
                       <div class="col-sm-4">
-                        <a href = "edit.jsp" class="btn pull-right btn-primary btn-xs">Edit</a>
+                        <a href = "edit.jsp" class="btn pull-right btn-primary btn-md">Edit</a>
                       </div>
                     </div>
                     <div class="row">
