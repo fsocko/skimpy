@@ -148,14 +148,15 @@
 							$('<span>').addClass('list-product-name').text(
 								$(this).closest('.result-entry').find('.product-name').text())))
 							.append(
-								$('<span>').addClass('list-product-mass').text(
-									$(this).closest('.result-entry').find('.product-mass').text()))
-							.append(
 								$('<span>').addClass('list-product-price').text(
 									$(this).closest('.result-entry').find('.product-price').text()))
 							.append(
 								$('<span>').addClass('button-remove')
 									.append($('<i>').addClass('fa').addClass('fa-times')))
+							.append(
+								$('<span>').addClass('list-product-mass').text('Serving size: ')
+									.append($('<input>').addClass('serving-size')
+										.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text())))
 					);
 				}
 			);
