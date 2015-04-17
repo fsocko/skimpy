@@ -192,19 +192,18 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public Person pullUser(String userEmail)
+	public Person pullUser(String ID)
 	{
 		openCon();
 		try{
 			Person user = null;
 			boolean foundUser = false;
-			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + userEmail + "';");
+			rs = st.executeQuery("select * FROM user_info WHERE UserID= '" + ID + "';");
 			while (rs.next()){
 				foundUser = true;
 				String userName = rs.getString("UserName");
 				
-//				String userEmail = rs.getString("UserEmail");
+				String userEmail = rs.getString("UserEmail");
 				String password = rs.getString("UserPassword");
 				
 				Date dob = rs.getDate("DateOfBirth");
@@ -215,6 +214,7 @@ public class DBConnect extends HttpServlet{
 				
 				
 				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
+				user.setID(rs.getInt("UserID"));
 			}
 			if(foundUser){
 				return user;
@@ -230,27 +230,71 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
-		
-
-	public void pushUser(Person user){
+			
+	public int getIDfromEmail(String email){
+		openCon();
 		try{
-			GDA macros = new GDA(user);
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
-					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
-					+ "VALUES ('" + 
-							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
-							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
-							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
-							"', '" + macros.getBMR() + "', '" + macros.getCalories() + "', '" + macros.getProtein() +
-							"', '" + macros.getCarbs() + "', '" + macros.getSugars() + "', '" + macros.getFat() +
-							"', '" + macros.getSaturates() + "', '" + macros.getFibre() + "', '" + macros.getSalt() +"')";
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + email + "';");
+			while (rs.next()){
+				return rs.getInt("UserID");
+			}
+
+			return -1;
+	
+		} catch(Exception ex){
+			System.out.println(ex);
+			return -1;
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+	
+	public void updateUser(Person user){
+		openCon();
+		try{				
+			String query = "UPDATE user_info " +
+					"SET UserName = '" + user.getName() + "' " +
+					", UserEmail = '" + user.getEmail() + "' " +
+					", UserPassword = '" + user.getPassword() + "' " +
+					", DateOfBirth = '" + new java.sql.Date(user.getDob().getTime()) + "' " +
+					", Age = '" + user.getAge() + "' " +
+					", Height = '" + user.getHeight() + "' " +
+					", Weight = '" + user.getWeight() + "' " +
+					", Gender = '" + user.getGender() + "' " +
+					", Exercise = '" + user.getExercise() + "' " +
+					"WHERE UserID = '" + user.getID() + "';";
 			st.executeUpdate(query);
-			System.out.println("Pushes to Database");
 			
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeCon();
+		}
 	}
+	
+	public void pushUser(Person user){
+		openCon();
+		try{
+			String query ="INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
+					+ "VALUES ('" + 
+							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
+							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() +"')";
+			st.executeUpdate(query);
+
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+	
 	//I think this is unused
 	public void findCat(String qu){
 		try{

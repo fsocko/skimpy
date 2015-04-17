@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
-<%@page import="interfc.*"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Date" %>
-<%@page import="javax.script.*"%>
-<%@page import="java.io.IOException"%>
-<%@page import="java.sql.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,82 +11,59 @@
 <title>Log In</title>
 </head>
 <body>
-<form action="welcome.jsp" method="post"></form>
-<%! String userdbEmail;
-	String userdbPswd;
-	String userdbN;
-	Date userdbDOB;
-	double userdbWeight;
-	char userdbGender;
-	String userdbEx;
-	double userdbHeight;
-	int userdbAge;
-	String userID;
-	
-	DBConnect con = new DBConnect();
-	Person sessionUser = null;
-	GDA macros = null;
-%>
 <% 
-
+DBConnect con = new DBConnect();
+Person sessionUser = null;
 String email = request.getParameter("email");
 String password = request.getParameter("password");
-sessionUser = con.pullUser(email);
-macros = new GDA(sessionUser);
-if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
-	userID = sessionUser.getID();
-	userdbN = sessionUser.getName();
-	userdbEmail = sessionUser.getEmail();
-	userdbPswd = sessionUser.getPassword();
-	userdbHeight = sessionUser.getHeight();
-	userdbEx = sessionUser.getExerciseDisplay();
-	int userdbExNo = sessionUser.getExercise();
-	userdbWeight = sessionUser.getWeight();
-	userdbGender = sessionUser.getGender();
-	userdbAge = sessionUser.getAge();
-	userdbDOB = sessionUser.getDob(); 
-	double userdbBMI = macros.getBMR();
 
-//	java.util.Date DOB = new Date(userdbDOB.getTime());
-	if(email.equals(userdbEmail) && password.equals(userdbPswd)){
-		session.setAttribute("email", email);
-		session.setAttribute("password", userdbPswd);
-		session.setAttribute("username", userdbN);
- 		session.setAttribute("dob", userdbDOB);
- 		session.setAttribute("age", userdbAge);
-		session.setAttribute("exercise", userdbEx);
-		session.setAttribute("exerciseNo", userdbExNo);
-		session.setAttribute("weight", userdbWeight);
-		session.setAttribute("height", userdbHeight);
-		session.setAttribute("genderChar", userdbGender);
-		session.setAttribute("genderDisp", sessionUser.getGenderDisp(userdbGender));
-		session.setAttribute("ID", userID);
-		session.setAttribute("BMI", userdbBMI);
+int sessionID = con.getIDfromEmail(email);
+sessionUser = con.pullUser(String.valueOf(sessionID));
+
+if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
+	if(email.equals(sessionUser.getEmail()) && password.equals(sessionUser.getPassword())){
+		session.setAttribute("username", sessionUser.getName());
+		session.setAttribute("email", sessionUser.getEmail());
+		session.setAttribute("password", sessionUser.getPassword());
+ 		session.setAttribute("dob", sessionUser.getDob());
+ 		session.setAttribute("age", sessionUser.getAge());
+		session.setAttribute("height", sessionUser.getHeight());
+		session.setAttribute("weight", sessionUser.getWeight());
+		session.setAttribute("exercise", sessionUser.getExerciseDisplay());
+		session.setAttribute("exerciseNo", sessionUser.getExercise());
+		session.setAttribute("genderChar", sessionUser.getGender());
+		session.setAttribute("genderDisp", sessionUser.getGenderDisp(sessionUser.getGender()));
+		session.setAttribute("ID", sessionID);
 		
-		session.setAttribute("Day", sessionUser.getDay(userdbDOB));
-		session.setAttribute("Month", sessionUser.getMonth(userdbDOB));
-		session.setAttribute("Year", sessionUser.getYear(userdbDOB));
+		sessionUser.resetMacros();
 		
-		session.setAttribute("DD", String.valueOf(sessionUser.getDay(userdbDOB)));
-		session.setAttribute("MM", sessionUser.getMonthNo(userdbDOB));
-		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(userdbDOB)));
+		session.setAttribute("Day", sessionUser.getDay(sessionUser.getDob()));
+		session.setAttribute("Month", sessionUser.getMonth(sessionUser.getDob()));
+		session.setAttribute("Year", sessionUser.getYear(sessionUser.getDob()));
 		
-		session.setAttribute("calories", macros.getCalories());
-		session.setAttribute("protein", macros.getProtein());
-		session.setAttribute("carbs", macros.getCarbs());
- 		session.setAttribute("sugar", macros.getSugars());
- 		session.setAttribute("fat", macros.getFat());
-		session.setAttribute("saturates",macros.getSaturates());
-		session.setAttribute("fibre", macros.getFibre());
-		session.setAttribute("salt", macros.getSalt());
+		session.setAttribute("DD", String.valueOf(sessionUser.getDay(sessionUser.getDob())));
+		session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
+		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
+		
+		session.setAttribute("BMI", sessionUser.getMacros().getBMR());
+		session.setAttribute("calories", sessionUser.getMacros().getCalories());
+		session.setAttribute("protein", sessionUser.getMacros().getProtein());
+		session.setAttribute("carbs", sessionUser.getMacros().getCarbs());
+ 		session.setAttribute("sugar", sessionUser.getMacros().getSugars());
+ 		session.setAttribute("fat", sessionUser.getMacros().getFat());
+		session.setAttribute("saturates",sessionUser.getMacros().getSaturates());
+		session.setAttribute("fibre", sessionUser.getMacros().getFibre());
+		session.setAttribute("salt", sessionUser.getMacros().getSalt());
 		
 		session.setMaxInactiveInterval(3000);
 		response.sendRedirect("home.jsp");
-	} else {
+	} 
+	else {
 		response.sendRedirect("error.jsp");
 		con.closeCon();
 	}
-}else{
+}
+else{
 %>
 	<center><p style="color:red">Error In Login</p></center>
 <% getServletContext().getRequestDispatcher("/login.jsp").include(request,response);
