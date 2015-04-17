@@ -52,15 +52,25 @@
     		
     		
     		Meal currentMeal = new Meal(MealName, f_ingredients, massList ); 
-    		System.out.println(currentMeal.toString());
-    		//ArrayList<Meal> meals = new ArrayList<Meal>();
-    		//meals.add(currentMeal);
-    		//XMLParser writeX = new XMLParser();
-    	    //writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
-    	    //String path = getServletContext().getRealPath("");
-    	    //writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    		//System.out.println(currentMeal.toString());
+    		ArrayList<Meal> meals = new ArrayList<Meal>();
+    		
+    		XMLParser writeX = new XMLParser();
+    		ArrayList<Meal> readmeals = new ArrayList<Meal>();
+    		
+    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    	    readmeals.add(currentMeal);
+    	    writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");
+    	    String path = getServletContext().getRealPath("");
+    	    
+    	    
+    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    	    for(Meal m: readmeals){%>
+    	    	<a href ="#"><%=m.getName() %></a>
+    	   <% }
     	    
    %>
+   <%=path %>
 
  	<p>Go back if you want to make some changes or click 
  	"Get Prices" button to get prices comparison and the best deal!
