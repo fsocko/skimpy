@@ -178,7 +178,7 @@
 	                    <div class="row">
 	                      <div class="col-sm-8">
 	                        <a> Upload Picture </a><br>
-	                        <a> Change Password </a>
+	                        <a href = "change_password.jsp"> Change Password </a>
 	                      </div>
 	                      <div class="col-sm-4">
 	                        <button class="btn pull-right btn-success btn-md" type = "submit">Save</button>

@@ -17,7 +17,6 @@
 <%
 DBConnect con = new DBConnect();
 Person user = con.pullUser(String.valueOf(session.getAttribute("ID")));
-//Person user = con.pullUser("35");
 String name = request.getParameter("name");
 String email = request.getParameter("email");
 double height = Double.parseDouble(request.getParameter("height"));
@@ -67,9 +66,8 @@ session.setAttribute("saturates",user.getMacros().getSaturates());
 session.setAttribute("fibre", user.getMacros().getFibre());
 session.setAttribute("salt", user.getMacros().getSalt());
 
+
 con.updateUser(user);
-
-
 %>
 
 </body>

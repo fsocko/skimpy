@@ -12,21 +12,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/login.jsp" />
+<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/edit.jsp" />
 <body>
-<% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", new Date(), -1, -1, 'M', -1);
-user.setName(request.getParameter("name"));
-user.setEmail(request.getParameter("emailaddress"));
-user.setPassword(request.getParameter("password"));
-user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
+<% 
+DBConnect con = new DBConnect();
+
+String name = request.getParameter("name");
+String email = request.getParameter("email");
+String password = request.getParameter("password");
+char gender = request.getParameter("gender").toUpperCase().charAt(0);
 String date = request.getParameter("date");
 String month = request.getParameter("month");
 String year = request.getParameter("year"); 
 String dobString = year +"-"+month+"-"+date;
 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
-user.setDob(dob);
-DBConnect connect = new DBConnect();
-connect.pushUser(user);
+
+Person user = new Person(name, email, password, dob, -1, -1, gender, -1);
+
+con.pushUser(user);
+
+int sessionID = con.getIDfromEmail(email);
+Person sessionUser = con.pullUser(String.valueOf(sessionID));
+
+session.setAttribute("username", sessionUser.getName());
+session.setAttribute("email", sessionUser.getEmail());
+session.setAttribute("password", sessionUser.getPassword());
+session.setAttribute("dob", sessionUser.getDob());
+session.setAttribute("age", sessionUser.getAge());
+session.setAttribute("genderChar", sessionUser.getGender());
+session.setAttribute("genderDisp", sessionUser.getGenderDisp(sessionUser.getGender()));
+session.setAttribute("ID", sessionID);
+
+session.setAttribute("Day", sessionUser.getDay(sessionUser.getDob()));
+session.setAttribute("Month", sessionUser.getMonth(sessionUser.getDob()));
+session.setAttribute("Year", sessionUser.getYear(sessionUser.getDob()));
+
+session.setAttribute("DD", String.valueOf(sessionUser.getDay(sessionUser.getDob())));
+session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
+session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
 %>
 
 </body>
