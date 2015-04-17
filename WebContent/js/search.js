@@ -47,9 +47,11 @@ function fillResults(data) {
 						.append($('<span>').addClass('product-name').text(data[x].name)))
 						.append(
 								$('<span>').addClass('product-mass').text(mass))
+								.append($('<span>').addClass('shopID').text(data[x].ID))
+								.append($('<span>').addClass('shopName').text(data[x].supermarket))
 								.append(
 										$('<span>').addClass('product-price').addClass(supermarket_class)
-										.text("£" + data[x].price.toFixed(2)))
+										.text('Â£' + data[x].price.toFixed(2)))
 										.append($('<span>').addClass('button-add').append(
 												$('<i>').addClass('fa').addClass('fa-plus')))
 		);
@@ -129,6 +131,8 @@ $(document).ready(function(){
 	
 	$('#results').on('click', '.button-add',
 		function (event) {
+		    $('#ingred').val($('#ingred').val() + $(this).closest('.result-entry').find('.shopID').text() + ";");
+		    $('#supermarket').val($('#supermarket').val() + $(this).closest('.result-entry').find('.shopName').text() + ";");
 			$('#products-list').append(
 				$('<div>').addClass('product-list-entry').append(
 						$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
@@ -142,7 +146,7 @@ $(document).ready(function(){
 							.append($('<i>').addClass('fa').addClass('fa-times')))
 					.append(
 						$('<span>').addClass('list-product-mass').text('Serving size: ')
-							.append($('<input>').addClass('serving-size')
+							.append($('<input name="mass" id ="mass">').addClass('serving-size')
 								.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text())))
 			);
 		}

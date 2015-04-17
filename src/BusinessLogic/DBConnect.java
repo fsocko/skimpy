@@ -78,12 +78,23 @@ public class DBConnect extends HttpServlet{
 	}
 
 	
-	public Food pullFood(String table, String ID)
-
+	public Food pullFood(String t, String ID)
+    
 	{
 		openCon();
 		Food returnedFood = null;
+		String table;
 		try{
+			
+			if(
+			t.equals("A")){
+			 table = "asda";
+			}else if(
+			t.equals("T")){
+			table = "tesco";
+		    }else{
+		    table="sains";
+		    }
 			
 			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 //			System.out.println(query);
@@ -648,6 +659,7 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
+				temp.put("ID", rs.getInt("ID"));
 				temp.put("name", rs.getString("Name").trim());
 				temp.put("price", rs.getDouble("Price"));
 				temp.put("shopID", rs.getString("ShopID").trim());
