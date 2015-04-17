@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+	function showValue(newValue)
+	{
+		if(newValue == 1){
+			document.getElementById("range").innerHTML= "Desk job with little exercise"
+		}
+		if(newValue == 2){
+			document.getElementById("range").innerHTML=	"1-3hrs/week of light exercise"	
+		}
+		if(newValue == 3){
+			document.getElementById("range").innerHTML="3-5hrs/week of moderate exercise"
+		}
+		if(newValue == 4){
+			document.getElementById("range").innerHTML= "5-6hrs/week of strenuous exercise"
+		}
+		if(newValue == 5){
+			document.getElementById("range").innerHTML= "7-21hrs/week of strenuous exercise/work"
+		}
+
+	}
+	</script>
     <style type="text/css">
       .navbar {
         margin-bottom: 5px;
@@ -204,14 +225,12 @@
                       <span class="label label-info">Exercise</span>
                     </div>
                     <div class="col-sm-8">
+                    <%-- <input type="range" min="1" max="5" value="<%=session.getAttribute("exerciseNo") %>" step="1" onchange="showValue(this.value)" />
+                      <span id="range">"showValue(<%=session.getAttribute("exerciseNo") %>)"</span> --%>
                       <div class="birthday-drop">
                         <select name="exercise" class="form-control" >
                           <option value="<%=session.getAttribute("exerciseNo") %>" selected><%=session.getAttribute("exercise") %></option>
-                          <option value="1">Desk job with little exercise</option>
-                          <option value="2">1-3hrs/week of light exercise</option>
-                          <option value="3">3-5hrs/week of moderate exercise</option>
-                          <option value="4">5-6hrs/week of strenuous exercise</option>
-                          <option value="5">7-21hrs/week of strenuous exercise/work</option>
+
                         </select>
                       </div>
                     </div>

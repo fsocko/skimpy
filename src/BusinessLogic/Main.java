@@ -18,7 +18,7 @@ public class Main extends HttpServlet{
 	public static void main(String[] args) 
 	{
 		
-		
+		System.out.println(Person.heightToFoot(182.88));
 		
 		DBConnect con = new DBConnect();
 //		SpiderToDB std = new SpiderToDB();

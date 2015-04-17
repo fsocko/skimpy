@@ -136,6 +136,16 @@ public class Person extends HttpServlet{
 			return "Female";
 		}
 	}
+	
+	public static String heightToFoot(double cm){
+		String s = "";
+		double feet = Format.round(cm/30.48, 0);
+		double inches = Format.round((cm/2.54) - ((int)feet * 12),0);
+		
+		s = String.valueOf((int)feet) + "'" + String.valueOf((int)inches) + "\"";
+		return s;
+	}
+	
 	public void setMealplan(MealPlanner mealplan){
 		this.mealplan = mealplan;
 	}

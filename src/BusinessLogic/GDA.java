@@ -97,13 +97,7 @@ public class GDA extends HttpServlet {
 		this.BMR = BMR;
 		return TDEE;
 	}
-	public static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
 
-	    BigDecimal bd = new BigDecimal(value);
-	    bd = bd.setScale(places, RoundingMode.HALF_UP);
-	    return bd.doubleValue();
-	}
 	/**
 	 * Formats the ratios from calories to convert them to grams then round them to 2 decimal places.
 	 * @param x The ratio of calories that needs to be formatted.
@@ -127,37 +121,37 @@ public class GDA extends HttpServlet {
 		return Math.round(x * multiplier)/ (double)multiplier;
 	}
 	public double getBMR(){
-		return round(BMR, 2);
+		return Format.round(BMR, 2);
 	}
 	public double getCalories() {
-		return round(calories, 2);
+		return Format.round(calories, 2);
 	}
 
 	public double getProtein() {
-		return round(protein, 2);
+		return Format.round(protein, 2);
 	}
 
 	public double getCarbs() {
-		return round(carbs, 2);
+		return Format.round(carbs, 2);
 	}
 
 	public double getSugars() {
-		return round(sugars, 2);
+		return Format.round(sugars, 2);
 	}
 
 	public double getFat() {
-		return round(fat, 2);
+		return Format.round(fat, 2);
 	}
 
 	public double getSaturates() {
-		return round(saturates, 2);
+		return Format.round(saturates, 2);
 	}
 
 	public double getFibre() {
-		return round(fibre, 2);
+		return Format.round(fibre, 2);
 	}
 
 	public double getSalt() {
-		return round(salt, 2);
+		return Format.round(salt, 2);
 	}
 }
