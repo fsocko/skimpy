@@ -192,19 +192,19 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public Person pullUser(String userEmail)
+	public Person pullUser(String ID)
 	{
 		openCon();
 		try{
 			Person user = null;
 			boolean foundUser = false;
 			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + userEmail + "';");
+			rs = st.executeQuery("select * FROM user_info WHERE UserID= '" + ID + "';");
 			while (rs.next()){
 				foundUser = true;
 				String userName = rs.getString("UserName");
 				
-//				String userEmail = rs.getString("UserEmail");
+				String userEmail = rs.getString("UserEmail");
 				String password = rs.getString("UserPassword");
 				
 				Date dob = rs.getDate("DateOfBirth");
@@ -230,11 +230,31 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
-		
+			
+	public int getIDfromEmail(String email){
+		openCon();
+		try{
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + email + "';");
+			while (rs.next()){
+				return rs.getInt("UserID");
+			}
 
+			return -1;
+	
+		} catch(Exception ex){
+			System.out.println(ex);
+			return -1;
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+	
 	public void updateUser(Person user){
 		openCon();
 		try{
+			
 			System.out.println(user.getHeight());
 			
 			String query = "UPDATE user_info " +

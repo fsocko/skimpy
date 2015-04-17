@@ -14,10 +14,11 @@
 <% 
 DBConnect con = new DBConnect();
 Person sessionUser = null;
-
 String email = request.getParameter("email");
 String password = request.getParameter("password");
-sessionUser = con.pullUser(email);
+
+int sessionID = con.getIDfromEmail(email);
+sessionUser = con.pullUser(String.valueOf(sessionID));
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	if(email.equals(sessionUser.getEmail()) && password.equals(sessionUser.getPassword())){
