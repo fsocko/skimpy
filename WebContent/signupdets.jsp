@@ -17,8 +17,6 @@
 </head>
 <meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/login.jsp" />
 <body>
-<form action="login.jsp" method ="post">
-</form>
 <% Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", new Date(), -1, -1, 'M', -1);
 user.setName(request.getParameter("name"));
 user.setEmail(request.getParameter("emailaddress"));

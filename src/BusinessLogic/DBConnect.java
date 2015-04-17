@@ -232,25 +232,65 @@ public class DBConnect extends HttpServlet{
 	}
 		
 
-	public void pushUser(Person user){
+	public void updateUser(Person user){
+		openCon();
 		try{
-			GDA macros = new GDA(user);
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
+			System.out.println(user.getHeight());
+			
+			String query = "UPDATE user_info " +
+					"SET UserName = '" + user.getName() + "' " +
+					", UserEmail = '" + user.getEmail() + "' " +
+					", UserPassword = '" + user.getPassword() + "' " +
+					", DateOfBirth = '" + new java.sql.Date(user.getDob().getTime()) + "' " +
+					", Age = '" + user.getAge() + "' " +
+					", Height = '" + user.getHeight() + "' " +
+					", Weight = '" + user.getWeight() + "' " +
+					", Gender = '" + user.getGender() + "' " +
+					", Exercise = '" + user.getExercise() + "' " +
+					", BMI = '" + user.getMacros().getBMR() + "' " +
+					", Calories = '" + user.getMacros().getCalories() + "' " +
+					", Carbs = '" + user.getMacros().getProtein() + "' " +
+					", Protein = '" + user.getMacros().getCarbs() + "' " +
+					", Sugar = '" + user.getMacros().getSugars() + "' " +
+					", Fat = '" + user.getMacros().getFat() + "' " +
+					", Saturates = '" + user.getMacros().getSaturates() + "' " +
+					", Fibre = '" + user.getMacros().getFibre() + "' " +
+					", Salt = '" + user.getMacros().getSalt() + "' " +
+					"WHERE UserID = '" + user.getID() + "';";
+			st.executeUpdate(query);
+			
+		} catch(Exception ex){
+			System.out.println(ex);
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+	
+	public void pushUser(Person user){
+		openCon();
+		try{
+			String query ="INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
 					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
 					+ "VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
 							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
 							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
-							"', '" + macros.getBMR() + "', '" + macros.getCalories() + "', '" + macros.getProtein() +
-							"', '" + macros.getCarbs() + "', '" + macros.getSugars() + "', '" + macros.getFat() +
-							"', '" + macros.getSaturates() + "', '" + macros.getFibre() + "', '" + macros.getSalt() +"')";
+							"', '" + user.getMacros().getBMR() + "', '" +user.getMacros().getCalories() + "', '" + user.getMacros().getProtein() +
+							"', '" + user.getMacros().getCarbs() + "', '" + user.getMacros().getSugars() + "', '" + user.getMacros().getFat() +
+							"', '" + user.getMacros().getSaturates() + "', '" + user.getMacros().getFibre() + "', '" + user.getMacros().getSalt() +"')";
 			st.executeUpdate(query);
-			System.out.println("Pushes to Database");
-			
+
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeCon();
+		}
 	}
+	
 	//I think this is unused
 	public void findCat(String qu){
 		try{

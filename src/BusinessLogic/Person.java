@@ -25,7 +25,7 @@ public class Person extends HttpServlet{
 	private char gender;
 	private int exercise;
 	private MealPlanner mealplan;
-	
+	GDA macros = null;
 	/**
 	 * Creates a Person with the desired attributes.
 	 * @param name user's name.
@@ -55,6 +55,7 @@ public class Person extends HttpServlet{
 		
 		//DBConnect connect = new DBConnect();
     	//connect.pushUser(this);
+		macros = new GDA(this);
 	}
 	
 	public String decodeEx(int exercise){
@@ -198,6 +199,9 @@ public class Person extends HttpServlet{
 	}
 	public MealPlanner getMealplan(){
 		return mealplan;
+	}
+	public GDA getMacros(){
+		return macros;
 	}
 	
 

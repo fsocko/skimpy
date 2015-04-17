@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 
@@ -21,11 +22,19 @@ public class Main extends HttpServlet{
 		System.out.println(Person.heightToFoot(182.88));
 		
 		DBConnect con = new DBConnect();
+		
 //		SpiderToDB std = new SpiderToDB();
 //		pushToDB(std.tescoPath, "tesco");
 //		pushToDB(std.asdaPath, "asda");
 //		pushToDB(std.sainsPath, "sains");
-//		Person test = con.pullUser("skimpy@foxtrot.com");
+	
+		Person test = con.pullUser("testmail@mail.com");
+		
+		test.setHeight(170.00);
+		con.updateUser(test);
+
+		System.out.println(con.pullUser("testmail@mail.com").getHeight());
+
 //		System.out.println(test.toString());
 				
 	}
