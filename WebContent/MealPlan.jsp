@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
-<%@include file="home.jsp" %>
+<%@include file="header.jsp" %>
 
 <html>
 <head>

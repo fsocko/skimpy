@@ -217,8 +217,10 @@ public class SpiderToDB extends HttpServlet{
 				 
 	//ShopID---------NO CHANGE
 				 shopID = shopID.replaceAll("\""," inch");
+				 shopID = shopID.replaceAll(";","");
 	//Name-----------NO CHANGE		
 				 name = name.replaceAll("\""," inch");
+				 name = name.replaceAll(";","");
 	//Mass, Unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit

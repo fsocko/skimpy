@@ -47,14 +47,33 @@ public class Person extends HttpServlet{
 		this.email = email;
 		this.password = password;
 		this.dob = dob;
-		setAge();
+		this.age = setAge();
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
-		this.exercise = exercise;	
+		this.exercise = exercise;
 		
 		//DBConnect connect = new DBConnect();
     	//connect.pushUser(this);
+	}
+	
+	public String decodeEx(int exercise){
+		String s = null;
+		if(exercise == 1)
+			s ="Desk job with little exercise";
+	    //1-3hrs/week of light this.exercise
+	    if(exercise == 2)
+	      s = "1-3hrs/week of light exercise";
+	    //3-5hrs/week of moderate this.exercise
+	    if(exercise == 3)
+	      s = "3-5hrs/week of moderate exercise";
+	    //5-6hrs/week of strenuous this.exercise
+	    if(exercise == 4)
+	      s = "5-6hrs/week of strenuous exercise";
+	    //7-21hrs/week of strenuous this.exercise/work
+	    if(exercise == 5)
+	      s = "7-21hrs/week of strenuous exercise/work";
+		return s;
 	}
 	
 	public int setAge(){
@@ -71,9 +90,56 @@ public class Person extends HttpServlet{
 		return age;
 	}
 	
+	public String getDay(Date dob){
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(dob);  
+		return String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+	}
+	public String getMonth(Date dob){
+		String monthString = null;
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(dob);  
+		int month = cal.get(Calendar.MONTH);
+		switch (month) {
+	        case 1:  monthString = "Jan";       break;
+	        case 2:  monthString = "Feb";      break;
+	        case 3:  monthString = "Mar";         break;
+	        case 4:  monthString = "Apr";         break;
+	        case 5:  monthString = "May";           break;
+	        case 6:  monthString = "Jun";          break;
+	        case 7:  monthString = "Jul";          break;
+	        case 8:  monthString = "Aug";        break;
+	        case 9:  monthString = "Sep";     break;
+	        case 10: monthString = "Oct";       break;
+	        case 11: monthString = "Nov";      break;
+	        case 12: monthString = "Dec";      break;
+	    }
+		
+		return monthString;	
+	}
+	public int getMonthNo(Date dob){
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(dob);  
+		return cal.get(Calendar.MONTH);
+	}
+	public String getYear(Date dob){
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(dob);  
+		return String.valueOf(cal.get(Calendar.YEAR));
+	}
+	
+	public String getGenderDisp(char c){
+		if(c == 'M'){
+			return "Male";
+		}
+		else{
+			return "Female";
+		}
+	}
 	public void setMealplan(MealPlanner mealplan){
 		this.mealplan = mealplan;
 	}
+	
 
 	public String toString(){
 		String s ="Name: " + name +
@@ -116,6 +182,9 @@ public class Person extends HttpServlet{
 	}
 	public int getExercise(){
 		return exercise;
+	}
+	public String getExerciseDisplay(){
+		return decodeEx(exercise);
 	}
 	public MealPlanner getMealplan(){
 		return mealplan;
