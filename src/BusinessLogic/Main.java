@@ -18,24 +18,17 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) 
 	{
-		
-		System.out.println(Person.heightToFoot(182.88));
-		
+			
 		DBConnect con = new DBConnect();
-		
-//		SpiderToDB std = new SpiderToDB();
-//		pushToDB(std.tescoPath, "tesco");
-//		pushToDB(std.asdaPath, "asda");
-//		pushToDB(std.sainsPath, "sains");
 	
-		Person test = con.pullUser("testmail@mail.com");
+		Person user = con.pullUser("35");
 		
-		test.setHeight(170.00);
-		con.updateUser(test);
+		user.setHeight(170.00);
+		System.out.println(user.getID());
+		con.updateUser(user);
 
-		System.out.println(con.pullUser("testmail@mail.com").getHeight());
+		System.out.println(con.pullUser("35").getHeight());
 
-//		System.out.println(test.toString());
 				
 	}
 	

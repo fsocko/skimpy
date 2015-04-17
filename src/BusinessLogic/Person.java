@@ -14,7 +14,7 @@ public class Person extends HttpServlet{
 	/**
 	 * This class will add users to the database or create person objects from the database.
 	 */
-	private String ID;
+	private int ID;
 	private String name;
 	private String email;
 	private String password; //needs encripting
@@ -47,7 +47,7 @@ public class Person extends HttpServlet{
 		this.email = email;
 		this.password = password;
 		this.dob = dob;
-		this.age = setAge();
+		this.age = setAge(dob);
 		this.height = height;
 		this.weight = weight;
 		this.gender = gender;
@@ -55,6 +55,10 @@ public class Person extends HttpServlet{
 		
 		//DBConnect connect = new DBConnect();
     	//connect.pushUser(this);
+		macros = new GDA(this);
+	}
+	
+	public void resetMacros(){
 		macros = new GDA(this);
 	}
 	
@@ -77,7 +81,7 @@ public class Person extends HttpServlet{
 		return s;
 	}
 	
-	public int setAge(){
+	public int setAge(Date dob){
 		Calendar cal = Calendar.getInstance();  
 		cal.setTime(dob);  
 		Calendar today = Calendar.getInstance();  
@@ -163,7 +167,7 @@ public class Person extends HttpServlet{
 	}
 	
 	//getters: might not need all of them? ID?
-	public String getID(){
+	public int getID(){
 		return this.ID;
 	}
 	public String getEmail(){
@@ -206,6 +210,9 @@ public class Person extends HttpServlet{
 	
 
 	//use these setters if user changes age weight etc.
+	public void setID(int ID){
+		this.ID = ID;
+	}
 	public void setName(String name){
 		this.name = name;
 	}

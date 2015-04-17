@@ -198,7 +198,6 @@ public class DBConnect extends HttpServlet{
 		try{
 			Person user = null;
 			boolean foundUser = false;
-			System.out.println("Records from Database");
 			rs = st.executeQuery("select * FROM user_info WHERE UserID= '" + ID + "';");
 			while (rs.next()){
 				foundUser = true;
@@ -215,6 +214,7 @@ public class DBConnect extends HttpServlet{
 				
 				
 				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
+				user.setID(rs.getInt("UserID"));
 			}
 			if(foundUser){
 				return user;
@@ -253,10 +253,7 @@ public class DBConnect extends HttpServlet{
 	
 	public void updateUser(Person user){
 		openCon();
-		try{
-			
-			System.out.println(user.getHeight());
-			
+		try{				
 			String query = "UPDATE user_info " +
 					"SET UserName = '" + user.getName() + "' " +
 					", UserEmail = '" + user.getEmail() + "' " +
@@ -267,15 +264,6 @@ public class DBConnect extends HttpServlet{
 					", Weight = '" + user.getWeight() + "' " +
 					", Gender = '" + user.getGender() + "' " +
 					", Exercise = '" + user.getExercise() + "' " +
-					", BMI = '" + user.getMacros().getBMR() + "' " +
-					", Calories = '" + user.getMacros().getCalories() + "' " +
-					", Carbs = '" + user.getMacros().getProtein() + "' " +
-					", Protein = '" + user.getMacros().getCarbs() + "' " +
-					", Sugar = '" + user.getMacros().getSugars() + "' " +
-					", Fat = '" + user.getMacros().getFat() + "' " +
-					", Saturates = '" + user.getMacros().getSaturates() + "' " +
-					", Fibre = '" + user.getMacros().getFibre() + "' " +
-					", Salt = '" + user.getMacros().getSalt() + "' " +
 					"WHERE UserID = '" + user.getID() + "';";
 			st.executeUpdate(query);
 			
@@ -291,15 +279,11 @@ public class DBConnect extends HttpServlet{
 	public void pushUser(Person user){
 		openCon();
 		try{
-			String query ="INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
-					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
+			String query ="INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
 					+ "VALUES ('" + 
 							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
 							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
-							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
-							"', '" + user.getMacros().getBMR() + "', '" +user.getMacros().getCalories() + "', '" + user.getMacros().getProtein() +
-							"', '" + user.getMacros().getCarbs() + "', '" + user.getMacros().getSugars() + "', '" + user.getMacros().getFat() +
-							"', '" + user.getMacros().getSaturates() + "', '" + user.getMacros().getFibre() + "', '" + user.getMacros().getSalt() +"')";
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() +"')";
 			st.executeUpdate(query);
 
 		} catch(Exception ex){

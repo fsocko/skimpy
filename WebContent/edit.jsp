@@ -230,7 +230,11 @@
 	                      <div class="birthday-drop">
 	                        <select name="exercise" class="form-control" >
 	                          <option value="<%=session.getAttribute("exerciseNo") %>" selected><%=session.getAttribute("exercise") %></option>
-	
+							  <option value="1">Desk job with little exercise</option>
+                              <option value="2">1-3hrs/week of light exercise</option>
+                              <option value="3">3-5hrs/week of moderate exercise</option>
+                              <option value="4">5-6hrs/week of strenuous exercise</option>
+                              <option value="5">7-21hrs/week of strenuous exercise/work</option>
 	                        </select>
 	                      </div>
 	                    </div>

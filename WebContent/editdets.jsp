@@ -18,19 +18,50 @@
 DBConnect con = new DBConnect();
 Person user = con.pullUser(String.valueOf(session.getAttribute("ID")));
 //Person user = con.pullUser("35");
-user.setName(request.getParameter("name"));
-user.setEmail(request.getParameter("email"));
-user.setHeight(Double.parseDouble(request.getParameter("height")));
-user.setWeight(Double.parseDouble(request.getParameter("weight")));
-user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
+String name = request.getParameter("name");
+String email = request.getParameter("email");
+double height = Double.parseDouble(request.getParameter("height"));
+double weight = Double.parseDouble(request.getParameter("weight"));
+int exercise = Integer.parseInt(request.getParameter("exercise"));
+char gender = request.getParameter("gender").toUpperCase().charAt(0);
 String date = request.getParameter("date");
 String month = request.getParameter("month");
 String year = request.getParameter("year"); 
 String dobString = year +"-"+month+"-"+date;
 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
+
+user.setName(name);
+session.setAttribute("username", name);
+user.setEmail(email);
+session.setAttribute("email", email);
+user.setHeight(height);
+session.setAttribute("height", height);
+user.setWeight(weight);
+session.setAttribute("weight", weight);
+user.setExercise(exercise);
+session.setAttribute("exercise", user.getExerciseDisplay());
+session.setAttribute("exerciseNo", exercise);
 user.setDob(dob);
+session.setAttribute("dob", dob);
+session.setAttribute("age", user.setAge(dob));
+user.setGender(gender);
+session.setAttribute("gender", gender);
+
+user.resetMacros();
+
+session.setAttribute("BMI", user.getMacros().getBMR());
+session.setAttribute("calories", user.getMacros().getCalories());
+session.setAttribute("protein", user.getMacros().getProtein());
+session.setAttribute("carbs", user.getMacros().getCarbs());
+session.setAttribute("sugar", user.getMacros().getSugars());
+session.setAttribute("fat", user.getMacros().getFat());
+session.setAttribute("saturates",user.getMacros().getSaturates());
+session.setAttribute("fibre", user.getMacros().getFibre());
+session.setAttribute("salt", user.getMacros().getSalt());
 
 con.updateUser(user);
+
+
 %>
 
 </body>

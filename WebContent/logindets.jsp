@@ -22,19 +22,20 @@ sessionUser = con.pullUser(String.valueOf(sessionID));
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	if(email.equals(sessionUser.getEmail()) && password.equals(sessionUser.getPassword())){
+		session.setAttribute("username", sessionUser.getName());
 		session.setAttribute("email", sessionUser.getEmail());
 		session.setAttribute("password", sessionUser.getPassword());
-		session.setAttribute("username", sessionUser.getName());
  		session.setAttribute("dob", sessionUser.getDob());
  		session.setAttribute("age", sessionUser.getAge());
+		session.setAttribute("height", sessionUser.getHeight());
+		session.setAttribute("weight", sessionUser.getWeight());
 		session.setAttribute("exercise", sessionUser.getExerciseDisplay());
 		session.setAttribute("exerciseNo", sessionUser.getExercise());
-		session.setAttribute("weight", sessionUser.getWeight());
-		session.setAttribute("height", sessionUser.getHeight());
 		session.setAttribute("genderChar", sessionUser.getGender());
 		session.setAttribute("genderDisp", sessionUser.getGenderDisp(sessionUser.getGender()));
-		session.setAttribute("ID", sessionUser.getID());
-		session.setAttribute("BMI", sessionUser.getMacros().getBMR());
+		session.setAttribute("ID", sessionID);
+		
+		sessionUser.resetMacros();
 		
 		session.setAttribute("Day", sessionUser.getDay(sessionUser.getDob()));
 		session.setAttribute("Month", sessionUser.getMonth(sessionUser.getDob()));
@@ -44,6 +45,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 		session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
 		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
 		
+		session.setAttribute("BMI", sessionUser.getMacros().getBMR());
 		session.setAttribute("calories", sessionUser.getMacros().getCalories());
 		session.setAttribute("protein", sessionUser.getMacros().getProtein());
 		session.setAttribute("carbs", sessionUser.getMacros().getCarbs());
