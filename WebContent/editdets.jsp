@@ -43,6 +43,14 @@ session.setAttribute("exercise", user.getExerciseDisplay());
 session.setAttribute("exerciseNo", exercise);
 user.setDob(dob);
 session.setAttribute("dob", dob);
+session.setAttribute("Day", user.getDay(dob));
+session.setAttribute("Month", user.getMonth(dob));
+session.setAttribute("Year", user.getYear(dob));
+
+session.setAttribute("DD", String.valueOf(user.getDay(dob)));
+session.setAttribute("MM", user.getMonthNo(user.getDob()));
+session.setAttribute("YYYY", String.valueOf(user.getYear(user.getDob())));
+
 session.setAttribute("age", user.setAge(dob));
 user.setGender(gender);
 session.setAttribute("gender", gender);

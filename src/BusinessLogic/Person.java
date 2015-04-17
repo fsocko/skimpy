@@ -104,7 +104,8 @@ public class Person extends HttpServlet{
 		String monthString = null;
 		Calendar cal = Calendar.getInstance();  
 		cal.setTime(dob);  
-		int month = cal.get(Calendar.MONTH);
+		int month = cal.get(Calendar.MONTH) + 1;
+		System.out.println(month);
 		switch (month) {
 	        case 1:  monthString = "Jan";       break;
 	        case 2:  monthString = "Feb";      break;
