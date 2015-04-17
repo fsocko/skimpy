@@ -78,7 +78,7 @@
         border-top-right-radius: 0;
       }
       .my-errors {
-        color:red;
+        color:darkred;
       }
     </style>
   </head>  
@@ -98,6 +98,7 @@
           </div>
           <div class="pull-right btn-group btn-group-sm"></div>
           <a class="btn pull-right btn-success btn-lg">Sign Up</a>
+          
         </div>
       </div>
     </div>

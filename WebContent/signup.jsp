@@ -8,6 +8,7 @@
  
   <head>
     <title>Sign Up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
@@ -17,31 +18,27 @@
       jQuery.validator.setDefaults({
     // where to display the error relative to the element
       errorPlacement: function(error, element) {
-      error.appendTo(element.parent().find('p.myErrors'));
+      error.appendTo(element.parent().find('p.form-control'));
      }
     });
-
-        $("#myForm").validate({
-            rules:{
-              name:{
-                required:true
-              },
-              
-              emailaddress:{
-                required : true,
-                email: true
-              },
-
-              password:{
-                required: true
-              },   
-
-              birthday:"required",
-              
-              gender:"required",
-            }
-        });
+	
+      $("#form-signup").validate({
+          rules:{
+        	  
+        	  name:"required",
+            
+        	  email:{
+            	 	required : true,
+              		email: true
+           	 },
+            
+            password:{
+              required: true
+            }, 
+            
+          }
       });
+    });
     </script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -78,6 +75,10 @@
         height: auto;
         width: auto;
       }
+      
+      .my-errors {
+        color:red;
+      }
 
     </style>
   </head>
@@ -101,12 +102,12 @@
       </div>
     </div>
     <div class="container">
+    <div class="form-signup">
       <form action="signupdets.jsp" method="post" id="myForm" >
-        <div class="form-signup">
           <div class="controls">
-            <input type="text" name = "name" class="form-control" placeholder="Username"><p class="MyErrors"></p>
-            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="MyErrors"></p>
-            <input type="password" name = "password" class="form-control" placeholder="Password"><p class="MyErrors"></p>
+            <input type="text" name = "name" class="form-control" placeholder="Username"><p class="my-errors"></p>
+            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="my-errors"></p>
+            <input type="password" name = "password" class="form-control" placeholder="Password"><p class="my-errors"></p>
             <label class="form-label">Birthday</label>
             <div class="birthday-drop">
               <select name ="date" class="form-control">
@@ -273,19 +274,22 @@
                 <option value="1905">1905</option>
               </select>
             </div>
-              <select name="gender"  class="form-control">
+              <select name="gender">
               <option value="0" selected>Gender</option>
               <option value="male">Male</option> 
               <option value="female">Female</option>
               </select>
               <br>
              
-            <button class="btn btn-block btn-success btn-lg" type="submit">Sign up</button>
+            <button class="btn btn-block btn-success btn-lg" type="submit">Sign Up</button>
+            
           </div>
-        </div>
+          
       </form>
+      </div>
       <!-- /container -->
     </div>
+    
   </body>
 
 </html>
