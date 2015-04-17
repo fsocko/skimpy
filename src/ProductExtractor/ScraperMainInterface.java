@@ -12,8 +12,8 @@ public class ScraperMainInterface {
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);
 			System.out.println("Which website would you like to scrape?");
-			System.out.println("[t = tesco, s = sainsburys]");
-			char userInput = br.readLine().charAt(0);
+			System.out.println("[t = tesco, s = sainsburys, a = asda]");
+			char userInput = br.readLine().toLowerCase().charAt(0);
 			switch (userInput) {
 			case 't':
 				TescoScraper.main(new String[0]);
