@@ -18,7 +18,7 @@
   <body>
     <div class="container">
     	<h2 class="text-left">Create a Meal</h2>
-    
+     <form action="savedMeal.jsp" method="POST">
     	<div id ="search-container">
     		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
     		<div id="autocomplete-box">
@@ -32,8 +32,12 @@
 			<input class="recipe-name" name="mealname" placeholder="Meal Name">
 			<div class="products-mass">
 				<div id="products-list"></div>
+				<input class="list-group"  id="ingred" type="hidden" name="ingred" value="">
+				<input class="list-group"  id="supermarket" type="hidden" name="supermarket" value="">
 			</div>
 		</div>
+		<input type="submit" class="btn btn-block btn-success btn-lg" style="width:150px" value="Save Your Meal" />
+		</form>
     </div>
   </body>
 
