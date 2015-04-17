@@ -29,6 +29,17 @@ public class ScraperMainInterface {
 				}
 				SainsburysScraper.runScraper(noThreads, true);
 				break;
+			case 'a':
+				System.out.println("How many threads would you like to run?");
+				System.out.println("Default is 15");
+				int noAThreads;
+				try {
+					noAThreads = Integer.parseInt(br.readLine().trim());
+				} catch (Exception e) {
+					noAThreads = 15;
+				}
+				AsdaScraper.runScraper(noAThreads);
+				break;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
