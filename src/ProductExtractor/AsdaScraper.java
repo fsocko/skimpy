@@ -4,9 +4,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-
 public class AsdaScraper {
 	
 	public static ArrayList<String> products;
@@ -31,7 +28,7 @@ public class AsdaScraper {
 			System.out.println("\nDone");
 			java.util.Collections.sort(products);
 		    int i = 0;
-		    PrintWriter writer = new PrintWriter("asda.txt");
+		    PrintWriter writer = new PrintWriter("data/asda.txt");
 		    for (String s: products) {
 		    	System.out.println(i + ":> " + s);
 		    	writer.println(s);

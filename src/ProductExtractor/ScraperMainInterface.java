@@ -31,12 +31,12 @@ public class ScraperMainInterface {
 				break;
 			case 'a':
 				System.out.println("How many threads would you like to run?");
-				System.out.println("Default is 15");
+				System.out.println("Default is 5");
 				int noAThreads;
 				try {
 					noAThreads = Integer.parseInt(br.readLine().trim());
 				} catch (Exception e) {
-					noAThreads = 15;
+					noAThreads = 5;
 				}
 				AsdaScraper.runScraper(noAThreads);
 				break;
