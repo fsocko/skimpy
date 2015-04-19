@@ -35,8 +35,9 @@
 				<input class="list-group"  id="ingred" type="hidden" name="ingred" value="">
 				<input class="list-group"  id="supermarket" type="hidden" name="supermarket" value="">
 			</div>
-		</div>
+		
 		<input type="submit" class="btn btn-block btn-success btn-lg" style="width:150px" value="Save Your Meal" />
+		</div>
 		</form>
     </div>
   </body>

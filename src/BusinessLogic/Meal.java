@@ -174,11 +174,11 @@ public class Meal extends HttpServlet{
 	}
 	public ArrayList<Food> getIngredients()
 	{
-		return ingredients;
+		return this.ingredients;
 	}
 	
 	public ArrayList<Integer> getMasses()
 	{
-		return masses;
+		return this.masses;
 	}
 }

@@ -8,6 +8,7 @@
 <%@page import="java.io.OutputStreamWriter"%>
 <%@page import="java.io.Writer"%>
 <%@page import="java.nio.charset.Charset"%>
+<%@include file="header.jsp" %>
 
 <html>
 <head>
@@ -64,20 +65,20 @@
     	    String path = getServletContext().getRealPath("");
     	    
     	    
-    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-    	    for(Meal m: readmeals){%>
-    	    	<a href ="#"><%=m.getName() %></a>
-    	   <% }
-    	    
-   %>
-   <%=path %>
+    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); %>
+    	   <br>
+Your new recipe:
+<%=currentMeal.getName() %>
+<br>
+Ingredients:
+<br><%for (int i=0; i< currentMeal.getIngredients().size();i++){
+	                %>
+	                <%=currentMeal.getIngredients().get(i).getName()%>
+	                <%=currentMeal.getMasses().get(i)%>
+	                <br>
+	                <% }%>
 
- 	<p>Go back if you want to make some changes or click 
- 	"Get Prices" button to get prices comparison and the best deal!
- 	</p><input type="button" name="MealPlan" 
- 	value="Go Back" onclick="javascript:history.go(-1)">
- 	<input type="button" name="PComp" value="Get Prices" onclick="document.location.href='Price.jsp'">
- 	<input type="button" name="PComp" value="Go to MealPlanner" onclick="document.location.href='MealPlan.jsp'">
- 	<input type="button" value="Log Out" onclick="document.location.href='logout.jsp'">
+
+ 	
 </body>
 </html>

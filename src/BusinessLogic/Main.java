@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 
@@ -17,16 +18,17 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) 
 	{
-		
-		
-		
+			
 		DBConnect con = new DBConnect();
-//		SpiderToDB std = new SpiderToDB();
-//		pushToDB(std.tescoPath, "tesco");
-//		pushToDB(std.asdaPath, "asda");
-//		pushToDB(std.sainsPath, "sains");
-//		Person test = con.pullUser("skimpy@foxtrot.com");
-//		System.out.println(test.toString());
+	
+		Person user = con.pullUser("35");
+		
+		user.setHeight(170.00);
+		System.out.println(user.getID());
+		con.updateUser(user);
+
+		System.out.println(con.pullUser("35").getHeight());
+
 				
 	}
 	

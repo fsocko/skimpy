@@ -105,7 +105,7 @@
         <div class="form-signup">
           <div class="controls">
             <input type="text" name = "name" class="form-control" placeholder="Username"><p class="MyErrors"></p>
-            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="MyErrors"></p>
+            <input type="text" name = "email" class="form-control" placeholder="Email"><p class="MyErrors"></p>
             <input type="password" name = "password" class="form-control" placeholder="Password"><p class="MyErrors"></p>
             <label class="form-label">Birthday</label>
             <div class="birthday-drop">

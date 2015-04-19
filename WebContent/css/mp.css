@@ -1,0 +1,32 @@
+body {
+	font-family: sans-serif;
+}
+
+th{
+	
+	text-align:center;
+	color: #838383;
+}
+
+#MP{
+	margin: 20px;
+	font-size: 18px;
+	width: 100%;
+	float: left;
+}
+
+:-ms-input-placeholder {  
+   color: #CCC;  
+   font-style: italic;
+}
+
+#recipeList {
+	position:relative;
+	font-size: 18px;
+	
+	float: left;
+	
+	margin-left:50px;
+	
+	
+}
