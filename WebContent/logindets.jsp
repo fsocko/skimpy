@@ -4,6 +4,7 @@
 <%@ page import="BusinessLogic.*" %>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date" %>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.sql.*"%>
@@ -11,59 +12,85 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/welcome.jsp" />
-<title>Insert title here</title>
+<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/home.jsp" />
+<title>Log In</title>
 </head>
 <body>
 <form action="welcome.jsp" method="post"></form>
-<%! String userdbName;
+<%! String userdbEmail;
 	String userdbPswd;
 	String userdbN;
+	Date userdbDOB;
+	double userdbWeight;
+	char userdbGender;
+	String userdbEx;
+	double userdbHeight;
+	int userdbAge;
+	String userID;
+	
+	DBConnect con = new DBConnect();
+	Person sessionUser = null;
+	GDA macros = null;
 %>
 <% 
-Connection con = null;
-Statement st = null;
-ResultSet rs = null;
 
-
-String driverName = "com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/Skimpy";
-String user = "root";
-String psw = "";
-
-String username = request.getParameter("email");
+String email = request.getParameter("email");
 String password = request.getParameter("password");
-String sql = "select * FROM user_info where UserEmail LIKE'" + username + "'";
-if((!(username.equals(null) || username.equals("")) && !(password.equals(null) || password.equals("")) )){
-try{
-	Class.forName(driverName);
-	con = DriverManager.getConnection(url, user, psw);
-	st = con.prepareStatement(sql);
-	rs = st.executeQuery(sql);
-	if(rs.next()){
-		userdbName = rs.getString("UserEmail");
-		userdbN = rs.getString("UserName");
-		System.out.println(userdbN);
-		userdbPswd = rs.getString("UserPassword");
-		if(username.equals(userdbName) && password.equals(userdbPswd)){
-			session.setAttribute("email", username);
-			session.setAttribute("password", userdbPswd);
-			session.setAttribute("username", userdbN);
-			session.setMaxInactiveInterval(30);
-			response.sendRedirect("welcome.jsp");
-		} else {
-			response.sendRedirect("error.jsp");
-			rs.close();
-			st.close();
-		}
-	}
-	else
+sessionUser = con.pullUser(email);
+macros = new GDA(sessionUser);
+if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
+	userID = sessionUser.getID();
+	userdbN = sessionUser.getName();
+	userdbEmail = sessionUser.getEmail();
+	userdbPswd = sessionUser.getPassword();
+	userdbHeight = sessionUser.getHeight();
+	userdbEx = sessionUser.getExerciseDisplay();
+	int userdbExNo = sessionUser.getExercise();
+	userdbWeight = sessionUser.getWeight();
+	userdbGender = sessionUser.getGender();
+	userdbAge = sessionUser.getAge();
+	userdbDOB = sessionUser.getDob(); 
+	double userdbBMI = macros.getBMR();
+
+//	java.util.Date DOB = new Date(userdbDOB.getTime());
+	if(email.equals(userdbEmail) && password.equals(userdbPswd)){
+		session.setAttribute("email", email);
+		session.setAttribute("password", userdbPswd);
+		session.setAttribute("username", userdbN);
+ 		session.setAttribute("dob", userdbDOB);
+ 		session.setAttribute("age", userdbAge);
+		session.setAttribute("exercise", userdbEx);
+		session.setAttribute("exerciseNo", userdbExNo);
+		session.setAttribute("weight", userdbWeight);
+		session.setAttribute("height", userdbHeight);
+		session.setAttribute("genderChar", userdbGender);
+		session.setAttribute("genderDisp", sessionUser.getGenderDisp(userdbGender));
+		session.setAttribute("ID", userID);
+		session.setAttribute("BMI", userdbBMI);
+		
+		session.setAttribute("Day", sessionUser.getDay(userdbDOB));
+		session.setAttribute("Month", sessionUser.getMonth(userdbDOB));
+		session.setAttribute("Year", sessionUser.getYear(userdbDOB));
+		
+		session.setAttribute("DD", String.valueOf(sessionUser.getDay(userdbDOB)));
+		session.setAttribute("MM", sessionUser.getMonthNo(userdbDOB));
+		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(userdbDOB)));
+		
+		session.setAttribute("calories", macros.getCalories());
+		session.setAttribute("protein", macros.getProtein());
+		session.setAttribute("carbs", macros.getCarbs());
+ 		session.setAttribute("sugar", macros.getSugars());
+ 		session.setAttribute("fat", macros.getFat());
+		session.setAttribute("saturates",macros.getSaturates());
+		session.setAttribute("fibre", macros.getFibre());
+		session.setAttribute("salt", macros.getSalt());
+		
+		session.setMaxInactiveInterval(3000);
+		response.sendRedirect("home.jsp");
+	} else {
 		response.sendRedirect("error.jsp");
-		rs.close();
-		st.close();
-}catch(Exception ex){
-	System.out.println(ex);
-}
+		con.closeCon();
+	}
 }else{
 %>
 	<center><p style="color:red">Error In Login</p></center>

@@ -5,6 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
+<%@include file="header.jsp" %>
 
 <html>
 <head>
@@ -52,6 +53,10 @@ connect.search(searchItem); */
 </script>
 </head>
 <body>
+<%if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
+	 %>
 <%  //MealPlanner plan = CreateMealPlan.create();
     //Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
     //String userID = user.getID(); %>

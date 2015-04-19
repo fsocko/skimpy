@@ -24,13 +24,13 @@ user.setName(request.getParameter("name"));
 user.setEmail(request.getParameter("emailaddress"));
 user.setPassword(request.getParameter("password"));
 user.setGender(request.getParameter("gender").toUpperCase().charAt(0));
-DBConnect connect = new DBConnect();
 String date = request.getParameter("date");
 String month = request.getParameter("month");
 String year = request.getParameter("year"); 
 String dobString = year +"-"+month+"-"+date;
 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
 user.setDob(dob);
+DBConnect connect = new DBConnect();
 connect.pushUser(user);
 %>
 

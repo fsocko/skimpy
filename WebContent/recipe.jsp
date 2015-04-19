@@ -1,140 +1,44 @@
+<%@include file="header.jsp" %>
 <!doctype html>
 
 <html>
   
   <head>
-    <title>Narrow Jumbotron</title>
-    <meta name="viewport" content="width=device-width">
+    <title>New Meal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-      /* Space out content a bit */
-      body {
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
-      /* Everything but the jumbotron gets side spacing for mobile first views */
-      .header, .marketing, .footer {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-      /* Custom page header */
-      .header {
-        border-bottom: 1px solid #e5e5e5;
-      }
-      /* Make the masthead heading the same height as the navigation */
-      .header h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-      }
-      /* Custom page footer */
-      .footer {
-        padding-top: 19px;
-        color: #777;
-        border-top: 1px solid #e5e5e5;
-      }
-      /* Customize container */
-      @media(min-width: 768px) {
-        .container {
-          max-width: 730px;
-        }
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        text-align: center;
-        border-bottom: 1px solid #e5e5e5;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-      /* Supporting marketing content */
-      .marketing {
-        margin: 40px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-      /* Responsive: Portrait tablets and up */
-      @media screen and(min-width: 768px) {
-        /* Remove the padding we set earlier */
-        .header, .marketing, .footer {
-          padding-left: 0;
-          padding-right: 0;
-        }
-        /* Space out the masthead */
-        .header {
-          margin-bottom: 30px;
-        }
-        /* Remove the bottom border on the jumbotron for visual effect */
-        .jumbotron {
-          border-bottom: 0;
-        }
-      }
-    </style>
+    	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="css/search.css">
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/search.js"></script>
   </head>
   
   <body>
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">Skimpy</h3>
-      </div>
-      <div class="jumbotron">
-        <h2 class="text-left">Create a Meal</h2>
-        <p></p>
-        <div class="container">
-          <div class="row"></div>
-          <div class="col-xs-9 col-md-4">
-            <textarea class="form-control"></textarea>
-          </div>
-          <div class="col-xs-1 col-md-1">
-            <div class="btn-toolbar">
-              <div class="btn-group">
-                <a class="btn btn-default btn-xs">+</a>
-              </div>
-              <div class="btn-group"></div>
-            </div>
-          </div>
-          <ul class="list-group"></ul>
-        </div>
-        <div class="container">
-          <ul class="list-group">
-            <li class="list-group-item">First Item</li>
-          </ul>
-        </div>
-        <ul class="list-group"></ul>
-        <div class="container-fluid">
-          <a class="btn pull-left btn-success">Search</a>
-          <div class="btn-toolbar">
-            <div class="btn-group"></div>
-            <div class="btn-group"></div>
-          </div>
-        </div>
-        <div class="container">
-          <h3 class="text-left">Nutrition Data</h3>
-          <h3 class="text-left">Price Comparison</h3>
-        </div>
-        <a></a>
-      </div>
+    	<h2 class="text-left">Create a Meal</h2>
+     <form action="savedMeal.jsp" method="POST">
+    	<div id ="search-container">
+    		<input id="search" name="q" type="text" placeholder="Search for products across many supermarkets" autocomplete="off" />
+    		<div id="autocomplete-box">
+				<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+				<div id="categories-tickboxes"></div>
+				<div id="results"></div>
+			</div>
+		</div> 
+	
+		<div id="recipe">
+			<input class="recipe-name" name="mealname" placeholder="Meal Name">
+			<div class="products-mass">
+				<div id="products-list"></div>
+				<input class="list-group"  id="ingred" type="hidden" name="ingred" value="">
+				<input class="list-group"  id="supermarket" type="hidden" name="supermarket" value="">
+			</div>
+		</div>
+		<input type="submit" class="btn btn-block btn-success btn-lg" style="width:150px" value="Save Your Meal" />
+		</form>
     </div>
-    <!-- /container -->
   </body>
 
 </html>

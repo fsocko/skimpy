@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -77,12 +78,23 @@ public class DBConnect extends HttpServlet{
 	}
 
 	
-	public Food pullFood(String table, String ID)
-
+	public Food pullFood(String t, String ID)
+    
 	{
 		openCon();
 		Food returnedFood = null;
+		String table;
 		try{
+			
+			if(
+			t.equals("A")){
+			 table = "asda";
+			}else if(
+			t.equals("T")){
+			table = "tesco";
+		    }else{
+		    table="sains";
+		    }
 			
 			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 //			System.out.println(query);
@@ -180,25 +192,38 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void pullUser(String ID)
+	public Person pullUser(String userEmail)
 	{
 		openCon();
 		try{
+			Person user = null;
+			boolean foundUser = false;
 			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + userEmail + "';");
 			while (rs.next()){
+				foundUser = true;
 				String userName = rs.getString("UserName");
-				String userEmail = rs.getString("UserEmail");
-			    Date dob = rs.getDate("DateOfBirth");
-				float weight = rs.getFloat("Weight");
-				String gender = rs.getString("Gender");
-				float exercise = rs.getFloat("Exercise");
 				
-				System.out.println(ID + userName + userEmail + dob + weight + gender + exercise);
+//				String userEmail = rs.getString("UserEmail");
+				String password = rs.getString("UserPassword");
+				
+				Date dob = rs.getDate("DateOfBirth");
+				double weight = rs.getDouble("Weight");
+				double height = rs.getDouble("Height");
+				char gender = rs.getString("Gender").charAt(0);
+				int exercise = rs.getInt("Exercise");
+				
+				
+				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
 			}
+			if(foundUser){
+				return user;
+			}
+			return null;
 	
 		} catch(Exception ex){
 			System.out.println(ex);
+			return null;
 		}
 		finally 
 		{
@@ -209,11 +234,16 @@ public class DBConnect extends HttpServlet{
 
 	public void pushUser(Person user){
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Height, Weight, Gender, Exercise)"
-					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", \""  +
-							new java.sql.Date(user.getDob().getTime()) + "\", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
-							user.getExercise() + ")";
+			GDA macros = new GDA(user);
+			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise, "
+					+ "BMI, Calories, Carbs, Protein, Sugar, Fat, Saturates, Fibre, Salt)"
+					+ "VALUES ('" + 
+							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
+							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() + 
+							"', '" + macros.getBMR() + "', '" + macros.getCalories() + "', '" + macros.getProtein() +
+							"', '" + macros.getCarbs() + "', '" + macros.getSugars() + "', '" + macros.getFat() +
+							"', '" + macros.getSaturates() + "', '" + macros.getFibre() + "', '" + macros.getSalt() +"')";
 			st.executeUpdate(query);
 			System.out.println("Pushes to Database");
 			
@@ -588,8 +618,9 @@ public class DBConnect extends HttpServlet{
 		return results;
 	}
 	
-	public String fullSearch(String phrase) {
+	public String jsonSearch(String phrase, String[] categories) {
 		JSONArray results = new JSONArray();
+		String query;
 		
 		String[] words = phrase.split("\\s");
 		String regexpPhrase = "";
@@ -598,94 +629,44 @@ public class DBConnect extends HttpServlet{
 		}
 		regexpPhrase += words[words.length - 1];
 		
-		String query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL' "
-				+ "UNION "
-				+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' ORDER BY Price ASC",
-				regexpPhrase, regexpPhrase, regexpPhrase, regexpPhrase);
-		
-		/*String tQuery = String.format(
-			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL'",
-			regexpPhrase, regexpPhrase, regexpPhrase);
-		String sQuery = String.format(
-			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s'",
-			regexpPhrase, regexpPhrase, regexpPhrase);
-		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 50";
-		
-		String moreGeneralQuery_1 = String.format(
-			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL'",
-			regexpPhrase, regexpPhrase);
-		String moreGeneralQuery_2 = String.format(
-			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$'",
-			regexpPhrase, regexpPhrase);
-		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
-				+ " ORDER BY Price ASC LIMIT 50";
-		*/
-		try {
-			openCon();
-			rs = st.executeQuery(query);
-			while (rs.next()) {
-					JSONObject temp = new JSONObject();
-					temp.put("name", rs.getString("Name").trim());
-					temp.put("price", rs.getDouble("Price"));
-					temp.put("shopID", rs.getString("ShopID").trim());
-					temp.put("supermarket", rs.getString("SuperMarket"));
-					temp.put("shelf", rs.getString("FoodCat2").trim());
-					
-					results.put(temp);
+		if (categories != null) {
+			String tQuery = "SELECT DISTINCT * FROM tesco WHERE ";
+			String sQuery = "SELECT DISTINCT * FROM sains WHERE ";
+			
+			for (int i = 0; i < categories.length - 1; i++) {
+				tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, categories[i]);
+				sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, categories[i]);
 			}
-			/*else {
-				rs = st.executeQuery(moreGeneralQuery);
-				while (rs.next()) {
-					results.put(rs.getString(3).trim());
-				}
-			}*/
+			
+			tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s'",
+					regexpPhrase, categories[categories.length - 1]);
+			sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' ",
+					regexpPhrase, categories[categories.length - 1]);
+			
+			query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
 		}
-		catch (SQLException sqlex) {
-			sqlex.printStackTrace();
+		else {
+			query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0' "
+					+ "UNION "
+					+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' ORDER BY Price ASC",
+					regexpPhrase, regexpPhrase);
 		}
-		finally {
-			closeCon();
-		}
-		return results.toString();
-	}
-	
-	public String refinedSearch(String phrase, String[] categories) {
-		JSONArray results = new JSONArray();
-		
-		String[] words = phrase.split("\\s");
-		String regexpPhrase = "";
-		for (int i = 0; i < words.length - 1; i++) {
-			regexpPhrase += words[i] + ".*";
-		}
-		regexpPhrase += words[words.length - 1];
-		
-		String tQuery = "SELECT DISTINCT * FROM tesco WHERE ";
-		String sQuery = "SELECT DISTINCT * FROM sains WHERE ";
-		
-		for (int i = 0; i < categories.length - 1; i++) {
-			tQuery += String.format("PPUPrice NOT LIKE 'NULL' AND Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' OR ",
-					regexpPhrase, regexpPhrase, categories[i]);
-			sQuery += String.format("Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' OR ",
-					regexpPhrase, regexpPhrase, categories[i]);
-		}
-		
-		tQuery += String.format("PPUPrice NOT LIKE 'NULL' AND Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s'",
-				regexpPhrase, regexpPhrase, categories[categories.length - 1]);
-		sQuery += String.format("Name REGEXP ' %s | %s$' AND FoodCat2 LIKE '%s' ",
-				regexpPhrase, regexpPhrase, categories[categories.length - 1]);
-		
-		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
 		
 		try {
 			openCon();
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
+				temp.put("ID", rs.getInt("ID"));
 				temp.put("name", rs.getString("Name").trim());
 				temp.put("price", rs.getDouble("Price"));
 				temp.put("shopID", rs.getString("ShopID").trim());
 				temp.put("supermarket", rs.getString("SuperMarket"));
 				temp.put("shelf", rs.getString("FoodCat2").trim());
+				temp.put("mass", rs.getString("Mass").trim());
+				temp.put("unit", rs.getString("Unit").trim());
 				
 				results.put(temp);
 			}
@@ -711,17 +692,30 @@ public class DBConnect extends HttpServlet{
 		regexpPhrase += words[words.length - 1];
 		
 		String tCatQuery = String.format(
-				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$'AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
 				regexpPhrase, regexpPhrase);
+		
+		String tCatMoreGeneralQuery = String.format(
+				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase);
+		
 		String sainsCatQuery = String.format(
-				"SELECT FoodCat2 FROM sains WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP  '%s | %s$'AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase);
+				"SELECT FoodCat2 FROM sains WHERE Name IN (SELECT Name FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase);
 		
 		try {
 			openCon();
 			rs = st.executeQuery(tCatQuery);
-			while (rs.next()) {
-				results.put(rs.getString(1).trim());
+			if (rs.next()) {
+				do {
+					results.put(rs.getString(1).trim());
+				} while (rs.next());
+			}
+			else {
+				rs = st.executeQuery(tCatMoreGeneralQuery);
+				while (rs.next()) {
+					results.put(rs.getString(1).trim());
+				}
 			}
 			
 			rs = st.executeQuery(sainsCatQuery);
