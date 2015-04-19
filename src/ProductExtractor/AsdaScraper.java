@@ -25,6 +25,7 @@ public class AsdaScraper {
 			aisles = new ArrayList<Thread>();
 			shelves = new ArrayList<Thread>();
 			gridpages = new ArrayList<Thread>();
+			productpages = new ArrayList<Thread>();
 			products = new ArrayList<String>();
 			for (String s: urls) {
 				Thread t = new Thread(new AsdaDepartment(s, tc));
