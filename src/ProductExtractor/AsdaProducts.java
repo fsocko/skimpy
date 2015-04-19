@@ -13,11 +13,13 @@ public class AsdaProducts implements Runnable {
 	private String url;
 	private ThreadControl tc;
 	private String categoryname;
+	private String cat;
 	
-	public AsdaProducts(String url, ThreadControl tc, String categoryname) {
+	public AsdaProducts(String url, ThreadControl tc, String categoryname, String cat) {
 		this.url = url;
 		this.tc = tc;
 		this.categoryname = categoryname;
+		this.cat = cat;
 	}
 	
 	public void run() {
@@ -37,14 +39,14 @@ public class AsdaProducts implements Runnable {
 //				retries--;
 //			}
 			webClient.waitForBackgroundJavaScript(50000);
-			String cat = page.getBody().getOneHtmlElementByAttribute("div", "id", "pageTitle").getFirstElementChild().asText();
 			HtmlElement gridProducts = page.getBody().getOneHtmlElementByAttribute("div", "id", "listings");
 			Iterator<DomElement> itr = gridProducts.getChildElements().iterator();
 			while (itr.hasNext()) {
 				HtmlElement temp = (HtmlElement)itr.next();
 				String prodUrl = temp.getOneHtmlElementByAttribute("span", "id", "productTitle").getFirstElementChild().getAttribute("href");
 				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, tc, categoryname, cat));
-				tc.addThread(t);
+				AsdaScraper.productpages.add(t);
+				//tc.addThread(t);
 			}
 			Iterator<DomElement> pageCount = page.getBody().getOneHtmlElementByAttribute("p", "class", "itemCount ").getChildElements().iterator();
 			pageCount.next();
@@ -77,7 +79,8 @@ public class AsdaProducts implements Runnable {
 				HtmlElement temp = (HtmlElement)itr.next();
 				String prodUrl = temp.getOneHtmlElementByAttribute("span", "id", "productTitle").getFirstElementChild().getAttribute("href");
 				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, tc, categoryname, cat));
-				tc.addThread(t);
+				AsdaScraper.productpages.add(t);
+				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {

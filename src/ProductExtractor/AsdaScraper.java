@@ -6,6 +6,10 @@ import java.util.logging.Level;
 
 public class AsdaScraper {
 	
+	public static ArrayList<Thread> aisles;
+	public static ArrayList<Thread> shelves;
+	public static ArrayList<Thread> gridpages;
+	public static ArrayList<Thread> productpages;
 	public static ArrayList<String> products;
 	private static final String[] urls = {"http://groceries.asda.com/asda-webstore/landing/home.shtml#/cat/1215135760597",
 			"http://groceries.asda.com/asda-webstore/landing/home.shtml#/cat/1215337189632",
@@ -18,10 +22,29 @@ public class AsdaScraper {
 		java.util.logging.Logger.getLogger("org.apache").setLevel(Level.OFF);
 		ThreadControl tc = new ThreadControl(maxthreads);
 		try {
+			aisles = new ArrayList<Thread>();
+			shelves = new ArrayList<Thread>();
+			gridpages = new ArrayList<Thread>();
 			products = new ArrayList<String>();
 			for (String s: urls) {
 				Thread t = new Thread(new AsdaDepartment(s, tc));
-				//Thread t = new Thread(new AsdaAisle("http://groceries.asda.com/asda-webstore/landing/home.shtml#/dept/1215338747245", tc));
+				//Thread t = new Thread(new AsdaProducts("http://groceries.asda.com/asda-webstore/landing/home.shtml#/shelf/1215337194973/1/so-false", tc, "Test"));
+				tc.addThread(t);
+			}
+			tc.run();
+			for (Thread t: aisles) {
+				tc.addThread(t);
+			}
+			tc.run();
+			for (Thread t: shelves) {
+				tc.addThread(t);
+			}
+			tc.run();
+			for (Thread t: gridpages) {
+				tc.addThread(t);
+			}
+			tc.run();
+			for (Thread t: productpages) {
 				tc.addThread(t);
 			}
 			tc.run();

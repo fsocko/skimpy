@@ -32,7 +32,8 @@ public class AsdaAisle implements Runnable {
 				String categoryname = temp.asText();
 				String productPage = temp.getFirstElementChild().getAttribute("href");
 				Thread t = new Thread(new AsdaShelf(AsdaScraper.rootUrl + productPage, tc, categoryname));
-				tc.addThread(t);
+				AsdaScraper.shelves.add(t);
+				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {

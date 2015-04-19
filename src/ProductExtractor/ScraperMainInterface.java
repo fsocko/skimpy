@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 public class ScraperMainInterface {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);

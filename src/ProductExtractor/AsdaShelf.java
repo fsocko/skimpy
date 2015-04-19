@@ -31,9 +31,12 @@ public class AsdaShelf implements Runnable {
 			HtmlElement shelves = (HtmlElement)page.getBody().getOneHtmlElementByAttribute("ul", "class", "menu_shelf").getFirstElementChild();
 			Iterator<DomElement> itr = shelves.getChildElements().iterator();
 			while (itr.hasNext()) {
-				String productPage = itr.next().getFirstElementChild().getAttribute("href");
-				Thread t = new Thread(new AsdaProducts(AsdaScraper.rootUrl + productPage, tc, categoryname));
-				tc.addThread(t);
+				HtmlElement temp = (HtmlElement)itr.next();
+				String cat = temp.asText();
+				String productPage = temp.getFirstElementChild().getAttribute("href");
+				Thread t = new Thread(new AsdaProducts(AsdaScraper.rootUrl + productPage, tc, categoryname, cat));
+				AsdaScraper.gridpages.add(t);
+				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {

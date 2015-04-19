@@ -35,7 +35,7 @@ public class AsdaDepartment implements Runnable {
 					System.out.println(temp.asText());
 					String productPage = temp.getFirstElementChild().getAttribute("href");
 					Thread t = new Thread(new AsdaAisle(AsdaScraper.rootUrl + productPage, tc));
-					tc.addThread(t);
+					AsdaScraper.aisles.add(t);
 				}
 			}
 			webClient.closeAllWindows();
