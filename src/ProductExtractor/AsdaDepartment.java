@@ -32,7 +32,6 @@ public class AsdaDepartment implements Runnable {
 			while (itr.hasNext()) {
 				DomElement temp = itr.next();
 				if (!(temp.asText().toLowerCase().contains("free from") || temp.asText().toLowerCase().contains("special offers") || temp.asText().toLowerCase().contains("world foods"))) {
-					System.out.println(temp.asText());
 					String productPage = temp.getFirstElementChild().getAttribute("href");
 					Thread t = new Thread(new AsdaAisle(AsdaScraper.rootUrl + productPage, tc));
 					AsdaScraper.aisles.add(t);
