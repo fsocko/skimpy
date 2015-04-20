@@ -14,6 +14,7 @@
    
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <style type="text/css">
     	.form-signup {
         	max-width: 330px;
@@ -47,7 +48,7 @@
       }
       .form-signup input[type="password"] {
         margin-bottom: 10px;
-      }
+      } 
 		
 		 .birthday-drop {
         margin-bottom:10px;
@@ -84,22 +85,11 @@
    <div class="form-signup">
       <form action="signupdets.jsp" method="post" id="myForm" >
       <fieldset>
-          <div class="control-group">
-            <label class="control-label" for="name">Name</label>
-            <div class="controls">
-            	<input type="text" class="input x-large" name="name" id="name">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="email">Email</label>
-            <div class="controls">
-            	<input type="text" class="input x-large" name="email" id="email">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="password">Password</label>
-            <div class="controls">
-            	<input type="password" class="input x-large" name="password" id="password">
+          <div class="control-group"> 
+          	<div class="controls"> 
+            	<input type="text" class="form-control" name="name" id="name" placeholder="Username">
+            	 <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+            	 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
             </div>
           </div>
           <div class="control-group"> 
@@ -269,19 +259,14 @@
                 <option value="1905">1905</option>
               </select>
             </div>
-            <div class="control-group">
-            	<label class="control-label" for="gender">Gender</label>
-            	<div class="controls">
-              		<select name="gender">
-              			<option value="0" selected>Gender</option>
-              			<option value="male">Male</option> 
-              			<option value="female">Female</option>
-              		</select>
-              	</div>
-            </div>
+              <select name="gender"  class="form-control">
+              <option value="0" selected>Gender</option>
+              <option value="male">Male</option> 
+              <option value="female">Female</option>
+              </select>
+              <br>
              
-            <button class="btn btn-block btn-success btn-lg" type="submit">Sign Up</button>
-            
+            <button class="btn btn-block btn-success btn-lg" type="submit">Sign up</button>
           </div>
        </fieldset>   
       </form>
@@ -310,15 +295,6 @@
             }, 
             
           },
-      
-     	 highlight: function(element) {
-    	    $(element).closest('.control-group').removeClass('success').addClass('error');
-    	  },
-    	  success: function(element) {
-    	    element
-    	    .text('OK!').addClass('valid')
-    	    .closest('.control-group').removeClass('error').addClass('success');
-    	  }
       });
     });
     </script>
