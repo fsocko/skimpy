@@ -46,7 +46,13 @@ public class AsdaProductPage implements Runnable {
 		    productString += url;
 		    try {
 		    	String name = productSummary.getOneHtmlElementByAttribute("h1", "class", "prod-title").getTextContent();
-		    	productString += ";" + name;
+		    	String weight = "";
+		    	try {
+		    		weight = productSummary.getOneHtmlElementByAttribute("span", "class", "weight").getTextContent();
+		    	} catch (Exception e) {
+		    		weight = "";
+		    	}
+		    	productString += ";" + name + " " + weight;
 		    } catch (Exception e) {
 		    	productString += ";null";
 		    }
@@ -56,7 +62,7 @@ public class AsdaProductPage implements Runnable {
 			  	productString += ";null";
 			}
 			try {
-				productString += ";" + productSummary.getOneHtmlElementByAttribute("span", "class", "prod-quantity").asText();
+				productString += ";" + productSummary.getOneHtmlElementByAttribute("span", "class", "prod-quantity").asText().replace("per", "/");
 			} catch (Exception e) {
 			 	productString += ";null";
 			}
