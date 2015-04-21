@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServlet;
 /**
@@ -17,19 +18,30 @@ public class Meal extends HttpServlet{
 	 */
 	private String name;
 	private ArrayList<Food> ingredients;
+	private ArrayList<Integer> masses;
+
 	/**
 	 * Constructs a default Meal.
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients)
+	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Integer> masses)
 	{
 		this.name = name;
+	
 		this.ingredients = new ArrayList<Food>();
 				for(Food f : ingredients)
 		{
 					this.ingredients.add(f);
-		}			
+		}		
+		
+		
+		this.masses = new ArrayList<Integer>();
+			for(Integer g : masses)
+			{
+					this.masses.add(g);
+			}
+				
 	}	
 	/**
 	 * Displays the Meal as a String
@@ -162,6 +174,11 @@ public class Meal extends HttpServlet{
 	}
 	public ArrayList<Food> getIngredients()
 	{
-		return ingredients;
+		return this.ingredients;
+	}
+	
+	public ArrayList<Integer> getMasses()
+	{
+		return this.masses;
 	}
 }

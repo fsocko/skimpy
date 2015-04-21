@@ -1,5 +1,6 @@
 package BusinessLogic;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 
@@ -17,14 +18,22 @@ public class Main extends HttpServlet{
 	
 	public static void main(String[] args) 
 	{
-		
-		
-		
+			
 		DBConnect con = new DBConnect();
 		SpiderToDB std = new SpiderToDB();
-		pushToDB(std.tescoPath, "tesco");
 		pushToDB(std.asdaPath, "asda");
+		pushToDB(std.tescoPath, "tesco");
 		pushToDB(std.sainsPath, "sains");
+		
+		/*
+		Person user = con.pullUser("35");
+		
+		user.setHeight(170.00);
+		System.out.println(user.getID());
+		con.updateUser(user);
+
+		System.out.println(con.pullUser("35").getHeight());
+		*/
 				
 	}
 	
@@ -38,36 +47,36 @@ public class Main extends HttpServlet{
 		ing2.add(new Food(340, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
 		ing2.add(new Food(109, "tesco", null, 0, null, 0, 0, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0));
 		ArrayList<Meal> meals = new ArrayList<Meal>();
-		meals.add(new Meal("Cereal", ing1));
-		meals.add(new Meal("Lunch", ing2));
-		meals.add(new Meal("Dinner", ing2));
+//		meals.add(new Meal("Cereal", ing1));
+//		meals.add(new Meal("Lunch", ing2));
+//		meals.add(new Meal("Dinner", ing2));
 		ArrayList<MealPlanner> mps = new ArrayList<MealPlanner>();
-		for (int i = 0; i < 2; i++) {
-		MealPlanner mp = new MealPlanner();
-		String[] dayValues = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-		String[] timeValues = {"Breakfast", "Lunch", "Dinner"};
-		for (String s: dayValues) {
-			int j = 0;
-			for (String t: timeValues) {
-				mp.add(meals.get(j), s, t);
-				j++;
-			}
-		}
-		mps.add(mp);
-		}
-		writeX.writeMealPlans(mps);
+//		for (int i = 0; i < 2; i++) {
+//		MealPlanner mp = new MealPlanner();
+//		String[] dayValues = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+//		String[] timeValues = {"Breakfast", "Lunch", "Dinner"};
+//		for (String s: dayValues) {
+//			int j = 0;
+//			for (String t: timeValues) {
+//				mp.add(meals.get(j), s, t);
+//				j++;
+//			}
+//		}
+//		mps.add(mp);
+//		}
+		//writeX.writeMealPlans(mps, getServletContext().getRealPath("") + "/meals.xml");
 	}
 	
 	
-	public static Meal createMeal()
-	{
-		ArrayList<Food> ingredients = new ArrayList<Food>();
-		ingredients.add(pullFromDB("tesco", "3057"));
-		ingredients.add(pullFromDB("tesco", "3806"));
-		ingredients.add(pullFromDB("tesco", "3897"));
-		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
-		return currentMeal;
-	}
+//	public static Meal createMeal()
+//	{
+//		ArrayList<Food> ingredients = new ArrayList<Food>();
+//		ingredients.add(pullFromDB("tesco", "3057"));
+//		ingredients.add(pullFromDB("tesco", "3806"));
+//		ingredients.add(pullFromDB("tesco", "3897"));
+//		Meal currentMeal = new Meal("Tuna Dinner", ingredients);
+//		return currentMeal;
+//	}
 	
 	//Ruaraidh's test for search
 	public static void printFoodListSearch(ArrayList<Food> list){

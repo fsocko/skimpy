@@ -8,9 +8,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -19,8 +21,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServlet;
-
-import com.mysql.jdbc.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -78,12 +78,23 @@ public class DBConnect extends HttpServlet{
 	}
 
 	
-	public Food pullFood(String table, String ID)
-
+	public Food pullFood(String t, String ID)
+    
 	{
 		openCon();
 		Food returnedFood = null;
+		String table;
 		try{
+			
+			if(
+			t.equals("A")){
+			 table = "asda";
+			}else if(
+			t.equals("T")){
+			table = "tesco";
+		    }else{
+		    table="sains";
+		    }
 			
 			String query = "select * FROM " + table + " WHERE ID=" + ID + ";";
 //			System.out.println(query);
@@ -181,23 +192,81 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public void pullUser(String ID)
+	public Person pullUser(String ID)
 	{
 		openCon();
 		try{
-			System.out.println("Records from Database");
-			rs = st.executeQuery("select * FROM user_info WHERE ID=" + ID);
+			Person user = null;
+			boolean foundUser = false;
+			rs = st.executeQuery("select * FROM user_info WHERE UserID= '" + ID + "';");
 			while (rs.next()){
+				foundUser = true;
 				String userName = rs.getString("UserName");
-				String userEmail = rs.getString("UserEmail");
-				int age = rs.getInt("Age");
-				float weight = rs.getFloat("Weight");
-				String gender = rs.getString("Gender");
-				float exercise = rs.getFloat("Exercise");
 				
-				System.out.println(ID + userName + userEmail + age + weight + gender + exercise);
+				String userEmail = rs.getString("UserEmail");
+				String password = rs.getString("UserPassword");
+				
+				Date dob = rs.getDate("DateOfBirth");
+				double weight = rs.getDouble("Weight");
+				double height = rs.getDouble("Height");
+				char gender = rs.getString("Gender").charAt(0);
+				int exercise = rs.getInt("Exercise");
+				
+				
+				user = new Person(userName, userEmail, password, dob, height, weight, gender, exercise);
+				user.setID(rs.getInt("UserID"));
 			}
+			if(foundUser){
+				return user;
+			}
+			return null;
 	
+		} catch(Exception ex){
+			System.out.println(ex);
+			return null;
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+			
+	public int getIDfromEmail(String email){
+		openCon();
+		try{
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + email + "';");
+			while (rs.next()){
+				return rs.getInt("UserID");
+			}
+
+			return -1;
+	
+		} catch(Exception ex){
+			System.out.println(ex);
+			return -1;
+		}
+		finally 
+		{
+			closeCon();
+		}
+	}
+	
+	public void updateUser(Person user){
+		openCon();
+		try{				
+			String query = "UPDATE user_info " +
+					"SET UserName = '" + user.getName() + "' " +
+					", UserEmail = '" + user.getEmail() + "' " +
+					", UserPassword = '" + user.getPassword() + "' " +
+					", DateOfBirth = '" + new java.sql.Date(user.getDob().getTime()) + "' " +
+					", Age = '" + user.getAge() + "' " +
+					", Height = '" + user.getHeight() + "' " +
+					", Weight = '" + user.getWeight() + "' " +
+					", Gender = '" + user.getGender() + "' " +
+					", Exercise = '" + user.getExercise() + "' " +
+					"WHERE UserID = '" + user.getID() + "';";
+			st.executeUpdate(query);
+			
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
@@ -206,22 +275,26 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 	}
-		
-
+	
 	public void pushUser(Person user){
+		openCon();
 		try{
-			String query = "INSERT INTO user_info (UserName, UserEmail, UserPassword, Age, Height, Weight, Gender, Exercise)"
-					+ "VALUES (\"" + 
-							user.getName() +  "\", \"" + user.getEmail() + "\", \"" + user.getPassword() + "\", "  +
-							user.getAge() + ", " + user.getHeight() + ", " + user.getWeight() + ", \"" + user.getGender() + "\", " + 
-							user.getExercise() + ")";
+			String query ="INSERT INTO user_info (UserName, UserEmail, UserPassword, DateOfBirth, Age, Height, Weight, Gender, Exercise)"
+					+ "VALUES ('" + 
+							user.getName() +  "', '" + user.getEmail() + "', '" + user.getPassword() + "', '"  +
+							new java.sql.Date(user.getDob().getTime()) + "', '" + user.getAge() + "', '" + user.getHeight() + 
+							"', '" + user.getWeight() + "', '" + user.getGender() + "', '" + user.getExercise() +"')";
 			st.executeUpdate(query);
-			System.out.println("Pushes to Database");
-			
+
 		} catch(Exception ex){
 			System.out.println(ex);
 		}
+		finally 
+		{
+			closeCon();
+		}
 	}
+	
 	//I think this is unused
 	public void findCat(String qu){
 		try{
@@ -496,8 +569,8 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
-	public String productSearch(String phrase) {
-		JSONArray results = new JSONArray();
+	public List<Food> productSearch(String phrase) {
+		List<Food> results = new ArrayList<Food>();
 		
 		String[] words = phrase.split("\\s");
 		String regexpPhrase = "";
@@ -512,7 +585,7 @@ public class DBConnect extends HttpServlet{
 		String sQuery = String.format(
 			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s'",
 			regexpPhrase, regexpPhrase, regexpPhrase);
-		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC LIMIT 50";
+		String query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
 		
 		String moreGeneralQuery_1 = String.format(
 			"SELECT DISTINCT * FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL'",
@@ -521,20 +594,62 @@ public class DBConnect extends HttpServlet{
 			"SELECT DISTINCT * FROM sains WHERE Name REGEXP ' %s | %s$'",
 			regexpPhrase, regexpPhrase);
 		String moreGeneralQuery = moreGeneralQuery_1 + " UNION " + moreGeneralQuery_2
-				+ " ORDER BY Price ASC LIMIT 50";
+				+ " ORDER BY Price ASC";
 		
 		try {
 			openCon();
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				do {
-					results.put(rs.getString(3).trim());
+					Food temp = new Food(
+							rs.getInt("ID"),
+							rs.getString("shopID"),
+							rs.getString("Name"),
+							rs.getDouble("Mass"),
+							rs.getString("Unit"),
+							rs.getDouble("Price"),
+							rs.getDouble("PPUPrice"),
+							rs.getString("PPUUnit"),
+							rs.getString("FoodCat"),
+							rs.getString("FoodCat2"),
+							rs.getString("SuperMarket"),
+							rs.getDouble("Calories"),
+							rs.getDouble("Proteins"),
+							rs.getDouble("Carbs"),
+							rs.getDouble("Sugars"),
+							rs.getDouble("Fats"),
+							rs.getDouble("Saturates"),
+							rs.getDouble("Fibre"),
+							rs.getDouble("Salt"));
+					
+					results.add(temp);
 				} while (rs.next());
 			}
 			else {
 				rs = st.executeQuery(moreGeneralQuery);
 				while (rs.next()) {
-					results.put(rs.getString(3).trim());
+					Food temp = new Food(
+							rs.getInt("ID"),
+							rs.getString("shopID"),
+							rs.getString("Name"),
+							rs.getDouble("Mass"),
+							rs.getString("Unit"),
+							rs.getDouble("Price"),
+							rs.getDouble("PPUPrice"),
+							rs.getString("PPUUnit"),
+							rs.getString("FoodCat"),
+							rs.getString("FoodCat2"),
+							rs.getString("SuperMarket"),
+							rs.getDouble("Calories"),
+							rs.getDouble("Proteins"),
+							rs.getDouble("Carbs"),
+							rs.getDouble("Sugars"),
+							rs.getDouble("Fats"),
+							rs.getDouble("Saturates"),
+							rs.getDouble("Fibre"),
+							rs.getDouble("Salt"));
+					
+					results.add(temp);
 				}
 			}
 		}
@@ -544,6 +659,69 @@ public class DBConnect extends HttpServlet{
 		finally {
 			closeCon();
 		}
+		return results;
+	}
+	
+	public String jsonSearch(String phrase, String[] categories) {
+		JSONArray results = new JSONArray();
+		String query;
+		
+		String[] words = phrase.split("\\s");
+		String regexpPhrase = "";
+		for (int i = 0; i < words.length - 1; i++) {
+			regexpPhrase += words[i] + ".*";
+		}
+		regexpPhrase += words[words.length - 1];
+		
+		if (categories != null) {
+			String tQuery = "SELECT DISTINCT * FROM tesco WHERE ";
+			String sQuery = "SELECT DISTINCT * FROM sains WHERE ";
+			
+			for (int i = 0; i < categories.length - 1; i++) {
+				tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, categories[i]);
+				sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, categories[i]);
+			}
+			
+			tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s'",
+					regexpPhrase, categories[categories.length - 1]);
+			sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' ",
+					regexpPhrase, categories[categories.length - 1]);
+			
+			query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
+		}
+		else {
+			query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0' "
+					+ "UNION "
+					+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' ORDER BY Price ASC",
+					regexpPhrase, regexpPhrase);
+		}
+		
+		try {
+			openCon();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				JSONObject temp = new JSONObject();
+				temp.put("ID", rs.getInt("ID"));
+				temp.put("name", rs.getString("Name").trim());
+				temp.put("price", rs.getDouble("Price"));
+				temp.put("shopID", rs.getString("ShopID").trim());
+				temp.put("supermarket", rs.getString("SuperMarket"));
+				temp.put("shelf", rs.getString("FoodCat2").trim());
+				temp.put("mass", rs.getString("Mass").trim());
+				temp.put("unit", rs.getString("Unit").trim());
+				
+				results.put(temp);
+			}
+		}
+		catch (SQLException sqlex) {
+			sqlex.printStackTrace();
+		}
+		finally {
+			closeCon();
+		}
+		
 		return results.toString();
 	}
 	
@@ -558,11 +736,16 @@ public class DBConnect extends HttpServlet{
 		regexpPhrase += words[words.length - 1];
 		
 		String tCatQuery = String.format(
-				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND FoodCat2 REGEXP '%s' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase, regexpPhrase);
-		String tCatMoreGeneral = String.format(
-				"SELECT FoodCat FROM tesco WHERE Name IN (SELECT DISTINCT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND PPUUnit NOT LIKE 'NULL') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
 				regexpPhrase, regexpPhrase);
+		
+		String tCatMoreGeneralQuery = String.format(
+				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase);
+		
+		String sainsCatQuery = String.format(
+				"SELECT FoodCat2 FROM sains WHERE Name IN (SELECT Name FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase);
 		
 		try {
 			openCon();
@@ -573,10 +756,15 @@ public class DBConnect extends HttpServlet{
 				} while (rs.next());
 			}
 			else {
-				rs = st.executeQuery(tCatMoreGeneral);
+				rs = st.executeQuery(tCatMoreGeneralQuery);
 				while (rs.next()) {
 					results.put(rs.getString(1).trim());
 				}
+			}
+			
+			rs = st.executeQuery(sainsCatQuery);
+			while (rs.next()) {
+				results.put(rs.getString(1).trim());
 			}
 		}
 		catch (SQLException sqlex) {

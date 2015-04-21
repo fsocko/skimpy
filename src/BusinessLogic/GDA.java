@@ -1,5 +1,8 @@
 package BusinessLogic;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.servlet.http.HttpServlet;
 
 /**
@@ -24,6 +27,7 @@ public class GDA extends HttpServlet {
 	private double saturates;
 	private double fibre;
 	private double salt;
+	private double BMR;
 	/**
 	 * Constructs the GDA model for a user. Calculates each as a ratio of calories and converts to grams.
 	 * @param p takes in a user.
@@ -90,8 +94,10 @@ public class GDA extends HttpServlet {
 		//7-21hrs/week of strenuous exercise/work
 		if(p.getExercise() == 5)
 			TDEE = 1.9 * BMR;
+		this.BMR = BMR;
 		return TDEE;
 	}
+
 	/**
 	 * Formats the ratios from calories to convert them to grams then round them to 2 decimal places.
 	 * @param x The ratio of calories that needs to be formatted.
@@ -114,36 +120,38 @@ public class GDA extends HttpServlet {
 		int multiplier = 100;
 		return Math.round(x * multiplier)/ (double)multiplier;
 	}
-
+	public double getBMR(){
+		return Format.round(BMR, 2);
+	}
 	public double getCalories() {
-		return calories;
+		return Format.round(calories, 2);
 	}
 
 	public double getProtein() {
-		return protein;
+		return Format.round(protein, 2);
 	}
 
 	public double getCarbs() {
-		return carbs;
+		return Format.round(carbs, 2);
 	}
 
 	public double getSugars() {
-		return sugars;
+		return Format.round(sugars, 2);
 	}
 
 	public double getFat() {
-		return fat;
+		return Format.round(fat, 2);
 	}
 
 	public double getSaturates() {
-		return saturates;
+		return Format.round(saturates, 2);
 	}
 
 	public double getFibre() {
-		return fibre;
+		return Format.round(fibre, 2);
 	}
 
 	public double getSalt() {
-		return salt;
+		return Format.round(salt, 2);
 	}
 }

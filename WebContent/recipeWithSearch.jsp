@@ -1,22 +1,23 @@
+<%@include file="home.jsp" %>
 <!doctype html>
 
 <html>
   
   <head>
-    <title>Narrow Jumbotron</title>
+    <title>Recipe</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <style type="text/css">
-      /* Space out content a bit */
-      body {
+   <style type="text/css"> 
+       /* Space out content a bit */
+      /* body {
         padding-top: 20px;
         padding-bottom: 20px;
-      }
+      } */
       /* Everything but the jumbotron gets side spacing for mobile first views */
       .header, .marketing, .footer {
         padding-left: 15px;
@@ -86,11 +87,12 @@
     background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
   }
   #city { width: 600px; }
-  </style>
+  </style> 
       <script>
   $(function() {
     function log( message ) {
       $( "<div>" ).text( message ).prependTo( "#log" );
+      $('#ingred').val($('#ingred').val() + message + ";");
       $( "#log" ).scrollTop( 0 );
     }
  
@@ -126,60 +128,54 @@
   </head>
   
   <body>
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">Skimpy</h3>
-      </div>
-      <div class="jumbotron">
-        <h2 class="text-left">Create a Meal</h2>
+   <%if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
+	 %>
+  <div class="container">
+      <div class="jumbotron"> 
+       <h2 class="text-left">Create a Meal</h2>
         <p></p>
-        <div class="container">
+       <form action="savedMeal.jsp" method="POST">
+  <div class="container">
           <div class="row"></div>
-          <div class="col-xs-9 col-md-4">
-            <input class="form-control" value="Meal Name">
-          </div>
+          <div class="col-xs-9 col-md-4"> 
+          
+            <input class="form-control" name="mealname" value="Meal Name">
+           </div>
           <div class="col-xs-1 col-md-1">
-            <div class="btn-toolbar">
-             <!--  <div class="btn-group">
+            <div class="btn-toolbar"> 
+              <div class="btn-group">
                 <a class="btn btn-default btn-xs">+</a>
-              </div> -->
-             <!--  <div class="btn-group"></div>
-            </div> -->
+              </div> 
+             <div class="btn-group"></div>
+            </div> 
           </div>
           <ul class="list-group"></ul>
-        </div>
+       </div>
     <div class="ui-widget">
 	  <input id="city" value="Ingredients">
-    </div>
+   </div>
     <div class="ui-widget" style="margin-top:2em">
   <div id="log" style="height: 300px; width: 600px; overflow: auto;" class="ui-widget-content"></div>
-</div>
+</div> 
         <ul class="list-group"></ul>
-        <div class="container-fluid">
-          <a class="btn pull-left btn-success">Save your Meal</a>
-          <div class="btn-toolbar">
+         <input class="list-group"  id="ingred" type="hidden" name="ingred" value=";">
+         <div class="container-fluid"> 
+           <a class="btn pull-left btn-success">Save your Meal</a>
+           <div class="btn-toolbar">
             <div class="btn-group"></div>
             <div class="btn-group"></div>
           </div>
         </div>
-        <div class="container">
-          <h3 class="text-left">Nutrition Data</h3>
+        <div class="container"> 
+         <h3 class="text-left">Nutrition Data</h3>
           <h3 class="text-left">Price Comparison</h3>
         </div>
-        <a></a>
-      </div>
-    </div>
+        <a></a><input type="submit" value="Save Your Meal" />
+        </form>
+       </div>
+    </div> 
     <!-- /container -->
   </body>
 

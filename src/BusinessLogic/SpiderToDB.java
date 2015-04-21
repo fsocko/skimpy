@@ -223,8 +223,7 @@ public class SpiderToDB extends HttpServlet{
 				 name = name.replaceAll(";","");
 				 name = name.replaceAll("\"","&quot;");
 				 
-				 
-				 //Mass, Unit
+	//mass and unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
 	//Price			 		 
@@ -240,7 +239,7 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
-				 foodCat = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
+				 foodCat2 = foodCat2.replaceAll("[-]"," ");
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
@@ -338,7 +337,7 @@ public class SpiderToDB extends HttpServlet{
 			     mass = m.group(1).trim(); // mass is 400
 			 	 unit = m.group(2).trim(); // the unit is "g"
 			 }
-			 else{mass = "-1.69"; unit = "NULL";} //This happens if we haven't found a unit
+			 else{mass = "-0"; unit = "NULL";} //This happens if we haven't found a unit
 			 
 			 //If there are any delimiters, we strip them from all fields
 			 mass = mass.trim().replaceAll(";","");

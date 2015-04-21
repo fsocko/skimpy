@@ -21,6 +21,7 @@ public class MealPlanner extends HttpServlet{
 	private Meal[][] plan;
 	private double price;
 	ArrayList<ArrayList<Food>> shoppingList;
+	private int userId;
 	
 	public ArrayList<ArrayList<Food>> getShoppingList() {
 		return shoppingList;
@@ -31,9 +32,9 @@ public class MealPlanner extends HttpServlet{
 	/**
 	 * Constructs a default empty planner.
 	 */
-	public MealPlanner(){
+	public MealPlanner(int userId){
 		plan = new Meal[7][3];
-
+		this.userId = userId;
 	}
 	
 		/**
@@ -219,6 +220,10 @@ public class MealPlanner extends HttpServlet{
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public int getUserId() {
+		return userId;
 	}
 	
 }
