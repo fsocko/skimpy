@@ -119,8 +119,8 @@
           rules:{
         	  
         	  	name:{
-        		  minlength: 2,
-        		  required: true
+        	  		minlength: 2,
+        	  		required:true
         	  	},
             
         	  	email:{
