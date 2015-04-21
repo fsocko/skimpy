@@ -743,44 +743,24 @@ public class DBConnect extends HttpServlet{
 		regexpPhrase += words[words.length - 1];
 		
 		String asdaCatQuery = String.format(
-				"SELECT FoodCat2 FROM asda WHERE Name IN (SELECT Name FROM asda WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				"(SELECT FoodCat2, COUNT(Name) AS entries FROM asda WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
 		
-		String tCatQuery = String.format(
-				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
-				regexpPhrase, regexpPhrase);
-		
-		String tCatMoreGeneralQuery = String.format(
-				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+		String tescoCatQuery = String.format(
+				"(SELECT FoodCat2, COUNT(Name) AS entries FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
 		
 		String sainsCatQuery = String.format(
-				"SELECT FoodCat2 FROM sains WHERE Name IN (SELECT Name FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				"(SELECT FoodCat2, COUNT(Name) AS entries FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
+		
+		String query = asdaCatQuery + " UNION " + tescoCatQuery + " UNION " + sainsCatQuery + " ORDER BY entries DESC";
 		
 		try {
 			openCon();
-			rs = st.executeQuery(tCatQuery);
-			if (rs.next()) {
-				do {
-					results.put(rs.getString(1).trim());
-				} while (rs.next());
-			}
-			else {
-				rs = st.executeQuery(tCatMoreGeneralQuery);
-				while (rs.next()) {
-					results.put(rs.getString(1).trim());
-				}
-			}
-			
-			rs = st.executeQuery(asdaCatQuery);
+			rs = st.executeQuery(query);
 			while (rs.next()) {
-				results.put(rs.getString(1).trim());
-			}
-			
-			rs = st.executeQuery(sainsCatQuery);
-			while (rs.next()) {
-				results.put(rs.getString(1).trim());
+				results.put(rs.getString("FoodCat2").trim());
 			}
 		}
 		catch (SQLException sqlex) {
