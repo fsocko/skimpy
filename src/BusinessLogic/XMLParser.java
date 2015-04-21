@@ -64,6 +64,18 @@ public class XMLParser {
 		return null;
 	}
 	
+	public Meal getMeal(ArrayList<Meal> meals, String name){
+		Meal themeal = null;
+		for (Meal m: meals ){
+			if(m.getName().equals(name)){
+		themeal = m;
+		
+	  }}
+		return themeal;
+		
+	}
+	
+	
 	/*
 	 * Writes an arraylist of meals to the file meals.xml
 	 */

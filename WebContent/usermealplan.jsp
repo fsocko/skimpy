@@ -80,23 +80,25 @@ connect.search(searchItem); */
            
                  <%        
        XMLParser writeX = new XMLParser();
-       ArrayList<Meal> readmeals = new ArrayList<Meal>();
-       readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");%>
-    	 <select id="ing<%=j%><%=i %>"> <option selected></option> 
-    	 <%   for(Meal m: readmeals){%>
-    	    	<option> <%=m.getName() %></option>
-    	   <% } %></select>
-           <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
+       ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
+       readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
+       
+    	   // for(MealPlanner m: readmeals){
+    	   //    if ((Integer)session.getAttribute("ID") == m.getUserId()){
+    	     //  %>
+    	    <%--	<%=m.getMeal(j,i).getName() %>
+    	   <% }  }%>
+          <%--  <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
            
            
-				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
-				<%-- <input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " /> --%>
-               <%--  <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> --%>
+				<%   String mealname = plan.getMeal(j, i).getName();%>
+				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
+                <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;">
                 
                 <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred<%=j%><%=i%>" value="">
                 <p id="ingredients<%=j%><%=i %>"></p> 
-                <p>ingred<%=j%><%=i%></p>
+                <p>ingred<%=j%><%=i%></p> --%>
 			   </td>
 			
 			<%}%>
