@@ -169,7 +169,7 @@ public class XMLParser {
 						}
 						System.out.println("");
 						Meal m = new Meal(name, foods, masses);
-						mp.add(m, day, time);
+						mp.add(m, j, k);
 					}
 				}
 				mealplans.add(mp);
