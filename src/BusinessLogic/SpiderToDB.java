@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServlet;
 public class SpiderToDB extends HttpServlet{
 
 	 //Use these strings when selecting file, it's easier.
-	 String tescoPath = "data/tesco.txt";
-	 String sainsPath = "data/sains.txt";
-	 String asdaPath = "data/asda.txt";
-	 String portionPath = "data/portionSizeToJavaInit.txt";
+	 public String tescoPath = "data/tesco.txt";
+	 public String sainsPath = "data/sains.txt";
+	 public String asdaPath = "data/asda.txt";
+	 public String portionPath = "data/portionSizeToJavaInit.txt";
 	 boolean rejectRecord = false;
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
