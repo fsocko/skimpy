@@ -237,6 +237,7 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
+				 foodCat2 = foodCat2.replaceAll("[-]"," ");
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
