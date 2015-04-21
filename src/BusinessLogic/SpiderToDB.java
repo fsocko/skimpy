@@ -216,10 +216,15 @@ public class SpiderToDB extends HttpServlet{
 	
 				 
 	//ShopID---------NO CHANGE
-				 shopID = shopID.replaceAll("\""," inch");
+				 shopID = shopID.replaceAll(";","");
+				 shopID = shopID.replaceAll("\"","&quot;");
+				 
 	//Name-----------NO CHANGE		
-				 name = name.replaceAll("\""," inch");
-	//Mass, Unit
+				 name = name.replaceAll(";","");
+				 name = name.replaceAll("\"","&quot;");
+				 
+				 
+				 //Mass, Unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
 	//Price			 		 
@@ -235,6 +240,7 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
+				 foodCat = foodCat.replaceAll("[-]"," "); //specifically for the sainsbury data
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
