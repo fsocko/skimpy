@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/1000000379752;Bartemura Kosher Moscato Wine;£8.96;(89.6p/75ml);Kosher Wine;Red Wine;null;null;null;null;null;null;null;null;
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/1000000394076;ASDA Chosen by You Rhubarb Crumble;£2.00;(33.3p/100g);Crumbles & Sponge Puddings;Cream Cakes & Desserts;238;2.6;37.1;22.5;8.2;4.4;2.5;0.1;
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/1000000396640;Pink Isabella;£5.00;(£5.00/1each);Flowers;Flowers;null;null;null;null;null;null;null;null;
@@ -8392,3 +8394,4 @@ http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/984583;Yorks
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/9870685;Snap Sweet Peanuts;£0.38;(£1.15/100g);Cereal Bars;Breakfast On The Go;null;null;null;null;null;null;null;null;
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/9870685;Snap Sweet Peanuts;£0.38;(£1.15/100g);Cereal Bars;Cereal;null;null;null;null;null;null;null;null;
 http://groceries.asda.com/asda-webstore/landing/home.shtml#/product/998058;ASDA Strawberries;£1.50;(£3.75/kg);Grapes & Berries;Fruit;28;0.8;6.0;6.0;0.1;0;1.1;0;
+>>>>>>> master

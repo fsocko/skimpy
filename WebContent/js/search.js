@@ -18,7 +18,11 @@ function fillResults(data) {
 			$('<div>').addClass('separator').text('Search results'));
 	for (x in data) {
 		var link_to_page = "";
-		if (data[x].supermarket == 'T') {
+		if (data[x].supermarket == 'A') {
+			supermarket_class = 'asda-price';
+			link_to_page = data[x].shopID;
+		}
+		else if (data[x].supermarket == 'T') {
 			supermarket_class = 'tesco-price';
 			link_to_page = "http://www.tesco.com/groceries/product/details/?id=" + data[x].shopID;
 		}

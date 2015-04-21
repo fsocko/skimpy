@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServlet;
 public class SpiderToDB extends HttpServlet{
 
 	 //Use these strings when selecting file, it's easier.
-	 String tescoPath = "data/tesco.txt";
-	 String sainsPath = "data/sains.txt";
-	 String asdaPath = "data/asda.txt";
-	 String portionPath = "data/portionSizeToJavaInit.txt";
+	 public String tescoPath = "data/tesco.txt";
+	 public String sainsPath = "data/sains.txt";
+	 public String asdaPath = "data/asda.txt";
+	 public String portionPath = "data/portionSizeToJavaInit.txt";
 	 boolean rejectRecord = false;
 
 		 public int countLines(String inputFile) //Most of this method written by a very helpful chap called Yashwant Chavan.  
@@ -216,12 +216,14 @@ public class SpiderToDB extends HttpServlet{
 	
 				 
 	//ShopID---------NO CHANGE
-				 shopID = shopID.replaceAll("\""," inch");
 				 shopID = shopID.replaceAll(";","");
+				 shopID = shopID.replaceAll("\"","&quot;");
+				 
 	//Name-----------NO CHANGE		
-				 name = name.replaceAll("\""," inch");
 				 name = name.replaceAll(";","");
-	//Mass, Unit
+				 name = name.replaceAll("\"","&quot;");
+				 
+	//mass and unit
 				 mass = formatMassUnit(name, true); //return mass true returns mass
 				 unit = formatMassUnit(name, false); //return mass false returns unit
 	//Price			 		 
@@ -237,6 +239,7 @@ public class SpiderToDB extends HttpServlet{
 			
     //foodCat2
 				 foodCat2 = foodCat2.replaceAll(";","");
+				 foodCat2 = foodCat2.replaceAll("[-]"," ");
 				 
 	//Calories---------NO CHANGE
 	//Proteins---------NO CHANGE
