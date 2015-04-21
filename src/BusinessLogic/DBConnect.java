@@ -674,28 +674,35 @@ public class DBConnect extends HttpServlet{
 		regexpPhrase += words[words.length - 1];
 		
 		if (categories != null) {
+			String aQuery = "SELECT DISTINCT * FROM asda WHERE ";
 			String tQuery = "SELECT DISTINCT * FROM tesco WHERE ";
 			String sQuery = "SELECT DISTINCT * FROM sains WHERE ";
 			
 			for (int i = 0; i < categories.length - 1; i++) {
+				aQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
+						regexpPhrase, categories[i]);
 				tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
 						regexpPhrase, categories[i]);
 				sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' OR ",
 						regexpPhrase, categories[i]);
 			}
 			
+			aQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s'",
+					regexpPhrase, categories[categories.length - 1]);
 			tQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s'",
 					regexpPhrase, categories[categories.length - 1]);
 			sQuery += String.format("Price NOT LIKE '0' AND Name REGEXP '%s' AND FoodCat2 LIKE '%s' ",
 					regexpPhrase, categories[categories.length - 1]);
 			
-			query = tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
+			query = aQuery + " UNION " + tQuery + " UNION " + sQuery + " ORDER BY Price ASC";
 		}
 		else {
-			query = String.format("SELECT DISTINCT * FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0' "
+			query = String.format("SELECT DISTINCT * FROM asda WHERE Name REGEXP '%s' AND Price NOT LIKE '0' "
 					+ "UNION "
-					+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' ORDER BY Price ASC",
-					regexpPhrase, regexpPhrase);
+					+ "SELECT DISTINCT * FROM tesco WHERE Name REGEXP '%s' AND Price NOT LIKE '0' "
+					+ "UNION "
+					+ "SELECT DISTINCT * FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' ORDER BY Price ASC LIMIT 50",
+					regexpPhrase, regexpPhrase, regexpPhrase);
 		}
 		
 		try {
@@ -735,6 +742,10 @@ public class DBConnect extends HttpServlet{
 		}
 		regexpPhrase += words[words.length - 1];
 		
+		String asdaCatQuery = String.format(
+				"SELECT FoodCat2 FROM asda WHERE Name IN (SELECT Name FROM asda WHERE Name REGEXP '%s' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
+				regexpPhrase);
+		
 		String tCatQuery = String.format(
 				"SELECT FoodCat2 FROM tesco WHERE Name IN (SELECT Name FROM tesco WHERE Name REGEXP ' %s | %s$' AND Price NOT LIKE '0') GROUP BY FoodCat ORDER BY COUNT(DISTINCT Name) DESC",
 				regexpPhrase, regexpPhrase);
@@ -760,6 +771,11 @@ public class DBConnect extends HttpServlet{
 				while (rs.next()) {
 					results.put(rs.getString(1).trim());
 				}
+			}
+			
+			rs = st.executeQuery(asdaCatQuery);
+			while (rs.next()) {
+				results.put(rs.getString(1).trim());
 			}
 			
 			rs = st.executeQuery(sainsCatQuery);
