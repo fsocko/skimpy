@@ -25,7 +25,7 @@ String date = request.getParameter("date");
 String month = request.getParameter("month");
 String year = request.getParameter("year"); 
 String dobString = year +"-"+month+"-"+date;
-Date dob = new SimpleDateFormat("mm-dd-yyyy").parse(dobString);
+Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
 
 Person user = new Person(name, email, password, dob, -1, -1, gender, -1);
 
