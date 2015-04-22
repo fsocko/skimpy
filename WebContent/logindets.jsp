@@ -22,7 +22,7 @@ sessionUser = con.pullUser(String.valueOf(sessionID));
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	if(email.equals(sessionUser.getEmail()) && password.equals(sessionUser.getPassword())){
-		session.setAttribute("username", sessionUser.getName());
+		 session.setAttribute("username", sessionUser.getName()); 
 		session.setAttribute("email", sessionUser.getEmail());
 		session.setAttribute("password", sessionUser.getPassword());
  		session.setAttribute("dob", sessionUser.getDob());
@@ -64,7 +64,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 	}
 }
 else{
-%>
+--%>
 <% getServletContext().getRequestDispatcher("/login.jsp").include(request,response);
 }
 %>
