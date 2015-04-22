@@ -178,6 +178,7 @@ body {
 	overflow-y: auto;
 	overflow-x: auto;
 	float: left;
+	margin-bottom: 8px;
 }
 
 .mass {
@@ -234,6 +235,8 @@ body {
 	float: left;
 	width: 5%;
 	color: #CCC;
+	text-align: center;
+	font-size: 16px;
 }
 
 .button-remove:hover {

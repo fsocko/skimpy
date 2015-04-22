@@ -47,9 +47,9 @@ function fillResults(data) {
 
 		$('#results').append(
 				$('<div>').addClass('result-entry')
-				.append($('<a>').attr('href', link_to_page)
-						.append($('<span>').addClass('button-add').append(
+				.append($('<span>').addClass('button-add').append(
 								$('<i>').addClass('fa').addClass('fa-plus')))
+				.append($('<a>').attr('href', link_to_page)
 						.append($('<span>').addClass('product-name').text(data[x].name)))
 						.append(
 								$('<span>').addClass('product-mass').text(mass))
