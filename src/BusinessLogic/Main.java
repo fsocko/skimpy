@@ -20,7 +20,12 @@ public class Main extends HttpServlet{
 	{
 			
 		DBConnect con = new DBConnect();
-	
+		SpiderToDB std = new SpiderToDB();
+		pushToDB(std.asdaPath, "asda");
+		pushToDB(std.tescoPath, "tesco");
+		pushToDB(std.sainsPath, "sains");
+		
+		/*
 		Person user = con.pullUser("35");
 		
 		user.setHeight(170.00);
@@ -28,7 +33,7 @@ public class Main extends HttpServlet{
 		con.updateUser(user);
 
 		System.out.println(con.pullUser("35").getHeight());
-
+		*/
 				
 	}
 	

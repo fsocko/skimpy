@@ -18,7 +18,11 @@ function fillResults(data) {
 			$('<div>').addClass('separator').text('Search results'));
 	for (x in data) {
 		var link_to_page = "";
-		if (data[x].supermarket == 'T') {
+		if (data[x].supermarket == 'A') {
+			supermarket_class = 'asda-price';
+			link_to_page = data[x].shopID;
+		}
+		else if (data[x].supermarket == 'T') {
 			supermarket_class = 'tesco-price';
 			link_to_page = "http://www.tesco.com/groceries/product/details/?id=" + data[x].shopID;
 		}
@@ -34,7 +38,7 @@ function fillResults(data) {
 		}
 
 
-		if (data[x].mass == "1.69") {
+		if (data[x].mass == "0" || data[x].unit == "NULL") {
 			mass = "-";
 		}
 		else {
@@ -51,7 +55,7 @@ function fillResults(data) {
 								.append($('<span>').addClass('shopName').text(data[x].supermarket))
 								.append(
 										$('<span>').addClass('product-price').addClass(supermarket_class)
-										.text('Â£' + data[x].price.toFixed(2)))
+										.text('£' + data[x].price.toFixed(2)))
 										.append($('<span>').addClass('button-add').append(
 												$('<i>').addClass('fa').addClass('fa-plus')))
 		);

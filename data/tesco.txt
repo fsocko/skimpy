@@ -17446,3 +17446,5 @@
 264748811;Cofresh Vegetable Samosas 700G;£1.75;£2.50/kg;Frozen World Foods;Frozen Samosas;209 Kcal;5.3;null;null;4.1;null;null;null;
 284804179;Shazans Chicken Samosas 20S 650G;£4.25;£0.65/100g;Frozen World Foods;Frozen Samosas;null;3.7;null;null;2.4;null;null;null;
 284803932;Shazans Meat Samosas 20S 650G;£4.25;£0.65/100g;Frozen World Foods;Frozen Samosas;null;10.9;null;null;3.3;null;null;null;
+284477450; Tesco Pink Lady Apple 4 Pack 590G; £2.50; (£4.24/kg); Apples, Pears & Rhubarb; 53kcal; 0.4g; 11.8g; 0.1g; <0.1g; <0.01g; 1.8g
+284477507; Tesco Bramley Apple 775G; £1.50; (£1.94/kg); Apples, Pears & Rhubarb; 41kcal; 0.3g; 8.9g; 0.1g; <0.1g; <0.01g; 1.6g
