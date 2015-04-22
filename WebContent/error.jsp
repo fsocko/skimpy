@@ -8,6 +8,6 @@
 </head>
 <body>
 <center><p style="color:red">Sorry, your username and password cannot be found</p></center>
-<% getServletContext().getRequestDispatcher("/login.jsp").include(request,response); %>
+<% getServletContext().getRequestDispatcher("/login.jsp").include(request,response); %> 
 </body>
 </html>
