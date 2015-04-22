@@ -14,6 +14,7 @@
 <head>
 <title>Saving Meal</title>
 </head>
+
 <body>
 
  <%  
@@ -52,8 +53,7 @@
     		  }
     		
     		
-    		Meal currentMeal = new Meal(MealName, f_ingredients, massList ); 
-    		//System.out.println(currentMeal.toString());
+    		Meal currentMeal = new Meal(MealName, f_ingredients, massList );
     		ArrayList<Meal> meals = new ArrayList<Meal>();
     		
     		XMLParser writeX = new XMLParser();
@@ -65,20 +65,29 @@
     	    String path = getServletContext().getRealPath("");
     	    
     	    
-    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); %>
+    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml"); 
+    	    String currentname= currentMeal.getName(); 
+    	    %>
     	   <br>
 Your new recipe:
-<%=currentMeal.getName() %>
+RECIPE
+
 <br>
 Ingredients:
-<br><%for (int i=0; i< currentMeal.getIngredients().size();i++){
+<br><%-- <%for (int i=0; i< currentMeal.getIngredients().size();i++){
 	                %>
 	                <%=currentMeal.getIngredients().get(i).getName()%>
 	                <%=currentMeal.getMasses().get(i)%>
 	                <br>
-	                <% }%>
+	                <% }%> --%>
 
+SOME FOOD
 
+<form action="viewRecipe.jsp" method="POST">
+
+<input type="hidden" value="<%=currentname%>" name="currentmeal">
+<input type="submit" value="Edit Meal">
+</form>
  	
 </body>
 </html>

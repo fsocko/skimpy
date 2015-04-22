@@ -70,7 +70,6 @@ connect.search(searchItem); */
     
 
     <div id="MP">
-	<form action="savedPlan.jsp" method="POST">
 	<table border="1">
 	<tr><th>Monday</th>
 	<th>Tuesday</th>
@@ -95,17 +94,7 @@ connect.search(searchItem); */
     	       
     	    	<%=m.getMeal(j,i).getName() %> 
     	   <% }  } }%>
-          <%--  <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
-                    background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
-           
-           
-				<%   String mealname = plan.getMeal(j, i).getName();%>
-				<input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " />
-                <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;">
-                
-                <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred<%=j%><%=i%>" value="">
-                <p id="ingredients<%=j%><%=i %>"></p> 
-                <p>ingred<%=j%><%=i%></p> --%>
+      
 			   </td>
 			
 			<%}%>
@@ -113,7 +102,8 @@ connect.search(searchItem); */
 		<%}%>
 	</table>
 	<br>
-    <input type="submit" value="Save Meal Plan" /></form>
+	
+    <button class="btn pull-right btn-success btn-md" onclick="document.location.href='MealPlan.jsp'">Edit Meal Plan</button>
     </div>
     <div >
     
