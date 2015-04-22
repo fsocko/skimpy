@@ -764,7 +764,7 @@ public class DBConnect extends HttpServlet{
 				+ asdaCatQuery + " UNION " + tescoCatQuery + " UNION " + sainsCatQuery + " ORDER BY entries DESC";
 		
 		String query = String.format(
-				"SELECT FoodCat2, SUM(entries) AS entries_total FROM %s GROUP BY FoodCat2 ORDER BY entries_total DESC",
+				"SELECT FoodCat2, SUM(entries) AS entries_total FROM %s GROUP BY FoodCat2 ORDER BY entries_total DESC LIMIT 25",
 				"temp_" + timestamp);
 		
 		try {
@@ -778,7 +778,7 @@ public class DBConnect extends HttpServlet{
 			}
 			
 			PreparedStatement dropTable = con.prepareStatement(
-					String.format("DROP TABLE IF EXISTS %s", "temp_" + timestamp));
+					String.format("DROP VIEW IF EXISTS %s", "temp_" + timestamp));
 			dropTable.execute();
 		}
 		catch (SQLException sqlex) {
