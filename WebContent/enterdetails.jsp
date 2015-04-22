@@ -7,7 +7,6 @@
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <%@include file="home.jsp" %>
-
 <%-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <jsp:useBean id="userdetails" scope="session" class = "BusinessLogic.Person" /> 
@@ -108,6 +107,24 @@ $(document).ready(function(){
 
 </head>
 <body>
+
+<form action="signupdets.jsp" method="post" id="myForm">
+ <%-- <%Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, "user.setHeight(Double.parseDouble(request.getParameter(\"height\")))", 70, "M", 0); %> --%>
+	<h1> Please enter your details:</h1>
+	<br><table>
+	<tr> <td> Name:</td><td> <input type="text" name="name" ><p class="MyErrors"></p></td></tr>
+	<tr><td>  Email:</td><td> <input type="text" name="emailaddress"><p class="MyErrors"></td></tr>
+    <tr><td>  Gender: </td><td> <select name="gender">
+                                    <option value="male">Male</option> 
+                                    <option value="female">Female</option>
+                                </select></td></tr>
+                                
+	<tr><td> Age: </td><td><input type="number" name="age" min="1" max="100" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Weight:</td><td><input type="number" name="weight" step="any"><p class="MyErrors"></p></td></tr>
+	<tr> <td>Height: </td> <td><input type="number" name="height" step="any"><p class="MyErrors"></p></td></tr>
+	<tr><td> Exercise</td><td> <input type="number" name="exercise" min="1" max="10" ><p class="MyErrors"></p></td></tr>
+	<tr><td> Password: </td><td><input type="password" name="password"  ><p class="MyErrors"></p></td></tr>
+     </table>
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
@@ -296,9 +313,8 @@ $(document).ready(function(){
 	
    
 			<input type="submit" value="Save">
-		</div></div>
+		
 </form>
-</div>
 </body>
 </html>
 
