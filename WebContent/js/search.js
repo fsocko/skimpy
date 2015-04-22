@@ -48,6 +48,8 @@ function fillResults(data) {
 		$('#results').append(
 				$('<div>').addClass('result-entry')
 				.append($('<a>').attr('href', link_to_page)
+						.append($('<span>').addClass('button-add').append(
+								$('<i>').addClass('fa').addClass('fa-plus')))
 						.append($('<span>').addClass('product-name').text(data[x].name)))
 						.append(
 								$('<span>').addClass('product-mass').text(mass))
@@ -56,8 +58,7 @@ function fillResults(data) {
 								.append(
 										$('<span>').addClass('product-price').addClass(supermarket_class)
 										.text('£' + data[x].price.toFixed(2)))
-										.append($('<span>').addClass('button-add').append(
-												$('<i>').addClass('fa').addClass('fa-plus')))
+										
 		);
 	}
 }
