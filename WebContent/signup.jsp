@@ -32,7 +32,8 @@
               },
               password:{
                 required: true
-              },   
+              }, 
+
               birthday:"required",
               
               gender:"required",
@@ -86,13 +87,14 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><b>Skimpy</b></a>
+            <a href="index.jsp" class="navbar-brand"><b>Skimpy</b></a>
           </div>
           <div class="collapse navbar-collapse pull-left">
             <ul class="nav navbar-nav"></ul>
           </div>
           <div class="pull-right btn-group btn-group-sm"></div>
           <a class="btn pull-right btn-primary btn-lg">Login</a>
+          <a href= "login.jsp" class="btn pull-right btn-primary btn-lg">Login</a>
         </div>
       </div>
     </div>
@@ -283,5 +285,4 @@
       <!-- /container -->
     </div>
   </body>
-
 </html>
