@@ -38,7 +38,7 @@ function fillResults(data) {
 		}
 
 
-		if (data[x].mass == "1.69") {
+		if (data[x].mass == "0" || data[x].unit == "NULL") {
 			mass = "-";
 		}
 		else {
