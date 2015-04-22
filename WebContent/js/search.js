@@ -55,7 +55,7 @@ function fillResults(data) {
 								.append($('<span>').addClass('shopName').text(data[x].supermarket))
 								.append(
 										$('<span>').addClass('product-price').addClass(supermarket_class)
-										.text('Â£' + data[x].price.toFixed(2)))
+										.text('£' + data[x].price.toFixed(2)))
 										.append($('<span>').addClass('button-add').append(
 												$('<i>').addClass('fa').addClass('fa-plus')))
 		);
