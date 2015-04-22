@@ -46,6 +46,7 @@
  	       System.out.println(m);
  			plan.add(themeal, j, i);}
  		 }
+ 		 
  	 }
  	 ArrayList<MealPlanner> plans = new ArrayList<MealPlanner>();
  	 

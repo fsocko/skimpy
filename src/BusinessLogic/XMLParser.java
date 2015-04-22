@@ -172,12 +172,13 @@ public class XMLParser {
 							Meal m = new Meal(name, foods, masses);
 							mp.add(m, j, k);
 						} catch (Exception e) {
-							System.out.println("Meal not found at " + i + j);
+							System.out.println("Meal not found at " + j + k);
 						}
 					}
 				}
 				mealplans.add(mp);
 			}
+			return mealplans;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -60,7 +60,13 @@ connect.search(searchItem); */
 	 %>
 <%  //MealPlanner plan = CreateMealPlan.create();
     //Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
-    //String userID = user.getID(); %>
+    //String userID = user.getID(); 
+    
+    XMLParser writeX = new XMLParser();
+       ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
+       readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
+       //MealPlanner plan = readmeals.get(0);
+       System.out.println("PLANS:" + readmeals.size());%>
     
 
     <div id="MP">
@@ -79,15 +85,16 @@ connect.search(searchItem); */
            <td align="center" width="100px">
            
                  <%        
-       XMLParser writeX = new XMLParser();
-       ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
-       readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
        
-    	   // for(MealPlanner m: readmeals){
-    	   //    if ((Integer)session.getAttribute("ID") == m.getUserId()){
-    	     //  %>
-    	    <%--	<%=m.getMeal(j,i).getName() %>
-    	   <% }  }%>
+       
+    	    for(MealPlanner m: readmeals){
+    	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
+    	    	   if (m.getMeal(j, i)!=null){
+    	    	   
+    	       %>
+    	       
+    	    	<%=m.getMeal(j,i).getName() %> 
+    	   <% }  } }%>
           <%--  <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
            
