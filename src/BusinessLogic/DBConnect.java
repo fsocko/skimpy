@@ -242,7 +242,7 @@ public class DBConnect extends HttpServlet{
 	public int getIDfromEmail(String email){
 		openCon();
 		try{
-			rs = st.executeQuery("select * FROM user_info WHERE UserEmail LIKE'" + email + "'");
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail = '" + email + "'");
 			while (rs.next()){
 				return rs.getInt("UserID");
 			}
