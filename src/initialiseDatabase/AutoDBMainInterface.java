@@ -31,7 +31,7 @@ public class AutoDBMainInterface {
 		System.out.println("*******************************************************\n");
 		System.out.println("a: Initialise the database.");
 		System.out.println("b: Push data from scraper to database.");
-		System.out.println("c: cancel.");
+		System.out.println("c: Exit Menu.");
 		try {
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);
