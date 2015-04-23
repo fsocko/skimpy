@@ -1,7 +1,8 @@
 <%@include file="header.jsp"%>
+<%@page import="java.util.ArrayList" %>
 
 <head>
-<title>New Meal</title>
+<title>Edit Recipe</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -16,15 +17,44 @@
 </head>
 
 <body>
+
+
+ <%
+  XMLParser writeX = new XMLParser();
+  ArrayList<Meal> readmeals = new ArrayList<Meal>();
+  readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+  //String name= String.valueOf(session.getAttribute("name"));
+  String name = "Tuna Pasta Salad";
+  Meal themeal = writeX.getMeal(readmeals, name);
+ %>
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6">
 				<form action="savedMeal.jsp" method="POST">
 					<div id="recipe">
+					
 						<input class="recipe-name form-control input-sm" name="mealname"
-							placeholder="Meal Name">
-						<div class="products-mass">
-							<div id="products-list" class="form-control input-sm"></div>
+							value="<%=themeal.getName() %>">
+							<div class="products-mass">
+							<div id="all-products-list" class="form-control input-sm">
+							 <%for (int i=0; i< themeal.getIngredients().size();i++){
+	                               %>
+	                
+	                
+	                 <div class="product-list-entry">
+                        <a href="#"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+                        </span></a>
+                      <span class="list-product-price">£ <%=themeal.getIngredients().get(i).getPrice()%>
+                      </span>
+                      <span class="button=remove"><i class="fa fa-times"></i></span>
+                      <span class="list-product-mass">Serving size: <input class="serving size" name="mass" id="mass" value="<%=themeal.getMasses().get(i)%>g">
+                      </span>
+                      <div class="col-sm-4">
+                        <p></p>
+                      </div></div> <% }%>
+            
+							<div id="products-list" class="form-control input-sm"></div></div>
 							<input class="list-group" id="ingred" type="hidden" name="ingred"
 								value=""> <input class="list-group" id="supermarket"
 								type="hidden" name="supermarket" value="">

@@ -64,6 +64,18 @@ public class XMLParser {
 		return null;
 	}
 	
+	public Meal getMeal(ArrayList<Meal> meals, String name){
+		Meal themeal = null;
+		for (Meal m: meals ){
+			if(m.getName().equals(name)){
+		themeal = m;
+		
+	  }}
+		return themeal;
+		
+	}
+	
+	
 	/*
 	 * Writes an arraylist of meals to the file meals.xml
 	 */
@@ -136,32 +148,37 @@ public class XMLParser {
 					for (int k = 0; k < times.getLength(); k++) {
 						Element timeElem = (Element)times.item(k);
 						String time = timeElem.getAttribute("value");
-						String name = timeElem.getElementsByTagName("Name").item(0).getTextContent();
-						NodeList rawFood = timeElem.getElementsByTagName("Food");
-						ArrayList<Food> foods = new ArrayList<Food>();
-						System.out.print(day + " - " + time + ":> " + name + ", ");
-						for (int l = 0; l < rawFood.getLength(); l++) {
-							Element foodelem = (Element)rawFood.item(l);
-							String shopName = foodelem.getAttribute("shop");
-							String foodid = foodelem.getTextContent();
-							System.out.print(", " + shopName + ": " + foodid);
-							Food f = dbcon.pullFood(shopName, foodid);
-							foods.add(f);
+						try {
+							String name = timeElem.getElementsByTagName("Name").item(0).getTextContent();
+							NodeList rawFood = timeElem.getElementsByTagName("Food");
+							ArrayList<Food> foods = new ArrayList<Food>();
+							System.out.print(day + " - " + time + ":> " + name + ", ");
+							for (int l = 0; l < rawFood.getLength(); l++) {
+								Element foodelem = (Element)rawFood.item(l);
+								String shopName = foodelem.getAttribute("shop");
+								String foodid = foodelem.getTextContent();
+								System.out.print(", " + shopName + ": " + foodid);
+								Food f = dbcon.pullFood(shopName, foodid);
+								foods.add(f);
+							}
+							NodeList rawMasses = timeElem.getElementsByTagName("Mass");
+							ArrayList<Integer> masses = new ArrayList<Integer>();
+							for (int l = 0; l < rawMasses.getLength(); l++) {
+								Element masselem = (Element)rawMasses.item(l);
+								int mass = Integer.parseInt(masselem.getTextContent());
+								masses.add(mass);
+							}
+							System.out.println("");
+							Meal m = new Meal(name, foods, masses);
+							mp.add(m, j, k);
+						} catch (Exception e) {
+							System.out.println("Meal not found at " + j + k);
 						}
-						NodeList rawMasses = timeElem.getElementsByTagName("Mass");
-						ArrayList<Integer> masses = new ArrayList<Integer>();
-						for (int l = 0; l < rawMasses.getLength(); l++) {
-							Element masselem = (Element)rawMasses.item(l);
-							int mass = Integer.parseInt(masselem.getTextContent());
-							masses.add(mass);
-						}
-						System.out.println("");
-						Meal m = new Meal(name, foods, masses);
-						mp.add(m, day, time);
 					}
 				}
 				mealplans.add(mp);
 			}
+			return mealplans;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -199,27 +216,29 @@ public class XMLParser {
 						time.setAttributeNode(timeValue);
 						day.appendChild(time);
 						Meal m = mp.getMeal(i, j);
-						Element meal = doc.createElement("Meal");
-						time.appendChild(meal);
-						Element name = doc.createElement("Name");
-						name.appendChild(doc.createTextNode(m.getName()));
-						meal.appendChild(name);
-						Element ing = doc.createElement("Ingredients");
-						meal.appendChild(ing);
-						for (Food f: m.getIngredients()) {
-							Element food = doc.createElement("Food");
-							Attr shopname = doc.createAttribute("shop");
-							shopname.setValue(f.getSupermarket());
-							food.setAttributeNode(shopname);
-							food.appendChild(doc.createTextNode("" + f.getDBID()));
-							ing.appendChild(food);
-						}
-						Element masses = doc.createElement("Masses");
-						meal.appendChild(masses);
-						for (int h: m.getMasses()) {
-							Element mass = doc.createElement("Mass");
-							mass.appendChild(doc.createTextNode("" + h));
-							masses.appendChild(mass);
+						if (m != null) {
+							Element meal = doc.createElement("Meal");
+							time.appendChild(meal);
+							Element name = doc.createElement("Name");
+							name.appendChild(doc.createTextNode(m.getName()));
+							meal.appendChild(name);
+							Element ing = doc.createElement("Ingredients");
+							meal.appendChild(ing);
+							for (Food f: m.getIngredients()) {
+								Element food = doc.createElement("Food");
+								Attr shopname = doc.createAttribute("shop");
+								shopname.setValue(f.getSupermarket());
+								food.setAttributeNode(shopname);
+								food.appendChild(doc.createTextNode("" + f.getDBID()));
+								ing.appendChild(food);
+							}
+							Element masses = doc.createElement("Masses");
+							meal.appendChild(masses);
+							for (int h: m.getMasses()) {
+								Element mass = doc.createElement("Mass");
+								mass.appendChild(doc.createTextNode("" + h));
+								masses.appendChild(mass);
+							}
 						}
 					}
 				}

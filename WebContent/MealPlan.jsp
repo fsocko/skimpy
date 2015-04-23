@@ -14,14 +14,6 @@
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/mp.css">
-<script>
-	$(function() {
-		$("#accordion").accordion({
-			active : false,
-			collapsible : true
-		});
-	});
-</script>
 
 <script>
 function myFunction(sender) {
@@ -47,10 +39,7 @@ function reove(sender) {
 	sender.remove();
 }
 
- 
 
-/* DBConnect connect = new DBConnect("food_db");
-connect.search(searchItem); */
 </script>
 </head>
 <body>
@@ -58,13 +47,9 @@ connect.search(searchItem); */
 	response.sendRedirect("login.jsp");
 }
 	 %>
-<%  //MealPlanner plan = CreateMealPlan.create();
-    //Person user = new Person("Skimpy", "skimpy@skimpy.com", "password", 18, 30, 70, 'M', 0);
-    //String userID = user.getID(); %>
-    
 
     <div id="MP">
-	<form action="ShoppingList.jsp" method="POST">
+	<form action="savedPlan.jsp" method="POST">
 	<table border="1">
 	<tr><th>Monday</th>
 	<th>Tuesday</th>
@@ -82,21 +67,17 @@ connect.search(searchItem); */
        XMLParser writeX = new XMLParser();
        ArrayList<Meal> readmeals = new ArrayList<Meal>();
        readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");%>
-    	 <select> <option selected></option> 
+    	 <select id="ing<%=j%><%=i %>"> <option selected></option> 
     	 <%   for(Meal m: readmeals){%>
     	    	<option> <%=m.getName() %></option>
-    	    	
     	   <% } %></select>
-           
-           
-           
-				<%-- <%   String mealname = plan.getMeal(j, i).getName();%> --%>
-				<%-- <input type="text" id="mealname<%=j%><%=i %>" size="21" name="mealname" value=" Meal Name " /> --%>
-               <%--  <input id="ing<%=j%><%=i %>" autocomplete = "on" name="ing" type="text" name="ingredients" style="width:150px;"> 
-                <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
+           <input  id="<%=j%>,<%=i %>" autocomplete = "off" value="" onclick="myFunction(this)" name = "search" style="border-style: none;
                     background: url(images/add.png) no-repeat; width: 24px; height: 20px;">
-                <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred" value=";">
-                <p id="ingredients<%=j%><%=i %>"></p> --%>
+          
+                
+                <input  id="ingred<%=j%><%=i %>" type="hidden" name="ingred<%=j%><%=i%>" value="">
+                <p id="ingredients<%=j%><%=i %>"></p> 
+
 			   </td>
 			
 			<%}%>
@@ -104,11 +85,9 @@ connect.search(searchItem); */
 		<%}%>
 	</table>
 	<br>
-    <input type="submit" value="View Your Shopping List" /></form>
+    <input type="submit" value="Save Meal Plan" /></form>
     </div>
     <div >
-    
-       
 
     </div>
 </body>

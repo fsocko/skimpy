@@ -14,7 +14,7 @@ public class MealPlanCreator {
 			mealIngredients[i] = mealIng;
 		}
 		
-		MealPlanner mealPlanner = new MealPlanner();
+		MealPlanner mealPlanner = new MealPlanner(0);
 		DBConnect db = new DBConnect();
 		String[] times = {"Breakfast", "Lunch", "Dinner"};
 		String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};

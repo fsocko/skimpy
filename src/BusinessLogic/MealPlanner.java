@@ -43,8 +43,8 @@ public class MealPlanner extends HttpServlet{
 	 * @param day The day of the week it will be added to.
 	 * @param time The time of the day to add the meal to.
 	 */
-	public void add(Meal name, String day, String time){
-		plan[writeToDay(day)][writeToTime(time)] = name;
+	public void add(Meal name, int day, int time){
+		plan[day][time] = name;
 	}
 	/**
 	 * Represents the Meal plan as a string.

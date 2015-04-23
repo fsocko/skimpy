@@ -56,10 +56,13 @@
               <a href="#">My Shopping List</a>
             </li>
             <li>
-              <a href="MealPlan.jsp">Meal Planner</a>
+              <a href="usermealplan.jsp">Meal Planner</a>
             </li>
             <li>
               <a href="recipe.jsp">Recipe Creator</a>
+            </li>
+            <li>
+              <a href="recipeExplorer.jsp">Recipe Explorer</a>
             </li>
           </ul>
           <div class="media">
