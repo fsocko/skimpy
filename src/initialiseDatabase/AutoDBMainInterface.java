@@ -52,7 +52,7 @@ public class AutoDBMainInterface {
 					System.exit(0);
 					break;
 				default:
-					System.out.println("Invalid input.");
+					System.out.println("Invalid input.\n");
 					mainMenu();
 					break;
 			}
@@ -82,7 +82,7 @@ public class AutoDBMainInterface {
 				switch(continueInit)
 				{
 					case 'n':		
-						System.out.println("Push to DB cancelled.\n\n");
+						System.out.println("Push to DB cancelled.\n");
 						mainMenu();
 						break;
 					
@@ -131,7 +131,7 @@ public class AutoDBMainInterface {
 							System.out.print("Done\n");
 							break;	
 						default: 
-							System.out.println("Invalid input.");
+							System.out.println("Invalid input.\n");
 							pushToDBMenu();
 							break;
 							
@@ -156,7 +156,7 @@ public class AutoDBMainInterface {
 				switch(continueInit)
 				{
 					case 'n':
-						System.out.println("Database initialisation cancelled.\n\n");
+						System.out.println("Database initialisation cancelled.\n");
 						pushToDBMenu();
 						break;
 					case 'y':
@@ -192,6 +192,11 @@ public class AutoDBMainInterface {
 						}
 						AutoDB atb = new AutoDB();
 						atb.initialiseDB(DBName, SQLPath);
+					default:
+						System.out.println("Invalid input.\n");
+						DBInitMenu();
+						break;
+						
 				}
 			}
 			catch (IOException e)
