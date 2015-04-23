@@ -120,10 +120,6 @@
     <script type="text/javascript"> 
     $(document).ready(function(){
     	
-    	 $(function() {
-     	    $( "#datepicker" ).datepicker();
-     	  });
-    	
     	
       $('#myForm').validate({
           rules:{
@@ -147,7 +143,8 @@
                 },
                  
           },    
-      });
+      })
+      .find('[name="datepicker"]').datepicker());
       jQuery.validator.addMethod('selectcheck', function (value) {
           return (value != '0');
       }, "Gender required");
