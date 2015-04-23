@@ -4,6 +4,9 @@
 //A: initialise the database.
 //B: Push scraper data from files to the DB.
 
+//TODO: in order to make this work properly, this class should be made into exacutable and independent of
+//business logic. So I can update the database without calling any methods from the BL. 
+
 package initialiseDatabase;
 
 import java.io.BufferedReader;
