@@ -194,6 +194,12 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
+	/**public static void main(String[] args) {
+		DBConnect db = new DBConnect();
+		Person p = db.pullUser("35");
+		System.out.println(p.getName());
+	} */
+	
 	public Person pullUser(String ID)
 	{
 		openCon();
@@ -224,7 +230,7 @@ public class DBConnect extends HttpServlet{
 			return null;
 	
 		} catch(Exception ex){
-			System.out.println(ex);
+			ex.printStackTrace();
 			return null;
 		}
 		finally 
@@ -236,7 +242,7 @@ public class DBConnect extends HttpServlet{
 	public int getIDfromEmail(String email){
 		openCon();
 		try{
-			rs = st.executeQuery("select * FROM user_info WHERE UserEmail= '" + email + "';");
+			rs = st.executeQuery("select * FROM user_info WHERE UserEmail LIKE'" + email + "'");
 			while (rs.next()){
 				return rs.getInt("UserID");
 			}

@@ -13,30 +13,7 @@
     <title>Login</title>
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery.validate.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      jQuery.validator.setDefaults({
-    // where to display the error relative to the element
-      errorPlacement: function(error, element) {
-      error.appendTo(element.parent().find('p.form-control'));
-     }
-    });
-      $("#form-signin").validate({
-            rules:{
-              email:{
-                required : true,
-                email: true
-              },
-              
-              password:{
-                required: true
-              },    
-            }
-        });
-      });
-    </script>
+    
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -77,9 +54,21 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
       }
-      .my-errors {
-        color:red;
-      }
+      label.valid {
+			width: 24px;
+  			height: 24px;
+ 			background: url(assets/img/valid.png) center center no-repeat;
+ 			display: inline-block;
+  			text-indent: -9999px;
+		}
+		
+		label.error {
+  			font-weight: bold;
+  			color: red;
+  			padding: 2px 8px;
+  			margin-top: 2px;
+		}
+		
     </style>
   </head>  
   <body>
@@ -91,26 +80,50 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><b>Skimpy</b></a>
+            <a href="index.jsp" class="navbar-brand"><b>Skimpy</b></a>
           </div>
           <div class="collapse navbar-collapse pull-left">
             <ul class="nav navbar-nav"></ul>
           </div>
           <div class="pull-right btn-group btn-group-sm"></div>
-          <a class="btn pull-right btn-success btn-lg">Sign Up</a>
+          <a href="signup.jsp" class="btn pull-right btn-success btn-lg">Sign Up</a>
         </div>
       </div>
     </div>
-    <div class="container">
-      <form class="form-signin" action="logindets.jsp" method="post">
-        <h2 class="form-signin-heading">Login</h2>
-        <input type="text" name = "email" class="form-control" placeholder="Username or Email"><p class="my-errors"></p>
-        <input type="password" name = "password" class="form-control" placeholder="Password"><p class="my-errors"></p>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me">Remember me</label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value = "Log In">Login</button>
+
+    <div class="form-signin">
+      <form action="logindets.jsp" method="post" id="myForm">
+      <fieldset>
+       <div class="control-group"> 
+          	<div class="controls"> 
+	        <h2 class="form-signin-heading">Login</h2>
+	        <input type="text"  class="form-control" name = "email" id="name" placeholder="Email">
+	        <input type="password" class="form-control" name = "password" id="password" placeholder="Password">
+	        <label class="checkbox">
+	          <input type="checkbox" value="remember-me">Remember me</label>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit" value = "Log In">Login</button>
+	    	</div>
+	    </div>
+	   </fieldset>
       </form>
     </div>
-    <!-- /container -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#myForm').validate({
+            rules:{
+              email:{
+                required : true,
+                email: true
+              },
+              
+              password:{
+                required: true
+              },    
+            },
+        });
+      });
+    </script>
   </body>
 </html>
