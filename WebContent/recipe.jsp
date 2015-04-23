@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-sm-6">
 				<div id="search-container">
-					<input id="search" class="form-control input-sm" sname="q"
+					<input id="search" class="form-control input-sm" name="q"
 						type="text"
 						placeholder="Search for products across many supermarkets"
 						autocomplete="off" />

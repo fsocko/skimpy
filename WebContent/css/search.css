@@ -174,11 +174,24 @@ body {
 	position: relative;
 	float: left;
 	width: 100%;
-	height: 320px;
+	height: 220px;
 	overflow-y: auto;
 	overflow-x: auto;
 	float: left;
 	margin-bottom: 8px;
+}
+
+
+
+#all-products-list {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 320px;
+	overflow-y: auto;
+	overflow-x: auto;
+	float: left;
+    border-style:none;
 }
 
 .mass {

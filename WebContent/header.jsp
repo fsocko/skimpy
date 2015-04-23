@@ -61,6 +61,9 @@
             <li>
               <a href="recipe.jsp">Recipe Creator</a>
             </li>
+            <li>
+              <a href="recipeExplorer.jsp">Recipe Explorer</a>
+            </li>
           </ul>
           <div class="media">
             <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:45px;height45px;"></a>

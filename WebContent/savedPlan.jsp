@@ -20,15 +20,19 @@
 <title>Shopping List</title>
 </head>
 <body>
-<p>Here's the list of ingredients you need for this week:</p>
+
  	 <% 
  	 int userID = (Integer)session.getAttribute("ID"); 
  	 MealPlanner plan = new MealPlanner(userID);
  	 
  	XMLParser writeX = new XMLParser();
     ArrayList<Meal> readmeals = new ArrayList<Meal>();
-    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-    String name= request.getParameter("ingred00").replace(";","");
+    
+    if (writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml") != null){
+    	readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    }
+    
+    //String name= request.getParameter("ingred00").replace(";","");
     //Meal themeal = writeX.getMeal(readmeals, name);
     //System.out.println(name);
     //String s = themeal.toString();
