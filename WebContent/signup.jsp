@@ -94,7 +94,7 @@
           <div class="control-group"> 
             <label class="control-label" for="birthday" id="birthday">Birthday</label>
             <div class="birthday-drop">
-              <input type="text" id="datepicker">
+              <input type="text" name="datepicker" id="datepicker">
                 
             </div>
               <select name="gender"  class="form-control">
@@ -146,10 +146,7 @@
                         selectcheck: true
                 },
                  
-          },   
-          
-         
-          
+          },    
       });
       jQuery.validator.addMethod('selectcheck', function (value) {
           return (value != '0');

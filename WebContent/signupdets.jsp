@@ -21,10 +21,11 @@ String name = request.getParameter("name");
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 char gender = request.getParameter("gender").toUpperCase().charAt(0);
-String date = request.getParameter("date");
+String date = request.getParameter("datepicker");
+System.out.println(date);
 String month = request.getParameter("month");
 String year = request.getParameter("year"); 
-String dobString = year +"-"+month+"-"+date;
+String dobString = request.getParameter(date);
 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
 
 Person user = new Person(name, email, password, dob, -1, -1, gender, -1);
