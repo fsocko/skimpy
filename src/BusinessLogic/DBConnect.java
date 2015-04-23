@@ -5,10 +5,12 @@ package BusinessLogic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -734,6 +736,7 @@ public class DBConnect extends HttpServlet{
 	
 	public String categorySearch(String phrase) {
 		JSONArray results = new JSONArray();
+		String timestamp;
 		
 		String[] words = phrase.split("\\s");
 		String regexpPhrase = "";
@@ -754,14 +757,29 @@ public class DBConnect extends HttpServlet{
 				"(SELECT FoodCat2, COUNT(Name) AS entries FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
 		
-		String query = asdaCatQuery + " UNION " + tescoCatQuery + " UNION " + sainsCatQuery + " ORDER BY entries DESC";
+		timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+		
+		String queryCreateView = 
+				"CREATE VIEW temp_" + timestamp + " AS "
+				+ asdaCatQuery + " UNION " + tescoCatQuery + " UNION " + sainsCatQuery + " ORDER BY entries DESC";
+		
+		String query = String.format(
+				"SELECT FoodCat2, SUM(entries) AS entries_total FROM %s GROUP BY FoodCat2 ORDER BY entries_total DESC LIMIT 25",
+				"temp_" + timestamp);
 		
 		try {
 			openCon();
+			PreparedStatement tempView = con.prepareStatement(queryCreateView);
+			tempView.execute();
+			
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				results.put(rs.getString("FoodCat2").trim());
 			}
+			
+			PreparedStatement dropTable = con.prepareStatement(
+					String.format("DROP VIEW IF EXISTS %s", "temp_" + timestamp));
+			dropTable.execute();
 		}
 		catch (SQLException sqlex) {
 			sqlex.printStackTrace();

@@ -65,7 +65,6 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 }
 else{
 %>
-	<center><p style="color:red">Error In Login</p></center>
 <% getServletContext().getRequestDispatcher("/login.jsp").include(request,response);
 }
 %>
