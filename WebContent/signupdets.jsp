@@ -23,10 +23,17 @@ String password = request.getParameter("password");
 char gender = request.getParameter("gender").toUpperCase().charAt(0);
 String date = request.getParameter("datepicker");
 System.out.println(date);
-String month = request.getParameter("month");
-String year = request.getParameter("year"); 
-String dobString = request.getParameter(date);
-Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(dobString);
+String str[] = date.split("/");
+String month = str[0];
+System.out.println(month);
+String day = str[1];
+System.out.println(day);
+String year = str[2]; 
+System.out.println(year);
+String dobString = day +"/"+month+"/"+year;
+System.out.println(dobString);
+Date dob = new SimpleDateFormat("dd/MM/yyyy").parse(dobString);
+
 
 Person user = new Person(name, email, password, dob, -1, -1, gender, -1);
 
