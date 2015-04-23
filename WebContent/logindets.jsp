@@ -14,14 +14,17 @@
 <% 
 DBConnect con = new DBConnect();
 Person sessionUser = null;
+
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 
 int sessionID = con.getIDfromEmail(email);
+System.out.println(sessionID);
 sessionUser = con.pullUser(String.valueOf(sessionID));
+System.out.print(sessionUser.toString());
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
-	if(email.equals(sessionUser.getEmail()) && password.equals(sessionUser.getPassword())){
+	if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && password.equals(sessionUser.getPassword())){
 		session.setAttribute("username", sessionUser.getName());
 		session.setAttribute("email", sessionUser.getEmail());
 		session.setAttribute("password", sessionUser.getPassword());
@@ -69,4 +72,3 @@ else{
 }
 %>
 </body>
-</html>
