@@ -8,65 +8,49 @@
  
   <head>
     <title>Sign Up</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery.validate.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      jQuery.validator.setDefaults({
-    // where to display the error relative to the element
-      errorPlacement: function(error, element) {
-      error.appendTo(element.parent().find('p.myErrors'));
-     }
-    });
-        $("#myForm").validate({
-            rules:{
-              name:{
-                required:true
-              },
-              
-              emailaddress:{
-                required : true,
-                email: true
-              },
-              password:{
-                required: true
-              }, 
-
-              birthday:"required",
-              
-              gender:"required",
-            }
-        });
-      });
-    </script>
+  
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <style type="text/css">
-      .form-signup {
-        max-width: 330px;
-        padding: 0px;
-        margin: 0 auto;
-      }
-      .form-signup .form-control {
-        position: relative;
-        font-size: 18px;
-        height: auto;
-        padding: 5px;
-      }
-      .form-signup input[type="text"] {
+    	.form-signup {
+        	max-width: 330px;
+        	padding: 0px;
+        	margin: 0 auto;
+     	 }
+      	.form-signup .form-control {
+        	position: relative;
+        	font-size: 18px;
+        	height: auto;
+        	padding: 5px;
+        }
+    
+       label.valid {
+			width: 24px;
+  			height: 24px;
+ 			background: url(assets/img/valid.png) center center no-repeat;
+ 			display: inline-block;
+  			text-indent: -9999px;
+		}
+		
+		label.error {
+  			font-weight: bold;
+  			color: red;
+  			padding: 2px 8px;
+  			margin-top: 2px;
+		}
+		
+		.form-signup input[type="text"] {
         margin-bottom: 10px;
       }
       .form-signup input[type="password"] {
         margin-bottom: 10px;
-      }
-      .form-signup input[type="radio"] {
-        margin-bottom: 10px;
-        display: inline;
-        float: left;
-      }
-      .birthday-drop {
+      } 
+		
+		 .birthday-drop {
         margin-bottom:10px;
       }
       .birthday-drop .form-control {
@@ -87,25 +71,28 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a href="index.jsp" class="navbar-brand"><b>Skimpy</b></a>
+            <a href="#" class="navbar-brand"><b>Skimpy</b></a>
           </div>
           <div class="collapse navbar-collapse pull-left">
             <ul class="nav navbar-nav"></ul>
           </div>
           <div class="pull-right btn-group btn-group-sm"></div>
           <a class="btn pull-right btn-primary btn-lg">Login</a>
-          <a href= "login.jsp" class="btn pull-right btn-primary btn-lg">Login</a>
         </div>
       </div>
     </div>
-    <div class="container">
-      <form action="signupdets.jsp" method="post" id="myForm" >
-        <div class="form-signup">
-          <div class="controls">
-            <input type="text" name = "name" class="form-control" placeholder="Username"><p class="MyErrors"></p>
-            <input type="text" name = "emailaddress" class="form-control" placeholder="Email"><p class="MyErrors"></p>
-            <input type="password" name = "password" class="form-control" placeholder="Password"><p class="MyErrors"></p>
-            <label class="form-label">Birthday</label>
+   <div class="form-signup">
+      <form action="signupdets.jsp" method="post" id="myForm">
+      <fieldset>
+          <div class="control-group"> 
+          	<div class="controls"> 
+            	<input type="text" class="form-control" name="name" id="name" placeholder="Username">
+            	 <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+            	 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="control-group"> 
+            <label class="control-label" for="birthday" id="birthday">Birthday</label>
             <div class="birthday-drop">
               <select name ="date" class="form-control">
                 <option value="0" selected>Day</option>
@@ -276,13 +263,47 @@
               <option value="male">Male</option> 
               <option value="female">Female</option>
               </select>
+              
+              
               <br>
              
             <button class="btn btn-block btn-success btn-lg" type="submit">Sign up</button>
           </div>
-        </div>
+       </fieldset>   
       </form>
-      <!-- /container -->
-    </div>
+      </div>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript"> 
+    $(document).ready(function(){
+      $('#myForm').validate({
+          rules:{
+        	  
+        	  	name:{
+        	  		minlength: 2,
+        	  		required:true
+        	  	},
+            
+        	  	email:{
+            	 	required : true,
+              		email: true
+           	 	},
+            
+            	password:{
+              		required: true
+            	},
+           	 
+            	gender:{
+                        selectcheck: true
+                },
+                 
+          },   
+          
+      });
+      jQuery.validator.addMethod('selectcheck', function (value) {
+          return (value != '0');
+      }, "Gender required");
+    }); 
+    </script>  
   </body>
 </html>
