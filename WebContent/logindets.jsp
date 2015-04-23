@@ -19,55 +19,54 @@ String email = request.getParameter("email");
 String password = request.getParameter("password");
 
 int sessionID = con.getIDfromEmail(email);
-System.out.println(sessionID);
 sessionUser = con.pullUser(String.valueOf(sessionID));
-System.out.print(sessionUser.toString());
+
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
-	if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && password.equals(sessionUser.getPassword())){
-		session.setAttribute("username", sessionUser.getName());
-		session.setAttribute("email", sessionUser.getEmail());
-		session.setAttribute("password", sessionUser.getPassword());
- 		session.setAttribute("dob", sessionUser.getDob());
- 		session.setAttribute("age", sessionUser.getAge());
-		session.setAttribute("height", sessionUser.getHeight());
-		session.setAttribute("weight", sessionUser.getWeight());
-		session.setAttribute("exercise", sessionUser.getExerciseDisplay());
-		session.setAttribute("exerciseNo", sessionUser.getExercise());
-		session.setAttribute("genderChar", sessionUser.getGender());
-		session.setAttribute("genderDisp", sessionUser.getGenderDisp(sessionUser.getGender()));
-		session.setAttribute("ID", sessionID);
-		
-		sessionUser.resetMacros();
-		
-		session.setAttribute("Day", sessionUser.getDay(sessionUser.getDob()));
-		session.setAttribute("Month", sessionUser.getMonth(sessionUser.getDob()));
-		session.setAttribute("Year", sessionUser.getYear(sessionUser.getDob()));
-		
-		session.setAttribute("DD", String.valueOf(sessionUser.getDay(sessionUser.getDob())));
-		session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
-		session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
-		
-		session.setAttribute("BMI", sessionUser.getMacros().getBMR());
-		session.setAttribute("calories", sessionUser.getMacros().getCalories());
-		session.setAttribute("protein", sessionUser.getMacros().getProtein());
-		session.setAttribute("carbs", sessionUser.getMacros().getCarbs());
- 		session.setAttribute("sugar", sessionUser.getMacros().getSugars());
- 		session.setAttribute("fat", sessionUser.getMacros().getFat());
-		session.setAttribute("saturates",sessionUser.getMacros().getSaturates());
-		session.setAttribute("fibre", sessionUser.getMacros().getFibre());
-		session.setAttribute("salt", sessionUser.getMacros().getSalt());
-		
-		session.setMaxInactiveInterval(3000);
-		response.sendRedirect("home.jsp");
-	} 
-	else {
+	try{
+		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && password.equals(sessionUser.getPassword())){
+			session.setAttribute("username", sessionUser.getName());
+			session.setAttribute("email", sessionUser.getEmail());
+			session.setAttribute("password", sessionUser.getPassword());
+	 		session.setAttribute("dob", sessionUser.getDob());
+	 		session.setAttribute("age", sessionUser.getAge());
+			session.setAttribute("height", sessionUser.getHeight());
+			session.setAttribute("weight", sessionUser.getWeight());
+			session.setAttribute("exercise", sessionUser.getExerciseDisplay());
+			session.setAttribute("exerciseNo", sessionUser.getExercise());
+			session.setAttribute("genderChar", sessionUser.getGender());
+			session.setAttribute("genderDisp", sessionUser.getGenderDisp(sessionUser.getGender()));
+			session.setAttribute("ID", sessionID);
+			
+			sessionUser.resetMacros();
+			
+			session.setAttribute("Day", sessionUser.getDay(sessionUser.getDob()));
+			session.setAttribute("Month", sessionUser.getMonth(sessionUser.getDob()));
+			session.setAttribute("Year", sessionUser.getYear(sessionUser.getDob()));
+			
+			session.setAttribute("DD", String.valueOf(sessionUser.getDay(sessionUser.getDob())));
+			session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
+			session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
+			
+			session.setAttribute("BMI", sessionUser.getMacros().getBMR());
+			session.setAttribute("calories", sessionUser.getMacros().getCalories());
+			session.setAttribute("protein", sessionUser.getMacros().getProtein());
+			session.setAttribute("carbs", sessionUser.getMacros().getCarbs());
+	 		session.setAttribute("sugar", sessionUser.getMacros().getSugars());
+	 		session.setAttribute("fat", sessionUser.getMacros().getFat());
+			session.setAttribute("saturates",sessionUser.getMacros().getSaturates());
+			session.setAttribute("fibre", sessionUser.getMacros().getFibre());
+			session.setAttribute("salt", sessionUser.getMacros().getSalt());
+			
+			session.setMaxInactiveInterval(3000);
+			response.sendRedirect("home.jsp");
+		}else
 		response.sendRedirect("error.jsp");
-		con.closeCon();
-	}
+}catch(Exception ex){
+	response.sendRedirect("error.jsp");
 }
-else{
-%>
+	}else{
+%> 
 <% getServletContext().getRequestDispatcher("/login.jsp").include(request,response);
 }
 %>
