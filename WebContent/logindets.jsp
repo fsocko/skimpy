@@ -64,7 +64,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 	}
 }
 else{
---%>
+%>
 <% getServletContext().getRequestDispatcher("/login.jsp").include(request,response);
 }
 %>
