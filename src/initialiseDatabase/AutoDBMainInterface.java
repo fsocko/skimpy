@@ -1,68 +1,223 @@
 //@Author: FPS
+//A class for automatically setting up the SQL database.
+//Runs a menu interface with options:
+//A: initialise the database.
+//B: Push scraper data from files to the DB.
+
 package initialiseDatabase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+import BusinessLogic.DBConnect;
+import BusinessLogic.Food;
+import BusinessLogic.SpiderToDB;
+
 
 
 public class AutoDBMainInterface {
 
 	public static void main(String[] args) 
 	{
-		DBInitMenu();
+		mainMenu();
 	}
 	
-	//parse data from web scrapers and push data to database
-	public static void spidersToDB()
+	//select whether the maintainer is pushing scraper data or initialising the database.
+	public static void mainMenu()
 	{
-		
-		
-	}
-	//initialise the database using an existing SQL file.
-	public static void DBInitMenu()
-	{
-		
+		System.out.println("\n	Menu for setting up the Skimpy Database	");
+		System.out.println("*******************************************************\n");
+		System.out.println("a: Initialise the database.");
+		System.out.println("b: Push data from scraper to database.");
+		System.out.println("c: cancel.");
 		try {
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);
-			System.out.println("This script will drop the selected database if it exists, then initialise the selected database with values in the selected SQL file.");
-			System.out.println("Continue? (y/n)\n");
-			char continueInit = br.readLine().trim().toLowerCase().charAt(0);
-			switch(continueInit)
+			
+			char selectFun = br.readLine().trim().toLowerCase().charAt(0);
+			switch(selectFun)
 			{
-				case 'n':
-					System.out.println("Database initialisation cancelled.");
+				case 'a':
+					DBInitMenu();
+					mainMenu();
+					break;
+				case 'b':
+					pushToDBMenu();
+					mainMenu();
+					break;	
+				case 'c':
+					System.out.println("Exiting menu.");
 					System.exit(0);
 					break;
-				case 'y':
-				
-				System.out.println("Enter database name, default is \"skimpy\" __\n");
-				String DBName = br.readLine();
-				if(DBName.trim().equals(""))
+				default:
+					System.out.println("Invalid input.");
+					mainMenu();
+					break;
+			}
+			
+		}	
+		catch (IOException e)
+		{
+			System.out.println("Sorry, an IOException Occured. \n\n" + e.getMessage());
+		}
+		
+	}
+	
+	//Menu for setting up pushing to database
+	public static void pushToDBMenu()
+	{
+		SpiderToDB std = new SpiderToDB();
+		String tescoPath = std.tescoPath;
+		String asdaPath = std.asdaPath;
+		String sainsPath = std.sainsPath;
+		
+		try {
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("This script will parse scraper data and push results to the DB.");
+				System.out.println("Continue? (y/n)");
+				char continueInit = br.readLine().trim().toLowerCase().charAt(0);
+				switch(continueInit)
 				{
-					System.out.println("Default database name.");
-					DBName = "skimpy";	
-				}
-
-				System.out.println("Enter path of SQL file to use as your new database, " + DBName + " __");
-				System.out.println("Default is: \"Skimpy/SQLFiles/database/initDB.sql\" \n");
-				String SQLPath = br.readLine();
-				if(SQLPath.trim().equals(""))
+					case 'n':		
+						System.out.println("Push to DB cancelled.\n\n");
+						mainMenu();
+						break;
+					
+					case 'y':	
+						System.out.println("Select Supermarket to parse from. Default is all supermarkets. (c to cancel)");
+						System.out.println("['a' for ASDA, 's' for Sainsbury's, 't' for Tesco]");
+						String supermarket =  br.readLine().trim().toLowerCase();
+						if(supermarket.toLowerCase().substring(0,1).equals("c"))
+						{
+							System.out.println("Cancel");
+							mainMenu();
+							break;
+							
+						}
+						if(supermarket.equals(""))
+						{
+							System.out.println("Parsing and pushing all available data.");
+							System.out.print("Pushing ASDA data...");
+							pushToDB(asdaPath, "asda");
+							System.out.print("Done\n");	
+							System.out.print("Pushing Sainsbury's data...");
+							pushToDB(sainsPath, "sains");
+							System.out.print("Done\n");	
+							System.out.print("Pushing Tesco data...");
+							pushToDB(tescoPath, "tesco");
+							System.out.print("Done\n");
+							System.out.println("Pushed data from all supermarkets successfully.");
+							break;		
+						}
+					char sm = supermarket.toLowerCase().charAt(0);
+					switch(sm)
+					{
+						case 'a':
+							System.out.print("Pushing ASDA data...");
+							pushToDB(asdaPath, "asda");
+							System.out.print("Done\n");
+							break;	
+						case 's':
+							System.out.print("Pushing Sainsbury's data...");
+							pushToDB(sainsPath, "sains");
+							System.out.print("Done\n");
+							break;
+						case 't':
+							System.out.print("Pushing Tesco data...");
+							pushToDB(tescoPath, "tesco");
+							System.out.print("Done\n");
+							break;	
+						default: 
+							System.out.println("Invalid input.");
+							pushToDBMenu();
+							break;
+							
+					}
+				}	
+			}
+			catch (IOException e)
+			{
+				System.out.println("Sorry, an IOException Occured. \n\n" + e.getMessage());
+			}
+	}
+	
+	//initialise the database using an existing SQL file.
+	public static void DBInitMenu()
+	{
+		try {
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("This script will drop the selected database if it exists, then initialise the selected database with values in the selected SQL file.");
+				System.out.println("Continue? (y/n)");
+				char continueInit = br.readLine().trim().toLowerCase().charAt(0);
+				switch(continueInit)
 				{
-					System.out.println("Default SQL path.");
-					SQLPath = "SQLFiles/database/initDB.sql";	
-				}
-				
-				AutoDB atb = new AutoDB();
-				atb.initialiseDB(DBName, SQLPath);
-				break;
+					case 'n':
+						System.out.println("Database initialisation cancelled.\n\n");
+						pushToDBMenu();
+						break;
+					case 'y':
+						System.out.println("Enter database name, default is \"skimpy\" (c to cancel)");
+						System.out.println("Note: the database must be \"skimpy\" for business logic to function correctly. __");
+						String DBName = br.readLine();
+						if(DBName.trim().toLowerCase().equals("c"))
+						{
+							System.out.println("Cancel.");
+							mainMenu();
+							break;
+						}	
+						if(DBName.trim().equals(""))
+						{
+							System.out.println("Default database name.");
+							DBName = "skimpy";	
+						}
+		
+						System.out.println("Enter path of SQL file to use as your new database, " + DBName + "(c to cancel)");
+						System.out.println("Default is: \"\\SQLFiles\\database\\initDB.sql\" __ \n");
+						String SQLPath = br.readLine();
+						System.out.println(SQLPath);
+						if(DBName.trim().toLowerCase().substring(0,1).equals("c"))
+						{
+							System.out.println("Cancel.");
+							mainMenu();
+							break;
+						}	
+						if(SQLPath.trim().equals(""))
+						{
+							System.out.println("Default SQL path.");
+							SQLPath = "SQLFiles/database/initDB.sql";	
+						}
+						AutoDB atb = new AutoDB();
+						atb.initialiseDB(DBName, SQLPath);
 				}
 			}
 			catch (IOException e)
 			{
 				System.out.println("Sorry, an IOException Occured. \n\n" + e.getMessage());
 			}
+	}
 	
+
+	//parse data from web scrapers and push data to database
+	public static void pushToDB(String path, String table)
+	{
+		SpiderToDB std = new SpiderToDB();
+		DBConnect toDB = new DBConnect();
+		ArrayList Items = new ArrayList(std.readAllRecords(path));
+		
+		int i = 1;
+		int t = std.countLines(path);
+		while(i < t){
+			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());
+			if(foodItem != null)
+			{
+				System.out.println(foodItem.toString());
+				toDB.pushFood(foodItem, table);
+			}
+			i++;
+		}
 	}
 }

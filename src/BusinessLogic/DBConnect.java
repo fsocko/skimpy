@@ -58,6 +58,21 @@ public class DBConnect extends HttpServlet{
 		}
 		
 	}
+	//open connection to a database of a name other than Skimpy, for testing
+	public void openCon(String database)
+	{
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database , "root", "");
+			st = (Statement) con.createStatement();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error:"+ex );
+		}
+		
+	}
+	
 	
 	public void closeCon()
 
