@@ -47,7 +47,7 @@ function fillResults(data) {
 					.append($('<span>').addClass('button-add').append(
 									$('<i>').addClass('fa').addClass('fa-plus')))
 					.append($('<a>').attr('href', link_to_page)
-							.append($('<span>').addClass('product-name').text(data[x].name)))
+							.append($('<span>').addClass('product-name').text(data[x].name.replace(";",""))))
 							.append(
 									$('<span>').addClass('product-mass').text(mass))
 									.append($('<span>').addClass('shopID').text(data[x].ID))
@@ -140,8 +140,10 @@ $(document).ready(function(){
 	
 	$('#results').on('click', '.button-add',
 		function (event) {
-		    $('#ingred').val($('#ingred').val() + $(this).closest('.result-entry').find('.shopID').text() + ";");
-		    $('#supermarket').val($('#supermarket').val() + $(this).closest('.result-entry').find('.shopName').text() + ";");
+		    var i = new String($(this).closest('.result-entry').find('.shopID').text() + ";");
+		    var s = new String($(this).closest('.result-entry').find('.shopName').text() + ";");
+		    $('#ingred').val($('#ingred').val() + i);
+		    $('#supermarket').val($('#supermarket').val() + s);
 			$('#products-list').append(
 				$('<div>').addClass('product-list-entry').append(
 						$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
@@ -157,13 +159,27 @@ $(document).ready(function(){
 						$('<span>').addClass('list-product-mass').text('Serving size: ')
 							.append($('<input name="mass" id ="mass">').addClass('serving-size')
 								.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text())))
+								.append($('<span>').addClass('shopID').text($(this).closest('.result-entry').find('.shopID').text()))
+									.append($('<span>').addClass('shopName').text($(this).closest('.result-entry').find('.shopName').text()))
 			);
 		}
 	);
 	
 	$('#products-list').on('click', '.button-remove',
 		function() {
+		
+		    var i = $(this).closest('.product-list-entry').find('.shopID').text() + ";" ;
+		    var s = new String($(this).closest('.product-list-entry').find('.shopName').text() + ";");
+		     
 			$(this).closest('.product-list-entry').remove();
+			
+			$('input[name=ingred]').val(function(index, value) {
+				    return value.replace(i ,"");
+				});
+             
+			$('input[name=supermarket]').val(function(index, value) {
+				   return value.replace(s ,"");
+				});
 		}
 	);
 });

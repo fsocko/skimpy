@@ -14,7 +14,7 @@
 <head>
 <title>Saving Meal</title>
 </head>
-<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/viewRecipe.jsp" />
+<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/recipeExplorer.jsp" />
 <body>
 
  <%  
@@ -34,14 +34,21 @@
 	    
 	    String [] Servings =  request.getParameterValues("mass");
 	    ArrayList<Integer> massList = new ArrayList<Integer>();
+	    
+	   
+	  
 	    for(String s: Servings){
 	    	if(s.equals("")){
 	    		massList.add(0);}else{
-	    	
+	    try{
 	    	massList.add(Integer.parseInt(s));
 	    	
 	    }
-	    }
+	  
+	    catch(NumberFormatException e){
+	    	massList.add(Integer.parseInt(s.replaceAll("[a-zA-Z]+", "")));
+	    	
+	    }}  }
         
         String masses = java.util.Arrays.deepToString(Servings);
         int len = shopList.size();
@@ -64,8 +71,15 @@
     		ArrayList<Meal> readmeals = new ArrayList<Meal>();
     		
     		if (writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml")!=null){
+    		readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
     		
-    	    readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    		Meal exists = null;
+    		 if( writeX.getMeal(readmeals, MealName) != null){
+    			 exists= writeX.getMeal(readmeals, MealName);
+    			 readmeals.remove(exists);
+    		 }
+    		
+    		
     	    readmeals.add(currentMeal);
     	    writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");
     	    }
@@ -81,26 +95,7 @@
     	    
     	    String currentname= currentMeal.getName(); 
     	    %>
-    	   <br>
-Your new recipe:
-RECIPE
 
-<br>
-Ingredients:
-<br><%-- <%for (int i=0; i< currentMeal.getIngredients().size();i++){
-	                %>
-	                <%=currentMeal.getIngredients().get(i).getName()%>
-	                <%=currentMeal.getMasses().get(i)%>
-	                <br>
-	                <% }%> --%>
-
-SOME FOOD
-<% session.setAttribute("name", currentname); %>
-<form action="viewRecipe.jsp" method="POST">
-
-<input type="hidden" value="<%=currentname%>" name="currentmeal">
-
-</form>
  	
 </body>
 </html>
