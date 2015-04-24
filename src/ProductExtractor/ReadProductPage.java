@@ -17,13 +17,11 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 public class ReadProductPage implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	private String cat;
 	private String highercat;
 	
-	public ReadProductPage(String url, ThreadControl tc, String cat, String highercat) {
+	public ReadProductPage(String url, String cat, String highercat) {
 		this.url = url;
-		this.tc = tc;
 		this.cat = cat;
 		this.highercat = highercat;
 	}

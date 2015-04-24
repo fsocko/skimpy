@@ -40,7 +40,7 @@ public class GetProducts implements Runnable {
 		    	if (SainsburysScraper.getNutrition) {
 				    HtmlElement temp = (HtmlElement)itr.next();
 				    String prodUrl = temp.getOneHtmlElementByAttribute("div", "class", "productNameAndPromotions").getFirstElementChild().getFirstElementChild().getAttribute("href");
-					Thread t = new Thread(new ReadProductPage(prodUrl, tc, cat[cat.length - 1], categoryname));
+					Thread t = new Thread(new ReadProductPage(prodUrl, cat[cat.length - 1], categoryname));
 					tc.addThread(t);
 		    	} else {
 				    HtmlElement temp = (HtmlElement)itr.next();

@@ -1,3 +1,5 @@
+//@author Lee
+
 package ProductExtractor;
 
 import java.util.Iterator;
@@ -8,16 +10,17 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+/*
+ * Class to read the product list pages and get the product page urls
+ */
 public class AsdaProducts implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	private String categoryname;
 	private String cat;
 	
-	public AsdaProducts(String url, ThreadControl tc, String categoryname, String cat) {
+	public AsdaProducts(String url, String categoryname, String cat) {
 		this.url = url;
-		this.tc = tc;
 		this.categoryname = categoryname;
 		this.cat = cat;
 	}
@@ -27,26 +30,14 @@ public class AsdaProducts implements Runnable {
 			System.out.println(Thread.currentThread().getName() + ":> " + url);
 			WebClient webClient = new WebClient(BrowserVersion.FIREFOX_24);
 			HtmlPage page = webClient.getPage(url);
-//			int retries = 50;
-//			boolean loaded = false;
-//			while (retries > 0 && !loaded) {
-//				if (page.asXml().contains("<div id=\"itemDetails\">")) {
-//					loaded = true;
-//					System.out.println("Loaded");
-//					System.out.println(retries);
-//				}
-//				webClient.waitForBackgroundJavaScript(1000);
-//				retries--;
-//			}
 			webClient.waitForBackgroundJavaScript(50000);
 			HtmlElement gridProducts = page.getBody().getOneHtmlElementByAttribute("div", "id", "listings");
 			Iterator<DomElement> itr = gridProducts.getChildElements().iterator();
 			while (itr.hasNext()) {
 				HtmlElement temp = (HtmlElement)itr.next();
 				String prodUrl = temp.getOneHtmlElementByAttribute("span", "id", "productTitle").getFirstElementChild().getAttribute("href");
-				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, tc, categoryname, cat));
+				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, categoryname, cat));
 				AsdaScraper.productpages.add(t);
-				//tc.addThread(t);
 			}
 			Iterator<DomElement> pageCount = page.getBody().getOneHtmlElementByAttribute("p", "class", "itemCount ").getChildElements().iterator();
 			pageCount.next();
@@ -78,9 +69,8 @@ public class AsdaProducts implements Runnable {
 			while (itr.hasNext()) {
 				HtmlElement temp = (HtmlElement)itr.next();
 				String prodUrl = temp.getOneHtmlElementByAttribute("span", "id", "productTitle").getFirstElementChild().getAttribute("href");
-				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, tc, categoryname, cat));
+				Thread t = new Thread(new AsdaProductPage(AsdaScraper.rootUrl + prodUrl, categoryname, cat));
 				AsdaScraper.productpages.add(t);
-				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {
