@@ -17,12 +17,8 @@ public class AutoDB
 {
 	public static void main(String[] args) 
 	{
-		AutoDB atb = new AutoDB();
-		//System.out.println(atb.SkimpyExists());
-		atb.initialiseDB("skimpy", "skimpy1704.sql");
+
 	}
-	
-	
 	// JDBC driver name and database URL
 	   static final String localHost = "jdbc:mysql://localhost/";
 	   //  Database credentials

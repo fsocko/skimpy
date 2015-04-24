@@ -5,10 +5,11 @@ import java.util.Date;
 import javax.servlet.http.HttpServlet;
 
 /**
- * @author ruaraidh, FPS, Lee
- */
-/**
- * Main class that brings all the other classes together.
+ *author: ruaraidh, FPS, Lee
+ *Date of last change:
+ *Reviewed by: not reviewed
+ *Function: Main class that brings all the other classes together.
+ * 
  */
 public class Main extends HttpServlet{
 	/**

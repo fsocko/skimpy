@@ -254,7 +254,7 @@ public class SpiderToDB extends HttpServlet{
 				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				//simple test if anything parsed to double incorrectly. If this is the case, we reject the entire record. I seem to remember this rejects most of them though.
 				if(rejectRecord)
-				{System.out.println("Error: This record contains a null field.");}
+				{System.out.println("Warning: This record contains a null field.");}
 				return currentRec;
 				
 		 }
