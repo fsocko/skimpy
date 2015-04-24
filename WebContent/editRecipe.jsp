@@ -23,9 +23,13 @@
   XMLParser writeX = new XMLParser();
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-  //String name= String.valueOf(session.getAttribute("name"));
-  String name = "Tuna Pasta Salad";
+  String name= String.valueOf(request.getParameter("name"));
+  //String name = "Tuna Pasta Salad";
+  
+  String  Shops =  (String)session.getAttribute("sup");
+  String ShopIds =  (String)session.getAttribute("dbid");
   Meal themeal = writeX.getMeal(readmeals, name);
+  
  %>
 
 	<div class="container-fluid">
@@ -37,7 +41,8 @@
 						<input class="recipe-name form-control input-sm" name="mealname"
 							value="<%=themeal.getName() %>">
 							<div class="products-mass">
-							<div id="all-products-list" class="form-control input-sm">
+							
+							<div id="products-list" class="form-control input-sm">
 							 <%for (int i=0; i< themeal.getIngredients().size();i++){
 	                               %>
 	                
@@ -47,24 +52,33 @@
                         </span></a>
                       <span class="list-product-price">£ <%=themeal.getIngredients().get(i).getPrice()%>
                       </span>
-                      <span class="button=remove"><i class="fa fa-times"></i></span>
+                      <span class="button-remove"><i class="fa fa-times"></i></span>
                       <span class="list-product-mass">Serving size: <input class="serving size" name="mass" id="mass" value="<%=themeal.getMasses().get(i)%>g">
                       </span>
+                      <span class="shopID"><%=themeal.getIngredients().get(i).getDBID()%></span>
+                      <span class="shopName"><%=themeal.getIngredients().get(i).getSupermarket()%></span>
                       <div class="col-sm-4">
                         <p></p>
                       </div></div> <% }%>
             
-							<div id="products-list" class="form-control input-sm"></div></div>
+							</div>
 							<input class="list-group" id="ingred" type="hidden" name="ingred"
-								value=""> <input class="list-group" id="supermarket"
-								type="hidden" name="supermarket" value="">
+								value="<%=ShopIds%>"> <input class="list-group" id="supermarket"
+								type="hidden" name="supermarket" value="<%=Shops %>">
 						</div>
-
+                        
 						<input type="submit" class="btn btn-block btn-success btn-lg"
-							style="width: 150px" value="Save Your Meal" />
-					</div>
-				</form>
-			</div>
+							style="width: 160px" value="Save Changes" />
+						</div>
+						</form>
+						<form action="deleteRecipe.jsp" method="POST">
+						<input type="hidden" name="mealname" value ="<%=themeal.getName()%>">
+						<button style="width: 160px"  
+						class="btn btn-block btn-success btn-lg" type="submit" >Delete This Recipe</button>
+						</form>
+						
+				
+				</div>
 			<div class="col-sm-6">
 				<div id="search-container">
 					<input id="search" class="form-control input-sm" name="q"
@@ -79,6 +93,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 </body>
 </html>

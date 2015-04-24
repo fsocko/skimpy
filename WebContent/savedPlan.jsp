@@ -19,6 +19,7 @@
 <head>
 <title>Shopping List</title>
 </head>
+<meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/usermealplan.jsp" />
 <body>
 
  	 <% 

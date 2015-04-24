@@ -44,11 +44,28 @@
   XMLParser writeX = new XMLParser();
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-  //String name= String.valueOf(session.getAttribute("name"));
-  String name = "Tuna Pasta Salad";
+  String name= String.valueOf(request.getParameter("name"));
+  System.out.println("NAME:"+ name);
+  //String name = "Tuna Pasta Salad";
   Meal themeal = writeX.getMeal(readmeals, name);
- %>
-    	
+ String dbid = "";
+ String  sup = "";
+  for (int j=0; j< themeal.getIngredients().size();j++){
+      
+    dbid +=  themeal.getIngredients().get(j).getDBID() + ";" ;
+
+    sup +=   themeal.getIngredients().get(j).getSupermarket() + ";";
+
+      }
+
+    session.setAttribute("dbid", dbid);
+    session.setAttribute("sup", sup);
+     
+    System.out.println(themeal.getIngredients().size());
+   
+      %>
+ 
+    <form action="editRecipe.jsp" method="post">
    <div class="container-fluid">
       <div class="row">
               <div class="col-sm-7">
@@ -62,9 +79,11 @@
                  
                       <div class="col-sm-8">
                         <h4><%=themeal.getName() %></h4>
+                        <input type="hidden" value="<%=themeal.getName() %>" name="name">
                       </div>
                       <div class="col-sm-4">
-                        <a href = "editRecipe.jsp" class="btn pull-right btn-primary btn-md">Edit</a>
+                        
+                      <button  class="btn pull-right btn-primary btn-md" type="submit" >Edit</button>
                       </div>
                     </div>
                   </div>
@@ -76,9 +95,11 @@
 	                
 	                
 	                 <div class="col-sm-8">
-                        <span ><%=themeal.getIngredients().get(i).getName().replace(";", "")%></span>
+                        <span ><%=themeal.getIngredients().get(i).getName().replaceAll("[><;]", "")%></span>
                       </div>
-                      <input name="mass" id ="mass" value="<%=themeal.getMasses().get(i)%>">
+                      <div class="col-sm-4">
+                      <span> <%=themeal.getMasses().get(i)%> </span>
+                      </div>
                     <% }%>
               </div>
 
@@ -189,16 +210,7 @@
 
       </div>
     </div>   	
-    	
-    	
-    	
-    	
-    	
-    	
+    </form>		
 
-
-
-
- 	
 </body>
 </html>

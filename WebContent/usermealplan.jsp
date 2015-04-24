@@ -14,9 +14,17 @@
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/mp.css">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet"
+	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 </head>
 <body>
+
+<div class="container-fluid">
+
+    <div class="col-sm-8">
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
@@ -32,16 +40,16 @@
     for(MealPlanner p: readmeals){
 	       if ((Integer)session.getAttribute("ID") != p.getUserId()){
 	    	   %>
-	       
+	<div id="MP">       
     <p>
-     <button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='MealPlan.jsp'">Create a Meal Plan</button>
+     <button class="btn btn-block btn-success btn-lg" style="width: 170px" onclick="document.location.href='MealPlan.jsp'">Create a Meal Plan</button>
     </p>
     	
     <% }else{%>
     
 
-    <div id="MP">
-	<table border="1">
+    
+	<table >
 	<tr><th>Monday</th>
 	<th>Tuesday</th>
 	<th>Wednesday</th>
@@ -56,7 +64,12 @@
            <%for(MealPlanner m: readmeals){
     	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
     	    	   if (m.getMeal(j, i)!=null){%>
-    	       <%=m.getMeal(j,i).getName() %> 
+    	    	   
+    	    	   <form action="viewRecipe.jsp" method="post">
+    	    	<button style="width:100%;" class="btn pull-right btn-primary btn-md"  type="submit" ><%=m.getMeal(j,i).getName()%> </button>
+    	    	<input name="name" type="hidden" value="<%=m.getMeal(j,i).getName() %>">
+    	    	</form>
+    	       
     	   <% } } }%>
           </td>
 		<%}%>
@@ -77,6 +90,8 @@
 <% 
     }%>
     <div >
+    </div>
+    </div>
     </div>
 </body>
 </html>

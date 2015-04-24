@@ -25,17 +25,27 @@
                  <%        
        XMLParser writeX = new XMLParser();
        ArrayList<Meal> readmeals = new ArrayList<Meal>();
+       
+       if(writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml") == null){
+    	   %>
+    	   <div class="col-sm-4">
+    	   <p>
+    	   You haven't created any recipes yet.</p>
+    	   <a href = "recipe.jsp" class="btn btn-block btn-success btn-lg"
+							style="width: 160px">Create a Recipe</a>
+    	   </div>
+    	   <% 
+       }else{
        readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-    	 
-    	 for(Meal m: readmeals){
-    	 session.setAttribute("name", m.getName());%>
-    	         
-    	    	<a href="viewRecipe.jsp"> <%=m.getName()%></a>
-    	    	 <br>
-    	   <% } %>
+    	for(Meal m: readmeals){%>
+    	         <form action="viewRecipe.jsp" method="post">
+    	    	<button style="width:40%;" class="btn btn-block btn-success btn-lg" type="submit" ><%=m.getName()%></button>
+    	    	<input name="name" type="hidden" value="<%=m.getName()%>">
+    	    	</form>
+    	   <% } }%>
 
 	<br>
    
-</div>>
+</div>
 </body>
 </html>
