@@ -16,10 +16,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+/*
+ * Class to read and write information about meals and meal plans to xml files
+ */
 public class XMLParser {
 	
 	/*
-	 * Returns an arraylist of meals from the file meals.xml
+	 * Returns an arraylist of meals from the file described by the variable filepath
 	 */
 	public ArrayList<Meal> readMeals(String filepath) {
 		DBConnect dbcon = new DBConnect();
@@ -75,7 +78,7 @@ public class XMLParser {
 	
 	
 	/*
-	 * Writes an arraylist of meals to the file meals.xml
+	 * Writes an arraylist of meals to the file described by the variable filepath
 	 */
 	public void writeMeals(ArrayList<Meal> meals, String filepath) {
 		try {
@@ -123,7 +126,7 @@ public class XMLParser {
 	}
 	
 	/*
-	 * Reads an arraylist of mealplans from the file mealplans.xml
+	 * Reads an arraylist of mealplans from the file described by the variable filepath
 	 */
 	public ArrayList<MealPlanner> readMealPlans(String filepath) {
 		DBConnect dbcon = new DBConnect();
@@ -184,7 +187,7 @@ public class XMLParser {
 	}
 	
 	/*
-	 * writes an arraylist of mealplans to the file mealplans.xml
+	 * writes an arraylist of mealplans to the file described by the variable filepath
 	 */
 	public void writeMealPlans(ArrayList<MealPlanner> mealplanners, String filepath) {
 		try {
