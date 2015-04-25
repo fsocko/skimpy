@@ -24,7 +24,7 @@
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
   String name= String.valueOf(request.getParameter("name"));
-  //String name = "Tuna Pasta Salad";
+  
   
   String  Shops =  (String)session.getAttribute("sup");
   String ShopIds =  (String)session.getAttribute("dbid");

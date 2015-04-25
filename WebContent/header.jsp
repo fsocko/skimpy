@@ -53,7 +53,7 @@
               <a href="home.jsp">Home</a>
             </li>
             <li>
-              <a href="#">My Shopping List</a>
+              <a href="ShoppingList.jsp">My Shopping List</a>
             </li>
             <li>
               <a href="usermealplan.jsp">Meal Planner</a>

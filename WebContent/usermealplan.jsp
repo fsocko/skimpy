@@ -42,7 +42,7 @@
 	    	   %>
 	<div id="MP">       
     <p>
-     <button class="btn btn-block btn-success btn-lg" style="width: 170px" onclick="document.location.href='MealPlan.jsp'">Create a Meal Plan</button>
+     <button class="btn btn-block btn-success btn-lg" style="width: 170px" onclick="document.location.href='editPlan.jsp'">Create a Meal Plan</button>
     </p>
     	
     <% }else{%>
@@ -70,7 +70,10 @@
     	    	<input name="name" type="hidden" value="<%=m.getMeal(j,i).getName() %>">
     	    	</form>
     	       
-    	   <% } } }%>
+    	   <% }else{%>
+    	   <br>
+    	   <%}
+    	    	   } }%>
           </td>
 		<%}%>
 		</tr> 
@@ -78,13 +81,13 @@
 	</table>
 	<br>
 	
-    <button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='MealPlan.jsp'">Edit Meal Plan</button>
+    <button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='editPlan.jsp'">Edit Meal Plan</button>
     </div>
     <%} } }
     else{ %>
     
 <p>
-<button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='MealPlan.jsp'">Create a Meal Plan</button>
+<button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='editPlan.jsp'">Create a Meal Plan</button>
 </p>
 	
 <% 

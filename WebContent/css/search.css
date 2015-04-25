@@ -2,6 +2,8 @@ body {
 	font-family: sans-serif;
 }
 
+
+
 #autocomplete-box {
 	position: relative;
 	float: left;
@@ -78,6 +80,16 @@ body {
 	margin-top: 4px;
 }
 
+.result{
+	position: relative;
+	float: left;
+	display: block;
+	width: 100%;
+	min-height: 32px;
+	padding: 4px 0 4px 0;
+	margin-top: 4px;
+}
+
 .result-entry:hover {
 	background-color: #f0f0f0;
 }
@@ -90,6 +102,22 @@ body {
 	position: relative;
 	float: left;
 	width: 75%;
+	height: 100%;
+}
+
+.product{
+	position: relative;
+	display:inline;
+	float: left;
+	width: 75%;
+	height: 100%;
+}
+
+.select{
+	position: relative;
+	display:inline;
+	float: left;
+	width: 100%;
 	height: 100%;
 }
 
@@ -117,6 +145,17 @@ body {
 	width: 5%;
 	height: 100%;
 	visibility: hidden;
+	color: #CCC;
+	text-align: center;
+}
+
+
+.button-add-plan {
+	position: relative;
+	float: left;
+	display:inline;
+	width: 20%;
+	height: 100%;
 	color: #CCC;
 	text-align: center;
 }
