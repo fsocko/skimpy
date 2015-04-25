@@ -7,10 +7,11 @@ th{
 	
 	text-align:center;
 	color: #838383;
-	font-size: 150%;
+	font-size: 110%;
 	border-radius: 3px;
 	border: 1px solid #CCC;
 	padding: 4px;
+	width:150px;
 
 }
 
@@ -22,6 +23,7 @@ td{
 	border-radius: 3px;
 	border: 1px solid #CCC;
 	padding: 4px;
+	width:150px;
 
 }
 
@@ -38,18 +40,4 @@ table{
 	float: left;
 }
 
-:-ms-input-placeholder {  
-   color: #CCC;  
-   font-style: italic;
-}
-
-.button-add {
-	position: relative;
-	float: left;
-	width: 5%;
-	height: 100%;
-	visibility: hidden;
-	color: #CCC;
-	text-align: center;
-}
 

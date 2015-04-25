@@ -28,13 +28,26 @@
  
 <div class="container-fluid">
 
-    <div class="col-sm-8">
+    <div>
 	<form action="savedPlan.jsp" method="POST">
-
-<%
+	<table border="1" style="text-align:center; width:100px;">
+	<tr><th>Monday</th>
+	<th>Tuesday</th>
+	<th>Wednesday</th>
+	<th>Thursday</th>
+	<th>Friday</th>
+	<th>Saturday</th>
+	<th>Sunday</th></tr>
+        <%for (int i = 0; i < 3; i++) {%>
+		<tr >
+			<%for (int j = 0; j < 7; j++) {
     
     XMLParser writeX = new XMLParser();
     ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
+    
+    ArrayList<Meal> meals = new ArrayList<Meal>();
+    meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    
     
     if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
     readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
@@ -42,81 +55,100 @@
     for(MealPlanner p: readmeals){
 	       if ((Integer)session.getAttribute("ID") != p.getUserId()){
 	    	   
-	    	   ArrayList<Meal> meals = new ArrayList<Meal>();
-	          meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");%>
-	          
-	           <div id="add">
-	           <div class="result-entry"><span class="product-name">
-	        	 <select id="ing"> <option selected></option> 
+	    	   %>
+	           <td align="center" width="100px">
+	           <div id="cell<%=j%><%=i %>">
+	           <div class="result">
+	           
+	           <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	           <span class="product">
+	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	 <%   for(Meal m: meals){%>
 	        	    	<option> <%=m.getName() %></option>
 	        	   <% } %></select> </span> 
 	        	   
-	               <span class="button-add"><i class="fa fa-plus"></i></span>
+	               
 	                    
-	                    <input  id="ingred" type="hidden" name="ingred" value="">
-	                </div>    
-	                    <p id="ingredients"></p> 
+	                    <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
                      </div>
-	    			  
+                     </div>
+	    			   </td>
 	    			   <%}else{%>
           <%
           
           for(MealPlanner m: readmeals){
    	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
-   	    	   if (m.getMeal(0, 0)!=null){%>
+   	    	   if (m.getMeal(j, i)!=null){%>
+   	    	   <td align="center" width="100px">
+   	    	<div id="cell<%=j%><%=i %>">
    	    	   
-   	    	<div id="remove">
+   	    	   <div class="result" >
+   	    	   <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+   	    	   <span class="product">
+   	    	   
+	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
+	        	 <%   
+	        	
+	        	 for(Meal k: meals){%>
+	        	    	<option> <%=k.getName() %></option>
+	        	   <% } %></select> </span> 
+	        	   
+	               
+	               </div>
+   	    	   
    	    	
-   	    	   <div class="result-entry">
-                        <span class="product-name"><%=m.getMeal(0,0).getName()%>
+   	    	     <div class="result-entry">
+                        <span class="product-name"><%=m.getMeal(j,i).getName()%>
                         </span>
+                        
                       <span class="button-remove"><i class="fa fa-times"></i></span>
                 </div>
+                <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden" value="<%=m.getMeal(j,i).getName()%>">
    	    	</div>
-         
+             </td>
    	       
-   	   <% }else{
-   	   ArrayList<Meal> meals = new ArrayList<Meal>();
-       meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");%>
-   
-       <div id="add">
-    	  <div class="result-entry"><span class="product-name">
-	        	 <select id="ing"> <option selected></option> 
+   	   <% }else{%>
+       <td align="center" width="100px">
+       <div id="cell<%=j%><%=i %>">
+    	  <div class="result">
+    	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+    	  <span class="product">
+	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	 <%   for(Meal n: meals){%>
 	        	    	<option> <%=n.getName() %></option>
 	        	   <% } %></select> </span> 
 	        	   
-	               <span class="button-add"><i class="fa fa-plus"></i></span>
+	               
 	               </div>
                 
-                <input  id="ingred" type="hidden" name="ingred" value="">
-                <p id="ingredients"></p> 
+               <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
  </div>
-			 
+			   </td>
    	   <%}
    	    	   } }}}}
     else{ %>
-    
-
-<%  ArrayList<Meal> meals = new ArrayList<Meal>();
-meals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");%>
-
-<div id="add">
-	  <div class="result-entry"><span class="product-name">
-	        	 <select id="ing"> <option selected></option> 
+   
+<td align="center" width="100px">
+<div id="cell<%=j%><%=i %>">
+	  <div class="result">
+	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	  <span class="product">
+	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	 <%   for(Meal l: meals){%>
 	        	    	<option> <%=l.getName() %></option>
 	        	   <% } %></select> </span> 
 	        	   
-	               <span class="button-add"><i class="fa fa-plus"></i></span>
+	               
    </div>
          
+        <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
          </div>
            <%} %>
-		
-	
-
+		   </td>
+			<%}%>
+		</tr> 
+		<%}%>
+	</table>
 	<br>
     <input type="submit" class="btn btn-block btn-success btn-lg"
 							style="width: 150px" value="Save Meal Plan" /></form>

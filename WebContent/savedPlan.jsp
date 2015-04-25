@@ -32,24 +32,16 @@
     if (writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml") != null){
     	readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
     }
-    
-    //String name= request.getParameter("ingred00").replace(";","");
-    //Meal themeal = writeX.getMeal(readmeals, name);
-    //System.out.println(name);
-    //String s = themeal.toString();
-    //System.out.println(s);
-    
+
  	 
  	 for (int i = 0; i < 3;  i++){
  		 for (int j = 0; j < 7; j++){
  		   Meal themeal = null;
- 		   String s = request.getParameter("ingred"+j+""+i).replace(";","");
- 		   System.out.println(s);
- 	       themeal = writeX.getMeal(readmeals, s);
+ 		   String s = request.getParameter("meal"+j+""+i).replace(";","");
+ 		   themeal = writeX.getMeal(readmeals, s);
  	       if (themeal!= null){
  	       String m = themeal.toString();
- 	       System.out.println(m);
- 			plan.add(themeal, j, i);}
+ 	       plan.add(themeal, j, i);}
  		 }
  		 
  	 }
@@ -57,12 +49,8 @@
  	 
  	 plans.add(plan);
  	 
- 	 System.out.println(plan.toString());
  	 writeX.writeMealPlans(plans, getServletContext().getRealPath("") + "/mealplans.xml");
- 	 
- 	System.out.println(getServletContext().getRealPath("") + "/mealplans.xml");
- 	 
- 	 
+
  	 %>	
     
     
