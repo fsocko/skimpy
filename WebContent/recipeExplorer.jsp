@@ -21,7 +21,7 @@
 	response.sendRedirect("login.jsp");
 }
 	 %>
- <div id="MP">
+ <div class="container-fluid">
                  <%        
        XMLParser writeX = new XMLParser();
        ArrayList<Meal> readmeals = new ArrayList<Meal>();
