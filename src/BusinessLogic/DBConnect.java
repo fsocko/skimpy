@@ -318,6 +318,19 @@ public class DBConnect extends HttpServlet{
 		}
 	}
 	
+	public boolean validateEmail(String email) {
+		try {
+			rs = st.executeQuery(String.format("SELECT * FROM user_info WHERE UserEmail = '%s'", email));
+
+			if (rs.next()) {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 	//I think this is unused
 	public void findCat(String qu){
 		try{

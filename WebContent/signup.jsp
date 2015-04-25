@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
     <style type="text/css">
     .form-signup {
         max-width: 330px;
@@ -291,7 +291,16 @@ pageEncoding="UTF-8"%>
 
 	          email:{
 	              required : true,
-	              email: true
+	              email: true,
+	              remote: {
+	                  url: "ValidateEmail.jsp",
+	                  type: "post",
+	                  data: {
+	                    username: function() {
+	                      return $( "#name" ).val();
+	                    }
+	                  }
+	                }
 	           	},
 	           	
 	          password:{
@@ -315,9 +324,6 @@ pageEncoding="UTF-8"%>
       jQuery.validator.addMethod('selectcheck', function (value) {
           return (value != '0');
       }, "Gender required");  
-      
-      
-      
     }); 
     </script>  
   </body>
