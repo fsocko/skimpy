@@ -135,7 +135,6 @@
 	  <span class="product">
 	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	
-	        	    	<option> no meals created</option>
 	        	   <% } %></select> </span> 
 	        	   
 	               
