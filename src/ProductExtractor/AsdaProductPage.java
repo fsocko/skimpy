@@ -1,3 +1,5 @@
+//@author Lee
+
 package ProductExtractor;
 
 import java.util.ArrayList;
@@ -9,16 +11,17 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+/*
+ * Class to read the product page and get the information about the product
+ */
 public class AsdaProductPage implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	private String cat;
 	private String highercat;
 	
-	public AsdaProductPage(String url, ThreadControl tc, String cat, String highercat) {
+	public AsdaProductPage(String url, String cat, String highercat) {
 		this.url = url;
-		this.tc = tc;
 		this.cat = cat;
 		this.highercat = highercat;
 	}
@@ -29,17 +32,6 @@ public class AsdaProductPage implements Runnable {
 			System.out.println(Thread.currentThread().getName() + ":> " + url);
 			WebClient webClient = new WebClient(BrowserVersion.FIREFOX_24);
 			final HtmlPage page = webClient.getPage(url);
-//			int retries = 50;
-//			boolean loaded = false;
-//			while (retries > 0 && !loaded) {
-//				if (page.asXml().contains("<div id=\"itemDetails\">")) {
-//					loaded = true;
-//					System.out.println("Loaded");
-//					System.out.println(retries);
-//				}
-//				webClient.waitForBackgroundJavaScript(1000);
-//				retries--;
-//			}
 			webClient.waitForBackgroundJavaScript(50000);
 			HtmlElement productSummary = page.getBody().getOneHtmlElementByAttribute("div", "id", "itemDetails");
 			String productString = "";
@@ -257,12 +249,6 @@ public class AsdaProductPage implements Runnable {
 			} catch (Exception e) {
 				productString += ";null;null;null;null;null;null;null;null";
 			}
-//		    for (ArrayList<String> row: nutritionData) {
-//		    	for (String col: row) {
-//		    		System.out.print(col + "\t");
-//		    	}
-//		    	System.out.println();
-//		    }
 		    productString += ";";
 		    AsdaScraper.products.add(productString);
 		    webClient.closeAllWindows();

@@ -8,14 +8,15 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+/*
+ * Class to read Aisle page and get the urls for the Shelf pages
+ */
 public class AsdaAisle implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	
-	public AsdaAisle(String url, ThreadControl tc) {
+	public AsdaAisle(String url) {
 		this.url = url;
-		this.tc = tc;
 	}
 
 	@Override
@@ -31,9 +32,8 @@ public class AsdaAisle implements Runnable {
 				DomElement temp = itr.next();
 				String categoryname = temp.asText();
 				String productPage = temp.getFirstElementChild().getAttribute("href");
-				Thread t = new Thread(new AsdaShelf(AsdaScraper.rootUrl + productPage, tc, categoryname));
+				Thread t = new Thread(new AsdaShelf(AsdaScraper.rootUrl + productPage, categoryname));
 				AsdaScraper.shelves.add(t);
-				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {

@@ -1,9 +1,14 @@
+//@author Lee
+
 package ProductExtractor;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/*
+ * Class to try and get all the products from Asda's website
+ */
 public class AsdaScraper {
 	
 	public static ArrayList<Thread> aisles;
@@ -28,8 +33,7 @@ public class AsdaScraper {
 			productpages = new ArrayList<Thread>();
 			products = new ArrayList<String>();
 			for (String s: urls) {
-				Thread t = new Thread(new AsdaDepartment(s, tc));
-				//Thread t = new Thread(new AsdaProducts("http://groceries.asda.com/asda-webstore/landing/home.shtml#/shelf/1215337194973/1/so-false", tc, "Test"));
+				Thread t = new Thread(new AsdaDepartment(s));
 				tc.addThread(t);
 			}
 			tc.run();

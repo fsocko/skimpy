@@ -1,3 +1,5 @@
+//@author Lee
+
 package ProductExtractor;
 
 import java.util.Iterator;
@@ -8,16 +10,17 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+/*
+ * Class to read the shelf page and get the urls for the product list pages
+ */
 public class AsdaShelf implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	private String categoryname;
 	
-	public AsdaShelf(String url, ThreadControl tc, String categoryname)
+	public AsdaShelf(String url, String categoryname)
 	{
 		this.url = url;
-		this.tc = tc;
 		this.categoryname = categoryname;
 	}
 
@@ -34,9 +37,8 @@ public class AsdaShelf implements Runnable {
 				HtmlElement temp = (HtmlElement)itr.next();
 				String cat = temp.asText();
 				String productPage = temp.getFirstElementChild().getAttribute("href");
-				Thread t = new Thread(new AsdaProducts(AsdaScraper.rootUrl + productPage, tc, categoryname, cat));
+				Thread t = new Thread(new AsdaProducts(AsdaScraper.rootUrl + productPage, categoryname, cat));
 				AsdaScraper.gridpages.add(t);
-				//tc.addThread(t);
 			}
 			webClient.closeAllWindows();
 		} catch (Exception e) {

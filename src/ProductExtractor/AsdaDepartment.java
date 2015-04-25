@@ -1,3 +1,5 @@
+//@author Lee
+
 package ProductExtractor;
 
 import java.util.Iterator;
@@ -8,14 +10,15 @@ import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+/*
+ * Class to read a department page and get the urls for the Aisle pages
+ */
 public class AsdaDepartment implements Runnable {
 	
 	private String url;
-	private ThreadControl tc;
 	
-	public AsdaDepartment(String url, ThreadControl tc) {
+	public AsdaDepartment(String url) {
 		this.url = url;
-		this.tc = tc;
 	}
 	
 	@Override
@@ -33,7 +36,7 @@ public class AsdaDepartment implements Runnable {
 				DomElement temp = itr.next();
 				if (!(temp.asText().toLowerCase().contains("free from") || temp.asText().toLowerCase().contains("special offers") || temp.asText().toLowerCase().contains("world foods"))) {
 					String productPage = temp.getFirstElementChild().getAttribute("href");
-					Thread t = new Thread(new AsdaAisle(AsdaScraper.rootUrl + productPage, tc));
+					Thread t = new Thread(new AsdaAisle(AsdaScraper.rootUrl + productPage));
 					AsdaScraper.aisles.add(t);
 				}
 			}
