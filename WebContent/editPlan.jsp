@@ -134,8 +134,8 @@
 	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
 	  <span class="product">
 	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
-	        	 <%   for(Meal l: meals){%>
-	        	    	<option> <%=l.getName() %></option>
+	        	
+	        	    	<option> no meals created</option>
 	        	   <% } %></select> </span> 
 	        	   
 	               
@@ -143,7 +143,7 @@
          
         <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
          </div>
-           <%} %>
+           <% %>
 		   </td>
 			<%}%>
 		</tr> 
