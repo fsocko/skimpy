@@ -50,17 +50,17 @@
 
     
 	<table >
-	<tr><th>Monday</th>
-	<th>Tuesday</th>
-	<th>Wednesday</th>
-	<th>Thursday</th>
-	<th>Friday</th>
-	<th>Saturday</th>
-	<th>Sunday</th></tr>
+	<tr><th style="text-align:center;">Monday</th>
+	<th style="text-align:center;">Tuesday</th>
+	<th style="text-align:center;">Wednesday</th>
+	<th style="text-align:center;">Thursday</th>
+	<th style="text-align:center;">Friday</th>
+	<th style="text-align:center;">Saturday</th>
+	<th style="text-align:center;">Sunday</th></tr>
         <%for (int i = 0; i < 3; i++) {%>
 		<tr >
 			<%for (int j = 0; j < 7; j++) {%>
-           <td align="center" width="100px">
+           <td align="center" width="250px">
            <%for(MealPlanner m: readmeals){
     	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
     	    	   if (m.getMeal(j, i)!=null){%>

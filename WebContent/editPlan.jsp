@@ -10,10 +10,7 @@
 <html>
 <head>
 <title>Meal Planner</title>
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/mp.css">
+
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
 <link rel="stylesheet"
@@ -25,8 +22,6 @@
 	response.sendRedirect("login.jsp");
 }
 
-
-
 XMLParser writeX = new XMLParser();
 ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
 
@@ -37,44 +32,38 @@ if (meals != null){
 	 %>
  
 <div class="container-fluid">
-
+<div class="col-sm-8">
     <div>
 	<form action="savedPlan.jsp" method="POST">
-	<table border="1" style="text-align:center;">
-	<tr><th>Monday</th>
-	<th>Tuesday</th>
-	<th>Wednesday</th>
-	<th>Thursday</th>
-	<th>Friday</th>
-	<th>Saturday</th>
-	<th>Sunday</th></tr>
+	<table>
+	<tr><th style="text-align:center;">Monday</th>
+	<th style="text-align:center;">Tuesday</th>
+	<th style="text-align:center;">Wednesday</th>
+	<th style="text-align:center;">Thursday</th>
+	<th style="text-align:center;">Friday</th>
+	<th style="text-align:center;">Saturday</th>
+	<th style="text-align:center;">Sunday</th></tr>
         <%for (int i = 0; i < 3; i++) {%>
 		<tr >
 			<%for (int j = 0; j < 7; j++) {
     
-   
-    
     if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
-    readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
+    	readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
     
-    for(MealPlanner p: readmeals){
+    	for(MealPlanner p: readmeals){
 	       if ((Integer)session.getAttribute("ID") != p.getUserId()){
 	    	   
 	    	   %>
-	           <td align="center" width="100px">
+	           <td align="center" width="250px">
 	           <div id="cell<%=j%><%=i %>">
 	           <div class="result">
-	           
-	           <span class="button-add-plan"><i class="fa fa-plus"></i></span>
 	           <span class="product">
-	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
-	        	 <%   for(Meal m: meals){%>
+	           <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
+	        	<%   for(Meal m: meals){%>
 	        	    	<option> <%=m.getName() %></option>
 	        	   <% } %></select> </span> 
-	        	   
-	               
-	                    
-	                    <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
+	           <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	           <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
                      </div>
                      <div id="add-item"></div>
                      </div>
@@ -85,11 +74,10 @@ if (meals != null){
           for(MealPlanner m: readmeals){
    	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
    	    	   if (m.getMeal(j, i)!=null){%>
-   	    	   <td align="center" width="100px">
+   	    	   <td align="center" width="250px">
    	    	<div id="cell<%=j%><%=i %>">
    	    	   
    	    	   <div class="result" style="display:none;">
-   	    	   <span class="button-add-plan"><i class="fa fa-plus"></i></span>
    	    	   <span class="product">
    	    	   
 	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
@@ -98,57 +86,53 @@ if (meals != null){
 	        	 for(Meal k: meals){%>
 	        	    	<option> <%=k.getName() %></option>
 	        	   <% } %></select> </span> 
-	        	   
-	               
-	               </div>
+   	    	   <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+   	    	    <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden" value="<%=m.getMeal(j,i).getName()%>">
+	        	   </div>
    	    	   
    	    	 <div id="add-item">
    	    	     <div class="result-entry">
-                        <span class="product-name"><%=m.getMeal(j,i).getName()%>
+                        <span class="product-name-plan"><%=m.getMeal(j,i).getName()%>
                         </span>
-                        
-                      <span class="button-remove"><i class="fa fa-times"></i></span>
+                       <span class="button-remove-plan"><i class="fa fa-times"></i></span>
                 </div>
-                <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden" value="<%=m.getMeal(j,i).getName()%>">
-   	    	</div></div>
+                </div>
+               </div>
              </td>
    	       
    	   <% }else{%>
-       <td align="center" width="100px">
+       <td align="center" width="250px">
        <div id="cell<%=j%><%=i %>">
     	  <div class="result">
-    	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
-    	  <span class="product">
+    	   <span class="product">
 	        	 <select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	 <%   for(Meal n: meals){%>
 	        	    	<option> <%=n.getName() %></option>
 	        	   <% } %></select> </span> 
+    	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+    	  <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
 	        	   </div>
-	        	   
 	        	   <div id="add-item"></div>
-                
-               <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
- </div>
+                 </div>
 			   </td>
    	   <%}
    	    	   } }}}}
     else{ %>
    
-<td align="center" width="100px">
+<td align="center" width="250px">
 <div id="cell<%=j%><%=i %>">
 	  <div class="result">
-	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
 	  <span class="product">
 	        	<select class="select" id="ing<%=j%><%=i %>"> <option selected></option> 
 	        	 <%   for(Meal n: meals){%>
 	        	    	<option> <%=n.getName() %></option>
 	        	   <% } %></select> </span> 
-	        	   
-	        	   
+	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	  <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
 	               
    </div>
          <div id="add-item"></div>
-        <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
+        
          </div>
            <% %>
 		   </td>
@@ -170,9 +154,10 @@ if (meals != null){
     	   </div>						
 	<%} %>
 							
-    </div>
-    <div >
-</div>
+    				</div>
+    			<div >
+			</div>
+    	</div>
     </div>
 
 </body>
