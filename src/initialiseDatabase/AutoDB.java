@@ -239,8 +239,8 @@ public class AutoDB {
 	}
     }
 
-    // Menu for setting up pushing to database
-    public static void pushToDB(char sm) 
+    // Menu for setting up pushing to database. This method selects the correct path and tablename
+    public void pushToDB(char sm) 
     {
 	 String tescoPath = "data/tesco.txt";
 	 String sainsPath = "data/sains.txt";
@@ -250,17 +250,17 @@ public class AutoDB {
 		{
 		case 'a':
 		    System.out.print("Pushing ASDA data...");
-		    pushToDB(asdaPath, "asda");
+		    executePush(asdaPath, "asda");
 		    System.out.print("Done\n");
 		    break;
 		case 's':
 		    System.out.print("Pushing Sainsbury's data...");
-		    pushToDB(sainsPath, "sains");
+		    executePush(sainsPath, "sains");
 		    System.out.print("Done\n");
 		    break;
 		case 't':
 		    System.out.print("Pushing Tesco data...");
-		    pushToDB(tescoPath, "tesco");
+		    executePush(tescoPath, "tesco");
 		    System.out.print("Done\n");
 		    break;
 		default:
@@ -270,8 +270,8 @@ public class AutoDB {
 		}
 	    }
   
-    	//parse data from web scrapers and push data to database
-	public static void pushToDB(String path, String table)
+    	//push data from scraper files to database. This method creates the connection and pushes
+	public void executePush(String path, String table)
 	{
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
