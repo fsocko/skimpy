@@ -1,4 +1,6 @@
-<% String pageTitle = "Meal Plan"; %>
+<% String pageTitle = "Edit Meal Plan"; %>
+<% String currentPage = "meal_plan"; %>
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -10,8 +12,6 @@
 
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script type="text/javascript" src="js/mealplan.js"></script>
 </head>
 <body>
