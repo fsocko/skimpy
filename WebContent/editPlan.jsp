@@ -1,4 +1,5 @@
 <% String pageTitle = "Meal Plan"; %>
+<% String currentPage = "meal_plan"; %>
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>

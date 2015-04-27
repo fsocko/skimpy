@@ -1,7 +1,7 @@
 <% String pageTitle = "Shopping List"; %>
 <% String currentPage = "shopping_list"; %>
 
-
+<%@page import="java.util.*" %>
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
@@ -18,22 +18,27 @@
 <div class="col-sm-8">
 
  	 <%
- 	 XMLParser writeX = new XMLParser();
- 	 ArrayList<Meal> readmeals = new ArrayList<Meal>();
+ 	 int userId = (Integer)session.getAttribute("ID");
+ 	 ShoppingList list = new ShoppingList();
+ 	 String path = getServletContext().getRealPath("");
+ 	
+ 	 HashMap <Food, Double> shoppingList = list.getShoppingList(path, userId);
+ 	 
+
+     if (shoppingList != null){   
+ 	 
+ 	for (Map.Entry<Food, Double> entry : shoppingList.entrySet())
+ 	{%>
+ 	    <%=entry.getKey().getName() %> <%=entry.getValue()%> <br>
+ 	<% }
+     }else{
+    	 System.out.println("S L EMPTY");
+     }
      
- 	 if(writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml") != null){
-     	readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-     		for(Meal m: readmeals){
-    	 		
-    		     ArrayList<ArrayList<Food>> shoppingList = new ArrayList<ArrayList<Food>>();
-    		     shoppingList.add(m.getIngredients()); 
-    		     for(int y=0; y < m.getIngredients().size(); y++){%>
-    		             <p> <%=m.getIngredients().get(y).getName() %></p>  
-    			<% }%>
-    	
-    <%  } }else{%>
-     "NO FOOD"
-     <%}
+ 	 
+ 	 
+ 	 
+ 	 
        %>
        
 </div>

@@ -1,3 +1,7 @@
+<% String pageTitle = "Save Meal"; %>
+<% String currentPage = "recipe"; %>
+
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
@@ -20,6 +24,7 @@
  <%  
  	    String MealName = request.getParameter("mealname");
 	    String  Shops =  request.getParameter("supermarket");
+	    int servings = Integer.valueOf(request.getParameter("servings"));
 	    ArrayList<String> shopList = new ArrayList<String>();
 	    for(String s: Shops.split(";")){
 	    	shopList.add(s);
@@ -63,7 +68,7 @@
     		  }
     		
     		
-    		Meal currentMeal = new Meal(MealName, f_ingredients, massList );
+    		Meal currentMeal = new Meal(MealName, f_ingredients, massList, servings );
     		ArrayList<Meal> meals = new ArrayList<Meal>();
     		meals.add(currentMeal);
     		

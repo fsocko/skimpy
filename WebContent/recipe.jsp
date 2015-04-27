@@ -18,8 +18,12 @@
 			<div class="col-sm-6">
 				<form action="savedMeal.jsp" method="POST">
 					<div id="recipe">
+					    <div class="col-sm-10">
 						<input class="recipe-name form-control input-sm" name="mealname"
-							placeholder="Meal Name">
+							placeholder="Meal Name"></div>
+							<div class="col-sm-2">
+						    <input class="recipe-name form-control input-sm" name="servings"
+							placeholder="Servings"></div>
 						<div class="products-mass">
 							<div id="products-list" class="form-control input-sm"></div>
 							<input class="list-group" id="ingred" type="hidden" name="ingred"
