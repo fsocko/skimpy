@@ -3,6 +3,7 @@ package initialiseDatabase;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -13,8 +14,29 @@ import com.mysql.jdbc.*;
 //Utility for automatically initialising the database.
 //Some code modified from http://www.tutorialspoint.com/jdbc
 public class AutoDB {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException 
+    {
+	initDB();
+	System.out.println("2 to continue.");
+	int cont = '1';
+	while(cont != '2')
+	{cont = System.in.read();}    
+	initTables('a');
+	System.out.println("2 to continue.");
+	cont = '1';
+	while(cont != '2')
+	{cont = System.in.read();}  
+	initTables('s');
+	System.out.println("2 to continue.");
+	cont = '1';
+	while(cont != '2')
+	{cont = System.in.read();}  
+	initTables('t');
+	System.out.println("2 to continue.");
+	cont = '1';
+	while(cont != '2')
+	{cont = System.in.read();}  
+	initTables('u');
     }
 
     // JDBC driver name and database URL
@@ -23,46 +45,55 @@ public class AutoDB {
     static final String user = "root";
     static final String pass = "";
 
-    public void dropTables(char dTable)
-	   {
-		//these strings contain the filepath of SQL files used as 
+    //initialise a table in skimpy database.
+    //a for ASDA
+    //s for Sainsbury's
+    //t for Tesco
+    //u for user_info
+    public static void initTables(char dTable)
+    {
+		//these Arrays contain the filepath of SQL files used as 
 		//templates for initialising the tables. they produce
-		//empty tables when run.
-		
-		final String asdaSQL;
-		final String sainsSQL;
-		final String tescoSQL;
-		final String userSQL;
+		//empty, initialised tables when run.
+		final String[] SQLFiles = {"SQLFiles/initDB/asdaInit.sql", "SQLFiles/initDB/sainsInit.sql",
+					   "SQLFiles/initDB/tescoInit.sql", "SQLFiles/initDB/userInit.sql"};
 		
 		//This array stores names of tables. 
-		final String[] tableNames = {"tesco", "asda", "sains", "user_info"};
+		final String[] tableNames = {"asda", "sains", "tesco", "user_info"};
 		
-		//these Strings set the filepath of source file and table name in DB
-		String SQLPath;
-		String tableName;
+		String SQLPath = null; //filepath of input SQL file
+		String tableName = null; //name of table to drop and initialise
 	
 		switch(dTable)
 		{
     		case 'a':
+    		SQLPath = SQLFiles[0];
+    		tableName = tableNames[0];
+    		break;
     		
     		case 's':
+    		SQLPath = SQLFiles[1];
+    		tableName = tableNames[1];    
+    		break;
     		
     		case 't':
-    		    
+    		SQLPath = SQLFiles[2];
+    		tableName = tableNames[2];
+    		break;
+    		
     		case 'u':
+    		SQLPath = SQLFiles[3];
+    		tableName = tableNames[3];
+    		break;
     		
     		default:
-    		    System.out.println("Invalid input.");
-    		    System.exit(0);
-    		    break;
-    		
+    		System.out.println("Invalid input.");
+    		System.exit(0);
+    		break;
 		}
-		
 	
 	       Connection conn = null;
-	       Statement stmt = null;
-		   
-		   
+	       Statement stmt = null;   
 		   
 		try{
 		    //Register JDBC driver
@@ -71,35 +102,69 @@ public class AutoDB {
 		      //Connect to skimpy DB
 			 System.out.print("Selecting database...");
 			 conn = null;
-			 try{
+			
 			     conn = DriverManager.getConnection("jdbc:mysql://localhost/skimpy", user, pass);
 			     System.out.print("Done\n");
 
-            		      //Execute a query - Drop Table
-            		      stmt = conn.createStatement();
+            		     //Execute a query - Drop Table
+            		     stmt = conn.createStatement();
             		      
-            		      String dropT = "DROP TABLE IF EXISTS " +DBName +";";
-            		      System.out.print("Dropping " +DBName+ " database if it exists...");
-            		      stmt.executeUpdate(drop);
-            		      System.out.print("Done\n");
+            		     String dropT = "DROP TABLE IF EXISTS " +tableName +";";
+            		     System.out.print("Dropping " +tableName+ " if it exists...");
+            		     stmt.executeUpdate(dropT);
+            		     System.out.print("Done\n");
             		      
-            		      //initialise selected table from SQL
-            		      System.out.print("Creating database: "+ DBName +" ...");
-            		      String add = "CREATE DATABASE "+DBName+ ";";
-            		      stmt.executeUpdate(add);
-            		      System.out.print("Done\n");
-		      
+            		     //initialise selected table from SQL
+            		     System.out.print("Creating table, " + tableName+" as defined in \""+SQLPath+"\":  ...");
+            		     
+            		     // Setup scriptRunner class to add all tables as read from an
+            		     // SQL template
 
-	   }
-
+            			File file = new File(SQLPath); 				      
+            			FileReader fr = new FileReader(file);
+            			AutoDBScriptRunner sr = new AutoDBScriptRunner(conn, false,
+            				true);
+            			sr.runScript(fr);
+            			System.out.print("\nDone. Database initialised with no errors.\n");
+    
+			}
+			 catch (SQLException se) {
+				    System.out.println("Sorry, there is a problem with the SQL server.\n\n");
+				    se.printStackTrace();
+				} catch (Exception e) {
+				    System.out.println("Sorry, the following exception occurred:\n\n");
+				    e.printStackTrace();
+				} 
+			 finally {
+					if (conn != null)
+					{   
+					    System.out.print("Closing original Connection to " + localHost + "...");
+					    try {
+						conn.close();
+					    } catch (SQLException e) {
+						e.printStackTrace();
+					    }
+					    System.out.print("Done\n");	
+					   
+					}
+			 	}		
+			 }    
+    
+    
+    //initialise Skimpy DB with default SQL file
+    public static void initDB()
+    {
+	initDB("skimpy", "SQLFiles/initDB/fullDB.sql");
+    }
+    
     // initialise Skimpy DB with selected SQL file.
-    public void initialiseDB(String SQLfilePath) {
+    public static void initDB(String SQLfilePath) {
 	// Initialise as skimpy by default. pass a String with a different
 	// DBname for testing.
-	initialiseDB("skimpy", SQLfilePath);
+	initDB("skimpy", SQLfilePath);
     }
 
-    public void initialiseDB(String DBName, String SQLPath) {
+    public static void initDB(String DBName, String SQLPath) {
 	Connection conn = null;
 	Statement stmt = null;
 	try {
@@ -157,16 +222,14 @@ public class AutoDB {
 		// SQL template
 		System.out.print("Adding tables as defined in " + SQLPath
 			+ "...\n\n");
-		File file = new File(SQLPath); // TODO:This is the line to
-					       // change
+		File file = new File(SQLPath); 				      
 		// if the default SQL file is not in data
 		file.createNewFile();
 		FileReader fr = new FileReader(file);
 		AutoDBScriptRunner sr = new AutoDBScriptRunner(conn, false,
 			true);
 		sr.runScript(fr);
-		System.out
-			.print("\nDone. Database initialised with no errors.\n");
+		System.out.print("\nDone. Database initialised with no errors.\n");
 
 	    } catch (SQLException se) {
 		se.printStackTrace();

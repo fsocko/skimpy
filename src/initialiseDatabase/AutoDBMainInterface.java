@@ -153,7 +153,7 @@ public class AutoDBMainInterface {
 							SQLPath = "SQLFiles/database/initDB.sql";	
 						}
 						AutoDB atb = new AutoDB();
-						atb.initialiseDB(DBName, SQLPath);
+						atb.initDB(DBName, SQLPath);
 					default:
 						System.out.println("Invalid input.\n");
 						DBInitMenu();
