@@ -16,13 +16,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-/*
- * Class to read and write information about meals and meal plans to xml files
- */
 public class XMLParser {
 	
 	/*
-	 * Returns an arraylist of meals from the file described by the variable filepath
+	 * Returns an arraylist of meals from the file meals.xml
 	 */
 	public ArrayList<Meal> readMeals(String filepath) {
 		DBConnect dbcon = new DBConnect();
@@ -38,12 +35,14 @@ public class XMLParser {
 				String name = mealelem.getElementsByTagName("Name").item(0).getTextContent();
 				NodeList rawFood = mealelem.getElementsByTagName("Food");
 				ArrayList<Food> foods = new ArrayList<Food>();
-				//System.out.print(name + ": ");
+				System.out.print(name + ": ");
 				for (int j = 0; j < rawFood.getLength(); j++) {
 					Element foodelem = (Element)rawFood.item(j);
 					String shopName = foodelem.getAttribute("shop");
 					String foodid = foodelem.getTextContent();
-					//System.out.print(", " + shopName + ": " + foodid);
+					System.out.print(", " + shopName + ": " + foodid);
+					//changed first parameter to tesco, to test whether that would work.
+					//as shopName returns shopID value, not shop name
 					Food f = dbcon.pullFood(shopName, foodid);
 					foods.add(f);
 				}
@@ -54,15 +53,43 @@ public class XMLParser {
 					int mass = Integer.parseInt(masselem.getTextContent());
 					masses.add(mass);
 				}
-				//System.out.println("");
+				System.out.println("");
 				Meal m = new Meal(name, foods, masses);
 				meals.add(m);
 			}
+			meals = sort(meals, 0, meals.size() - 1);
 			return meals;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private static ArrayList<Meal> sort(ArrayList<Meal> meals, int low, int high) {
+		if (low < high) {
+			int pivotIndex = low + (high - low) / 2;
+			Meal pivotValue = meals.get(pivotIndex);
+			String pivotValueName = pivotValue.getName().toLowerCase();
+			Meal temp = meals.get(high);
+			meals.set(high, pivotValue);
+			meals.set(pivotIndex, temp);
+			int storeIndex = low;
+			for (int i = low; i < high; i++) {
+				if (meals.get(i).getName().toLowerCase().compareTo(pivotValueName) <= 0) {
+					Meal temp2 = meals.get(i);
+					meals.set(i, meals.get(storeIndex));
+					meals.set(storeIndex, temp2);
+					storeIndex++;
+				}
+			}
+			Meal temp3 = meals.get(storeIndex);
+			meals.set(storeIndex, meals.get(high));
+			meals.set(high, temp3);
+			
+			meals = sort(meals, low, storeIndex - 1);
+			meals = sort(meals, storeIndex + 1, high);
+		}
+		return meals;
 	}
 	
 	public Meal getMeal(ArrayList<Meal> meals, String name){
@@ -78,7 +105,7 @@ public class XMLParser {
 	
 	
 	/*
-	 * Writes an arraylist of meals to the file described by the variable filepath
+	 * Writes an arraylist of meals to the file meals.xml
 	 */
 	public void writeMeals(ArrayList<Meal> meals, String filepath) {
 		try {
@@ -115,9 +142,9 @@ public class XMLParser {
 			Transformer t = tf.newTransformer();
 			DOMSource src = new DOMSource(doc);
 			File f = new File(filepath);
-			//System.out.println(f.toString());
+			System.out.println(f.toString());
 			StreamResult result = new StreamResult(f);
-			//System.out.println(result.toString());
+			System.out.println(result.toString());
 			
 			t.transform(src, result);
 		} catch (Exception e) {
@@ -126,7 +153,7 @@ public class XMLParser {
 	}
 	
 	/*
-	 * Reads an arraylist of mealplans from the file described by the variable filepath
+	 * Reads an arraylist of mealplans from the file mealplans.xml
 	 */
 	public ArrayList<MealPlanner> readMealPlans(String filepath) {
 		DBConnect dbcon = new DBConnect();
@@ -153,12 +180,12 @@ public class XMLParser {
 							String name = timeElem.getElementsByTagName("Name").item(0).getTextContent();
 							NodeList rawFood = timeElem.getElementsByTagName("Food");
 							ArrayList<Food> foods = new ArrayList<Food>();
-							//System.out.print(day + " - " + time + ":> " + name + ", ");
+							System.out.print(day + " - " + time + ":> " + name + ", ");
 							for (int l = 0; l < rawFood.getLength(); l++) {
 								Element foodelem = (Element)rawFood.item(l);
 								String shopName = foodelem.getAttribute("shop");
 								String foodid = foodelem.getTextContent();
-								//System.out.print(", " + shopName + ": " + foodid);
+								System.out.print(", " + shopName + ": " + foodid);
 								Food f = dbcon.pullFood(shopName, foodid);
 								foods.add(f);
 							}
@@ -169,11 +196,11 @@ public class XMLParser {
 								int mass = Integer.parseInt(masselem.getTextContent());
 								masses.add(mass);
 							}
-							//System.out.println("");
+							System.out.println("");
 							Meal m = new Meal(name, foods, masses);
 							mp.add(m, j, k);
 						} catch (Exception e) {
-							//System.out.println("Meal not found at " + j + k);
+							System.out.println("Meal not found at " + j + k);
 						}
 					}
 				}
@@ -187,7 +214,7 @@ public class XMLParser {
 	}
 	
 	/*
-	 * writes an arraylist of mealplans to the file described by the variable filepath
+	 * writes an arraylist of mealplans to the file mealplans.xml
 	 */
 	public void writeMealPlans(ArrayList<MealPlanner> mealplanners, String filepath) {
 		try {
