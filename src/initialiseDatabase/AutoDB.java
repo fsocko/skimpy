@@ -16,10 +16,10 @@ import com.mysql.jdbc.*;
 public class AutoDB {
 
 	//initDB();// initialise DB using contents from default init file.
-	//initTables('a'); initialise Asda table.
-	//initTables('s'); sainsbury's
-	//initTables('t'); tesco
-	//initTables('u'); user_info
+	//initTable('a'); initialise Asda table.
+	//initTable('s'); sainsbury's
+	//initTable('t'); tesco
+	//initTable('u'); user_info
 
     // JDBC driver name and database URL
     static final String localHost = "jdbc:mysql://localhost/";
@@ -32,7 +32,7 @@ public class AutoDB {
     //s for Sainsbury's
     //t for Tesco
     //u for user_info
-    public void initTables(char dTable)
+    public void initTable(char dTable)
     {
 		//these Arrays contain the filepath of SQL files used as 
 		//templates for initialising the tables. they produce
