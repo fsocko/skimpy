@@ -91,11 +91,26 @@
               </div>
               <div class="col-sm-8">
      <%for (int i=0; i< themeal.getIngredients().size();i++){
+    	 String link;
+    	 
+    	 if(themeal.getIngredients().get(i).getSupermarket().equals("T")){
+    		 
+    		 link= "http://www.tesco.com/groceries/product/details/?id=" + themeal.getIngredients().get(i).getShopID();
+    	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
+    		 
+    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" + themeal.getIngredients().get(i).getShopID();
+    	 }else{
+    		 
+    		 link=  themeal.getIngredients().get(i).getShopID();
+    	 }
+    	 
+    	 
 	                %>
 	                
 	                
 	                 <div class="col-sm-8">
-                        <span ><%=themeal.getIngredients().get(i).getName().replaceAll("[><;]", "")%></span>
+                       <a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+                        </span></a>
                       </div>
                       <div class="col-sm-4">
                       <span> <%=themeal.getMasses().get(i)%> </span>

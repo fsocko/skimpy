@@ -44,11 +44,25 @@
 							
 							<div id="products-list" class="form-control input-sm">
 							 <%for (int i=0; i< themeal.getIngredients().size();i++){
+								 
+								 
+								 String link;
+						    	 
+						    	 if(themeal.getIngredients().get(i).getSupermarket().equals("T")){
+						    		 
+						    		 link= "http://www.tesco.com/groceries/product/details/?id=" + themeal.getIngredients().get(i).getShopID();
+						    	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
+						    		 
+						    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" + themeal.getIngredients().get(i).getShopID();
+						    	 }else{
+						    		 
+						    		 link=  themeal.getIngredients().get(i).getShopID();
+						    	 }
 	                               %>
 	                
 	                
 	                 <div class="product-list-entry">
-                        <a href="#"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+                        <a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
                         </span></a>
                       <span class="list-product-price">£ <%=themeal.getIngredients().get(i).getPrice()%>
                       </span>
