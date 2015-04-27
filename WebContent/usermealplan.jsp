@@ -1,3 +1,6 @@
+<% String pageTitle = "Meal Planner"; %>
+<% String currentPage = "meal_plan"; %>
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,17 +10,12 @@
 <%@page import="java.io.IOException"%>
 <%@include file="header.jsp" %>
 
-<html>
-<head>
-<title>Meal Planner</title>
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/mp.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 </head>
 <body>

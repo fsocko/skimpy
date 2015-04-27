@@ -4,7 +4,7 @@
 <html>
   
   <head>
-    <title>Home</title>
+    <title><% out.print(pageTitle); %></title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -49,19 +49,19 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active">
+            <li <% if (currentPage.equals("home") && currentPage != null ) { out.print("class=\"active\""); } %>>
               <a href="home.jsp">Home</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("shopping_list") && currentPage != null ) { out.print("class=\"active\""); } %>>
               <a href="ShoppingList.jsp">My Shopping List</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("meal_plan") && currentPage != null) { out.print("class=\"active\""); } %>>
               <a href="usermealplan.jsp">Meal Planner</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("recipe") && currentPage != null) { out.print("class=\"active\""); } %>>
               <a href="recipe.jsp">Recipe Creator</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("explorer") && currentPage != null) { out.print("class=\"active\""); } %>>
               <a href="recipeExplorer.jsp">Recipe Explorer</a>
             </li>
           </ul>
@@ -76,7 +76,5 @@
         <div class="pull-right btn-group btn-group-lg"></div>
       </div>
      </div>
-    </body>
-</html>
 
      
