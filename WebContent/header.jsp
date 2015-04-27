@@ -4,7 +4,7 @@
 <html>
   
   <head>
-    <title>Home</title>
+    <title><% out.print(pageTitle); %></title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -76,7 +76,5 @@
         <div class="pull-right btn-group btn-group-lg"></div>
       </div>
      </div>
-    </body>
-</html>
 
      

@@ -1,3 +1,4 @@
+<% String pageTitle = "Meal Plan"; %>
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,10 +7,6 @@
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <%@include file="header.jsp" %>
-
-<html>
-<head>
-<title>Meal Planner</title>
 
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">

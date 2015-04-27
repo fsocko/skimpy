@@ -1,3 +1,5 @@
+<% String pageTitle = "Shopping List"; %>
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
@@ -16,10 +18,6 @@
 <%@page import="java.io.BufferedWriter"%>
 <%@page import="java.io.File"%>
 <%@include file="header.jsp" %>
-<html>
-<head>
-<title>Shopping List</title>
-</head>
 <body>
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
