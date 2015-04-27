@@ -42,10 +42,12 @@ public class AutoDB {
     // s for Sainsbury's
     // t for Tesco
     // u for user_info
+    
     public void initTable(char dTable) {
 	// these Arrays contain the filepath of SQL files used as
 	// templates for initialising the tables. they produce
 	// empty, initialised tables when run.
+	
 	final String[] SQLFiles = { "SQLFiles/initDB/asdaInit.sql",
 		"SQLFiles/initDB/sainsInit.sql",
 		"SQLFiles/initDB/tescoInit.sql", "SQLFiles/initDB/userInit.sql" };
