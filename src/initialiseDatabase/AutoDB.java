@@ -1,4 +1,6 @@
-//@Author: FPS
+//@Author: Filip Socko
+//Utility for automatically initialising the database.
+//Some code modified from http://www.tutorialspoint.com/jdbc
 package initialiseDatabase;
 
 import java.io.BufferedReader;
@@ -17,9 +19,6 @@ import BusinessLogic.SpiderToDB;
 
 import com.mysql.jdbc.*;
 
-//@Author: FPS
-//Utility for automatically initialising the database.
-//Some code modified from http://www.tutorialspoint.com/jdbc
 public class AutoDB {
 
     // initDB();// initialise DB using contents from default init file.
