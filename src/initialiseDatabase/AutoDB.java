@@ -14,30 +14,12 @@ import com.mysql.jdbc.*;
 //Utility for automatically initialising the database.
 //Some code modified from http://www.tutorialspoint.com/jdbc
 public class AutoDB {
-    public static void main(String[] args) throws IOException 
-    {
-	initDB();
-	System.out.println("2 to continue.");
-	int cont = '1';
-	while(cont != '2')
-	{cont = System.in.read();}    
-	initTables('a');
-	System.out.println("2 to continue.");
-	cont = '1';
-	while(cont != '2')
-	{cont = System.in.read();}  
-	initTables('s');
-	System.out.println("2 to continue.");
-	cont = '1';
-	while(cont != '2')
-	{cont = System.in.read();}  
-	initTables('t');
-	System.out.println("2 to continue.");
-	cont = '1';
-	while(cont != '2')
-	{cont = System.in.read();}  
-	initTables('u');
-    }
+
+	//initDB();// initialise DB using contents from default init file.
+	//initTables('a'); initialise Asda table.
+	//initTables('s'); sainsbury's
+	//initTables('t'); tesco
+	//initTables('u'); user_info
 
     // JDBC driver name and database URL
     static final String localHost = "jdbc:mysql://localhost/";
@@ -50,7 +32,7 @@ public class AutoDB {
     //s for Sainsbury's
     //t for Tesco
     //u for user_info
-    public static void initTables(char dTable)
+    public void initTables(char dTable)
     {
 		//these Arrays contain the filepath of SQL files used as 
 		//templates for initialising the tables. they produce
@@ -152,19 +134,19 @@ public class AutoDB {
     
     
     //initialise Skimpy DB with default SQL file
-    public static void initDB()
+    public void initDB()
     {
 	initDB("skimpy", "SQLFiles/initDB/fullDB.sql");
     }
     
     // initialise Skimpy DB with selected SQL file.
-    public static void initDB(String SQLfilePath) {
+    public void initDB(String SQLfilePath) {
 	// Initialise as skimpy by default. pass a String with a different
 	// DBname for testing.
 	initDB("skimpy", SQLfilePath);
     }
 
-    public static void initDB(String DBName, String SQLPath) {
+    public void initDB(String DBName, String SQLPath) {
 	Connection conn = null;
 	Statement stmt = null;
 	try {
