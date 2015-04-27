@@ -1,4 +1,5 @@
 <% String pageTitle = "New Meal"; %>
+<% String currentPage = "recipe"; %>
 
 <%@include file="header.jsp"%>
 

@@ -49,19 +49,19 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active">
+            <li <% if (currentPage.equals("home") ) { out.print("class=\"active\""); } %>>
               <a href="home.jsp">Home</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("shopping_list") ) { out.print("class=\"active\""); } %>>
               <a href="ShoppingList.jsp">My Shopping List</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("meal_plan")) { out.print("class=\"active\""); } %>>
               <a href="usermealplan.jsp">Meal Planner</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("recipe")) { out.print("class=\"active\""); } %>>
               <a href="recipe.jsp">Recipe Creator</a>
             </li>
-            <li>
+            <li <% if (currentPage.equals("explorer")) { out.print("class=\"active\""); } %>>
               <a href="recipeExplorer.jsp">Recipe Explorer</a>
             </li>
           </ul>

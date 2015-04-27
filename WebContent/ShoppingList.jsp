@@ -1,4 +1,6 @@
 <% String pageTitle = "Shopping List"; %>
+<% String currentPage = "shopping_list"; %>
+
 
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>

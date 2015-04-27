@@ -1,4 +1,5 @@
 <% String pageTitle = "Meal Planner"; %>
+<% String currentPage = "meal_plan"; %>
 
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
@@ -15,8 +16,6 @@
 <link rel="stylesheet" href="css/mp.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 </head>
 <body>

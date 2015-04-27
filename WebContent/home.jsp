@@ -1,13 +1,10 @@
 <% String pageTitle = "Home"; %>
+<% String currentPage = "home"; %>
+
 <%@include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
-
-<html>
-  
-  <head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width">
+<!--     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -29,11 +26,9 @@
         margin: 0px;
         padding-bottom: 0px;
       }
-    </style>
-  </head>
-  
-  <body>
-  	<%	
+ -->
+ 
+ <%	
   	if(session.getAttribute("username") == null){
 		response.sendRedirect("login.jsp");
 	}

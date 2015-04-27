@@ -1,4 +1,6 @@
 <% String pageTitle = "Recipe Explorer"; %>
+<% String currentPage = "explorer"; %>
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
