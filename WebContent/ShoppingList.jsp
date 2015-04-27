@@ -1,14 +1,10 @@
-<% String pageTitle = "Shopping List"; %>
-<% String currentPage = "shopping_list"; %>
-
-
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.io.FileWriter" %>
-<%@page import="java.util.Arrays.*" %>
-<%@ page language="java" contentType="text/html" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.io.FileWriter"%>
+<%@page import="java.util.Arrays.*"%>
+<%@ page language="java" contentType="text/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.io.FileNotFoundException"%>
 <%@page import="java.io.FileOutputStream"%>
 <%@page import="java.io.FileReader"%>
@@ -19,15 +15,17 @@
 <%@page import="java.nio.file.Files"%>
 <%@page import="java.io.BufferedWriter"%>
 <%@page import="java.io.File"%>
-<%@include file="header.jsp" %>
-<body>
+<% String pageTitle = "Shopping List"; %>
+<% String currentPage = "shopping_list"; %>
+<%@include file="header.jsp"%>
+
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
 	 %>
 
 <p>Here's the list of ingredients you need for this week:</p>
- 	 <%
+<%
  	 
  	 
  	 
@@ -52,10 +50,10 @@
 			
      
      }else{%>
-     
-     
-     "NO FOOD"
-     <%}
+
+
+"NO FOOD"
+<%}
      
      
      %>

@@ -4,7 +4,7 @@
 <html>
   
   <head>
-    <title><% out.print(pageTitle); %></title>
+    <title><%= pageTitle %></title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -36,6 +36,14 @@
         padding-bottom: 0px;
       }
     </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="css/search.css">
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/search.js"></script>
+    
   </head>
   
   <body>
