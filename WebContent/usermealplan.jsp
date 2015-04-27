@@ -10,15 +10,26 @@
 <html>
 <head>
 <title>Meal Planner</title>
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/mp.css">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="css/mp.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	
+	<script>
+	$(function() {
+	    $( "#accordion" ).accordion({
+	      collapsible: true,
+	      active: false
+	    });
+	  });
+	 </script>
 </head>
 <body>
 
@@ -92,9 +103,28 @@
 	
 <% 
     }%>
-    <div >
+    	
     </div>
-    </div>
-    </div>
+    <div id="accordion">
+	  <h3>Price Optimisation</h3>
+	  <div>
+	    <p>
+	    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+	    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+	    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+	    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+	    </p>
+	  </div>
+	  <h3>Nutrition Optimiser</h3>
+	  <div>
+	    <p>
+	    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+	    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+	    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+	    suscipit faucibus urna.
+	    </p>
+	  </div>
+	</div>
+</div>
 </body>
 </html>

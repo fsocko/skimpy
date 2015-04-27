@@ -9,46 +9,55 @@
 
 <html>
 <head>
-<title>Meal Planner</title>
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/mp.css">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" href="css/search.css">
-<link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<script>
-function myFunction(sender) {
-	var i = sender.id.split(",")[0];
-	var j = sender.id.split(",")[1];
-	var searchItem = document.getElementById("ing" + i + "" + j).value;
-	document.getElementById("ing" + i + "" + j).value = "";
-
-    
-    if (searchItem != "") {
-        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem +  " <img src =\"images/delete.png\" height=\"15\" width=\"15\"></br></a>";
-        document.getElementById("ingred" + i + "" + j).value = (document.getElementById("ingred" + i + "" + j).getAttribute("value") + searchItem +";");
-        document.getElementById( i + "," + j).remove();
-  
-    }
-}
-
-function reove(sender) {
-	var i = sender.id[0];
-	var j = sender.id[1];
-	var text = sender.innerHTML;
-	text = text.substring(0, text.length - 5);
-	document.getElementById("ingred" + i + "" + j).value = document.getElementById("ingred" + i + "" + j).value.replace(";" + text + ";", ";");
+	<title>Meal Planner</title>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="css/mp.css">
+	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
 	
-	document.getElementById("div"+i+","+j).innerHTML= "<input  id=" + j +","+ i + " autocomplete = \"off\" value=\"\" onclick=\"myFunction(this)\" name = \"search\" style=\"border-style: none;"+
-        "background\: url(images/add.png) no-repeat; width: 24px; height: 20px;>";
-	sender.remove();
-}
-
-
-</script>
+	<script>
+	$(function() {
+	  $( "#accordion" ).accordion();
+	});
+	 </script>
+	
+	<script>
+	function myFunction(sender) {
+		var i = sender.id.split(",")[0];
+		var j = sender.id.split(",")[1];
+		var searchItem = document.getElementById("ing" + i + "" + j).value;
+		document.getElementById("ing" + i + "" + j).value = "";
+	
+	    
+	    if (searchItem != "") {
+	        document.getElementById("ingredients" + i + "" + j).innerHTML += "<a id=" + i + "" + j + " href='#' onclick='reove(this)'>" + searchItem +  " <img src =\"images/delete.png\" height=\"15\" width=\"15\"></br></a>";
+	        document.getElementById("ingred" + i + "" + j).value = (document.getElementById("ingred" + i + "" + j).getAttribute("value") + searchItem +";");
+	        document.getElementById( i + "," + j).remove();
+	  
+	    }
+	}
+	
+	function reove(sender) {
+		var i = sender.id[0];
+		var j = sender.id[1];
+		var text = sender.innerHTML;
+		text = text.substring(0, text.length - 5);
+		document.getElementById("ingred" + i + "" + j).value = document.getElementById("ingred" + i + "" + j).value.replace(";" + text + ";", ";");
+		
+		document.getElementById("div"+i+","+j).innerHTML= "<input  id=" + j +","+ i + " autocomplete = \"off\" value=\"\" onclick=\"myFunction(this)\" name = \"search\" style=\"border-style: none;"+
+	        "background\: url(images/add.png) no-repeat; width: 24px; height: 20px;>";
+		sender.remove();
+	}
+	
+	
+	</script>
 </head>
 <body>
 <%if(session.getAttribute("username") == null){
