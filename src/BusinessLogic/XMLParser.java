@@ -35,14 +35,10 @@ public class XMLParser {
 				String name = mealelem.getElementsByTagName("Name").item(0).getTextContent();
 				NodeList rawFood = mealelem.getElementsByTagName("Food");
 				ArrayList<Food> foods = new ArrayList<Food>();
-				System.out.print(name + ": ");
 				for (int j = 0; j < rawFood.getLength(); j++) {
 					Element foodelem = (Element)rawFood.item(j);
 					String shopName = foodelem.getAttribute("shop");
 					String foodid = foodelem.getTextContent();
-					System.out.print(", " + shopName + ": " + foodid);
-					//changed first parameter to tesco, to test whether that would work.
-					//as shopName returns shopID value, not shop name
 					Food f = dbcon.pullFood(shopName, foodid);
 					foods.add(f);
 				}
@@ -53,7 +49,6 @@ public class XMLParser {
 					int mass = Integer.parseInt(masselem.getTextContent());
 					masses.add(mass);
 				}
-				System.out.println("");
 				Meal m = new Meal(name, foods, masses);
 				meals.add(m);
 			}
@@ -142,9 +137,7 @@ public class XMLParser {
 			Transformer t = tf.newTransformer();
 			DOMSource src = new DOMSource(doc);
 			File f = new File(filepath);
-			System.out.println(f.toString());
 			StreamResult result = new StreamResult(f);
-			System.out.println(result.toString());
 			
 			t.transform(src, result);
 		} catch (Exception e) {
@@ -171,21 +164,17 @@ public class XMLParser {
 				NodeList days = mealplanelem.getElementsByTagName("Day");
 				for (int j = 0; j < days.getLength(); j++) {
 					Element dayElem = (Element)days.item(j);
-					String day = dayElem.getAttribute("value");
 					NodeList times = dayElem.getElementsByTagName("Time");
 					for (int k = 0; k < times.getLength(); k++) {
 						Element timeElem = (Element)times.item(k);
-						String time = timeElem.getAttribute("value");
 						try {
 							String name = timeElem.getElementsByTagName("Name").item(0).getTextContent();
 							NodeList rawFood = timeElem.getElementsByTagName("Food");
 							ArrayList<Food> foods = new ArrayList<Food>();
-							System.out.print(day + " - " + time + ":> " + name + ", ");
 							for (int l = 0; l < rawFood.getLength(); l++) {
 								Element foodelem = (Element)rawFood.item(l);
 								String shopName = foodelem.getAttribute("shop");
 								String foodid = foodelem.getTextContent();
-								System.out.print(", " + shopName + ": " + foodid);
 								Food f = dbcon.pullFood(shopName, foodid);
 								foods.add(f);
 							}
@@ -196,11 +185,10 @@ public class XMLParser {
 								int mass = Integer.parseInt(masselem.getTextContent());
 								masses.add(mass);
 							}
-							System.out.println("");
 							Meal m = new Meal(name, foods, masses);
 							mp.add(m, j, k);
 						} catch (Exception e) {
-							System.out.println("Meal not found at " + j + k);
+							
 						}
 					}
 				}
