@@ -1,5 +1,6 @@
-<% String pageTitle = "Save Meal"; %>
-<% String currentPage = "meal_plan"; %>
+
+<% String pageTitle = "Edit Meal Plan"; %>
+<% String currentPage = "explorer"; %>
 
 
 <%@page import="BusinessLogic.*"%>

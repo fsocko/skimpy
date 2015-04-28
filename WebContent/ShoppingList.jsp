@@ -1,21 +1,25 @@
-<% String pageTitle = "Shopping List"; %>
-<% String currentPage = "shopping_list"; %>
 
 <%@page import="java.util.*" %>
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
+
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.Arrays.*" %>
 <%@ page language="java" contentType="text/html" %>
+
 <%@page import="java.io.File"%>
-<%@include file="header.jsp" %>
-<body>
+<% String pageTitle = "Shopping List"; %>
+<% String currentPage = "shopping_list"; %>
+<%@include file="header.jsp"%>
+
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
 	 %>
 <div class="container-fluid">
 <div class="col-sm-8">
+
 
  	 <%
  	 int userId = (Integer)session.getAttribute("ID");
@@ -28,6 +32,7 @@
  	 ArrayList<Double> massList = new ArrayList<Double>();
 
      if (shoppingList != null){   
+
  	 
  		for (Map.Entry<ArrayList<Food>, ArrayList<Double>> entry : shoppingList.entrySet()){
  	
@@ -78,6 +83,7 @@
  		
  	    
      }else{%>
+
     	<p>
 <button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='editPlan.jsp'">Create a Meal Plan</button>
        </p>
@@ -86,5 +92,6 @@
        
 </div>
 </div>       
+
 </body>
 </html>

@@ -1,6 +1,6 @@
+
 <% String pageTitle = "New Meal"; %>
 <% String currentPage = "recipe"; %>
-
 <%@include file="header.jsp"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -33,23 +33,27 @@
 
 						<input type="submit" class="btn btn-block btn-success btn-lg"
 							style="width: 150px" value="Save Your Meal" />
-					</div>
-				</form>
-			</div>
-			<div class="col-sm-6">
-				<div id="search-container">
-					<input id="search" class="form-control input-sm" name="q"
-						type="text"
-						placeholder="Search for products across many supermarkets"
-						autocomplete="off" />
-					<div id="autocomplete-box">
-						<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
-						<div id="categories-tickboxes"></div>
-						<div id="results"></div>
-					</div>
+
+
+					<input type="submit" class="btn btn-block btn-success btn-lg"
+						style="width: 150px" value="Save Your Meal" />
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<div id="search-container">
+				<input id="search" class="form-control input-sm" name="q"
+					type="text"
+					placeholder="Search for products across many supermarkets"
+					autocomplete="off" />
+				<div id="autocomplete-box">
+					<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+					<div id="categories-tickboxes"></div>
+					<div id="results"></div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
