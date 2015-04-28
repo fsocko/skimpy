@@ -19,19 +19,56 @@ public class NutritionOptimisation extends HttpServlet{
 		plan = m;
 	}
 	
-	public int percent(){
-		int percentage = 0;
-		
-		return percentage;
+	public boolean checkMacro(double macro){
+		if(macro > 110 || macro < 90){
+			return true;
+		}
+		return false;
 	}
 	
-	public String calorieInfo(int day){
+	public String percent(){
+		int percentage = 100;
+		int subtract = 0;
+		
+		
+		double temp;
+		
+		for(int i = 0; i < 7; i++){
+			temp = calorieInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = proteinInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = carbInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = sugarInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = fatInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = saturateInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = fibreInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+			temp = saltInfo(i);
+			if(checkMacro(temp))
+				subtract++;
+		}
+		int subtractPercent = subtract/14 * 100;
+		percentage -= subtractPercent;
+		
+		return "80";
+	}
+	
+	public String message(){
 		String message = "You are eating ";
 		
-		double userCalories = plan.totalCal(day);
-		double recommendedCalories = user.getMacros().getCalories();
-		
-		double percent = (userCalories / recommendedCalories) * 100;
+		double percent = calorieInfo(0);
 		
 		if(percent > 110){
 			message += percent + " of your daily Calories. This is too much.";
@@ -45,52 +82,76 @@ public class NutritionOptimisation extends HttpServlet{
 		return message;
 	}
 	
-	public String proteinInfo(int day){
-		String message = "";
+	public int calorieInfo(int day){
+		double userAmount = plan.totalCal(day);
+		double recommendedAmount = user.getMacros().getCalories();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String carbInfo(int day){
-		String message = "";
+	public int proteinInfo(int day){
+		double userAmount = plan.totalProtein(day);
+		double recommendedAmount = user.getMacros().getProtein();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String sugarInfo(int day){
-		String message = "";
+	public int carbInfo(int day){
+		double userAmount = plan.totalCarbs(day);
+		double recommendedAmount = user.getMacros().getCarbs();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String fatInfo(int day){
-		String message = "";
+	public int sugarInfo(int day){
+		double userAmount = plan.totalSugars(day);
+		double recommendedAmount = user.getMacros().getSugars();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String saturateInfo(int day){
-		String message = "";
+	public int fatInfo(int day){
+		double userAmount = plan.totalFats(day);
+		double recommendedAmount = user.getMacros().getFat();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String fibreInfo(int day){
-		String message = "";
+	public int saturateInfo(int day){
+		double userAmount = plan.totalSats(day);
+		double recommendedAmount = user.getMacros().getSaturates();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
 	
-	public String saltInfo(int day){
-		String message = "";
+	public int fibreInfo(int day){
+		double userAmount = plan.totalFibre(day);
+		double recommendedAmount = user.getMacros().getFibre();
 		
-		return message;
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
 	}
-
-
-
-
-
-
+	
+	public int saltInfo(int day){
+		double userAmount = plan.totalSalt(day);
+		double recommendedAmount = user.getMacros().getSalt();
+		
+		double percent = (userAmount / recommendedAmount) * 100;
+		
+		return (int)percent;
+	}
 
 }
