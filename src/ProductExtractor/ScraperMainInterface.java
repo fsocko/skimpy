@@ -15,10 +15,45 @@ public class ScraperMainInterface {
 
 	public static void main(String[] args) {
 		try {
+			System.out.println("Product Extractor and Database Initialize Interface");
+			System.out.println("***************************************************");
+			while (true) {
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("Enter the character beside the menu you would like to visit");
+				System.out.println("Only the first character will be read");
+				System.out.println();
+				System.out.println("a:> Initialize database");
+				System.out.println("b:> Run scrapers");
+				System.out.println("c:> Initialize tables");
+				System.out.println("d:> Quit");
+				char userInput = br.readLine().toLowerCase().charAt(0);
+				switch (userInput) {
+				case 'a':
+					AutoDBMainInterface.DBInitMenu();
+					break;
+				case 'b':
+					scraperMenu();
+					break;
+				case 'c':
+					AutoDBMainInterface.DBTableInitMenu();
+					break;
+				case 'd':
+					System.exit(0);
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void scraperMenu() {
+		try {
 			AutoDB adb = new AutoDB();
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);
-			System.out.println("Which website would you like to scrape?");
+			System.out.println("Which website would you like to scrape? Any other option will cancel. Only reads the first character");
 			System.out.println("[t = tesco, s = sainsburys, a = asda, x = all]");
 			char userInput = br.readLine().toLowerCase().charAt(0);
 			switch (userInput) {
@@ -77,8 +112,8 @@ public class ScraperMainInterface {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
-	
 	
 	public static void runAllScrapers(int sThreads, int aThreads) {
 		try {
