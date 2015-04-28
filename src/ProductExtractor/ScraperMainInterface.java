@@ -9,11 +9,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import initialiseDatabase.*;
 
 public class ScraperMainInterface {
 
 	public static void main(String[] args) {
 		try {
+			AutoDB adb = new AutoDB();
 			InputStreamReader cin = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(cin);
 			System.out.println("Which website would you like to scrape?");
@@ -22,6 +24,8 @@ public class ScraperMainInterface {
 			switch (userInput) {
 			case 't':
 				TescoScraper.main(new String[0]);
+				adb.initTable('t');
+				adb.pushToDB('t');
 				break;
 			case 's':
 				System.out.println("How many threads would you like to run?");
@@ -33,6 +37,8 @@ public class ScraperMainInterface {
 					noThreads = 15;
 				}
 				SainsburysScraper.runScraper(noThreads, true);
+				adb.initTable('s');
+				adb.pushToDB('s');
 				break;
 			case 'a':
 				System.out.println("How many threads would you like to run?");
@@ -44,6 +50,8 @@ public class ScraperMainInterface {
 					noAThreads = 5;
 				}
 				AsdaScraper.runScraper(noAThreads);
+				adb.initTable('a');
+				adb.pushToDB('a');
 				break;
 			case 'x':
 				System.out.println("How many threads would you like the Sainsburys scraper to run?");
@@ -135,6 +143,14 @@ public class ScraperMainInterface {
 			writer.println(s);
 			
 			writer.close();
+			
+			AutoDB adb = new AutoDB();
+			adb.initTable('t');
+			adb.pushToDB('t');
+			adb.initTable('s');
+			adb.pushToDB('s');
+			adb.initTable('a');
+			adb.pushToDB('a');
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

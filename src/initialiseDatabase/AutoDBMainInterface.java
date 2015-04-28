@@ -19,52 +19,11 @@ import BusinessLogic.Food;
 import BusinessLogic.SpiderToDB;
 
 
-
+//Class for initialising the Database and running scrapers
 public class AutoDBMainInterface {
 
 	public static void main(String[] args) 
 	{
-		mainMenu();
-	}
-	
-	//select whether the maintainer is pushing scraper data or initialising the database.
-	public static void mainMenu()
-	{
-		System.out.println("\n	Menu for setting up the Skimpy Database	");
-		System.out.println("*******************************************************\n");
-		System.out.println("a: Initialise the database.");
-		System.out.println("b: Push data from scraper to database.");
-		System.out.println("c: Exit Menu.");
-		try {
-			InputStreamReader cin = new InputStreamReader(System.in);
-			BufferedReader br = new BufferedReader(cin);
-			
-			char selectFun = br.readLine().trim().toLowerCase().charAt(0);
-			switch(selectFun)
-			{
-				case 'a':
-					DBInitMenu();
-					mainMenu();
-					break;
-				case 'b':
-					pushToDBMenu();
-					mainMenu();
-					break;	
-				case 'c':
-					System.out.println("Exiting menu.");
-					System.exit(0);
-					break;
-				default:
-					System.out.println("Invalid input.\n");
-					mainMenu();
-					break;
-			}
-			
-		}	
-		catch (IOException e)
-		{
-			System.out.println("Sorry, an IOException Occured. \n\n" + e.getMessage());
-		}
 		
 	}
 	
@@ -86,7 +45,7 @@ public class AutoDBMainInterface {
 				{
 					case 'n':		
 						System.out.println("Push to DB cancelled.\n");
-						mainMenu();
+						System.exit(0);
 						break;
 					
 					case 'y':	
@@ -96,7 +55,7 @@ public class AutoDBMainInterface {
 						if(supermarket.toLowerCase().substring(0,1).equals("c"))
 						{
 							System.out.println("Cancel");
-							mainMenu();
+							System.exit(0);
 							break;
 							
 						}
@@ -169,7 +128,7 @@ public class AutoDBMainInterface {
 						if(DBName.trim().toLowerCase().equals("c"))
 						{
 							System.out.println("Cancel.");
-							mainMenu();
+							System.exit(0);
 							break;
 						}	
 						if(DBName.trim().equals(""))
@@ -185,7 +144,7 @@ public class AutoDBMainInterface {
 						if(DBName.trim().toLowerCase().substring(0,1).equals("c"))
 						{
 							System.out.println("Cancel.");
-							mainMenu();
+							System.exit(0);
 							break;
 						}	
 						if(SQLPath.trim().equals(""))
@@ -194,7 +153,7 @@ public class AutoDBMainInterface {
 							SQLPath = "SQLFiles/database/initDB.sql";	
 						}
 						AutoDB atb = new AutoDB();
-						atb.initialiseDB(DBName, SQLPath);
+						atb.initDB(DBName, SQLPath);
 					default:
 						System.out.println("Invalid input.\n");
 						DBInitMenu();
@@ -208,6 +167,11 @@ public class AutoDBMainInterface {
 			}
 	}
 	
+	//method for dropping and initialising tables, so the scraper can fill an empty table
+	public static void dropTables(char dTable)
+	{
+	    
+	}
 
 	//parse data from web scrapers and push data to database
 	public static void pushToDB(String path, String table)
