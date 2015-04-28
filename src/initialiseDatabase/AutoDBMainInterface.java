@@ -20,8 +20,9 @@ public class AutoDBMainInterface {
 
     public static void main(String[] args) 
     {
-	pushToDBMenu();
 	DBInitMenu();
+	pushToDBMenu();
+	
     }
 
     // Menu for setting up pushing to database
