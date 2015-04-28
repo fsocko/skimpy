@@ -31,10 +31,6 @@
 								type="hidden" name="supermarket" value="">
 						</div>
 
-						<input type="submit" class="btn btn-block btn-success btn-lg"
-							style="width: 150px" value="Save Your Meal" />
-
-
 					<input type="submit" class="btn btn-block btn-success btn-lg"
 						style="width: 150px" value="Save Your Meal" />
 				</div>
