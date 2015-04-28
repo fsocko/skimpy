@@ -55,8 +55,10 @@
 					<td align="center" width="250px">
 						<%for(MealPlanner m: readmeals){
     	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
-    	    	   if (m.getMeal(j, i)!=null){%>
-
+    	    	   if (m.getMeal(j, i)!=null){
+    	    	   		session.setAttribute("meal", m);
+    	    	   %>
+						
 						<form action="viewRecipe.jsp" method="post">
 							<button style="width: 100%;"
 								class="btn pull-right btn-primary btn-md" type="submit"><%=m.getMeal(j,i).getName()%>
@@ -87,7 +89,16 @@
 
 		<% 
     }%>
-		<div></div>
+		<div>
+		<%
+		NutritionOptimisation nut = new NutritionOptimisation((Person) session.getAttribute("sessionUser"), (MealPlanner) session.getAttribute("meal"));
+		session.setAttribute("print", nut.calorieInfo(0));
+		session.setAttribute("percent", nut.percent());
+		
+		%>
+		<%=session.getAttribute("print") %>
+		
+		</div>
 	</div>
 </div>
 </body>
