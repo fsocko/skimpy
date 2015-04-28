@@ -1,5 +1,7 @@
+
 <% String pageTitle = "Edit Meal Plan"; %>
 <% String currentPage = "explorer"; %>
+
 
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
@@ -23,6 +25,7 @@
  <%  
  	    String MealName = request.getParameter("mealname");
 	    String  Shops =  request.getParameter("supermarket");
+	    int servings = Integer.valueOf(request.getParameter("servings"));
 	    ArrayList<String> shopList = new ArrayList<String>();
 	    for(String s: Shops.split(";")){
 	    	shopList.add(s);
@@ -66,7 +69,7 @@
     		  }
     		
     		
-    		Meal currentMeal = new Meal(MealName, f_ingredients, massList );
+    		Meal currentMeal = new Meal(MealName, f_ingredients, massList, servings );
     		ArrayList<Meal> meals = new ArrayList<Meal>();
     		meals.add(currentMeal);
     		

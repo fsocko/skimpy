@@ -9,68 +9,116 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import initialiseDatabase.*;
 
 public class ScraperMainInterface {
 
 	public static void main(String[] args) {
 		try {
-			InputStreamReader cin = new InputStreamReader(System.in);
-			BufferedReader br = new BufferedReader(cin);
-			System.out.println("Which website would you like to scrape?");
-			System.out.println("[t = tesco, s = sainsburys, a = asda, x = all]");
-			char userInput = br.readLine().toLowerCase().charAt(0);
-			switch (userInput) {
-			case 't':
-				TescoScraper.main(new String[0]);
-				break;
-			case 's':
-				System.out.println("How many threads would you like to run?");
-				System.out.println("Default is 15");
-				int noThreads;
-				try {
-					noThreads = Integer.parseInt(br.readLine().trim());
-				} catch (Exception e) {
-					noThreads = 15;
-				}
-				SainsburysScraper.runScraper(noThreads, true);
-				break;
-			case 'a':
-				System.out.println("How many threads would you like to run?");
-				System.out.println("Default is 5");
-				int noAThreads;
-				try {
-					noAThreads = Integer.parseInt(br.readLine().trim());
-				} catch (Exception e) {
-					noAThreads = 5;
-				}
-				AsdaScraper.runScraper(noAThreads);
-				break;
-			case 'x':
-				System.out.println("How many threads would you like the Sainsburys scraper to run?");
-				System.out.println("Default is 15");
-				int allSThreads;
-				try {
-					allSThreads = Integer.parseInt(br.readLine().trim());
-				} catch (Exception e) {
-					allSThreads = 15;
-				}
+			System.out.println("Product Extractor and Database Initialize Interface");
+			System.out.println("***************************************************");
+			while (true) {
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("Enter the character beside the menu you would like to visit");
+				System.out.println("Only the first character will be read");
 				System.out.println();
-				System.out.println("How many threads would you like the Asda scraper to run?");
-				System.out.println("Default is 5");
-				int allAThreads;
-				try {
-					allAThreads = Integer.parseInt(br.readLine().trim());
-				} catch (Exception e) {
-					allAThreads = 5;
+				System.out.println("a:> Initialize database");
+				System.out.println("b:> Run scrapers");
+				System.out.println("c:> Initialize tables");
+				System.out.println("d:> Quit");
+				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
+				switch (userInput) {
+				case 'a':
+					AutoDBMainInterface.DBInitMenu();
+					break;
+				case 'b':
+					scraperMenu();
+					break;
+				case 'c':
+					AutoDBMainInterface.DBTableInitMenu();
+					break;
+				case 'd':
+					System.exit(0);
+					break;
 				}
-				runAllScrapers(allSThreads, allAThreads);
-				break;
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public static void scraperMenu() {
+		try {
+			while (true) {
+				AutoDB adb = new AutoDB();
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("Which website would you like to scrape? Any other option will cancel. Only reads the first character");
+				System.out.println("[t = tesco, s = sainsburys, a = asda, x = all, q = quit]");
+				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
+				switch (userInput) {
+				case 't':
+					TescoScraper.main(new String[0]);
+					adb.initTable('t');
+					adb.pushToDB('t');
+					break;
+				case 's':
+					System.out.println("How many threads would you like to run?");
+					System.out.println("Default is 15");
+					int noThreads;
+					try {
+						noThreads = Integer.parseInt(br.readLine().trim());
+					} catch (Exception e) {
+						noThreads = 15;
+					}
+					SainsburysScraper.runScraper(noThreads, true);
+					adb.initTable('s');
+					adb.pushToDB('s');
+					break;
+				case 'a':
+					System.out.println("How many threads would you like to run?");
+					System.out.println("Default is 5");
+					int noAThreads;
+					try {
+						noAThreads = Integer.parseInt(br.readLine().trim());
+					} catch (Exception e) {
+						noAThreads = 5;
+					}
+					AsdaScraper.runScraper(noAThreads);
+					adb.initTable('a');
+					adb.pushToDB('a');
+					break;
+				case 'x':
+					System.out.println("How many threads would you like the Sainsburys scraper to run?");
+					System.out.println("Default is 15");
+					int allSThreads;
+					try {
+						allSThreads = Integer.parseInt(br.readLine().trim());
+					} catch (Exception e) {
+						allSThreads = 15;
+					}
+					System.out.println();
+					System.out.println("How many threads would you like the Asda scraper to run?");
+					System.out.println("Default is 5");
+					int allAThreads;
+					try {
+						allAThreads = Integer.parseInt(br.readLine().trim());
+					} catch (Exception e) {
+						allAThreads = 5;
+					}
+					runAllScrapers(allSThreads, allAThreads);
+					break;
+				case 'q':
+					System.exit(0);
+					break;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public static void runAllScrapers(int sThreads, int aThreads) {
 		try {
@@ -135,6 +183,14 @@ public class ScraperMainInterface {
 			writer.println(s);
 			
 			writer.close();
+			
+			AutoDB adb = new AutoDB();
+			adb.initTable('t');
+			adb.pushToDB('t');
+			adb.initTable('s');
+			adb.pushToDB('s');
+			adb.initTable('a');
+			adb.pushToDB('a');
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

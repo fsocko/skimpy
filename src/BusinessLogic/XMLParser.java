@@ -49,7 +49,11 @@ public class XMLParser {
 					int mass = Integer.parseInt(masselem.getTextContent());
 					masses.add(mass);
 				}
-				Meal m = new Meal(name, foods, masses);
+
+				int servings = Integer.parseInt(mealelem.getElementsByTagName("Servings").item(0).getTextContent());
+				Meal m = new Meal(name, foods, masses, servings);
+
+
 				meals.add(m);
 			}
 			meals = sort(meals, 0, meals.size() - 1);
@@ -132,6 +136,9 @@ public class XMLParser {
 					mass.appendChild(doc.createTextNode("" + i));
 					masses.appendChild(mass);
 				}
+				Element servings = doc.createElement("Servings");
+				servings.appendChild(doc.createTextNode("" + m.getServings()));
+				meal.appendChild(servings);
 			}
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer t = tf.newTransformer();
@@ -185,7 +192,10 @@ public class XMLParser {
 								int mass = Integer.parseInt(masselem.getTextContent());
 								masses.add(mass);
 							}
-							Meal m = new Meal(name, foods, masses);
+
+							int servings = Integer.parseInt(timeElem.getElementsByTagName("Servings").item(0).getTextContent());
+							Meal m = new Meal(name, foods, masses, servings);
+
 							mp.add(m, j, k);
 						} catch (Exception e) {
 							
@@ -255,6 +265,9 @@ public class XMLParser {
 								mass.appendChild(doc.createTextNode("" + h));
 								masses.appendChild(mass);
 							}
+							Element servings = doc.createElement("Servings");
+							servings.appendChild(doc.createTextNode("" + m.getServings()));
+							meal.appendChild(servings);
 						}
 					}
 				}
