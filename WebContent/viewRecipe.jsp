@@ -91,7 +91,7 @@
     		 link= "http://www.tesco.com/groceries/product/details/?id=" +  themeal.getIngredients().get(i).getShopID();
     	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
     		 
-    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" +  themeal.getIngredients().get(i).getShopID();
+    		 link= themeal.getIngredients().get(i).getShopID();
     	 }else{
     		 
     		 link=  themeal.getIngredients().get(i).getShopID();
