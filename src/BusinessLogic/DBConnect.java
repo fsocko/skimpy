@@ -330,6 +330,7 @@ public class DBConnect extends HttpServlet{
 		}
 		return true;
 	}
+
 	
 	//I think this is unused
 	public void findCat(String qu){
