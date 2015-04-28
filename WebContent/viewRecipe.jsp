@@ -8,7 +8,6 @@
 <%@page import="java.io.OutputStreamWriter"%>
 <%@page import="java.io.Writer"%>
 <%@page import="java.nio.charset.Charset"%>
-<%@page import="java.text.DecimalFormat" %>
 <% String pageTitle = "View Recipe"; %>
 <% String currentPage = "explorer"; %>
 <%@include file="header.jsp"%>

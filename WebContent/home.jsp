@@ -5,7 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
 
-<%	
+<%
+
+	DecimalFormat cleanDecimal = new DecimalFormat("0.0");
+
   	if(session.getAttribute("username") == null){
 		response.sendRedirect("login.jsp");
 	}
@@ -27,65 +30,49 @@
 										<span class="label label-info">Calories</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("calories") %>
-											kcal
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("calories")) %> kcal</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Protein</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("protein") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("protein")) %> g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Carbohydrates</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("carbs") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("carbs")) %> g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Sugar</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("sugar") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("sugar")) %>	g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Fat</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("fat") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("fat")) %> g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Saturates</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("saturates") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("saturates")) %>	g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Fibre</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("fibre") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("fibre")) %>	g</p>
 									</div>
 									<div class="col-sm-4">
 										<span class="label label-info">Salt</span>
 									</div>
 									<div class="col-sm-8">
-										<p><%=session.getAttribute("salt") %>
-											g
-										</p>
+										<p><%=cleanDecimal.format(session.getAttribute("salt")) %> g</p>
 									</div>
 								</div>
 							</div>
