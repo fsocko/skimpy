@@ -1,105 +1,104 @@
-<%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
-<%@page import="java.util.ArrayList"%>
-<%@page language="java" contentType="text/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="javax.script.*"%>
-<%@page import="java.io.IOException"%>
+
 <% String pageTitle = "Meal Planner"; %>
 <% String currentPage = "meal_plan"; %>
 <%@include file="header.jsp"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="BusinessLogic.*"%>
+<%	
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+	}
+%>
 <div class="container-fluid">
-
-	<div class="col-sm-8">
-		<%if(session.getAttribute("username") == null){
-	response.sendRedirect("login.jsp");
-}
-	 %>
-		<%  
-    
-    XMLParser writeX = new XMLParser();
-    ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
-    
-    if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
-    readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
-    
-    for(MealPlanner p: readmeals){
-	       if ((Integer)session.getAttribute("ID") != p.getUserId()){
-	    	   %>
-		<div id="MP">
-			<p>
-				<button class="btn btn-block btn-success btn-lg"
-					style="width: 170px"
-					onclick="document.location.href='editPlan.jsp'">Create a
-					Meal Plan</button>
-			</p>
-
-			<% }else{%>
-
-
-
-			<table>
-				<tr>
-					<th style="text-align: center;">Monday</th>
-					<th style="text-align: center;">Tuesday</th>
-					<th style="text-align: center;">Wednesday</th>
-					<th style="text-align: center;">Thursday</th>
-					<th style="text-align: center;">Friday</th>
-					<th style="text-align: center;">Saturday</th>
-					<th style="text-align: center;">Sunday</th>
-				</tr>
-				<%for (int i = 0; i < 3; i++) {%>
-				<tr>
-					<%for (int j = 0; j < 7; j++) {%>
-					<td align="center" width="250px">
-						<%for(MealPlanner m: readmeals){
-    	       if ((Integer)session.getAttribute("ID") == m.getUserId()){
-    	    	   if (m.getMeal(j, i)!=null){
-    	    	   		session.setAttribute("meal", m);
-    	    	   %>
-						
-						<form action="viewRecipe.jsp" method="post">
-							<button style="width: 100%;"
-								class="btn pull-right btn-primary btn-md" type="submit"><%=m.getMeal(j,i).getName()%>
-							</button>
-							<input name="name" type="hidden"
-								value="<%=m.getMeal(j,i).getName() %>">
-						</form> <% }else{%> <br> <%}
-    	    	   } }%>
-					</td>
-					<%}%>
-				</tr>
-				<%}%>
-			</table>
-			<br>
-
-			<button class="btn btn-block btn-success btn-lg" style="width: 150px"
-				onclick="document.location.href='editPlan.jsp'">Edit Meal
-				Plan</button>
+   <div class="well">
+     <div class="row">
+       <%
+       if(false){
+       %>
+       <a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+       <%
+       }
+       else{
+       %>
+       <table class="table">
+         <thead>
+           <tr>
+             <th style="text-align: center;">Monday</th>
+             <th style="text-align: center;">Tuesday</th>
+             <th style="text-align: center;">Wednesday</th>
+             <th style="text-align: center;">Thursday</th>
+             <th style="text-align: center;">Friday</th>
+             <th style="text-align: center;">Saturday</th>
+             <th style="text-align: center;">Sunday</th>
+           </tr>
+         </thead>
+         <tbody>
+  		   <%
+  		   for(int j = 0; j < 3; j++){
+  		   %>
+           <tr>
+	           <%
+	           for(int i = 0; i < 7; i++){
+	           %>
+	           <td style="text-align: center;">
+	           	 <form action="viewRecipe.jsp" method="post">
+				   <button style="width: 100%;" class="btn pull-right btn-default btn-md" type="submit">Meal</button>
+				   <input name="name" type="hidden" value="">
+				 </form>
+	           </td>
+	           <%
+	           }
+	           %>
+           </tr>
+           <%
+  		   }
+  		   %>
+           
+         </tbody>
+       </table>
+       <%
+       }
+       %>
+     </div>
+   </div>
+   <div class="well">
+     <div class="panel-group" id="accordion">
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             <h4 class="panel-title">
+                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Price Optimisation</a>
+             </h4>
+         </div>
+         <div id="collapseOne" class="panel-collapse collapse in">
+             <div class="panel-body">
+                 
+             </div>
+         </div>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">
+             <h4 class="panel-title">
+                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Nutrition Optimiser</a>
+             </h4>
+         </div>
+         <div id="collapseThree" class="panel-collapse collapse">
+             <div class="panel-body">
+                 <div class="bs-example">
+		    <ul class="nav nav-tabs">
+		        <li class="active"><a href="#">Monday</a></li>
+		        <li><a href="#">Tuesday</a></li>
+		        <li><a href="#">Wednesday</a></li>
+		        <li><a href="#">Thursday</a></li>
+		        <li><a href="#">Friday</a></li>
+		        <li><a href="#">Saturday</a></li>
+		        <li><a href="#">Sunday</a></li>
+		    </ul>
 		</div>
-		<%} } }
-    else{ %>
-
-		<p>
-			<button class="btn btn-block btn-success btn-lg" style="width: 150px"
-				onclick="document.location.href='editPlan.jsp'">Create a
-				Meal Plan</button>
-		</p>
-
-		<% 
-    }%>
-		<div>
-		<%
-		NutritionOptimisation nut = new NutritionOptimisation((Person) session.getAttribute("sessionUser"), (MealPlanner) session.getAttribute("meal"));
-		session.setAttribute("print", nut.calorieInfo(0));
-		session.setAttribute("percent", nut.percent());
-		
-		%>
-		<%=session.getAttribute("print") %>
-		
-		</div>
-	</div>
-</div>
-</body>
+             </div>
+         </div>
+     </div>
+ 	</div>
+   </div>
+ </div>
+ </body>
 </html>

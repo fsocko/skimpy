@@ -159,5 +159,12 @@ public class NutritionOptimisation extends HttpServlet{
 		
 		return (int)percent;
 	}
+	
+	public void setPerson(Person p){
+		user = p;
+	}
+	public void setMealPlan(MealPlanner m){
+		plan = m;
+	}
 
 }
