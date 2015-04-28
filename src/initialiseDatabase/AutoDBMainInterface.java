@@ -46,33 +46,18 @@ public class AutoDBMainInterface {
 		System.out.println("Select Supermarket to parse from.\nDefault is all supermarkets. (c to cancel)");
 		System.out.println("['a' for ASDA, 's' for Sainsbury's, 't' for Tesco]");
 		String supermarket = br.readLine().trim().toLowerCase();
-		if (supermarket.toLowerCase().substring(0, 1).equals("c")) {
-		    System.out.println("Cancel");
-		    System.exit(0);
-		    break;
-
-		}
-		if (supermarket.equals("")) {
-		    System.out.println("Initialising all product tables.");
-		    adb.initTable('a');
-		    adb.initTable('s');
-		    adb.initTable('t');
-		   
-		    System.out.println("Parsing and pushing all available data.");
-		    System.out.print("Pushing ASDA data...");
-		    adb.pushToDB('a');
-		    System.out.print("Done\n");
-		    System.out.print("Pushing Sainsbury's data...");
-		    adb.pushToDB('s');
-		    System.out.print("Done\n");
-		    System.out.print("Pushing Tesco data...");
-		    adb.pushToDB('t');
-		    System.out.print("Done\n");
-		    System.out.println("Pushed data from all supermarkets successfully.");
-		    break;
-		}
-		char sm = supermarket.toLowerCase().charAt(0);
-		switch (sm) {
+		break;
+	    case 'c': 
+		System.out.println("Cancel");
+		System.exit(0);
+		break;
+	   	}
+	    	char sm = 'x';
+	    	String supermarket = br.readLine().trim();
+	    	if(supermarket.length()>0)
+	    	{sm = supermarket.charAt(0);}    
+	    	
+	    	switch (sm) {
 		case 'a':
 		    System.out.print("Pushing ASDA data...");
 		    adb.initTable('a');
@@ -91,13 +76,29 @@ public class AutoDBMainInterface {
 		    adb.pushToDB('t');
 		    System.out.print("Done\n");
 		    break;
-		default:
-		    System.out.println("Invalid input.\n");
-		    pushToDBMenu();
+		case 'x':
+		    System.out.println("Initialising all product tables.");
+		    adb.initTable('a');
+		    adb.initTable('s');
+		    adb.initTable('t');
+		   
+		    System.out.println("Parsing and pushing all available data.");
+		    System.out.print("Pushing ASDA data...");
+		    adb.pushToDB('a');
+		    System.out.print("Done\n");
+		    System.out.print("Pushing Sainsbury's data...");
+		    adb.pushToDB('s');
+		    System.out.print("Done\n");
+		    System.out.print("Pushing Tesco data...");
+		    adb.pushToDB('t');
+		    System.out.print("Done\n");
+		    System.out.println("Pushed data from all supermarkets successfully.");
 		    break;
-
+		    default:
+			break;
+			
 		}
-	    }
+	    
 	} catch (IOException e) {
 	    System.out.println("Sorry, an IOException Occured. \n\n"
 		    + e.getMessage());
