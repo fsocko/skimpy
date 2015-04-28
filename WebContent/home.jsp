@@ -118,7 +118,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="progress">
-									<div class="progress-bar" style="width: 40%;"></div>
+									<div class="progress-bar" style="width: <%=session.getAttribute("percent")%>%;"></div>
 								</div>
 							</div>
 						</div>
