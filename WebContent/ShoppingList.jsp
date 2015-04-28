@@ -22,36 +22,65 @@
  	 ShoppingList list = new ShoppingList();
  	 String path = getServletContext().getRealPath("");
  	
- 	HashMap<ArrayList<Food>, ArrayList<Double>> shoppingList = list.getShoppingList(path, userId);
+ 	 HashMap<ArrayList<Food>, ArrayList<Double>> shoppingList = list.getShoppingList(path, userId);
 
- 	ArrayList<Food> foodList = new ArrayList<Food>();
- 	ArrayList<Double> massList = new ArrayList<Double>();
+ 	 ArrayList<Food> foodList = new ArrayList<Food>();
+ 	 ArrayList<Double> massList = new ArrayList<Double>();
 
      if (shoppingList != null){   
  	 
- 	for (Map.Entry<ArrayList<Food>, ArrayList<Double>> entry : shoppingList.entrySet()){
+ 		for (Map.Entry<ArrayList<Food>, ArrayList<Double>> entry : shoppingList.entrySet()){
  	
- 	    foodList = entry.getKey(); 
- 	    massList = entry.getValue(); 
+ 	   		foodList = entry.getKey(); 
+ 	    	massList = entry.getValue(); 
+ 	    }
  	    
- 	}
- 	    
- 	
- 	
- 	for (int i=0; i<foodList.size(); i++){%>
- 		
- 	 	<%=foodList.get(i).getName() %>
+	 	
+	 	
+	 	for (int i=0; i<foodList.size(); i++){
+	 	
+	 		 String link;
+	    	 
+	    	 if(foodList.get(i).getSupermarket().equals("T")){
+	    		 
+	    		 link= "http://www.tesco.com/groceries/product/details/?id=" + foodList.get(i).getShopID();
+	    	 }else if (foodList.get(i).getSupermarket().equals("S")){
+	    		 
+	    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" + foodList.get(i).getShopID();
+	    	 }else{
+	    		 
+	    		 link=  foodList.get(i).getShopID();
+	    	 }
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	
+	 	%>
+ 		<div class="container-fluid">
+ 
  	 	
- 	 	<%= massList.get(i)%> <br>
- 	 		
+ 	 	<div class="col-sm-6">
+                       <a href="<%=link%>"><span class="list-product-name"><%=foodList.get(i).getName() %>
+                        </span></a>
+                      </div>
+                      <div class="col-sm-4">
+                      <span> £ <%=foodList.get(i).getPrice() %></span>
+                      </div>
+                      <div class="col-sm-4">
+                      <span><%= massList.get(i)%></span>
+                      </div>
+ 	 	
+ 	 		</div>
  	 	<% }	
  		
- 	
- 	
- 	
  	    
      }else{%>
-    	You haven't created a meal plan yet.
+    	<p>
+<button class="btn btn-block btn-success btn-lg" style="width: 150px" onclick="document.location.href='editPlan.jsp'">Create a Meal Plan</button>
+       </p>
      <%}
        %>
        
