@@ -59,10 +59,16 @@ public class NutritionOptimisation extends HttpServlet{
 			if(checkMacro(temp))
 				subtract++;
 		}
-		int subtractPercent = subtract/14 * 100;
+		int subtractPercent = subtract/49 * 100;
 		percentage -= subtractPercent;
 		
-		return "80";
+		
+		
+		if(percentage == 0){
+			percentage = 1;
+		}
+		
+		return String.valueOf(percentage);
 	}
 	
 	public String message(){
