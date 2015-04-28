@@ -1,5 +1,7 @@
+
 <% String pageTitle = "Edit Recipe"; %>
 <% String currentPage = "explorer"; %>
+
 
 <%@include file="header.jsp"%>
 <%@page import="java.util.ArrayList" %>
@@ -37,8 +39,14 @@
 				<form action="savedMeal.jsp" method="POST">
 					<div id="recipe">
 					
-						<input class="recipe-name form-control input-sm" name="mealname"
-							value="<%=themeal.getName() %>">
+							<div class="col-sm-10">
+						<input class="recipe-name form-control input-sm" name="mealname" placeholder="Meal Name"
+							value="<%=themeal.getName()%>"></div>
+							<div class="col-sm-2">
+						    <input class="recipe-name form-control input-sm" placeholder= "Servings" name="servings"
+							value="<%=themeal.getServings() %>"></div>
+							
+							
 							<div class="products-mass">
 							
 							<div id="products-list" class="form-control input-sm">
@@ -49,10 +57,10 @@
 						    	 
 						    	 if(themeal.getIngredients().get(i).getSupermarket().equals("T")){
 						    		 
-						    		 link=  themeal.getIngredients().get(i).getShopID();
+						    		 link= "http://www.tesco.com/groceries/product/details/?id=" +  themeal.getIngredients().get(i).getShopID();
 						    	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
 						    		 
-						    		 link=  themeal.getIngredients().get(i).getShopID();
+						    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" +  themeal.getIngredients().get(i).getShopID();
 						    	 }else{
 						    		 
 						    		 link=  themeal.getIngredients().get(i).getShopID();

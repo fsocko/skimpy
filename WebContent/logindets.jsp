@@ -20,6 +20,7 @@ String password = request.getParameter("password");
 
 int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
+session.setAttribute("sessionUser", sessionUser);
 
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
