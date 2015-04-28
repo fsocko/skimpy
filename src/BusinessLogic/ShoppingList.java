@@ -43,24 +43,22 @@ public class ShoppingList extends HttpServlet {
 					   if (count > 0){
 					      for (int x=0; x< m.getIngredients().size(); x++){
 					    	weeklyMass = m.getMasses().get(x)/m.getServings()*count;
-					    	System.out.println(m.getIngredients().get(x));
-					    	System.out.println(shoppingList);
-					    	System.out.println(shoppingList.get(m.getIngredients().get(x)));
+					    	
 					    	if(shoppingList.containsKey(m.getIngredients().get(x))){  
-					    	  System.out.println("EXISTS" + m.getIngredients().get(x).getName() );
+					    	  
 					    		double existingMass = shoppingList.get(m.getIngredients().get(x));
 					    		double newMass = existingMass + weeklyMass;
 					    		shoppingList.replace(m.getIngredients().get(x), weeklyMass, newMass);
 					    	    
 					    		
 						  
-						   System.out.println(m.getIngredients().get(x).getName() + "WEEKLY MASS " + weeklyMass);
+						   
 						   
 						   
 					    	}else{
 						   
 						   shoppingList.put(m.getIngredients().get(x), weeklyMass);
-						   System.out.println(m.getIngredients().get(x).getName() + "WEEKLY MASS " + weeklyMass);
+						   
 					    	}
 						 
 					      }
