@@ -31,7 +31,7 @@ function fillResults(data) {
 			}
 			else if (data[x].supermarket == 'S') {
 				supermarket_class = 'sains-price';
-				link_to_page = "http://www.sainsburys.co.uk/shop/gb/groceries/" + data[x].shopID;
+				link_to_page = data[x].shopID;
 			}
 
 
