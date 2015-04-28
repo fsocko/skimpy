@@ -163,4 +163,36 @@ public class AutoDBMainInterface {
 		    + e.getMessage());
 	}
     }
+    
+    public static void DBTableInitMenu() {
+    	try {
+    		while (true) {
+				AutoDB adb = new AutoDB();
+				InputStreamReader cin = new InputStreamReader(System.in);
+				BufferedReader br = new BufferedReader(cin);
+				System.out.println("Which table would you like to initialize? Only first character will be read.");
+				System.out.println("[a = asda, s = sains, t = tesco, u = user, q = exit]");
+				char userInput = br.readLine().toLowerCase().charAt(0);
+				switch (userInput) {
+				case 'q':
+					System.exit(0);
+					break;
+				case 'a':
+					adb.initTable('a');
+					break;
+				case 's':
+					adb.initTable('s');
+					break;
+				case 't':
+					adb.initTable('t');
+					break;
+				case 'u':
+					adb.initTable('u');
+					break;
+				}
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
 }
