@@ -9,14 +9,20 @@ public class ShoppingList extends HttpServlet {
 	
 	private Food item;
 	private double weeklyMass; //mass of food item that is needed for a week
-	HashMap<Food, Double> shoppingList;
+	HashMap<String, Food> shoppingList;
+	HashMap<String, Double> amountList;
+	HashMap<ArrayList<Food>, ArrayList<Double>> result;
+	ArrayList<Food> foodList = new ArrayList<Food>();
+ 	ArrayList<Double> massList = new ArrayList<Double>();
 	
-	public HashMap<Food, Double> getShoppingList(String path, int userId){
+	public HashMap<ArrayList<Food>, ArrayList<Double>> getShoppingList(String path, int userId){
 		
 		 XMLParser writeX = new XMLParser();
 	 	 ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
 	 	 ArrayList<Meal> meals = new ArrayList<Meal>();
-	 	 shoppingList = new HashMap<Food, Double>();
+	 	 shoppingList = new HashMap<String, Food>();
+	 	 amountList = new HashMap<String, Double>();
+	 	 result = new HashMap<ArrayList<Food>, ArrayList<Double>>();
 	 	
 	 	if(writeX.readMeals(path + "/meals.xml") != null){
 	 		meals = writeX.readMeals(path + "/meals.xml");
@@ -37,27 +43,24 @@ public class ShoppingList extends HttpServlet {
 					   
 					   }else{
 						   
-					   }System.out.println( p.getMeal(j, i).getName()+ count);
+					   }
 						}
 					}}
 					   if (count > 0){
 					      for (int x=0; x< m.getIngredients().size(); x++){
 					    	weeklyMass = m.getMasses().get(x)/m.getServings()*count;
 					    	
-					    	if(shoppingList.containsKey(m.getIngredients().get(x))){  
+					    	if(shoppingList.containsKey(m.getIngredients().get(x).getShopID())){  
 					    	  
-					    		double existingMass = shoppingList.get(m.getIngredients().get(x));
+					    		double existingMass = amountList.get(m.getIngredients().get(x).getShopID());
 					    		double newMass = existingMass + weeklyMass;
-					    		shoppingList.replace(m.getIngredients().get(x), weeklyMass, newMass);
+					    		amountList.replace(m.getIngredients().get(x).getShopID(), weeklyMass, newMass);
 					    	    
-					    		
-						  
-						   
-						   
 						   
 					    	}else{
 						   
-						   shoppingList.put(m.getIngredients().get(x), weeklyMass);
+						   shoppingList.put(m.getIngredients().get(x).getShopID(), m.getIngredients().get(x));
+						   amountList.put(m.getIngredients().get(x).getShopID(), weeklyMass);
 						   
 					    	}
 						 
@@ -65,7 +68,11 @@ public class ShoppingList extends HttpServlet {
 					   }
 					
 					}
+	 	         
+	 	        
 					}
+	 		  
+	 		  
 	    		    }
 	    	
 	     }else{
@@ -75,7 +82,17 @@ public class ShoppingList extends HttpServlet {
 	     return null;
 	     }
 		
-		return shoppingList;
+	 	
+     for (Map.Entry<String, Food> food: shoppingList.entrySet()){
+ 		
+ 	 	foodList.add(food.getValue()); }
+ 	 	
+ 	 for (Map.Entry<String, Double> mass: amountList.entrySet()){ 
+ 	     
+ 	 	 massList.add(mass.getValue()); }	
+ 		
+ 	 result.put(foodList, massList);
+		return result;
 		
 	}
 	

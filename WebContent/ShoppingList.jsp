@@ -22,23 +22,37 @@
  	 ShoppingList list = new ShoppingList();
  	 String path = getServletContext().getRealPath("");
  	
- 	 HashMap <Food, Double> shoppingList = list.getShoppingList(path, userId);
- 	 
+ 	HashMap<ArrayList<Food>, ArrayList<Double>> shoppingList = list.getShoppingList(path, userId);
+
+ 	ArrayList<Food> foodList = new ArrayList<Food>();
+ 	ArrayList<Double> massList = new ArrayList<Double>();
 
      if (shoppingList != null){   
  	 
- 	for (Map.Entry<Food, Double> entry : shoppingList.entrySet())
- 	{%>
- 	    <%=entry.getKey().getName() %> <%=entry.getValue()%> <br>
- 	<% }
-     }else{
-    	 System.out.println("S L EMPTY");
-     }
-     
- 	 
- 	 
- 	 
- 	 
+ 	for (Map.Entry<ArrayList<Food>, ArrayList<Double>> entry : shoppingList.entrySet()){
+ 	
+ 	    foodList = entry.getKey(); 
+ 	    massList = entry.getValue(); 
+ 	    
+ 	}
+ 	    
+ 	
+ 	
+ 	for (int i=0; i<foodList.size(); i++){%>
+ 		
+ 	 	<%=foodList.get(i).getName() %>
+ 	 	
+ 	 	<%= massList.get(i)%> <br>
+ 	 		
+ 	 	<% }	
+ 		
+ 	
+ 	
+ 	
+ 	    
+     }else{%>
+    	You haven't created a meal plan yet.
+     <%}
        %>
        
 </div>
