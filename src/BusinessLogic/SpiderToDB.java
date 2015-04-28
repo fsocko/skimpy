@@ -244,6 +244,8 @@ public class SpiderToDB extends HttpServlet{
 				 
 	//Name-----------NO CHANGE		
 				 name = name.replaceAll(";","");
+				 name = name.replaceAll(">","");
+				 name = name.replaceAll("<","");
 				 name = name.replaceAll("\"","&quot;");
 				 
 	//mass and unit
@@ -275,9 +277,13 @@ public class SpiderToDB extends HttpServlet{
 		 
 				 
 				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
-				//simple test if anything parsed to double incorrectly. If this is the case, we reject the entire record. I seem to remember this rejects most of them though.
+				//simple test if anything parsed to double incorrectly. If this is the case, we print a warning. Too many records would be rejected otherwise.
 				if(rejectRecord)
 				{System.out.println("Warning: This record contains a null field.");}
+				//if foodCat 2 is null, interface search won't work.
+				if(foodCat2.equals(null))
+				{return null;}    
+				
 				return currentRec;
 				
 		 }
@@ -298,9 +304,8 @@ public class SpiderToDB extends HttpServlet{
 			 mass = toDouble(getMass(massUnit));
 			 String unit = getMassUnit(massUnit);
 			 unit = unit.replaceAll(";","");
-			
+	 
 			 PortionSize portionToDB  = new PortionSize(foodCat, foodItem, mass, unit);
-			 
 			 return portionToDB;
 		 }
 		 
