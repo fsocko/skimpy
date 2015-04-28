@@ -172,7 +172,7 @@ public class AutoDBMainInterface {
 				BufferedReader br = new BufferedReader(cin);
 				System.out.println("Which table would you like to initialize? Only first character will be read.");
 				System.out.println("[a = asda, s = sains, t = tesco, u = user, q = exit]");
-				char userInput = br.readLine().toLowerCase().charAt(0);
+				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
 				case 'q':
 					System.exit(0);
