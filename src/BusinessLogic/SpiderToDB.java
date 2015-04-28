@@ -81,11 +81,12 @@ public class SpiderToDB extends HttpServlet{
 	    }
 
 	 //creates array list of all records. The list can then be traversed.
-	 //Takes about 2min, but it beats the 20mins or so in a sequential search.
+	
+		 
+		 
 	 public ArrayList readAllRecords(String file)
 	    { 
-			System.out.print("Adding all lines of the file: " + file + " to an ArrayList.");
-			System.out.print("\nThis usually takes 1-3 minutes...");
+			System.out.print("Adding all lines of the file: " + file + " to an ArrayList.\n");
 		 	ArrayList allRec = new ArrayList();
 			 
 			 FileInputStream fs = null;
@@ -93,9 +94,11 @@ public class SpiderToDB extends HttpServlet{
 			 { 
 				 fs= new FileInputStream(file);
 				 BufferedReader br = new BufferedReader(new InputStreamReader(fs));
-				 for(int i = 0; i<countLines(file); i++)
+				 int noLines = countLines(file);
+				 for(int i = 0; i<noLines; i++)
 				 {
 				   allRec.add(br.readLine());
+				   progBar((10*(i*100)/(noLines*10)));
 				 }
 				 br.close();
 			 }
@@ -121,7 +124,6 @@ public class SpiderToDB extends HttpServlet{
 			    	 { System.out.println("IOException while closing.");}
 			     }	     	     
 			 }
-			 System.out.print("Done");
 			 return allRec;
 			 
 	    }
@@ -279,11 +281,11 @@ public class SpiderToDB extends HttpServlet{
 				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
 				//simple test if anything parsed to double incorrectly. If this is the case, we print a warning. Too many records would be rejected otherwise.
 				if(rejectRecord)
-				{System.out.println("Warning: This record contains a null field.");}
+				{}
 				//if foodCat 2 is null, interface search won't work.
 				if(foodCat2.equals(null))
 				{return null;}    
-				
+								
 				return currentRec;
 				
 		 }
@@ -291,7 +293,7 @@ public class SpiderToDB extends HttpServlet{
 		 public PortionSize parsePortion(String portion)
 		 {
 			
-			 //	//takes record output from readRecord(int), the number of the colon we want to find. Index from 0
+			 //takes record output from readRecord(int), the number of the colon we want to find. Index from 0
 			 //public int findColon(String record, int colonNum)
 			 
 			 String foodCat =  portion.substring(0, findColon(portion, 0));
@@ -425,4 +427,24 @@ public class SpiderToDB extends HttpServlet{
 			 return "NULL";
 			 
 		 } 
+		 
+		//Modified this method by Nakkaya.com. It displays a progressbar.
+			public void progBar(int percent)
+			{
+			    StringBuilder bar = new StringBuilder("[");
+
+			    for(int i = 0; i < 50; i++){
+			        if( i < (percent/2)){
+			            bar.append("=");
+			        }else if( i == (percent/2)){
+			            bar.append(">");
+			        }else{
+			            bar.append(" ");
+			        }
+			    }
+
+			    bar.append("]   " + percent + "%     ");
+			    System.out.print("\r" + bar.toString());
+			}
+
 }//EOF
