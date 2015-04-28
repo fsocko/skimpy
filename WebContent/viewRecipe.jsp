@@ -1,3 +1,4 @@
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -38,44 +39,59 @@
      
     System.out.println(themeal.getIngredients().size());
    
+    
+    String pps;
+    
+    if(themeal.getServings()<2){
+   	 pps= "person";
+    }else{
+   	 
+   	 pps= "people";
+    }
+    
       %>
 
-<form action="editRecipe.jsp" method="post">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-7">
-				<div class="well">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="media">
+ 
+    <form action="editRecipe.jsp" method="post">
+   <div class="container-fluid">
+      <div class="row">
+              <div class="col-sm-7">
+          <div class="well">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="media">
+               
+                  <div class="media-body">
+                    <div class="row">
+                 
+                      <div class="col-sm-8">
+                        <h4><%=themeal.getName() %></h4>
+                        Serves <%=themeal.getServings() %> <%=pps %>
+                        <input type="hidden" value="<%=themeal.getName() %>" name="name">
+                      </div>
+                      <div class="col-sm-4">
+                        
+                      <button  class="btn pull-right btn-primary btn-md" type="submit" >Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+              
+          
+    
+     
+     <% for (int i=0; i< themeal.getIngredients().size();i++){
 
-								<div class="media-body">
-									<div class="row">
-
-										<div class="col-sm-8">
-											<h4><%=themeal.getName() %></h4>
-											<input type="hidden" value="<%=themeal.getName() %>"
-												name="name">
-										</div>
-										<div class="col-sm-4">
-
-											<button class="btn pull-right btn-primary btn-md"
-												type="submit">Edit</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-8">
-							<%for (int i=0; i< themeal.getIngredients().size();i++){
     	 String link;
     	 
     	 if(themeal.getIngredients().get(i).getSupermarket().equals("T")){
     		 
-    		 link=  themeal.getIngredients().get(i).getShopID();
+    		 link= "http://www.tesco.com/groceries/product/details/?id=" +  themeal.getIngredients().get(i).getShopID();
     	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
     		 
-    		 link=  themeal.getIngredients().get(i).getShopID();
+    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" +  themeal.getIngredients().get(i).getShopID();
     	 }else{
     		 
     		 link=  themeal.getIngredients().get(i).getShopID();
