@@ -182,21 +182,39 @@ public class SpiderToDB extends HttpServlet{
 	 	//As long as the files are fairly consistent, it should be robust enough to work with all supermarkets
 		 public Food formatRecord(String path, String record)
 		 {
-			 rejectRecord = false;	
+			//flag in case we want to reject records later 
+		     	rejectRecord = false;	
+			 
+		     	 //String declaration here so we can catch any exceptions below.
+			 String shopID;
+			 String name;
+			 String mass;
+			 String unit;
+			 String price;
+			 String pricePU;
+			 String PPUPrice;
+			 String PPUUnit;
+			 String foodCat;
+			 String foodCat2;
+			 String supermarket;
+			 String calories;
+			 String proteins;
+			 String carbs;
+			 String sugars;
+			 String fats;
+			 String saturates;
+			 String fibre;
+			 String salt;
+			 
 			 //Parse Strings via findColon			 
-			
-				 String shopID = record.substring(0, findColon(record, 0));
-				 String name = record.substring(findColon(record, 0), findColon(record, 1));
-				 
-				 String mass;
-				 String unit;
-				 String price = record.substring(findColon(record, 1), findColon(record, 2));
-				 String pricePU = record.substring(findColon(record, 2), findColon(record, 3));
-				 String PPUPrice;
-				 String PPUUnit;
-				 String foodCat = record.substring(findColon(record, 3), findColon(record, 4));
-				 String foodCat2 = record.substring(findColon(record, 4), findColon(record, 5));
-				 String supermarket = "x";
+			 try{
+				 shopID = record.substring(0, findColon(record, 0));
+				 name = record.substring(findColon(record, 0), findColon(record, 1));		 
+				 price = record.substring(findColon(record, 1), findColon(record, 2));
+				 pricePU = record.substring(findColon(record, 2), findColon(record, 3));				 
+				 foodCat = record.substring(findColon(record, 3), findColon(record, 4));
+				 foodCat2 = record.substring(findColon(record, 4), findColon(record, 5));
+				 supermarket = "x";
 				 if(path.equals(tescoPath))
 				 {supermarket = "T";}
 				 else if(path.equals(asdaPath))
@@ -204,15 +222,20 @@ public class SpiderToDB extends HttpServlet{
 				 else if(path.equals(sainsPath))
 				 {supermarket = "S";}	 
 				 //Nutrition				 
-				 String calories = record.substring(findColon(record, 5), findColon(record, 6));
-				 String proteins = record.substring(findColon(record, 6), findColon(record, 7));
-				 String carbs = record.substring(findColon(record, 7), findColon(record, 8));
-				 String sugars = record.substring(findColon(record, 8), findColon(record, 9));
-				 String fats = record.substring(findColon(record, 9), findColon(record, 10));
-				 String saturates = record.substring(findColon(record, 10), findColon(record, 11));
-				 String fibre = record.substring(findColon(record, 11), findColon(record, 12));
-				 String salt = record.substring(findColon(record, 12), record.length());
-	
+				 calories = record.substring(findColon(record, 5), findColon(record, 6));
+				 proteins = record.substring(findColon(record, 6), findColon(record, 7));
+				 carbs = record.substring(findColon(record, 7), findColon(record, 8));
+				 sugars = record.substring(findColon(record, 8), findColon(record, 9));
+				 fats = record.substring(findColon(record, 9), findColon(record, 10));
+				 saturates = record.substring(findColon(record, 10), findColon(record, 11));
+				 fibre = record.substring(findColon(record, 11), findColon(record, 12));
+				 salt = record.substring(findColon(record, 12), record.length());
+			 }
+			 catch(Exception e)
+			 {
+			     System.out.println("An exception ocurred.");
+			     return null;
+			 }
 	
 				 
 	//ShopID---------NO CHANGE
@@ -221,6 +244,8 @@ public class SpiderToDB extends HttpServlet{
 				 
 	//Name-----------NO CHANGE		
 				 name = name.replaceAll(";","");
+				 name = name.replaceAll(">","");
+				 name = name.replaceAll("<","");
 				 name = name.replaceAll("\"","&quot;");
 				 
 	//mass and unit
@@ -252,9 +277,13 @@ public class SpiderToDB extends HttpServlet{
 		 
 				 
 				Food currentRec = new Food(-1, shopID, name, toDouble(mass), unit, toDouble(price), toDouble(PPUPrice), PPUUnit, foodCat, foodCat2, supermarket, toDouble(calories), toDouble(proteins), toDouble(carbs), toDouble(sugars), toDouble(fats), toDouble(saturates), toDouble(fibre), toDouble(salt)); 
-				//simple test if anything parsed to double incorrectly. If this is the case, we reject the entire record. I seem to remember this rejects most of them though.
+				//simple test if anything parsed to double incorrectly. If this is the case, we print a warning. Too many records would be rejected otherwise.
 				if(rejectRecord)
 				{System.out.println("Warning: This record contains a null field.");}
+				//if foodCat 2 is null, interface search won't work.
+				if(foodCat2.equals(null))
+				{return null;}    
+				
 				return currentRec;
 				
 		 }
@@ -275,9 +304,8 @@ public class SpiderToDB extends HttpServlet{
 			 mass = toDouble(getMass(massUnit));
 			 String unit = getMassUnit(massUnit);
 			 unit = unit.replaceAll(";","");
-			
+	 
 			 PortionSize portionToDB  = new PortionSize(foodCat, foodItem, mass, unit);
-			 
 			 return portionToDB;
 		 }
 		 
