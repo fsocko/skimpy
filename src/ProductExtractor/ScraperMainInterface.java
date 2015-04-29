@@ -30,7 +30,13 @@ public class ScraperMainInterface {
 				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
 				case 'a':
-					AutoDBMainInterface.DBInitMenu();
+					System.out.println("Initializing the database will delete everything in it");
+					System.out.println("Would you like to continue (y/n)? Only first character is read");
+					char userConfirm  = (br.readLine().toLowerCase() + " ").charAt(0);
+					if (userConfirm == 'y') {
+						AutoDB adb = new AutoDB();
+						adb.initDB();
+					}
 					break;
 				case 'b':
 					scraperMenu();
@@ -50,7 +56,8 @@ public class ScraperMainInterface {
 	
 	public static void scraperMenu() {
 		try {
-			while (true) {
+			boolean finish = false;
+			while (!finish) {
 				AutoDB adb = new AutoDB();
 				InputStreamReader cin = new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(cin);
@@ -110,7 +117,7 @@ public class ScraperMainInterface {
 					runAllScrapers(allSThreads, allAThreads);
 					break;
 				case 'q':
-					System.exit(0);
+					finish = true;
 					break;
 				}
 			}

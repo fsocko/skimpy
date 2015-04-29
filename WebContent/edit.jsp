@@ -1,4 +1,6 @@
  <!doctype html>
+<% String pageTitle = ""; %>
+<% String currentPage = ""; %>
 <%@include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
@@ -28,7 +30,8 @@
 		if(newValue == 5){
 			document.getElementById("range").innerHTML= "7-21hrs/week of strenuous exercise/work"
 		}
-
+		
+		
 	}
 	</script>
     <style type="text/css">
@@ -71,6 +74,13 @@
       .input-sm {
         margin-bottom: 5px;
       }
+      
+      label.error {
+  			font-weight: bold;
+  			color: red;
+  			padding: 2px 8px;
+  			margin-top: 2px;
+		}
     </style>
   </head>
   
@@ -181,7 +191,7 @@
 	                        <a href = "change_password.jsp"> Change Password </a>
 	                      </div>
 	                      <div class="col-sm-4">
-	                        <button class="btn pull-right btn-success btn-md" type = "submit">Save</button>
+	                        <button class="btn pull-right btn-success btn-md" type= "submit">Save</button>
 	                      </div>
 	                    </div>
 	                  </div>
@@ -206,20 +216,22 @@
 	                  </div>
 	                  <div class="row">
 	                    <div class="col-sm-4">
-	                      <span class="label label-info">Height</span>
+	                      <span class="label label-info">Height(cm)</span>
 	                    </div>
 	                    <div class="col-sm-8">
-	                      <input name = "height" type="text" class="form-control input-sm" value = "<%=session.getAttribute("height") %>">
+	                      <input name = "height" id="height" type="text" class="form-control input-sm" value = "<%=session.getAttribute("height") %>">
+	                      <div id="message"></div>
 	                    </div>
 	                  </div>
 	                  <div class="row">
 	                    <div class="col-sm-4">
-	                      <span class="label label-info">Weight</span>
+	                      <span class="label label-info">Weight(kg)</span>
 	                    </div>
 	                    <div class="col-sm-8">
-	                      <input name = "weight" type="text" class="form-control input-sm" value = "<%=session.getAttribute("weight") %>">
+	                      <input name = "weight" id="weight" type="text" class="form-control input-sm" value = "<%=session.getAttribute("weight") %>">
 	                    </div>
 	                  </div>
+	                  
 	                  <div class="row">
 	                    <div class="col-sm-4">
 	                      <span class="label label-info">Exercise</span>
@@ -433,5 +445,25 @@
       </div>
     </div>
   </body>
+  
+  	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#myForm').validate({
+            rules:{
+              weight:{
+            	  required:true
+              },
+              
+              height:{
+                required: true
+              },   
+            }
+      });
+    });
+
+    </script>
+  
 
 </html>
