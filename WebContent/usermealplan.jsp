@@ -90,14 +90,7 @@
 		<% 
     }%>
 		<div>
-		<%
-		NutritionOptimisation nut = new NutritionOptimisation((Person) session.getAttribute("sessionUser"), (MealPlanner) session.getAttribute("meal"));
-		session.setAttribute("print", nut.calorieInfo(0));
-		session.setAttribute("percent", nut.percent());
-		
-		%>
-		<%=session.getAttribute("print") %>
-		
+
 		</div>
 	</div>
 </div>

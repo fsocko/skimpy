@@ -98,15 +98,24 @@
     	 }
     	 
     	 
-	                %>
+    	 String unit;
+			if (themeal.getIngredients().get(i).getUnit().toLowerCase().equals("null")){
+				unit = "g/ml";
+			}else{
+				unit = themeal.getIngredients().get(i).getUnit();
+				
+			}  %>
 
 
 							<div class="col-sm-8">
-								<a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+								<a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
 								</span></a>
 							</div>
-							<div class="col-sm-4">
-								<span> <%=themeal.getMasses().get(i)%>
+							<div class="col-sm-4"> <%
+							
+							
+							%>						
+								<span> <%=themeal.getMasses().get(i)%> <%=unit.toLowerCase()%>
 								</span>
 							</div>
 							<% }%>

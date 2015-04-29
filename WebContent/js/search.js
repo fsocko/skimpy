@@ -15,6 +15,7 @@ function fillSearchCategories(categories) {
 function fillResults(data) {
 	var mass;
 	var supermarket_class;
+	var unitDB;
 
 	if (data.length > 0) {
 		$('#results').append(
@@ -41,17 +42,30 @@ function fillResults(data) {
 			else {
 				mass = data[x].mass + data[x].unit.toLowerCase();
 			}
+			
+			
+			if(data[x].unit.toLowerCase() == "null"){
+					unitDB="g/ml";
+			}else{
+				
+				unitDB= data[x].unit.toLowerCase();
+			}
 
 			$('#results').append(
 					$('<div>').addClass('result-entry')
 					.append($('<span>').addClass('button-add').append(
 									$('<i>').addClass('fa').addClass('fa-plus')))
-					.append($('<a>').attr('href', link_to_page)
+					.append($('<a>').attr('href', "#")
+							.attr( 'onclick', "window.open('" + link_to_page + "')")
+							
+							
+							
 							.append($('<span>').addClass('product-name').text(data[x].name.replace(";",""))))
 							.append(
 									$('<span>').addClass('product-mass').text(mass))
 									.append($('<span>').addClass('shopID').text(data[x].ID))
 									.append($('<span>').addClass('shopName').text(data[x].supermarket))
+									.append($('<span>').addClass('unitDB').text(unitDB))
 									.append(
 											$('<span>').addClass('product-price').addClass(supermarket_class)
 											.text('£' + data[x].price.toFixed(2)))
@@ -146,7 +160,7 @@ $(document).ready(function(){
 		    $('#supermarket').val($('#supermarket').val() + s);
 			$('#products-list').append(
 				$('<div>').addClass('product-list-entry').append(
-						$('<a>').attr('href', $(this).closest('.result-entry').find('a').attr('href')).append(
+						$('<a>').attr('href', "#").attr('onclick', $(this).closest('.result-entry').find('a').attr('onclick')).append(
 					$('<span>').addClass('list-product-name').text(
 						$(this).closest('.result-entry').find('.product-name').text())))
 					.append(
@@ -158,7 +172,8 @@ $(document).ready(function(){
 					.append(
 						$('<span>').addClass('list-product-mass').text('Serving size: ')
 							.append($('<input name="mass" id ="mass">').addClass('serving-size')
-								.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text())))
+								.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text()))
+								.append(" " + $(this).closest('.result-entry').find('.unitDB').text()))
 								.append($('<span>').addClass('shopID').text($(this).closest('.result-entry').find('.shopID').text()))
 									.append($('<span>').addClass('shopName').text($(this).closest('.result-entry').find('.shopName').text()))
 			);

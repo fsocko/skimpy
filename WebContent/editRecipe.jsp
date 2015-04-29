@@ -1,23 +1,8 @@
 
 <% String pageTitle = "Edit Recipe"; %>
 <% String currentPage = "explorer"; %>
+<%@include file="header.jsp"%><%@page import="java.util.ArrayList" %>
 
-
-<%@include file="header.jsp"%>
-<%@page import="java.util.ArrayList" %>
-
-<head>
-<title>Edit Recipe</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" href="css/search.css">
-<script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/search.js"></script>
-</head>
-
-<body>
 
 
  <%
@@ -33,24 +18,23 @@
   
  %>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-6">
-				<form action="savedMeal.jsp" method="POST">
-					<div id="recipe">
-					
-							<div class="col-sm-10">
-						<input class="recipe-name form-control input-sm" name="mealname" placeholder="Meal Name"
-							value="<%=themeal.getName()%>"></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+		<div id="recipe">
+			<form action="savedMeal.jsp" method="POST">
+				
+					<div class="col-sm-10">
+							<input class="recipe-name form-control input-sm" name="mealname" placeholder="Meal Name"
+							value="<%=themeal.getName()%>" readonly>
+							</div>
 							<div class="col-sm-2">
 						    <input class="recipe-name form-control input-sm" placeholder= "Servings" name="servings"
-							value="<%=themeal.getServings() %>"></div>
-							
-							
-							<div class="products-mass">
-							
-							<div id="products-list" class="form-control input-sm">
-							 <%for (int i=0; i< themeal.getIngredients().size();i++){
+						    value="<%=themeal.getServings() %>">
+						    </div>
+					<div class="products-mass">
+						<div id="products-list" class="form-control input-sm">
+						<%for (int i=0; i< themeal.getIngredients().size();i++){
 								 
 								 
 								 String link;
@@ -65,55 +49,61 @@
 						    		 
 						    		 link=  themeal.getIngredients().get(i).getShopID();
 						    	 }
-	                               %>
-	                
-	                
-	                 <div class="product-list-entry">
-                        <a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+						    	 
+						    	 
+						    	 String unit;
+									if (themeal.getIngredients().get(i).getUnit().toLowerCase().equals("null")){
+										unit = "g/ml";
+									}else{
+										unit = themeal.getIngredients().get(i).getUnit();
+										
+									}  %>
+									     <div class="product-list-entry">
+                        <a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
                         </span></a>
                       <span class="list-product-price">£ <%=themeal.getIngredients().get(i).getPrice()%>
                       </span>
                       <span class="button-remove"><i class="fa fa-times"></i></span>
-                      <span class="list-product-mass">Serving size: <input class="serving size" name="mass" id="mass" value="<%=themeal.getMasses().get(i)%>g">
-                      </span>
+                      <span class="list-product-mass">Serving size: <input class="serving size" name="mass"
+                       id="mass" value="<%=themeal.getMasses().get(i)%>"> <%=unit.toLowerCase() %>
+                       </span>
                       <span class="shopID"><%=themeal.getIngredients().get(i).getDBID()%></span>
                       <span class="shopName"><%=themeal.getIngredients().get(i).getSupermarket()%></span>
                       <div class="col-sm-4">
                         <p></p>
                       </div></div> <% }%>
-            
-							</div>
-							<input class="list-group" id="ingred" type="hidden" name="ingred"
-								value="<%=ShopIds%>"> <input class="list-group" id="supermarket"
-								type="hidden" name="supermarket" value="<%=Shops %>">
 						</div>
-                        
-						<input type="submit" class="btn btn-block btn-success btn-lg"
-							style="width: 160px" value="Save Changes" />
-						</div>
-						</form>
-						<form action="deleteRecipe.jsp" method="POST">
+						<input class="list-group" id="ingred" type="hidden" name="ingred"
+							value="<%=ShopIds%>"> <input class="list-group" id="supermarket"
+							type="hidden" name="supermarket" value="<%=Shops %>">
+					</div>
+
+					<input type="submit" class="btn btn-block btn-success btn-lg" id="change-button"
+						style="width: 150px" value="Save Changes" />
+				
+			</form>
+		
+		
+		<form action="deleteRecipe.jsp" method="POST">
 						<input type="hidden" name="mealname" value ="<%=themeal.getName()%>">
 						<button style="width: 160px"  
-						class="btn btn-block btn-success btn-lg" type="submit" >Delete This Recipe</button>
+						class="btn btn-block btn-success btn-lg" id="delete-button" type="submit" >Delete This Recipe</button>
 						</form>
-						
-				
-				</div>
-			<div class="col-sm-6">
-				<div id="search-container">
-					<input id="search" class="form-control input-sm" name="q"
-						type="text"
-						placeholder="Search for products across many supermarkets"
-						autocomplete="off" />
-					<div id="autocomplete-box">
-						<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
-						<div id="categories-tickboxes"></div>
-						<div id="results"></div>
-					</div>
+		</div></div>
+		<div class="col-sm-6">
+			<div id="search-container">
+				<input id="search" class="form-control input-sm" name="q"
+					type="text"
+					placeholder="Search for products across many supermarkets"
+					autocomplete="off" />
+				<div id="autocomplete-box">
+					<span id="close">Close&nbsp;<i class="fa fa-times"></i></span>
+					<div id="categories-tickboxes"></div>
+					<div id="results"></div>
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
+</div>
 </body>
 </html>

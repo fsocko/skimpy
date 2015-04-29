@@ -39,27 +39,29 @@
 	    }
 	    
 	    String [] Servings =  request.getParameterValues("mass");
-	    ArrayList<Integer> massList = new ArrayList<Integer>();
+	    ArrayList<Double> massList = new ArrayList<Double>();
 	    
 	   
-	  
 	    for(String s: Servings){
-	    	if(s.equals("")){
-	    		massList.add(0);}else{
+	    
 	    try{
-	    	massList.add(Integer.parseInt(s));
+	    	massList.add(Double.parseDouble(s));
 	    	
 	    }
 	  
 	    catch(NumberFormatException e){
-	    	massList.add(Integer.parseInt(s.replaceAll("[a-zA-Z]+", "")));
+	    	
+	    	
+		    	if(s.replaceAll("[^.0-9]","").trim().equals("")){
+		    		massList.add(Double.parseDouble("0"));
+		    		}else{
+	    	
+	        		 massList.add(Double.parseDouble(s.replaceAll("[^.0-9]","").trim()));
 	    	
 	    }}  }
         
         String masses = java.util.Arrays.deepToString(Servings);
-        int len = shopList.size();
-        int lenid = idList.size();
-        int lenm = massList.size();
+
         DBConnect con = new DBConnect();
     	
     		ArrayList<Food> f_ingredients = new ArrayList<Food>();

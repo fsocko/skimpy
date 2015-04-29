@@ -3,6 +3,7 @@
 <% String currentPage = "recipe"; %>
 <%@include file="header.jsp"%>
 
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-6">
