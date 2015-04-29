@@ -246,17 +246,16 @@ table, th, td {
 
 #delete-button{
 	position: relative;
-	float: left;
-	width: 50%;
-	
+	float: right;
+	width: 60%;	
+	background-color:#FF3333 ;
 }
 
 #change-button{
 	
 	position: relative;
 	float: left;
-	width: 50%;
-	
+	width: 60%;	
 }
 
 
