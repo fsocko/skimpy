@@ -18,11 +18,24 @@
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
   String name= String.valueOf(request.getParameter("name"));
-  System.out.println("NAME:"+ name);
-  //String name = "Tuna Pasta Salad";
   Meal themeal = writeX.getMeal(readmeals, name);
- String dbid = "";
- String  sup = "";
+  
+  if(themeal==null){%>
+  <div class="container-fluid">
+	  <p>It seems that the meal you are looking for was deleted.</p>
+	  <p>Go to Meal Planner and change this recipe for a new one:</p>
+	  <p>
+			<button class="btn btn-block btn-success btn-lg" style="width: 200px"
+				onclick="document.location.href='editPlan.jsp'">Change
+				Meal Plan</button>
+		</p>
+	</div>  
+  <%}else{
+  
+  
+  
+  String dbid = "";
+  String  sup = "";
  
 	DecimalFormat cleanDecimal = new DecimalFormat("0.0");
  
@@ -229,6 +242,6 @@
 		</div>
 	</div>
 </form>
-
+<%} %>
 </body>
 </html>
