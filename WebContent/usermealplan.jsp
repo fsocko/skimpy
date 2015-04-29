@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
 <%	
-if(session.getAttribute("username").equals(null)){
+if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
 %>
@@ -111,33 +111,769 @@ if(session.getAttribute("username").equals(null)){
 				    </ul>
 				    <div class="tab-content">
 				        <div id="monday" class="tab-pane fade in active">
-				            <h3>Monday</h3>
-				            <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+				          <h3>Monday</h3>
+			              <div class="panel-body">
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Calories</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress progress-info active">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Protein</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Carbohydrates</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Sugar</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Fat</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Saturates</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Fibre</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			                <div class="row">
+			                  <div class="col-sm-2">
+			                    <span class="label label-default">Salt</span>
+			                  </div>
+			                  <div class="col-sm-4">
+			                    <div class="progress">
+			                      <div class="progress-bar"></div>
+			                    </div>
+			                  </div>
+			                  <div class="col-sm-6">
+			                    <p>Enter your paragraph text here.</p>
+			                  </div>
+			                </div>
+			              </div>
 				        </div>
 				        <div id="tuesday" class="tab-pane fade">
 				            <h3>Tuesday</h3>
-				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				            </div>
 				        </div>
 				        <div id="wednesday" class="tab-pane fade">
 				            <h3>Wednesday</h3>
-				            <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				            </div>
 				        </div>
+				       
 				        <div id="thursday" class="tab-pane fade">
 				            <h3>Thursday</h3>
-				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				              </div>
 				        </div>
 				        <div id="friday" class="tab-pane fade">
 				            <h3>Friday</h3>
-				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				              </div>
 				        </div>
 				        <div id="saturday" class="tab-pane fade">
 				            <h3>Saturday</h3>
-				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				              </div>
 				        </div>
 				        <div id="sunday" class="tab-pane fade">
 				            <h3>Sunday</h3>
-				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
-				        </div>
+				            <div class="panel-body">
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Calories</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress progress-info active">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Protein</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Carbohydrates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Sugar</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fat</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Saturates</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Fibre</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				                <div class="row">
+				                  <div class="col-sm-2">
+				                    <span class="label label-default">Salt</span>
+				                  </div>
+				                  <div class="col-sm-4">
+				                    <div class="progress">
+				                      <div class="progress-bar"></div>
+				                    </div>
+				                  </div>
+				                  <div class="col-sm-6">
+				                    <p>Enter your paragraph text here.</p>
+				                  </div>
+				                </div>
+				              </div>
+				            </div>
 				    </div>
 				</div>
             </div>
