@@ -118,11 +118,6 @@
 			<div class="well">
 				<div class="row">
 					<div class="col-sm-12">
-						<div class="media">
-							<a class="pull-left" href="#"> <img class="media-object"
-								src="https://builder.divshot.com/img/placeholder-64x64.gif">
-							</a>
-							<div class="media-body">
 								<div class="row">
 									<div class="col-sm-8">
 										<h4><%=session.getAttribute("username") %></h4>
@@ -136,8 +131,7 @@
 										<p><%=session.getAttribute("email")%></p>
 									</div>
 								</div>
-							</div>
-						</div>
+
 					</div>
 					<div class="col-sm-8">
 						<div class="row">
@@ -182,10 +176,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="well">
-				<img src="https://builder.divshot.com/img/placeholder-100x100.gif">
-				<a> Something should go here</a>
 			</div>
 		</div>
 	</div>
