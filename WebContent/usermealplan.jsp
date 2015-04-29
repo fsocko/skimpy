@@ -37,22 +37,21 @@ if(request.getSession(false) == null){
 	           for(int i = 0; i < 7; i++){
 	           %>
 	           <td style="text-align: center;">
-		           <%
-	           	   String name = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();
-	           	   boolean mealExists = (name != null);
-	           	   if(mealExists){
+		           <%		           
+	           	   if(((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j) != null){
+	           			String name  = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();
 	           	   %>
-	           	 <form action="viewRecipe.jsp" method="post">
-				   <button style="width: 100%; height: 100%;" class="btn pull-right btn-success btn-md" type="submit"><%= name %></button>
-				   <input name="name" type="hidden" value="<%= name%>">
-				 </form>
+		           	 <form action="viewRecipe.jsp" method="post">
+					   <button style="width: 100%; height: 100%;" class="btn pull-right btn-success btn-md" type="submit"><%= name %></button>
+					   <input name="name" type="hidden" value="<%= name%>">
+					 </form>
 			   	   <%
 				   }
 	           	   else {
+	           	   System.out.println("hi");
 	           	   %>
-	           	  <form action="editRecipe.jsp" method="post">
-	           	   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"> Add Meal</button>
-				 </form>
+	           	   	  
+		           	  <a href="editPlan.jsp" class="btn pull-right btn-default btn-md">Add</a>
 	           	   <%
 	           	   }
            	   	   %>
