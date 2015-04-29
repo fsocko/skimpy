@@ -16,11 +16,6 @@ if(session.getAttribute("username") == null){
        boolean flag = (boolean)session.getAttribute("hasMeal");
        if(!flag){
        %>
-       <a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
-       <%
-       }
-       else{
-       %>
        <table class="table">
          <thead>
            <tr>
@@ -75,6 +70,7 @@ if(session.getAttribute("username") == null){
        <%
        }
        %>
+		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
      </div>
    </div>
    <div class="well">
