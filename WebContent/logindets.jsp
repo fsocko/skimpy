@@ -78,9 +78,8 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 						sessionNutrition.setPerson(sessionUser);
 						sessionNutrition.setMealPlan(sessionPlan);
 						
-						
 						session.setAttribute("mealPlan", p);
-						
+						session.setAttribute("sessionNutrition", sessionNutrition);
 					}
 					else{
 						session.setAttribute("hasMeal", new Boolean(false));

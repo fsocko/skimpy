@@ -71,19 +71,122 @@ public class NutritionOptimisation extends HttpServlet{
 		return String.valueOf(percentage);
 	}
 	
-	public String message(){
+	public static String messageCal(double percent){
 		String message = "You are eating ";
 		
-		double percent = calorieInfo(0);
-		
 		if(percent > 110){
-			message += percent + " of your daily Calories. This is too much.";
+			message += percent + "% of your daily Calories. This is too much.";
 		} 
 		else if (percent < 90) {
-			message += percent + " of your daily Calories. This is too little.";
+			message += percent + "% of your daily Calories. This is too little.";
 		}
 		else{
-			message += " the right amount of calories";
+			message += " the right amount of Calories.";
+		}
+		return message;
+	}
+	
+	public static String messageProtein(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Protein. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Protein. This is too little.";
+		}
+		else{
+			message += " the right amount of Protein.";
+		}
+		return message;
+	}
+	
+	public static String messageCarb(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Carbohydrates. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Carbohydrates. This is too little.";
+		}
+		else{
+			message += " the right amount of Carbohydrates.";
+		}
+		return message;
+	}
+	
+	public static String messageSugar(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Sugar. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Sugar. This is too little.";
+		}
+		else{
+			message += " the right amount of Sugar.";
+		}
+		return message;
+	}
+	
+	public static String messageFat(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Fat. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Fat. This is too little.";
+		}
+		else{
+			message += " the right amount of Fat.";
+		}
+		return message;
+	}
+	
+	public static String messageSaturates(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Saturates. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Saturates. This is too little.";
+		}
+		else{
+			message += " the right amount of Saturates.";
+		}
+		return message;
+	}
+	
+	public static String messageFibre(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Fibre. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Fibre. This is too little.";
+		}
+		else{
+			message += " the right amount of Fibre.";
+		}
+		return message;
+	}
+	
+	public static String messageSalt(double percent){
+		String message = "You are eating ";
+		
+		if(percent > 110){
+			message += percent + "% of your daily Salt. This is too much.";
+		} 
+		else if (percent < 90) {
+			message += percent + "% of your daily Salt. This is too little.";
+		}
+		else{
+			message += " the right amount of Salt.";
 		}
 		return message;
 	}

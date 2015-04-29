@@ -136,6 +136,7 @@ public class MealPlanner extends HttpServlet{
 	 * @param i
 	 * @return The day of the week the meal is located on the planner.
 	 */
+	
 	public static String getDay(int i){
 		if(i == 0)
 			return "Mon";
