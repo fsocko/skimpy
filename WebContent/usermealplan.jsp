@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
 <%	
-if(session.getAttribute("username") == null){
+if(session.getAttribute("username").equals(null)){
 	response.sendRedirect("login.jsp");
 }
 %>
@@ -101,19 +101,43 @@ if(session.getAttribute("username") == null){
              <div class="panel-body">
                  <div class="bs-example">
 				    <ul class="nav nav-tabs" id="myTab">
-				        <li class="active"><a href="#sectionA">Section A</a></li>
-				        <li><a href="#sectionB">Section B</a></li>
+				        <li class="active"><a href="#monday">Monday</a></li>
+				        <li><a href="#tuesday">Tuesday</a></li>
+				        <li><a href="#wednesday">Wednesday</a></li>
+				        <li><a href="#thursday">Thursday</a></li>
+				        <li><a href="#friday">Friday</a></li>
+				        <li><a href="#saturday">Saturday</a></li>
+				        <li><a href="#sunday">Sunday</a></li>
 				    </ul>
 				    <div class="tab-content">
-				        <div id="sectionA" class="tab-pane fade in active">
+				        <div id="monday" class="tab-pane fade in active">
 				            <h3>Monday</h3>
 				            <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
 				        </div>
-				        <div id="sectionB" class="tab-pane fade">
+				        <div id="tuesday" class="tab-pane fade">
 				            <h3>Tuesday</h3>
 				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
 				        </div>
-				        
+				        <div id="wednesday" class="tab-pane fade">
+				            <h3>Wednesday</h3>
+				            <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+				        </div>
+				        <div id="thursday" class="tab-pane fade">
+				            <h3>Thursday</h3>
+				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				        </div>
+				        <div id="friday" class="tab-pane fade">
+				            <h3>Friday</h3>
+				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				        </div>
+				        <div id="saturday" class="tab-pane fade">
+				            <h3>Saturday</h3>
+				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				        </div>
+				        <div id="sunday" class="tab-pane fade">
+				            <h3>Sunday</h3>
+				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				        </div>
 				    </div>
 				</div>
             </div>
