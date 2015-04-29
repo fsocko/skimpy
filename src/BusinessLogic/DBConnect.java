@@ -785,7 +785,7 @@ public class DBConnect extends HttpServlet{
 				"(SELECT FoodCat2, COUNT(Name) AS entries FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
 		
-		timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+		timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new java.util.Date());
 		
 		String queryCreateView = 
 				"CREATE VIEW temp_" + timestamp + " AS "
@@ -816,6 +816,43 @@ public class DBConnect extends HttpServlet{
 			closeCon();
 		}
 		
+		return results.toString();
+	}
+	
+	public String findOffers(String tableID, String shopID) {
+		JSONArray results = new JSONArray();
+		String supermarket;
+		
+		String queryFormat = "SELECT * FROM %s "
+				+ "WHERE FoodCat2 IN (SELECT FoodCat2 FROM %s WHERE id=%s) "
+				+ "AND NOT id=%s AND NOT price = 0 ORDER BY Price LIMIT 3";
+		if (shopID.equals("A")) {
+			supermarket = "asda";
+		}
+		else if (shopID.equals("S")) {
+			supermarket = "sains";
+		}
+		else if (shopID.equals("T")) {
+			supermarket = "tesco";
+		}
+		else {
+			return "";
+		}
+		
+		String query = String.format(queryFormat, supermarket, supermarket, tableID, tableID);
+		
+		try {
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				JSONObject temp = new JSONObject();
+				temp.put("id", rs.getString("ID"));
+				temp.put("name", rs.getString("Name"));
+				temp.put("price", rs.getDouble("Price"));
+				results.put(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return results.toString();
 	}
 }
