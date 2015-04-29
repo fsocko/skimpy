@@ -49,7 +49,7 @@ if(request.getSession(false) == null){
 					}
 					else {
 					%>
-		           	  <a href="editPlan.jsp" class="btn pull-right btn-default btn-md">Add</a>
+		           	  <a href="editPlan.jsp" style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" >Add Meal</a>
 					<%
 					}
 					%>
