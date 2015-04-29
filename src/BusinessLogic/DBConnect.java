@@ -845,7 +845,7 @@ public class DBConnect extends HttpServlet{
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
 				temp.put("name", rs.getString("Name"));
-				temp.put("price", rs.getString("Price"));
+				temp.put("price", rs.getDouble("Price"));
 				results.put(temp);
 			}
 		} catch (SQLException e) {

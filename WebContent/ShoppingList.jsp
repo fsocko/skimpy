@@ -10,7 +10,7 @@
 <% String currentPage = "shopping_list"; %>
 <%@ include file="header.jsp"%>
 
-<%  
+<% 
 if (session.getAttribute("username") == null) {
 	response.sendRedirect("login.jsp");
 }
@@ -26,6 +26,9 @@ if (session.getAttribute("username") == null) {
 
  	ArrayList<Food> foodList = new ArrayList<Food>();
  	ArrayList<Double> massList = new ArrayList<Double>();
+ 	
+ 	double total = 0;
+ 	DecimalFormat moneyDecimal = new DecimalFormat("0.00");
 
     if (shoppingList != null) {   
 	 	for (Map.Entry<ArrayList<Food>, ArrayList<Double>> entry : shoppingList.entrySet()){
@@ -42,6 +45,8 @@ if (session.getAttribute("username") == null) {
 	    	 } else {
 	    		 link = foodList.get(i).getShopID();
 	    	 }
+	    	 
+	    	 total += foodList.get(i).getPrice();
 %>
 		<div class="container-fluid">
 			<div class="col-sm-6">
@@ -49,18 +54,25 @@ if (session.getAttribute("username") == null) {
 				</span></a>
 			</div>
 			<div class="col-sm-4">
-				<span>£<%=foodList.get(i).getPrice()%></span>
+				<span>£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
 			</div>
 			<div class="col-sm-4">
 				<span><%=massList.get(i)%></span>
 			</div>
-			<button type="button"
-				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>')">
+			<div class="col-sm-4">
+			<button class="optimise btn btn-block btn-success" type="button"
+				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>)">
 				Optimise
 			</button>
+			</div>
+			
 		</div>
+		
 <%
-		}	
+		}
+%>
+	<h2>Total: £<%= moneyDecimal.format(total) %></h2>
+<%
 	} else {
 %>
 		<p>
