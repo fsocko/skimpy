@@ -70,7 +70,7 @@ if (session.getAttribute("username") == null) {
 <%
 		}
 %>
-	<h2>Total: £<%= moneyDecimal.format(total) %></h2>
+	<h2>Total: £<span id="total-amount"><%= moneyDecimal.format(total) %></span></h2>
 <%
 	} else {
 %>

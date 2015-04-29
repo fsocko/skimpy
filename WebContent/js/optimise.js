@@ -45,7 +45,7 @@ function fillOffers(array, refPrice, clickedId) {
 	}
 	else {
 		$(divId).append($('<div>').addClass("descr")
-			.text("There are no cheaper products which could replace your choice."));
+			.text("There are no cheaper products which could replace chosen product - your choice is optimal."));
 	}
 }
 
@@ -64,8 +64,13 @@ $(document).ready(function() {
 			var replaced_product_price = $(this).closest('.container-fluid').find('.list-product-price');
 			var new_product_name = $(this).closest('.prod-suggestion').find('.prod-sgst-name').text();
 			var new_product_price = $(this).closest('.prod-suggestion').find('.prod-sgst-price').text();
+			var diff = $(this).closest('.prod-suggestion').find('.diff').text();
+			var prev_total = $('#total-amount').text();
+			var new_total = parseFloat(prev_total) - parseFloat(diff);
+			
 			replaced_product_name.empty().text(new_product_name);
 			replaced_product_price.empty().text(new_product_price);
+			$('#total-amount').text(new_total.toFixed(2));
 			$(this).closest('.suggestions-box').css('visibility', 'hidden');
 			$(this).closest('.suggestions-box').empty();
 		}
