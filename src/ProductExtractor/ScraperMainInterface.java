@@ -56,7 +56,8 @@ public class ScraperMainInterface {
 	
 	public static void scraperMenu() {
 		try {
-			while (true) {
+			boolean finish = false;
+			while (!finish) {
 				AutoDB adb = new AutoDB();
 				InputStreamReader cin = new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(cin);
@@ -116,7 +117,7 @@ public class ScraperMainInterface {
 					runAllScrapers(allSThreads, allAThreads);
 					break;
 				case 'q':
-					System.exit(0);
+					finish = true;
 					break;
 				}
 			}

@@ -168,7 +168,8 @@ public class AutoDBMainInterface {
     
     public static void DBTableInitMenu() {
     	try {
-    		while (true) {
+    		boolean finish = false;
+    		while (!finish) {
 				AutoDB adb = new AutoDB();
 				InputStreamReader cin = new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(cin);
@@ -177,7 +178,7 @@ public class AutoDBMainInterface {
 				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
 				case 'q':
-					System.exit(0);
+					finish = true;
 					break;
 				case 'a':
 					adb.initTable('a');
