@@ -2,3 +2,25 @@
 	visibility: hidden;
 	border: 1px solid #CCC;
 }
+
+.prod-suggestion {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding: 4px;
+}
+
+.prod-suggestion:hover {
+}
+
+.prod-sgst-name {
+	position: relative;
+	float: left;
+	width: 70%;
+}
+
+.prod-sgst-price {
+	position: relative;
+	float: left;
+	width: 10%;
+}

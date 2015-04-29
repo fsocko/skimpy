@@ -64,7 +64,7 @@ if (session.getAttribute("username") == null) {
 				Optimise
 			</button>
 			<div style="clear:both"></div>
-			<div class="suggestions-box col-sm-6" id="<%= i %>"></div>
+			<div class="suggestions-box col-sm-10" id="<%= i %>"></div>
 		</div>
 		
 <%
