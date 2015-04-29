@@ -33,8 +33,8 @@ public class AutoDBMainInterface {
 	try {
 	    InputStreamReader cin = new InputStreamReader(System.in);
 	    BufferedReader br = new BufferedReader(cin);
-	    System.out.println("This script will initialise product tables,\nparse scraper data and push results to the DB.");
-	    
+	    System.out.println("This script will initialise product tables,"
+	    + "\nparse scraper data and push results to the DB.");
 	    System.out.println("Continue? (y/n)");
 	    char continueInit = br.readLine().trim().toLowerCase().charAt(0);
 	    switch (continueInit) {
