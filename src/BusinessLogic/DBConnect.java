@@ -817,4 +817,40 @@ public class DBConnect extends HttpServlet{
 		
 		return results.toString();
 	}
+	
+	public String findOffers(String tableID, String shopID) {
+		JSONArray results = new JSONArray();
+		String supermarket;
+		
+		String queryFormat = "SELECT * FROM %s "
+				+ "WHERE FoodCat2 IN (SELECT FoodCat2 FROM %s WHERE id=%s) "
+				+ "AND NOT id=%s AND NOT price = 0 ORDER BY Price LIMIT 3";
+		if (shopID.equals("A")) {
+			supermarket = "asda";
+		}
+		else if (shopID.equals("S")) {
+			supermarket = "sains";
+		}
+		else if (shopID.equals("T")) {
+			supermarket = "tesco";
+		}
+		else {
+			return "";
+		}
+		
+		String query = String.format(queryFormat, supermarket, supermarket, tableID, tableID);
+		
+		try {
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				JSONObject temp = new JSONObject();
+				temp.put("name", rs.getString("Name"));
+				temp.put("price", rs.getString("Price"));
+				results.put(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return results.toString();
+	}
 }
