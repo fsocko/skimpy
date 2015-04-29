@@ -50,11 +50,11 @@ if (session.getAttribute("username") == null) {
 %>
 		<div class="container-fluid">
 			<div class="col-sm-6">
-				<a href="<%=link%>"><span class="list-product-name"><%=foodList.get(i).getName()%>
-				</span></a>
+				<span class="list-product-name"><a href="<%=link%>"><%=foodList.get(i).getName()%></a>
+				</span>
 			</div>
 			<div class="col-sm-4">
-				<span>£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
+				<span class="list-product-price">£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
 			</div>
 			<div class="col-sm-4">
 				<span><%=massList.get(i)%></span>

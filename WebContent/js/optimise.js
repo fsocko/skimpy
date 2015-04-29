@@ -33,23 +33,37 @@ function fillOffers(array, clickedId) {
 			$(divId).append(
 				$('<div>').addClass('prod-suggestion')
 					.append($('<span>').addClass('prod-sgst-name').text(array[obj].name))
-				.append($('<span>').addClass('prod-sgst-price').text("£" + array[obj].price.toFixed(2)))
-				.append($('<a>').addClass('btn btn-success button-replace')
+					.append($('<span>').addClass('prod-sgst-price').text(" £" + array[obj].price.toFixed(2)))
+					.append($('<a>').addClass('btn btn-success button-replace')
 						.append($('<i>').addClass('fa fa-level-up'))
 						.append($('<span>').addClass('button-label').text(" Replace")))
 			);
 	}
 	else {
-		$(divId).append($('<div>').addClass("descr").text("There were no cheaper products which could replace your choice."));
+		$(divId).append($('<div>').addClass("descr")
+			.text("There are no cheaper products which could replace your choice."));
 	}
 }
 
 $(document).ready(function() {
 	$('.suggestions-box').on('click', '.button-dismiss',
-			function() {
-				$(this).closest('.container-fluid').find('.optimise').removeAttr("disabled");
-				$(this).closest('.suggestions-box').empty();
-				$(this).closest('.suggestions-box').css('visibility', 'hidden');
-			}
-		);
+		function() {
+			$(this).closest('.container-fluid').find('.optimise').removeAttr("disabled");
+			$(this).closest('.suggestions-box').css('visibility', 'hidden');
+			$(this).closest('.suggestions-box').empty();	
+		}
+	);
+	
+	$('.suggestions-box').on('click', '.button-replace',
+		function() {
+			var replaced_product_name = $(this).closest('.container-fluid').find('.list-product-name');
+			var replaced_product_price = $(this).closest('.container-fluid').find('.list-product-price');
+			var new_product_name = $(this).closest('.prod-suggestion').find('.prod-sgst-name').text();
+			var new_product_price = $(this).closest('.prod-suggestion').find('.prod-sgst-price').text();
+			replaced_product_name.empty().text(new_product_name);
+			replaced_product_price.empty().text(new_product_price);
+			$(this).closest('.suggestions-box').css('visibility', 'hidden');
+			$(this).closest('.suggestions-box').empty();
+		}
+	);
 });
