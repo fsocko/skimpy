@@ -10,9 +10,6 @@
 	padding: 4px;
 }
 
-.prod-suggestion:hover {
-}
-
 .prod-sgst-name {
 	position: relative;
 	float: left;
@@ -23,4 +20,11 @@
 	position: relative;
 	float: left;
 	width: 10%;
+}
+
+.prod-sgst-diff {
+	position: relative;
+	float: left;
+	width: 80%;
+	color: #5CB85C;
 }

@@ -14,13 +14,13 @@ function findOffers(tableID, shopID, refPrice, clickedId) {
         			filtered.push(data[i]);
         		}
         	}
-        	fillOffers(filtered, clickedId);
+        	fillOffers(filtered, refPrice, clickedId);
         }
 	});
 }
 
 
-function fillOffers(array, clickedId) {
+function fillOffers(array, refPrice, clickedId) {
 	$("#" + clickedId).attr("disabled", "disabled");
 	var divId = "#" + clickedId.substring(7);
 	$(divId).closest('.suggestions-box').css("visibility", "visible");
@@ -34,9 +34,13 @@ function fillOffers(array, clickedId) {
 				$('<div>').addClass('prod-suggestion')
 					.append($('<span>').addClass('prod-sgst-name').text(array[obj].name))
 					.append($('<span>').addClass('prod-sgst-price').text(" £" + array[obj].price.toFixed(2)))
+					.append($('<span>').addClass('prod-sgst-diff')
+						.text("You save £")
+							.append($('<span>').addClass('diff').text((refPrice - array[obj].price).toFixed(2))))
 					.append($('<a>').addClass('btn btn-success button-replace')
 						.append($('<i>').addClass('fa fa-level-up'))
 						.append($('<span>').addClass('button-label').text(" Replace")))
+					
 			);
 	}
 	else {

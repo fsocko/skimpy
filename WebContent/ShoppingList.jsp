@@ -84,10 +84,6 @@ if (session.getAttribute("username") == null) {
      %>
 
 	</div>
-	
-	<div id="log-box">
-		
-	</div>
 </div>
 
 </body>
