@@ -784,7 +784,7 @@ public class DBConnect extends HttpServlet{
 				"(SELECT FoodCat2, COUNT(Name) AS entries FROM sains WHERE Name REGEXP '%s' AND Price NOT LIKE '0' GROUP BY FoodCat2)",
 				regexpPhrase);
 		
-		timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+		timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new java.util.Date());
 		
 		String queryCreateView = 
 				"CREATE VIEW temp_" + timestamp + " AS "
