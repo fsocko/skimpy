@@ -161,7 +161,9 @@ public class MealPlanner extends HttpServlet{
 	public double totalCal(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			result += plan[i][j].mealCal();
+			if(plan[i][j] != null){
+				result += plan[i][j].mealCal();
+			}
 		}
 		return result;
 	}

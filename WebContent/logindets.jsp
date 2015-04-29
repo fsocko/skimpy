@@ -78,11 +78,11 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 						sessionNutrition.setPerson(sessionUser);
 						sessionNutrition.setMealPlan(sessionPlan);
 						
+						NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
+						
 						session.setAttribute("mealPlan", p);
-						session.setAttribute("sessionNutrition", sessionNutrition);
-					}
-					else{
-						session.setAttribute("hasMeal", new Boolean(false));
+						session.setAttribute("sessionNutrition", newNutrition);
+						session.setAttribute("display", "90");
 						
 					}
 				} 

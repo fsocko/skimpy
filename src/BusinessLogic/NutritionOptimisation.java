@@ -71,7 +71,7 @@ public class NutritionOptimisation extends HttpServlet{
 		return String.valueOf(percentage);
 	}
 	
-	public static String messageCal(double percent){
+	public static String messageCal(int percent){
 		String message = "You are eating ";
 		
 		if(percent > 110){
@@ -195,9 +195,9 @@ public class NutritionOptimisation extends HttpServlet{
 		double userAmount = plan.totalCal(day);
 		double recommendedAmount = user.getMacros().getCalories();
 		
-		double percent = (userAmount / recommendedAmount) * 100;
+		int percent = (int) ((userAmount / recommendedAmount) * 100);
 		
-		return (int)percent;
+		return percent;
 	}
 	
 	public int proteinInfo(int day){
