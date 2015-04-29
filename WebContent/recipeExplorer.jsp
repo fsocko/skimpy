@@ -1,18 +1,15 @@
-<%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
-<%@page language="java" contentType="text/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="javax.script.*"%>
 <%@page import="java.io.IOException"%>
 <% String pageTitle = "Recipe Explorer"; %>
 <% String currentPage = "explorer"; %>
 <%@include file="header.jsp"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="BusinessLogic.*"%>
 <%if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
 }
-	 %>
+%>
 <div class="container-fluid">
 	<%        
        XMLParser writeX = new XMLParser();

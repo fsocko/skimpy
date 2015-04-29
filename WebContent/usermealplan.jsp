@@ -5,15 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
 <%	
-  	if(session.getAttribute("username") == null){
-		response.sendRedirect("login.jsp");
-	}
+if(session.getAttribute("username") == null){
+	response.sendRedirect("login.jsp");
+}
 %>
 <div class="container-fluid">
    <div class="well">
      <div class="row">
        <%
-       if(false){
+       boolean flag = (boolean)session.getAttribute("hasMeal");
+       if(!flag){
        %>
        <a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
        <%
@@ -41,11 +42,25 @@
 	           for(int i = 0; i < 7; i++){
 	           %>
 	           <td style="text-align: center;">
+		           <%
+	           	   String name = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();
+	           	   boolean mealExists = (name != null);
+	           	   if(mealExists){
+	           	   %>
 	           	 <form action="viewRecipe.jsp" method="post">
-	           	   <%String name = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();%>
-				   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"><%= name %></button>
+				   <button style="width: 100%; height: 100%;" class="btn pull-right btn-success btn-md" type="submit"><%= name %></button>
 				   <input name="name" type="hidden" value="<%= name%>">
 				 </form>
+			   	   <%
+				   }
+	           	   else {
+	           	   %>
+	           	  <form action="editRecipe.jsp" method="post">
+	           	   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"></button>
+				 </form>
+	           	   <%
+	           	   }
+           	   	   %>
 	           </td>
 	           <%
 	           }
@@ -85,17 +100,23 @@
          <div id="collapseThree" class="panel-collapse collapse">
              <div class="panel-body">
                  <div class="bs-example">
-		    <ul class="nav nav-tabs">
-		        <li class="active"><a href="#">Monday</a></li>
-		        <li><a href="#">Tuesday</a></li>
-		        <li><a href="#">Wednesday</a></li>
-		        <li><a href="#">Thursday</a></li>
-		        <li><a href="#">Friday</a></li>
-		        <li><a href="#">Saturday</a></li>
-		        <li><a href="#">Sunday</a></li>
-		    </ul>
-		</div>
-             </div>
+				    <ul class="nav nav-tabs" id="myTab">
+				        <li class="active"><a href="#sectionA">Section A</a></li>
+				        <li><a href="#sectionB">Section B</a></li>
+				    </ul>
+				    <div class="tab-content">
+				        <div id="sectionA" class="tab-pane fade in active">
+				            <h3>Monday</h3>
+				            <p>Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+				        </div>
+				        <div id="sectionB" class="tab-pane fade">
+				            <h3>Tuesday</h3>
+				            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+				        </div>
+				        
+				    </div>
+				</div>
+            </div>
          </div>
      </div>
  	</div>

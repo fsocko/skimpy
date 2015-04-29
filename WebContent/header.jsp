@@ -43,12 +43,20 @@
 	  }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="css/search.css">
 	<script src="js/jquery-1.11.2.min.js"></script>
 	<script src="js/search.js"></script>
-	    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){ 
+	    $("#myTab a").click(function(e){
+	    	e.preventDefault();
+	    	$(this).tab('show');
+	    });
+	});
+	</script>    
   </head>
   
   <body>

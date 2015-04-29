@@ -72,7 +72,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 				
 				for(MealPlanner p: readmeals){
 					if (sessionID == p.getUserId()){
-						session.setAttribute("hasMeal", true);
+						session.setAttribute("hasMeal", new Boolean(true));
 						sessionPlan = p;
 						
 						sessionNutrition.setPerson(sessionUser);
@@ -83,13 +83,13 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 						
 					}
 					else{
-						session.setAttribute("hasMeal", false);
+						session.setAttribute("hasMeal", new Boolean(false));
 						
 					}
 				} 
 			}
 			else{
-				session.setAttribute("hasMeal", false);
+				session.setAttribute("hasMeal", new Boolean(false));
 			}
 			
 			session.setMaxInactiveInterval(3000);
