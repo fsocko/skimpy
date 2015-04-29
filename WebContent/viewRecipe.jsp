@@ -1,3 +1,4 @@
+
 <%@page import="BusinessLogic.*"%>
 <%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,11 +18,27 @@
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
   String name= String.valueOf(request.getParameter("name"));
-  System.out.println("NAME:"+ name);
-  //String name = "Tuna Pasta Salad";
   Meal themeal = writeX.getMeal(readmeals, name);
- String dbid = "";
- String  sup = "";
+  
+  if(themeal==null){%>
+  <div class="container-fluid">
+	  <p>It seems that the meal you are looking for was deleted.</p>
+	  <p>Go to Meal Planner and change this recipe for a new one:</p>
+	  <p>
+			<button class="btn btn-block btn-success btn-lg" style="width: 200px"
+				onclick="document.location.href='editPlan.jsp'">Change
+				Meal Plan</button>
+		</p>
+	</div>  
+  <%}else{
+  
+  
+  
+  String dbid = "";
+  String  sup = "";
+ 
+	DecimalFormat cleanDecimal = new DecimalFormat("0.0");
+ 
   for (int j=0; j< themeal.getIngredients().size();j++){
       
     dbid +=  themeal.getIngredients().get(j).getDBID() + ";" ;
@@ -35,59 +52,83 @@
      
     System.out.println(themeal.getIngredients().size());
    
+    
+    String pps;
+    
+    if(themeal.getServings()<2){
+   	 pps= "person";
+    }else{
+   	 
+   	 pps= "people";
+    }
+    
       %>
 
-<form action="editRecipe.jsp" method="post">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-7">
-				<div class="well">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="media">
+ 
+    <form action="editRecipe.jsp" method="post">
+   <div class="container-fluid">
+      <div class="row">
+              <div class="col-sm-7">
+          <div class="well">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="media">
+               
+                  <div class="media-body">
+                    <div class="row">
+                 
+                      <div class="col-sm-8">
+                        <h4><%=themeal.getName() %></h4>
+                        Serves <%=themeal.getServings() %> <%=pps %>
+                        <input type="hidden" value="<%=themeal.getName() %>" name="name">
+                      </div>
+                      <div class="col-sm-4">
+                        
+                      <button  class="btn pull-right btn-primary btn-md" type="submit" >Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+              
+          
+    
+     
+     <% for (int i=0; i< themeal.getIngredients().size();i++){
 
-								<div class="media-body">
-									<div class="row">
-
-										<div class="col-sm-8">
-											<h4><%=themeal.getName() %></h4>
-											<input type="hidden" value="<%=themeal.getName() %>"
-												name="name">
-										</div>
-										<div class="col-sm-4">
-
-											<button class="btn pull-right btn-primary btn-md"
-												type="submit">Edit</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-8">
-							<%for (int i=0; i< themeal.getIngredients().size();i++){
     	 String link;
     	 
     	 if(themeal.getIngredients().get(i).getSupermarket().equals("T")){
     		 
-    		 link=  themeal.getIngredients().get(i).getShopID();
+    		 link= "http://www.tesco.com/groceries/product/details/?id=" +  themeal.getIngredients().get(i).getShopID();
     	 }else if (themeal.getIngredients().get(i).getSupermarket().equals("S")){
     		 
-    		 link=  themeal.getIngredients().get(i).getShopID();
+    		 link= themeal.getIngredients().get(i).getShopID();
     	 }else{
     		 
     		 link=  themeal.getIngredients().get(i).getShopID();
     	 }
     	 
     	 
-	                %>
+    	 String unit;
+			if (themeal.getIngredients().get(i).getUnit().toLowerCase().equals("null")){
+				unit = "g/ml";
+			}else{
+				unit = themeal.getIngredients().get(i).getUnit();
+				
+			}  %>
 
 
 							<div class="col-sm-8">
-								<a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+								<a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
 								</span></a>
 							</div>
-							<div class="col-sm-4">
-								<span> <%=themeal.getMasses().get(i)%>
+							<div class="col-sm-4"> <%
+							
+							
+							%>						
+								<span> <%=themeal.getMasses().get(i)%> <%=unit.toLowerCase()%>
 								</span>
 							</div>
 							<% }%>
@@ -113,65 +154,49 @@
 											<span class="label label-info">Calories</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealCal() %>
-												kcal
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealCal()) %> kcal</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Protein</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealProt() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealProt()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Carbohydrates</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealCarb() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealCarb()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Sugar</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealSugar() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealSugar()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Fat</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealFat() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealFat()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Saturates</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealSat() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealSat()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Fibre</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealFibr() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealFibr()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Salt</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=themeal.mealSalt() %>
-												g
-											</p>
+											<p><%=cleanDecimal.format(themeal.mealSalt()) %> g</p>
 										</div>
 									</div>
 								</div>
@@ -217,6 +242,6 @@
 		</div>
 	</div>
 </form>
-
+<%} %>
 </body>
 </html>

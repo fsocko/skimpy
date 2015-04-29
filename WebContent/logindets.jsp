@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
+<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,14 +15,21 @@
 <% 
 DBConnect con = new DBConnect();
 Person sessionUser = null;
+NutritionOptimisation sessionNutrition = new NutritionOptimisation(null, null);
+MealPlanner sessionPlan = null;
+
+XMLParser writeX = new XMLParser();
+ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
+
 
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 
 int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
-session.setAttribute("sessionUser", sessionUser);
 
+session.setAttribute("sessionUser", sessionUser);
+session.setAttribute("nutritionPercent", "1");
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	try{
@@ -58,6 +66,30 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 			session.setAttribute("saturates",sessionUser.getMacros().getSaturates());
 			session.setAttribute("fibre", sessionUser.getMacros().getFibre());
 			session.setAttribute("salt", sessionUser.getMacros().getSalt());
+			
+			if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
+				readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
+				
+				for(MealPlanner p: readmeals){
+					if (sessionID == p.getUserId()){
+						session.setAttribute("hasMeal", new Boolean(true));
+						sessionPlan = p;
+						
+						sessionNutrition.setPerson(sessionUser);
+						sessionNutrition.setMealPlan(sessionPlan);
+						
+						NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
+						
+						session.setAttribute("mealPlan", p);
+						session.setAttribute("sessionNutrition", newNutrition);
+						session.setAttribute("display", "90");
+						
+					}
+				} 
+			}
+			else{
+				session.setAttribute("hasMeal", new Boolean(false));
+			}
 			
 			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("home.jsp");

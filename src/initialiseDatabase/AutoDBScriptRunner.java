@@ -1,5 +1,9 @@
 package initialiseDatabase;
 
+/*Class further modified by Filip Socko to remove printing of log file for
+*compatibility with initDB interface.
+*/
+
 /*
  * Slightly modified version of the com.ibatis.common.jdbc.ScriptRunner class
  * from the iBATIS Apache project. Only removed dependency on Resource class
@@ -131,7 +135,6 @@ public class AutoDBScriptRunner {
                                 }
                                 String trimmedLine = line.trim();
                                 if (trimmedLine.startsWith("--")) {
-                                        println(trimmedLine);
                                 } else if (trimmedLine.length() < 1
                                                 || trimmedLine.startsWith("//")) {
                                         // Do nothing
@@ -146,9 +149,7 @@ public class AutoDBScriptRunner {
                                                         .lastIndexOf(getDelimiter())));
                                         command.append(" ");
                                         Statement statement = conn.createStatement();
- 
-                                        println(command);
- 
+  
                                         boolean hasResults = false;
                                         if (stopOnError) {
                                                 hasResults = statement.execute(command.toString());
@@ -172,15 +173,11 @@ public class AutoDBScriptRunner {
                                                 int cols = md.getColumnCount();
                                                 for (int i = 0; i < cols; i++) {
                                                         String name = md.getColumnLabel(i);
-                                                        print(name + "\t");
                                                 }
-                                                println("");
                                                 while (rs.next()) {
                                                         for (int i = 0; i < cols; i++) {
                                                                 String value = rs.getString(i);
-                                                                print(value + "\t");
                                                         }
-                                                        println("");
                                                 }
                                         }
  
@@ -219,17 +216,6 @@ public class AutoDBScriptRunner {
                 return delimiter;
         }
  
-        private void print(Object o) {
-                if (logWriter != null) {
-                        System.out.print(o);
-                }
-        }
- 
-        private void println(Object o) {
-                if (logWriter != null) {
-                        logWriter.println(o);
-                }
-        }
  
         private void printlnError(Object o) {
                 if (errorLogWriter != null) {

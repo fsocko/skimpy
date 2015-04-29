@@ -30,7 +30,6 @@ public class ThreadControl {
 
 	public void run() {
 		while (runningthreads.size() > 0 || waitingthreads.size() > 0) {
-			boolean updateUI = false;
 			if (runningthreads.size() < maxThreads && waitingthreads.size() > 0) {
 				Thread t = waitingthreads.get(0);
 				t.start();
@@ -44,11 +43,9 @@ public class ThreadControl {
 				if (!t.isAlive()) {
 					itr.remove();
 					completed++;
-					updateUI = true;
 				}
 			}
-			if (updateUI)
-				System.out.print(completed + " completed threads/" + runningthreads.size() + " running threads/" + waitingthreads.size() + " waiting threads, " + (completed * 100 / (completed + runningthreads.size() + waitingthreads.size())) + "%\r");
+			System.out.print(completed + " completed threads/" + runningthreads.size() + " running threads/" + waitingthreads.size() + " waiting threads, " + (completed * 100 / (completed + runningthreads.size() + waitingthreads.size())) + "%\r");
 		}
 	}
 	

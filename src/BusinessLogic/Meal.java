@@ -5,7 +5,7 @@ import java.util.Iterator;
 import javax.servlet.http.HttpServlet;
 /**
  *
- * @author ruaraidh, FPS
+ * @author ruaraidh, FPS, Alina
  *
  */
 /**
@@ -18,29 +18,32 @@ public class Meal extends HttpServlet{
 	 */
 	private String name;
 	private ArrayList<Food> ingredients;
-	private ArrayList<Integer> masses;
+	private ArrayList<Double> masses;
+	private int servings;
 
 	/**
 	 * Constructs a default Meal.
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Integer> masses)
+	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Double> masses, int servings)
 	{
 		this.name = name;
 	
 		this.ingredients = new ArrayList<Food>();
-				for(Food f : ingredients)
-		{
-					this.ingredients.add(f);
+		for(Food f : ingredients){
+			this.ingredients.add(f);
 		}		
 		
 		
-		this.masses = new ArrayList<Integer>();
-			for(Integer g : masses)
-			{
-					this.masses.add(g);
-			}
+
+		this.masses = new ArrayList<Double>();
+		for(Double g : masses){
+			this.masses.add(g);
+		}
+		
+		this.servings = servings;
+
 				
 	}	
 	/**
@@ -172,12 +175,19 @@ public class Meal extends HttpServlet{
 	{
 		return this.name;
 	}
+	
+	public int getServings()
+	{
+		return this.servings;
+	}
+	
+	
 	public ArrayList<Food> getIngredients()
 	{
 		return this.ingredients;
 	}
 	
-	public ArrayList<Integer> getMasses()
+	public ArrayList<Double> getMasses()
 	{
 		return this.masses;
 	}
