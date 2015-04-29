@@ -42,6 +42,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/optimise.css">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/search.js"></script>
 <script src="js/optimise.js"></script>
@@ -76,7 +77,6 @@
             </li>
           </ul>
           <div class="media">
-            <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:45px;height45px;"></a>
             <div class="media-body pull-right">
               <h4 class="media-heading"><%=session.getAttribute("username") %></h4>
               <a href="logout.jsp">log out</a>

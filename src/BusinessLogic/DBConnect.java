@@ -323,6 +323,7 @@ public class DBConnect extends HttpServlet{
 		}
 		return true;
 	}
+
 	
 	//I think this is unused
 	public void findCat(String qu){
@@ -844,6 +845,7 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
+				temp.put("id", rs.getString("ID"));
 				temp.put("name", rs.getString("Name"));
 				temp.put("price", rs.getDouble("Price"));
 				results.put(temp);
