@@ -51,7 +51,7 @@ if(request.getSession(false) == null){
 	           	   else {
 	           	   %>
 	           	  <form action="editRecipe.jsp" method="post">
-	           	   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"></button>
+	           	   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"> Add Meal</button>
 				 </form>
 	           	   <%
 	           	   }
@@ -67,10 +67,15 @@ if(request.getSession(false) == null){
            
          </tbody>
        </table>
+       <a href = "editPlan.jsp" class="btn btn-primary btn-lg">Edit your Meal Plan</a>
        <%
-       }
+       } 
+       else{
        %>
 		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+		<%
+       } 
+       %>
      </div>
    	</div>
    	<div class="well">

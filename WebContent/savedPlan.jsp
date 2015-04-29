@@ -40,14 +40,17 @@
  		   String s = request.getParameter("meal"+j+""+i).replace(";","");
  		   themeal = writeX.getMeal(readmeals, s);
  	       if (themeal!= null){
- 	       String m = themeal.toString();
- 	       plan.add(themeal, j, i);}
+	 	       String m = themeal.toString();
+	 	       plan.add(themeal, j, i);
+ 	       }
  		 }
  		 
  	 }
  	 ArrayList<MealPlanner> plans = new ArrayList<MealPlanner>();
  	 
  	 plans.add(plan);
+ 	 
+ 	 //session.setAttribute("mealPlan", plan);
  	 
  	 writeX.writeMealPlans(plans, getServletContext().getRealPath("") + "/mealplans.xml");
 
