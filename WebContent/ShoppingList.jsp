@@ -59,13 +59,12 @@ if (session.getAttribute("username") == null) {
 			<div class="col-sm-4">
 				<span><%=massList.get(i)%></span>
 			</div>
-			<div class="col-sm-4">
-			<button class="optimise btn btn-block btn-success" type="button"
-				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>)">
+			<button id="button_<%= i %>" class="optimise btn btn-block btn-success" style="width:100px"	type="button"
+				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>, this.id)">
 				Optimise
 			</button>
-			</div>
-			
+			<div style="clear:both"></div>
+			<div class="col-sm-6" id="<%= i %>"></div>
 		</div>
 		
 <%
@@ -84,6 +83,10 @@ if (session.getAttribute("username") == null) {
      	}
      %>
 
+	</div>
+	
+	<div id="log-box">
+		
 	</div>
 </div>
 
