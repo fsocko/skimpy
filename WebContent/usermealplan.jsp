@@ -42,8 +42,9 @@
 	           %>
 	           <td style="text-align: center;">
 	           	 <form action="viewRecipe.jsp" method="post">
-				   <button style="width: 100%;" class="btn pull-right btn-default btn-md" type="submit">Meal</button>
-				   <input name="name" type="hidden" value="">
+	           	   <%String name = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();%>
+				   <button style="width: 100%; height: 100%;" class="btn pull-right btn-default btn-md" type="submit"><%= name %></button>
+				   <input name="name" type="hidden" value="<%= name%>">
 				 </form>
 	           </td>
 	           <%
