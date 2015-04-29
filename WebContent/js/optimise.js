@@ -23,8 +23,9 @@ function findOffers(tableID, shopID, refPrice, clickedId) {
 function fillOffers(array, clickedId) {
 	$("#" + clickedId).attr("disabled", "disabled");
 	var divId = "#" + clickedId.substring(7);
-	$(divId).append($('<div>').addClass("descr").text("These products might help you save a bit more..."));
+	$(divId).closest('.suggestions-box').css("visibility", "visible");
 	if (array.length > 0) {
+		$(divId).append($('<div>').addClass("descr").text("These products might help you save a bit more..."));
 		for (obj in array)
 			$(divId).append(
 				$('<div>').addClass('prod-suggestion')
@@ -33,6 +34,6 @@ function fillOffers(array, clickedId) {
 			);
 	}
 	else {
-		console.log("empty")
+		$(divId).append($('<div>').addClass("descr").text("There were no cheaper products which could replace your choice."));
 	}
 }
