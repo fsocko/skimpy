@@ -50,28 +50,29 @@ if (session.getAttribute("username") == null) {
 %>
 		<div class="container-fluid">
 			<div class="col-sm-6">
+
 				<a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
 				</span></a>
+
 			</div>
 			<div class="col-sm-4">
-				<span>£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
+				<span class="list-product-price">£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
 			</div>
 			<div class="col-sm-4">
 				<span><%=massList.get(i)%></span>
 			</div>
-			<div class="col-sm-4">
-			<button class="optimise btn btn-block btn-success" type="button"
-				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>)">
+			<button id="button_<%= i %>" class="optimise btn btn-block btn-success" style="width:100px"	type="button"
+				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>, this.id)">
 				Optimise
 			</button>
-			</div>
-			
+			<div style="clear:both"></div>
+			<div class="suggestions-box col-sm-10" id="<%= i %>"></div>
 		</div>
 		
 <%
 		}
 %>
-	<h2>Total: £<%= moneyDecimal.format(total) %></h2>
+	<h2>Total: £<span id="total-amount"><%= moneyDecimal.format(total) %></span></h2>
 <%
 	} else {
 %>

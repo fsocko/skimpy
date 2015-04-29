@@ -42,6 +42,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/optimise.css">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/search.js"></script>
 <script src="js/optimise.js"></script>
