@@ -252,17 +252,17 @@ public class AutoDB {
 		case 'a':
 		    System.out.print("Pushing ASDA data...");
 		    executePush(asdaPath, "asda");
-		    System.out.print("Done\n");
+		    System.out.println("Done\n");
 		    break;
 		case 's':
 		    System.out.print("Pushing Sainsbury's data...");
 		    executePush(sainsPath, "sains");
-		    System.out.print("Done\n");
+		    System.out.println("Done\n");
 		    break;
 		case 't':
 		    System.out.print("Pushing Tesco data...");
 		    executePush(tescoPath, "tesco");
-		    System.out.print("Done\n");
+		    System.out.println("Done\n");
 		    break;
 		default:
 		    System.out.println("Invalid input.\n");
@@ -277,17 +277,38 @@ public class AutoDB {
 		SpiderToDB std = new SpiderToDB();
 		DBConnect toDB = new DBConnect();
 		ArrayList Items = new ArrayList(std.readAllRecords(path));
+		System.out.println("Formatting ArrayList records and pushing to DB...\n");
 		
 		int i = 1;
 		int t = std.countLines(path);
-		while(i < t){
-			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());
+		while(i < t)
+		{
+			Food foodItem = std.formatRecord(path, Items.get(i).toString().trim());	
 			if(foodItem != null)
 			{
-				System.out.println(foodItem.toString());
-				toDB.pushFood(foodItem, table);
+				toDB.pushFood(foodItem, table);				
+				progBar((10*(i*100)/(t*10)));
 			}
+			       
 			i++;
 		}
 	}
+		//Modified this method by Nakkaya.com. It displays a progressbar.
+		public static void progBar(int percent)
+		{
+		    StringBuilder bar = new StringBuilder("[");
+
+		    for(int i = 0; i < 50; i++){
+		        if( i < (percent/2)){
+		            bar.append("=");
+		        }else if( i == (percent/2)){
+		            bar.append(">");
+		        }else{
+		            bar.append(" ");
+		        }
+		    }
+
+		    bar.append("]   " + percent + "%     ");
+		    System.out.print("\r" + bar.toString());
+		}
 }

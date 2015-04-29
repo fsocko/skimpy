@@ -51,7 +51,7 @@
 	    		 link= "http://www.tesco.com/groceries/product/details/?id=" + foodList.get(i).getShopID();
 	    	 }else if (foodList.get(i).getSupermarket().equals("S")){
 	    		 
-	    		 link= "http://www.sainsburys.co.uk/shop/gb/groceries/" + foodList.get(i).getShopID();
+	    		 link=  foodList.get(i).getShopID();
 	    	 }else{
 	    		 
 	    		 link=  foodList.get(i).getShopID();

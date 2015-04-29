@@ -197,7 +197,6 @@ public class DBConnect extends HttpServlet{
 								+ food.getSalt() + "\", \"" + food.getFibre()+ "\");";
 
 				st.executeUpdate(query);
-				System.out.println("Pushes to Database\n\n");
 							
 			} catch(Exception ex){
 					System.out.println(ex);
@@ -208,13 +207,7 @@ public class DBConnect extends HttpServlet{
 			}
 		}
 	}
-	
-	/**public static void main(String[] args) {
-		DBConnect db = new DBConnect();
-		Person p = db.pullUser("35");
-		System.out.println(p.getName());
-	} */
-	
+		
 	public Person pullUser(String ID)
 	{
 		openCon();
