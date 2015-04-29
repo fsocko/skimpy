@@ -18,11 +18,24 @@
   ArrayList<Meal> readmeals = new ArrayList<Meal>();
   readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
   String name= String.valueOf(request.getParameter("name"));
-  System.out.println("NAME:"+ name);
-  //String name = "Tuna Pasta Salad";
   Meal themeal = writeX.getMeal(readmeals, name);
- String dbid = "";
- String  sup = "";
+  
+  if(themeal==null){%>
+  <div class="container-fluid">
+	  <p>It seems that the meal you are looking for was deleted.</p>
+	  <p>Go to Meal Planner and change this recipe for a new one:</p>
+	  <p>
+			<button class="btn btn-block btn-success btn-lg" style="width: 200px"
+				onclick="document.location.href='editPlan.jsp'">Change
+				Meal Plan</button>
+		</p>
+	</div>  
+  <%}else{
+  
+  
+  
+  String dbid = "";
+  String  sup = "";
  
 	DecimalFormat cleanDecimal = new DecimalFormat("0.0");
  
@@ -98,15 +111,24 @@
     	 }
     	 
     	 
-	                %>
+    	 String unit;
+			if (themeal.getIngredients().get(i).getUnit().toLowerCase().equals("null")){
+				unit = "g/ml";
+			}else{
+				unit = themeal.getIngredients().get(i).getUnit();
+				
+			}  %>
 
 
 							<div class="col-sm-8">
-								<a href="<%=link%>"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
+								<a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=themeal.getIngredients().get(i).getName().replace(";", "")%>
 								</span></a>
 							</div>
-							<div class="col-sm-4">
-								<span> <%=themeal.getMasses().get(i)%>
+							<div class="col-sm-4"> <%
+							
+							
+							%>						
+								<span> <%=themeal.getMasses().get(i)%> <%=unit.toLowerCase()%>
 								</span>
 							</div>
 							<% }%>
@@ -220,6 +242,6 @@
 		</div>
 	</div>
 </form>
-
+<%} %>
 </body>
 </html>

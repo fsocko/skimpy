@@ -5,7 +5,7 @@ import java.util.Iterator;
 import javax.servlet.http.HttpServlet;
 /**
  *
- * @author ruaraidh, FPS
+ * @author ruaraidh, FPS, Alina
  *
  */
 /**
@@ -18,7 +18,7 @@ public class Meal extends HttpServlet{
 	 */
 	private String name;
 	private ArrayList<Food> ingredients;
-	private ArrayList<Integer> masses;
+	private ArrayList<Double> masses;
 	private int servings;
 
 	/**
@@ -26,7 +26,7 @@ public class Meal extends HttpServlet{
 	 * @param name The Meal name.
 	 * @param ingredients The Food needed to make the Meal.
 	 */
-	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Integer> masses, int servings)
+	public Meal(String name, ArrayList<Food> ingredients, ArrayList<Double> masses, int servings)
 	{
 		this.name = name;
 	
@@ -37,8 +37,8 @@ public class Meal extends HttpServlet{
 		}		
 		
 		
-		this.masses = new ArrayList<Integer>();
-			for(Integer g : masses)
+		this.masses = new ArrayList<Double>();
+			for(Double g : masses)
 			{
 					this.masses.add(g);
 			}
@@ -187,7 +187,7 @@ public class Meal extends HttpServlet{
 		return this.ingredients;
 	}
 	
-	public ArrayList<Integer> getMasses()
+	public ArrayList<Double> getMasses()
 	{
 		return this.masses;
 	}
