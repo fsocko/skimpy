@@ -75,7 +75,6 @@
             </li>
           </ul>
           <div class="media">
-            <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:45px;height45px;"></a>
             <div class="media-body pull-right">
               <h4 class="media-heading"><%=session.getAttribute("username") %></h4>
               <a href="logout.jsp">log out</a>
