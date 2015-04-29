@@ -1,4 +1,6 @@
  <!doctype html>
+<% String pageTitle = ""; %>
+<% String currentPage = ""; %>
 <%@include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
