@@ -35,7 +35,6 @@ public class Meal extends HttpServlet{
 			this.ingredients.add(f);
 		}		
 		
-		
 
 		this.masses = new ArrayList<Double>();
 		for(Double g : masses){
@@ -43,7 +42,6 @@ public class Meal extends HttpServlet{
 		}
 		
 		this.servings = servings;
-
 				
 	}	
 	/**
