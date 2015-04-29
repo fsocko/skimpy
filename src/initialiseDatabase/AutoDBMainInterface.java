@@ -1,4 +1,4 @@
-//@Author: FPS
+//@Author: FPS, Lee
 //A class for automatically setting up the SQL database.
 //Runs a menu interface with options:
 //A: initialise the database.
