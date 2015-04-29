@@ -244,6 +244,22 @@ table, th, td {
     border-style:none;
 }
 
+#delete-button{
+	position: relative;
+	float: right;
+	width: 60%;	
+	background-color:#FF3333 ;
+}
+
+#change-button{
+	
+	position: relative;
+	float: left;
+	width: 60%;	
+}
+
+
+
 .mass {
 	position: relative;
 	float: left;
@@ -292,6 +308,13 @@ table, th, td {
 	width: 100%;
 	color: #838383;
 }
+
+
+.unitDB {
+	display: none;
+}
+
+
 
 .button-remove {
 	position: relative;

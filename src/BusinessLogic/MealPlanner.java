@@ -161,7 +161,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalCal(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if(plan[i][j] != null){
+			if (plan[i][j] != null) {
 				result += plan[i][j].mealCal();
 			}
 		}
@@ -171,7 +171,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalProtein(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if(plan[i][j] != null){
+			if (plan[i][j] != null) {
 				result += plan[i][j].mealProt();
 			}
 		}
@@ -208,7 +208,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalSats(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if(plan[i][j] != null){
+			if (plan[i][j] != null) {
 				result += plan[i][j].mealSat();
 			}
 		}
@@ -217,7 +217,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalFibre(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if(plan[i][j] != null){
+			if (plan[i][j] != null) {
 				result += plan[i][j].mealFibr();
 			}
 		}
@@ -226,7 +226,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalSalt(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if(plan[i][j] != null){
+			if (plan[i][j] != null) {
 				result += plan[i][j].mealSalt();
 			}
 		}

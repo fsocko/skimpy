@@ -43,13 +43,17 @@ public class XMLParser {
 					foods.add(f);
 				}
 				NodeList rawMasses = mealelem.getElementsByTagName("Mass");
-				ArrayList<Integer> masses = new ArrayList<Integer>();
+				ArrayList<Double> masses = new ArrayList<Double>();
 				for (int j = 0; j < rawMasses.getLength(); j++) {
 					Element masselem = (Element)rawMasses.item(j);
-					int mass = Integer.parseInt(masselem.getTextContent());
+					double mass = Double.parseDouble(masselem.getTextContent());
 					masses.add(mass);
 				}
-				Meal m = new Meal(name, foods, masses);
+
+				int servings = Integer.parseInt(mealelem.getElementsByTagName("Servings").item(0).getTextContent());
+				Meal m = new Meal(name, foods, masses, servings);
+
+
 				meals.add(m);
 			}
 			meals = sort(meals, 0, meals.size() - 1);
@@ -127,11 +131,14 @@ public class XMLParser {
 				}
 				Element masses = doc.createElement("Masses");
 				meal.appendChild(masses);
-				for (int i: m.getMasses()) {
+				for (double i: m.getMasses()) {
 					Element mass = doc.createElement("Mass");
 					mass.appendChild(doc.createTextNode("" + i));
 					masses.appendChild(mass);
 				}
+				Element servings = doc.createElement("Servings");
+				servings.appendChild(doc.createTextNode("" + m.getServings()));
+				meal.appendChild(servings);
 			}
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer t = tf.newTransformer();
@@ -179,13 +186,16 @@ public class XMLParser {
 								foods.add(f);
 							}
 							NodeList rawMasses = timeElem.getElementsByTagName("Mass");
-							ArrayList<Integer> masses = new ArrayList<Integer>();
+							ArrayList<Double> masses = new ArrayList<Double>();
 							for (int l = 0; l < rawMasses.getLength(); l++) {
 								Element masselem = (Element)rawMasses.item(l);
-								int mass = Integer.parseInt(masselem.getTextContent());
+								double mass = Double.parseDouble(masselem.getTextContent());
 								masses.add(mass);
 							}
-							Meal m = new Meal(name, foods, masses);
+
+							int servings = Integer.parseInt(timeElem.getElementsByTagName("Servings").item(0).getTextContent());
+							Meal m = new Meal(name, foods, masses, servings);
+
 							mp.add(m, j, k);
 						} catch (Exception e) {
 							
@@ -250,11 +260,14 @@ public class XMLParser {
 							}
 							Element masses = doc.createElement("Masses");
 							meal.appendChild(masses);
-							for (int h: m.getMasses()) {
+							for (double h: m.getMasses()) {
 								Element mass = doc.createElement("Mass");
 								mass.appendChild(doc.createTextNode("" + h));
 								masses.appendChild(mass);
 							}
+							Element servings = doc.createElement("Servings");
+							servings.appendChild(doc.createTextNode("" + m.getServings()));
+							meal.appendChild(servings);
 						}
 					}
 				}

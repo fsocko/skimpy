@@ -1,6 +1,7 @@
 <!doctype html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <html>
   
   <head>
@@ -45,10 +46,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="css/search.css">
-	<script src="js/jquery-1.11.2.min.js"></script>
-	<script src="js/search.js"></script>
+	<link rel="stylesheet" href="css/optimise.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/optimise.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){ 
 	    $("#myTab a").click(function(e){
@@ -87,7 +90,6 @@
             </li>
           </ul>
           <div class="media">
-            <a class="pull-right" href="#"><img class="media-object pull-right" src="https://builder.divshot.com/img/placeholder-64x64.gif" style="width:45px;height45px;"></a>
             <div class="media-body pull-right">
               <h4 class="media-heading"><%=session.getAttribute("username") %></h4>
               <a href="logout.jsp">log out</a>

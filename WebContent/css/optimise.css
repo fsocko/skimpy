@@ -1,0 +1,30 @@
+.suggestions-box {
+	visibility: hidden;
+	border: 1px solid #CCC;
+}
+
+.prod-suggestion {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding: 4px;
+}
+
+.prod-sgst-name {
+	position: relative;
+	float: left;
+	width: 70%;
+}
+
+.prod-sgst-price {
+	position: relative;
+	float: left;
+	width: 10%;
+}
+
+.prod-sgst-diff {
+	position: relative;
+	float: left;
+	width: 80%;
+	color: #5CB85C;
+}
