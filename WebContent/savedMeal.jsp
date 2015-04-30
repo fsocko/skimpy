@@ -26,22 +26,28 @@
  	    String MealName = request.getParameter("mealname");
 	    String  Shops =  request.getParameter("supermarket");
 	    int servings = Integer.valueOf(request.getParameter("servings"));
+	    
 	    ArrayList<String> shopList = new ArrayList<String>();
+	    
+	    if(Shops!=""){
 	    for(String s: Shops.split(";")){
 	    	shopList.add(s);
 	    	
+	     }
 	    }
 	    String ShopIds =  request.getParameter("ingred");
 	    ArrayList<String> idList = new ArrayList<String>();
+	    
+	    if(ShopIds!=""){
 	    for(String s: ShopIds.split(";")){
 	    	idList.add(s);
-	    	
+	      }
 	    }
 	    
 	    String [] Servings =  request.getParameterValues("mass");
 	    ArrayList<Double> massList = new ArrayList<Double>();
 	    
-	   
+	    if(Servings!=null){
 	    for(String s: Servings){
 	    
 	    try{
@@ -58,7 +64,10 @@
 	    	
 	        		 massList.add(Double.parseDouble(s.replaceAll("[^.0-9]","").trim()));
 	    	
-	    }}  }
+	    			}
+		    	 }  
+	   		 }
+	    }
         
         String masses = java.util.Arrays.deepToString(Servings);
 
