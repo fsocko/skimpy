@@ -45,28 +45,24 @@ if(request.getSession(false) == null){
 			    			%>
 				           		<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
-										<div class="row">
-											<div class="col-sm-9">
-												<span class = "product">
-													<select class="form-control" id="ing<%=i%><%=j%>">
-														<option selected></option>
-														<%
-														for(Meal m : meals){
-														%>
-															<option><%= m.getName()%></option>
-														<%
-														}
-														%>
-													</select>
-												</span>
-											</div>
-											<div class="col-sm-3">
-												<span class="button-add-plan">
-													<i class="fa fa-plus"></i>
-												</span>
-												<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
-											</div>
-										</div>
+										<span class = "product">
+											<select class="form-control" id="ing<%=i%><%=j%>">
+												<option selected></option>
+												<%
+												for(Meal m : meals){
+												%>
+													<option><%= m.getName()%></option>
+												<%
+												}
+												%>
+											</select>
+										</span>
+									</div>
+									<div class="col-sm-3">
+										<span class="button-add-plan">
+											<i class="fa fa-plus"></i>
+										</span>
+										<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
 									</div>
 								</td>	
 							<%
@@ -141,7 +137,7 @@ if(request.getSession(false) == null){
 					</tbody>
 				</table>
 				<br>
-				<input type="submit" class="btn btn-block btn-success btn-lg" style = "width: 20%" value="Save Meal Plan"/>
+				<input type="submit" class="btn btn-block btn-success btn-lg" style = "width: 15%" value="Save Meal Plan"/>
 			</form>
 			<%
 			} 
