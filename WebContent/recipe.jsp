@@ -60,6 +60,9 @@ $(document).ready(function() {
 	    	servings:{
 	    		required: true
 	    	},
+	    	mealname:{
+	    		required: true
+	    	},
 	    }
 	});
 	$("#servings").keydown(function(event) {
