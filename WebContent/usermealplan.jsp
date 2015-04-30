@@ -80,7 +80,7 @@
              		<div class="panel-body">
 	                	<div class="bs-example">
 						    <ul class="nav nav-tabs">
-						        <li class="active"><a href="#monday">Monday</a></li>
+						        <li class="active"><a data-toggle="tab" href="#monday">Monday</a></li>
 						        <li><a data-toggle="tab" href="#tuesday">Tuesday</a></li>
 						        <li><a data-toggle="tab" href="#wednesday">Wednesday</a></li>
 						        <li><a data-toggle="tab" href="#thursday">Thursday</a></li>
