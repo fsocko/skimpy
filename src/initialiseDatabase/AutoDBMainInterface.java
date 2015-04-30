@@ -166,6 +166,39 @@ public class AutoDBMainInterface {
 	}
     }
     
+    public static void DBTablePopulateMenu() {
+    	try {
+    		boolean finish = false;
+    		while (!finish) {
+    			AutoDB adb = new AutoDB();
+    			InputStreamReader cin = new InputStreamReader(System.in);
+    			BufferedReader br = new BufferedReader(cin);
+    			System.out.println("Which table would you like to populate? This will wipe the table first. Only first character will be read.");
+    			System.out.println("[a = asda, s = sains, t = tesco, q = exit]");
+    			char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
+    			switch (userInput) {
+    			case 'q':
+    				finish = true;
+    				break;
+    			case 'a':
+    				adb.initTable('a');
+    				adb.pushToDB('a');
+    				break;
+    			case 's':
+					adb.initTable('s');
+					adb.pushToDB('s');
+					break;
+    			case 't':
+					adb.initTable('t');
+					adb.pushToDB('t');
+					break;
+    			}
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public static void DBTableInitMenu() {
     	try {
     		boolean finish = false;

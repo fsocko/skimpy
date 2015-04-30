@@ -24,27 +24,50 @@ public class ScraperMainInterface {
 				System.out.println("Only the first character will be read");
 				System.out.println();
 				System.out.println("a:> Initialize database");
-				System.out.println("b:> Run scrapers");
-				System.out.println("c:> Initialize tables");
-				System.out.println("d:> Quit");
+				System.out.println("b:> Initialize tables");
+				System.out.println("c:> Populate database");
+				System.out.println("d:> Run scrapers");
+				System.out.println("q:> Quit");
+				AutoDB adb = new AutoDB();
 				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
 				case 'a':
-					System.out.println("Initializing the database will delete everything in it");
-					System.out.println("Would you like to continue (y/n)? Only first character is read");
-					char userConfirm  = (br.readLine().toLowerCase() + " ").charAt(0);
-					if (userConfirm == 'y') {
-						AutoDB adb = new AutoDB();
-						adb.initDB();
+					System.out.println("Would you like to use an existing template (y/n)? Only first character is read");
+					char template = (br.readLine().toLowerCase() + " ").charAt(0);
+					if (template == 'y') {
+						System.out.println("Please enter the path of the file you wish to use");
+						System.out.print("Enter:> ");
+						String filePath = br.readLine();
+						File f = new File(filePath);
+						if (f.exists() && !f.isDirectory()) {
+							System.out.println("Initializing the database will delete everything in it");
+							System.out.println("Would you like to continue (y/n)? Only first character is read");
+							char createConfirm = (br.readLine().toLowerCase() + " ").charAt(0);
+							if (createConfirm == 'y') {
+								adb.initDB(filePath);
+							}
+						} else {
+							System.out.println("File does not exist");
+						}
+					} else if (template == 'n') {
+						System.out.println("Initializing the database will delete everything in it");
+						System.out.println("Would you like to continue (y/n)? Only first character is read");
+						char initConfirm  = (br.readLine().toLowerCase() + " ").charAt(0);
+						if (initConfirm == 'y') {
+							adb.initDB();
+						}
 					}
 					break;
 				case 'b':
-					scraperMenu();
-					break;
-				case 'c':
 					AutoDBMainInterface.DBTableInitMenu();
 					break;
+				case 'c':
+					AutoDBMainInterface.DBTablePopulateMenu();
+					break;
 				case 'd':
+					scraperMenu();
+					break;
+				case 'q':
 					System.exit(0);
 					break;
 				}
