@@ -61,7 +61,7 @@ if (meals != null){
 	        	<%   for(Meal m: meals){%>
 	        	    	<option> <%=m.getName() %></option>
 	        	   <% } %></select> </span> 
-	           <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	        <!--    <span class="button-add-plan"><i class="fa fa-plus"></i></span> -->
 	           <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
                      </div>
                      <div id="add-item"></div>
@@ -85,7 +85,7 @@ if (meals != null){
 	        	 for(Meal k: meals){%>
 	        	    	<option> <%=k.getName() %></option>
 	        	   <% } %></select> </span> 
-   	    	   <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+   	    	  <!--  <span class="button-add-plan"><i class="fa fa-plus"></i></span> -->
    	    	    <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden" value="<%=m.getMeal(j,i).getName()%>">
 	        	   </div>
    	    	   
@@ -108,7 +108,7 @@ if (meals != null){
 	        	 <%   for(Meal n: meals){%>
 	        	    	<option> <%=n.getName() %></option>
 	        	   <% } %></select> </span> 
-    	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+    	 <!--  <span class="button-add-plan"><i class="fa fa-plus"></i></span> -->
     	  <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
 	        	   </div>
 	        	   <div id="add-item"></div>
@@ -126,7 +126,7 @@ if (meals != null){
 	        	 <%   for(Meal n: meals){%>
 	        	    	<option> <%=n.getName() %></option>
 	        	   <% } %></select> </span> 
-	  <span class="button-add-plan"><i class="fa fa-plus"></i></span>
+	 <!--  <span class="button-add-plan"><i class="fa fa-plus"></i></span> -->
 	  <input name="meal<%=j%><%=i %>" id="meal" class="meal" type="hidden">
 	               
    </div>

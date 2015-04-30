@@ -45,8 +45,7 @@ for ( i = 0; i < 3; i++) {
 	        $('#cell'+j+''+i).append(
 					$('<div>').addClass('result-entry').append(
 	        		$('<span>').addClass('product-name-plan').append($
-	        				('<input>'))).append($
-	        						('<span>').addClass('button-add')));
+	        				('<input>'))));
 	       
 	});
 		
