@@ -20,7 +20,7 @@ public class NutritionOptimisation extends HttpServlet{
 	}
 	
 	public boolean checkMacro(double macro){
-		if(macro > 110 || macro < 90){
+		if(macro > 115 || macro < 85){
 			return true;
 		}
 		return false;
