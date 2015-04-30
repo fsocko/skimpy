@@ -36,11 +36,11 @@ label.error {
 		<div id="recipe">
 			<form action="savedMeal.jsp" method="POST" id="myForm">
 				
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 							<input class="recipe-name form-control input-sm" name="mealname" placeholder="Meal Name"
 							value="<%=themeal.getName()%>" readonly>
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-4">
 						    <input class="recipe-name form-control input-sm" placeholder= "Servings" name="servings" id="servings"
 						    value="<%=themeal.getServings() %>">
 						    </div>

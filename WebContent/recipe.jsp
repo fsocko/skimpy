@@ -18,10 +18,10 @@ label.error {
 		<div class="col-sm-6">
 			<form action="savedMeal.jsp" method="POST" id="myForm">
 				<div id="recipe">
-					<div class="col-sm-10">
+					<div class="col-sm-8">
 							<input class="recipe-name form-control input-sm" name="mealname" placeholder="Meal Name">
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-4">
 						    <input class="recipe-name form-control input-sm" placeholder= "Servings" name="servings" id="servings">
 						    </div>
 					<div class="products-mass">

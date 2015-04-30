@@ -55,8 +55,6 @@ if (session.getAttribute("username") == null) {
 	    	 
 	    	 
 	    	 
-	    	 
-	    	 
 	    	 total += java.lang.Math.round(massList.get(i)/mass)* foodList.get(i).getPrice();
 %>
 		<div class="container-fluid">
