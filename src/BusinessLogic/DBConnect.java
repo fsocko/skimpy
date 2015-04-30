@@ -845,7 +845,13 @@ public class DBConnect extends HttpServlet{
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				JSONObject temp = new JSONObject();
-				temp.put("id", rs.getString("ID"));
+				if (rs.getString("Supermarket").equals("A") || rs.getString("SuperMarket").equals("S")) {
+					temp.put("url", rs.getString("ShopID").trim());
+				}
+				else if (rs.getString("SuperMarket").equals("T")) {
+					temp.put("url", "http://www.tesco.com/groceries/product/details/?id=" + rs.getString("ShopID").trim());
+				}
+				
 				temp.put("name", rs.getString("Name"));
 				temp.put("price", rs.getDouble("Price"));
 				results.put(temp);
