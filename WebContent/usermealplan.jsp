@@ -13,7 +13,7 @@ if(request.getSession(false) == null){
    	<div class="well">
     	<div class="row">
 		<%
-		boolean flag = (boolean)session.getAttribute("hasMeal");
+		boolean flag = (boolean)session.getAttribute("hasMealPlan");
 		if(flag){
 		%>
     	<table class="table">

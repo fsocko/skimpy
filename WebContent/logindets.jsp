@@ -21,7 +21,6 @@ MealPlanner sessionPlan = null;
 XMLParser writeX = new XMLParser();
 ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
 
-
 String email = request.getParameter("email");
 String password = request.getParameter("password");
 
@@ -29,7 +28,6 @@ int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
 
 session.setAttribute("sessionUser", sessionUser);
-
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	try{
@@ -67,12 +65,13 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 			session.setAttribute("fibre", sessionUser.getMacros().getFibre());
 			session.setAttribute("salt", sessionUser.getMacros().getSalt());
 			
+			
 			if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
 				readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
 				
 				for(MealPlanner p: readmeals){
 					if (sessionID == p.getUserId()){
-						session.setAttribute("hasMeal", new Boolean(true));
+						session.setAttribute("hasMealPlan", new Boolean(true));
 						sessionPlan = p;
 						
 						sessionNutrition.setPerson(sessionUser);
@@ -87,7 +86,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 				} 
 			}
 			else{
-				session.setAttribute("hasMeal", new Boolean(false));
+				session.setAttribute("hasMealPlan", new Boolean(false));
 			}
 			
 			session.setMaxInactiveInterval(3000);
