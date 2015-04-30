@@ -211,7 +211,7 @@ label.error {
 									</div>
 									<div class="col-sm-4">
 										<button class="btn pull-right btn-success btn-md"
-											type="submit">Save</button>
+											type="submit">Save</button>	
 									</div>
 								</div>
 							</div>
@@ -265,8 +265,7 @@ label.error {
                     <span id="range">"showValue(<%=session.getAttribute("exerciseNo") %>)"</span> --%>
 										<div class="birthday-drop">
 											<select name="exercise" class="form-control">
-												<option value="<%=session.getAttribute("exerciseNo") %>"
-													selected><%=session.getAttribute("exercise") %></option>
+												<option value="<%=session.getAttribute("exerciseNo") %>"selected><%=session.getAttribute("exercise") %></option>
 												<option value="1">Desk job with little exercise</option>
 												<option value="2">1-3hrs/week of light exercise</option>
 												<option value="3">3-5hrs/week of moderate exercise</option>
@@ -469,16 +468,14 @@ label.error {
 			</div>
 		</div>
 	</div>
-</body>
-
 <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript">
     $(document).ready(function(){
       $('#myForm').validate({
             rules:{
               weight:{
-                required:true
+            	  required:true
               },
               
               height:{
@@ -487,8 +484,33 @@ label.error {
             }
       });
     });
-
+    
+    
+    $("#height").keydown(function(event) {
+		// Allow only backspace and delete
+		if ( event.keyCode == 46 || event.keyCode == 8 ) {
+			// let it happen, don't do anything
+		}
+		else {
+			// Ensure that it is a number and stop the keypress
+			if (event.keyCode < 48 || event.keyCode > 57 ) {
+				event.preventDefault();	
+			}	
+		}
+	});
+    
+    $("#weight").keydown(function(event) {
+		// Allow only backspace and delete
+		if ( event.keyCode == 46 || event.keyCode == 8 ) {
+			// let it happen, don't do anything
+		}
+		else {
+			// Ensure that it is a number and stop the keypress
+			if (event.keyCode < 48 || event.keyCode > 57 ) {
+				event.preventDefault();	
+			}	
+		}
+	});
     </script>
-
-
+</body>
 </html>
