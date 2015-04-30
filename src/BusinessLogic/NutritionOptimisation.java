@@ -27,6 +27,9 @@ public class NutritionOptimisation extends HttpServlet{
 	}
 	
 	public String percent(){
+		if(user == null || plan == null){
+			return "1";
+		}
 		int percentage = 100;
 		int subtract = 0;
 		
@@ -69,6 +72,22 @@ public class NutritionOptimisation extends HttpServlet{
 		}
 		
 		return String.valueOf(percentage);
+	}
+	
+	public static String percentBar(int percent){
+		int subtract = 0;
+		int value = 100;
+		if(percent > 110){
+			subtract = percent - value;
+		}
+		else if(percent < 90){
+			value = percent;
+		}
+		value -= subtract;
+		if(value <= 1){
+			value = 1;
+		}
+		return String.valueOf(value);
 	}
 	
 	public static String messageCal(int percent){
