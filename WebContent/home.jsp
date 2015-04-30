@@ -82,7 +82,7 @@
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-md-12">
-								<h4>Nutrition Optimisation</h4>
+								<h4>Nutrition Tracker</h4>
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								<div class="progress">
 								<%
 								if((NutritionOptimisation)session.getAttribute("sessionNutrition")==null){%>
-									<div class="progress-bar" style="width:1%;"></div>
+									<div class="progress-bar" style="width:100%;"></div>
 									
 								<%}else{%>
 									<div class="progress-bar" style="width: <%=((NutritionOptimisation)session.getAttribute("sessionNutrition")).percent()%>%;"></div>
