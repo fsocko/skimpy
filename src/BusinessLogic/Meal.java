@@ -88,6 +88,15 @@ public class Meal extends HttpServlet{
 		return result;
 	}
 	
+	public double nutritionRatio(Food f, double mass){
+		String unit = f.getUnit();
+		unit.toLowerCase();
+		if(unit.equals("kg") || unit.equals("l")){
+			mass = mass * 1000;
+		}
+		double decimal = mass/100;
+		return decimal;
+	}
 	
 	/**
 	 * Retrieves the total calories for that meal.
@@ -96,8 +105,10 @@ public class Meal extends HttpServlet{
 	public double mealCal()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients){
-			result += f.getCalories();
+			double mass = this.masses.get(counter++);
+			result += f.getCalories() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
@@ -105,62 +116,77 @@ public class Meal extends HttpServlet{
 	public double mealProt()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getProteins();
+			double mass = this.masses.get(counter++);
+			result += f.getProteins() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealCarb()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getCarbs();
+			double mass = this.masses.get(counter++);
+			result += f.getCarbs() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealSugar()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getSugars();
+			double mass = this.masses.get(counter++);
+			result += f.getSugars() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealFat()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getFats();
+			double mass = this.masses.get(counter++);
+			result += f.getFats() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealSat()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getSaturates();
+			double mass = this.masses.get(counter++);
+			result += f.getSaturates() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealFibr()
 	{
 		double result = 0;
+		int counter = 0;
 		for(Food f : ingredients)
 		{
-			result += f.getFibre();
+			double mass = this.masses.get(counter++);
+			result += f.getFibre() * nutritionRatio(f, mass);
 		}
 		return result;
 	}
 	public double mealSalt()
 	{
 		double result = 0;
-		for(Food f : ingredients){
-			result += f.getSalt();
+		int counter = 0;
+		for(Food f : ingredients)
+		{
+			double mass = this.masses.get(counter++);
+			result += f.getSalt()  * nutritionRatio(f, mass);
 		}
 		return result;
 	}
