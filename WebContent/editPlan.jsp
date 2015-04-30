@@ -90,9 +90,6 @@ if(request.getSession(false) == null){
 													%>
 												</select>
 											</span>
-											<span class="button-add-plan">
-												<i class="fa fa-plus"></i>
-											</span>
 											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden" value="<%= name%>">
 										</div>
 										<div id="add-item">
@@ -124,12 +121,8 @@ if(request.getSession(false) == null){
 													%>
 												</select>
 											</span> 
-											<span class="button-add-plan">
-												<i class="fa fa-plus"></i>
-											</span>
 											<input name="meal<%=i%><%=j%>" id="meal" class="meal" type="hidden">
 										</div>
-										<div id="add-item"></div>
 									</div>
 								</td>
 								<%
@@ -148,7 +141,7 @@ if(request.getSession(false) == null){
 					</tbody>
 				</table>
 				<br>
-				<input type="submit" class="btn btn-block btn-success btn-lg" value="Save Meal Plan"/>
+				<input type="submit" class="btn btn-block btn-success btn-lg" style = "width: 20%" value="Save Meal Plan"/>
 			</form>
 			<%
 			} 
