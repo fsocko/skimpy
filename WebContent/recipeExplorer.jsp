@@ -6,9 +6,11 @@
 <%@include file="header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="BusinessLogic.*"%>
-<%if(session.getAttribute("username") == null){
-	response.sendRedirect("login.jsp");
-}
+<%
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
 %>
 <div class="container-fluid">
 	<%        

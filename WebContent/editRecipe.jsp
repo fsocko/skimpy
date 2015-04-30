@@ -6,15 +6,20 @@
 
 
  <%
-  XMLParser writeX = new XMLParser();
-  ArrayList<Meal> readmeals = new ArrayList<Meal>();
-  readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-  String name= String.valueOf(request.getParameter("name"));
-  
-  
-  String  Shops =  (String)session.getAttribute("sup");
-  String ShopIds =  (String)session.getAttribute("dbid");
-  Meal themeal = writeX.getMeal(readmeals, name);
+
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+	XMLParser writeX = new XMLParser();
+	ArrayList<Meal> readmeals = new ArrayList<Meal>();
+	readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+	String name= String.valueOf(request.getParameter("name"));
+	
+	
+	String  Shops =  (String)session.getAttribute("sup");
+	String ShopIds =  (String)session.getAttribute("dbid");
+	Meal themeal = writeX.getMeal(readmeals, name);
   
  %>
  
