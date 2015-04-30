@@ -1,6 +1,5 @@
 
 <%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.FileWriter"%>
@@ -202,39 +201,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-md-12">
-									<h4>Price Optimisation</h4>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="progress">
-										<div class="progress-bar" style="width: 40%;"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-md-12">
-									<h4>Nutrition Optimisation</h4>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="progress">
-										<div class="progress-bar" style="width: 40%;"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
