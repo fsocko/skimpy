@@ -31,18 +31,16 @@ public class Meal extends HttpServlet{
 		this.name = name;
 	
 		this.ingredients = new ArrayList<Food>();
-				for(Food f : ingredients)
-		{
-					this.ingredients.add(f);
+		for(Food f : ingredients){
+			this.ingredients.add(f);
 		}		
 		
-		
+
 		this.masses = new ArrayList<Double>();
-			for(Double g : masses)
-			{
-					this.masses.add(g);
-			}
-			
+		for(Double g : masses){
+			this.masses.add(g);
+		}
+		
 		this.servings = servings;
 				
 	}	

@@ -136,6 +136,7 @@ public class MealPlanner extends HttpServlet{
 	 * @param i
 	 * @return The day of the week the meal is located on the planner.
 	 */
+	
 	public static String getDay(int i){
 		if(i == 0)
 			return "Mon";
@@ -180,7 +181,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalCarbs(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if (plan[i][j] != null) {
+			if(plan[i][j] != null){
 				result += plan[i][j].mealCarb();
 			}
 		}
@@ -189,7 +190,7 @@ public class MealPlanner extends HttpServlet{
 	public double totalSugars(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if (plan[i][j] != null) {
+			if(plan[i][j] != null){
 				result += plan[i][j].mealSugar();
 			}
 		}
@@ -198,8 +199,8 @@ public class MealPlanner extends HttpServlet{
 	public double totalFats(int i){
 		double result = 0;
 		for(int j = 0; j < 3; j ++){
-			if (plan[i][j] != null) {
-			result += plan[i][j].mealFat();
+			if(plan[i][j] != null){
+				result += plan[i][j].mealFat();
 			}
 		}
 		return result;
