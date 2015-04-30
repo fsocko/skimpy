@@ -103,7 +103,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -116,7 +116,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -129,7 +129,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -142,7 +142,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -155,7 +155,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -168,7 +168,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -181,7 +181,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -194,7 +194,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(0))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(0))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -211,7 +211,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -224,7 +224,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -237,7 +237,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -250,7 +250,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -263,7 +263,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -276,7 +276,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -289,7 +289,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -302,7 +302,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(1))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(1))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -319,7 +319,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -332,7 +332,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -345,7 +345,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -358,7 +358,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -371,7 +371,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -384,7 +384,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -397,7 +397,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -410,7 +410,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(2))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(2))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -427,7 +427,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -440,7 +440,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -453,7 +453,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -466,7 +466,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -479,7 +479,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -492,7 +492,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -505,7 +505,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -518,7 +518,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(3))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(3))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -535,7 +535,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -548,7 +548,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -561,7 +561,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -574,7 +574,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -587,7 +587,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -600,7 +600,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -613,7 +613,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -626,7 +626,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(4))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(4))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -643,7 +643,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -656,7 +656,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -669,7 +669,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -682,7 +682,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -695,7 +695,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -708,7 +708,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -721,7 +721,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -734,7 +734,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(5))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(5))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -750,7 +750,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress progress-info active">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).calorieInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -763,7 +763,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).proteinInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -776,7 +776,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).carbInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -789,7 +789,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).sugarInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -802,7 +802,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fatInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -815,7 +815,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saturateInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -828,7 +828,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).fibreInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">
@@ -841,7 +841,7 @@ if(request.getSession(false) == null){
 										</div>
 										<div class="col-sm-4">
 											<div class="progress">
-												<div class="progress-bar" style = "width: <%=String.valueOf(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(6))%>%;"></div>
+												<div class="progress-bar" style = "width: <%=NutritionOptimisation.percentBar(((NutritionOptimisation)session.getAttribute("sessionNutrition")).saltInfo(6))%>%;"></div>
 											</div>
 										</div>
 										<div class="col-sm-6">

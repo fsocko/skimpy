@@ -29,7 +29,7 @@ int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
 
 session.setAttribute("sessionUser", sessionUser);
-session.setAttribute("nutritionPercent", "1");
+
 
 if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	try{
@@ -82,7 +82,6 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 						
 						session.setAttribute("mealPlan", p);
 						session.setAttribute("sessionNutrition", newNutrition);
-						session.setAttribute("display", "90");
 						
 					}
 				} 
