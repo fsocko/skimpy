@@ -9,7 +9,7 @@
 <%	
 if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
-	break;
+	return;
 }
 %>
 <div class="container-fluid">
