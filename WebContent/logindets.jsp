@@ -21,20 +21,17 @@ MealPlanner sessionPlan = null;
 XMLParser writeX = new XMLParser();
 ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
 
-
 String email = request.getParameter("email");
 String password = request.getParameter("password");
-String passwordHash = PasswordHash.getSecurePassword(password);
 
 int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
 
 session.setAttribute("sessionUser", sessionUser);
 
-
-if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || passwordHash.equals("")) )){
+if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
 	try{
-		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && passwordHash.equals(sessionUser.getPassword())){
+		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && password.equals(sessionUser.getPassword())){
 			session.setAttribute("username", sessionUser.getName());
 			session.setAttribute("email", sessionUser.getEmail());
 			session.setAttribute("password", sessionUser.getPassword());
@@ -68,12 +65,13 @@ if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || 
 			session.setAttribute("fibre", sessionUser.getMacros().getFibre());
 			session.setAttribute("salt", sessionUser.getMacros().getSalt());
 			
+			
 			if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
 				readmeals = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
 				
 				for(MealPlanner p: readmeals){
 					if (sessionID == p.getUserId()){
-						session.setAttribute("hasMeal", new Boolean(true));
+						session.setAttribute("hasMealPlan", new Boolean(true));
 						sessionPlan = p;
 						
 						sessionNutrition.setPerson(sessionUser);
@@ -88,7 +86,7 @@ if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || 
 				} 
 			}
 			else{
-				session.setAttribute("hasMeal", new Boolean(false));
+				session.setAttribute("hasMealPlan", new Boolean(false));
 			}
 			
 			session.setMaxInactiveInterval(3000);
