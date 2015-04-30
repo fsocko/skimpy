@@ -83,13 +83,13 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 						session.setAttribute("mealPlan", p);
 						session.setAttribute("sessionNutrition", newNutrition);
 						
-					}
+								}
 				
-			else{
-				session.setAttribute("hasMealPlan", new Boolean(false));
-				session.setAttribute("sessionNutrition", null );
-			    }
-			  } 
+					else{
+						session.setAttribute("hasMealPlan", new Boolean(false));
+						session.setAttribute("sessionNutrition", null );
+			   			}
+			 	 } 
 			}
 			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("home.jsp");
