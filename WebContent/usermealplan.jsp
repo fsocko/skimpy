@@ -65,14 +65,7 @@
 			</tbody>
 		</table>
 		<a href = "editPlan.jsp" class="btn btn-primary btn-lg">Edit your Meal Plan</a>
-		<%
-		} 
-		else{
-		%>
-		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
-		<%
-		} 
-		%>
+		
 		</div>
    	</div>
    	<div class="well">
@@ -856,6 +849,15 @@
 				</div>
 			</div>
 		</div>
+		
+		<%
+		} 
+		else{
+		%>
+		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+		<%
+		} 
+		%>
 	</div>
 </div>
 </body>

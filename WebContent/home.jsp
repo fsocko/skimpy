@@ -106,7 +106,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="progress">
-									<div class="progress-bar" style="width: <%=((NutritionOptimisation)session.getAttribute("sessionNutrition")).percent()%>%;"></div>
+									<div class="progress-bar" style="width:<%--  <%=((NutritionOptimisation)session.getAttribute("sessionNutrition")).percent()%> --%>50%;"></div>
 								</div>
 							</div>
 						</div>
