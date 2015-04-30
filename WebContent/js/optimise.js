@@ -67,14 +67,19 @@ $(document).ready(function() {
 		function() {
 			var replaced_product_name = $(this).closest('.container-fluid').find('.list-product-name');
 			var replaced_product_price = $(this).closest('.container-fluid').find('.list-product-price');
+			var replaced_product_link = $(this).closest('.container-fluid').find('.list-product-link');
+			
 			var new_product_name = $(this).closest('.prod-suggestion').find('.prod-sgst-name').text();
 			var new_product_price = $(this).closest('.prod-suggestion').find('.prod-sgst-price').text();
+			var new_product_link = $(this).closest('.prod-suggestion').find('.prod-sgst-link').attr('onclick');
+			
 			var diff = $(this).closest('.prod-suggestion').find('.diff').text();
 			var prev_total = $('#total-amount').text();
 			var new_total = parseFloat(prev_total) - parseFloat(diff);
 			
 			replaced_product_name.empty().text(new_product_name);
 			replaced_product_price.empty().text(new_product_price);
+			replaced_product_link.attr('onclick', new_product_link);
 			$('#total-amount').text(new_total.toFixed(2));
 			$(this).closest('.suggestions-box').css('visibility', 'hidden');
 			$(this).closest('.suggestions-box').empty();
