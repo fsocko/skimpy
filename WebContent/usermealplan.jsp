@@ -13,7 +13,7 @@ if(request.getSession(false) == null){
    	<div class="well">
     	<div class="row">
 		<%
-		boolean flag = (boolean)session.getAttribute("hasMeal");
+		boolean flag = (boolean)session.getAttribute("hasMealPlan");
 		if(flag){
 		%>
     	<table class="table">
@@ -85,14 +85,14 @@ if(request.getSession(false) == null){
          		<div id="collapseOne" class="panel-collapse collapse">
              		<div class="panel-body">
 	                	<div class="bs-example">
-						    <ul class="nav nav-tabs" id="myTab">
+						    <ul class="nav nav-tabs">
 						        <li class="active"><a href="#monday">Monday</a></li>
-						        <li><a href="#tuesday">Tuesday</a></li>
-						        <li><a href="#wednesday">Wednesday</a></li>
-						        <li><a href="#thursday">Thursday</a></li>
-						        <li><a href="#friday">Friday</a></li>
-						        <li><a href="#saturday">Saturday</a></li>
-						        <li><a href="#sunday">Sunday</a></li>
+						        <li><a data-toggle="tab" href="#tuesday">Tuesday</a></li>
+						        <li><a data-toggle="tab" href="#wednesday">Wednesday</a></li>
+						        <li><a data-toggle="tab" href="#thursday">Thursday</a></li>
+						        <li><a data-toggle="tab" href="#friday">Friday</a></li>
+						        <li><a data-toggle="tab" href="#saturday">Saturday</a></li>
+						        <li><a data-toggle="tab" href="#sunday">Sunday</a></li>
 						    </ul>
 							<div class="tab-content">
 								<div id="monday" class="tab-pane fade in active">
