@@ -99,33 +99,13 @@
     		 if( writeX.getMeal(readmeals, MealName) != null){
     			 exists= writeX.getMeal(readmeals, MealName);
     			 readmeals.remove(exists);
-    		 	 readmeals.add(currentMeal);
-    	  		 writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");
-    	    
-    	    
-    	         ArrayList<MealPlanner> plans = new ArrayList<MealPlanner>();
-   		         if(writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml") != null){
-				       plans = writeX.readMealPlans(getServletContext().getRealPath("") + "/mealplans.xml");
-    	    
-    	               int userID = (Integer)session.getAttribute("ID");
-    	               
-    	               if(writex.getMealPlanner(plans, userID)!=null){
-    	               MealPlanner plan = writex.getMealPlanner(plans, userID);
-    	                for(int i=0; i<3; i++){
-    	    	
-    	    				for(int j=0; j<7; j++){
-    	    		
-    	    					if(plan.get(j,i).getName().equals(currentMeal.getName())){
-    	    			
-    	    							plan[j][i]=currentMeal;
-   
-    	    		}}
-    	    	}
+    		 }
+    		
+    		
+    	    readmeals.add(currentMeal);
+    	    writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");
     	    }
-    	    
-    	    
-    	    }
-    		 }else{
+    		else{
     		writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
     		};
     	    
