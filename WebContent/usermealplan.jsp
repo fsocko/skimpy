@@ -4,10 +4,11 @@
 <%@include file="header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="BusinessLogic.*"%>
-<%	
-if(request.getSession(false) == null){
-	response.sendRedirect("login.jsp");
-}
+<%
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
 %>
 <div class="container-fluid">
    	<div class="well">
@@ -64,14 +65,7 @@ if(request.getSession(false) == null){
 			</tbody>
 		</table>
 		<a href = "editPlan.jsp" class="btn btn-primary btn-lg">Edit your Meal Plan</a>
-		<%
-		} 
-		else{
-		%>
-		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
-		<%
-		} 
-		%>
+		
 		</div>
    	</div>
    	<div class="well">
@@ -855,6 +849,15 @@ if(request.getSession(false) == null){
 				</div>
 			</div>
 		</div>
+		
+		<%
+		} 
+		else{
+		%>
+		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+		<%
+		} 
+		%>
 	</div>
 </div>
 </body>

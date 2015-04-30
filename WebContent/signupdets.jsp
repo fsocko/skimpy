@@ -51,6 +51,8 @@ session.setAttribute("Year", sessionUser.getYear(sessionUser.getDob()));
 session.setAttribute("DD", String.valueOf(sessionUser.getDay(sessionUser.getDob())));
 session.setAttribute("MM", sessionUser.getMonthNo(sessionUser.getDob()));
 session.setAttribute("YYYY", String.valueOf(sessionUser.getYear(sessionUser.getDob())));
+session.setAttribute("hasMealPlan", new Boolean(false));
+session.setAttribute("sessionNutrition", null );
 %>
 
 </body>

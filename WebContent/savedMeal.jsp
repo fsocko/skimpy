@@ -4,7 +4,6 @@
 
 
 <%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 <%@page import="java.io.FileWriter" %>
@@ -22,7 +21,13 @@
 <meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/recipeExplorer.jsp" />
 <body>
 
- <%  
+ <%  	
+
+		if(session.getAttribute("username") == null){
+			response.sendRedirect("login.jsp");
+			return;
+		}
+
  	    String MealName = request.getParameter("mealname");
 	    String  Shops =  request.getParameter("supermarket");
 	    int servings = Integer.valueOf(request.getParameter("servings"));

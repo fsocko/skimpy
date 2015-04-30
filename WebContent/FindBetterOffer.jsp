@@ -4,6 +4,11 @@
 <%@ page import="org.json.JSONArray" %>
 
 <%
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+
 	DBConnect dbConn = new DBConnect();
 	out.println(dbConn.findOffers(request.getParameter("id"), request.getParameter("shop")));
 %>

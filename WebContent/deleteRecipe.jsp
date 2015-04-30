@@ -2,7 +2,6 @@
 <% String currentPage = "explorer"; %>
 
 <%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.util.List" %>
 <%@page import="java.io.FileWriter" %>
@@ -29,6 +28,12 @@
 <body>
 
  <%  
+
+			if(session.getAttribute("username") == null){
+				response.sendRedirect("login.jsp");
+				return;
+			}
+	
  	        String MealName = request.getParameter("mealname");
 	        System.out.println("DELETEMEAL" + MealName);
     		XMLParser writeX = new XMLParser();
