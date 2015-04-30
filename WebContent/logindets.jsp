@@ -87,6 +87,7 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 				
 			else{
 				session.setAttribute("hasMealPlan", new Boolean(false));
+				session.setAttribute("sessionNutrition", null );
 			    }
 			  } 
 			}
