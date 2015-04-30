@@ -182,26 +182,21 @@ label.error {
 								</div>
 							</div>
 						</div>
+						<div class="col-sm-12">
 						<div class="row">
-							<div class="col-sm-12">
-								<h4>Price Optimisation</h4>
-							</div>
-							<div class="col-sm-12">
+							<div class="col-md-12">
 								<div class="progress">
-									<div class="progress-bar" style="width: 40%;"></div>
+								<%
+								if((NutritionOptimisation)session.getAttribute("sessionNutrition")==null){%>
+									<div class="progress-bar" style="width:1%;"></div>
+									
+								<%}else{%>
+									<div class="progress-bar" style="width: <%=((NutritionOptimisation)session.getAttribute("sessionNutrition")).percent()%>%;"></div>
+								  <%} %>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<h4>Nutrition Optimisation</h4>
-							</div>
-							<div class="col-sm-12">
-								<div class="progress">
-									<div class="progress-bar" style="width: 40%;"></div>
-								</div>
-							</div>
-						</div>
+					</div>
 					</div>
 				</div>
 			</div>
