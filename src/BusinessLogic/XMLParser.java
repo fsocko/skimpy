@@ -103,6 +103,20 @@ public class XMLParser {
 	}
 	
 	
+	
+	
+	public MealPlanner getMealPlanner(ArrayList<MealPlanner> mealplans, int userID){
+		MealPlanner plan = null;
+		for (MealPlanner mp: mealplans ){
+			if(mp.getUserId()== userID){
+		plan = mp;
+		
+	  }}
+		return plan;
+		
+	}
+	
+	
 	/*
 	 * Writes an arraylist of meals to the file meals.xml
 	 */
