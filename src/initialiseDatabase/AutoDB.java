@@ -141,7 +141,7 @@ public class AutoDB {
 
     // initialise Skimpy DB with default SQL file
     public void initDB() {
-	initDB("skimpy", "SQLFiles/initDB/fullDB.sql");
+	initDB("skimpy", "SQLFiles/initDB/initDB.sql");
     }
 
     // initialise Skimpy DB with selected SQL file.
