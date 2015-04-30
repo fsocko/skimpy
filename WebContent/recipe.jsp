@@ -13,6 +13,12 @@ label.error {
 
 </style>
 </head>
+<%
+  	if(session.getAttribute("username") == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+%>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-6">

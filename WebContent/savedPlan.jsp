@@ -1,5 +1,4 @@
 <%@page import="BusinessLogic.*"%>
-<%@page import="interfc.*"%>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.io.FileWriter" %>
 <%@page import="java.util.Arrays.*" %>
@@ -23,6 +22,11 @@
 <body>
 
  	 <% 
+   	if(session.getAttribute("username") == null){
+ 		response.sendRedirect("login.jsp");
+ 		return;
+ 	}
+
  	 int userID = (Integer)session.getAttribute("ID"); 
  	 MealPlanner plan = new MealPlanner(userID);
  	 

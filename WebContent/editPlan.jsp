@@ -7,8 +7,9 @@
 <%@ page import="BusinessLogic.*"%>
 <%@page import="java.util.ArrayList"%>
 <%	
-if(request.getSession(false) == null){
+if(session.getAttribute("username") == null){
 	response.sendRedirect("login.jsp");
+	break;
 }
 %>
 <div class="container-fluid">
