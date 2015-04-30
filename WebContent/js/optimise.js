@@ -32,7 +32,9 @@ function fillOffers(array, refPrice, clickedId) {
 		for (obj in array)
 			$(divId).append(
 				$('<div>').addClass('prod-suggestion')
-					.append($('<span>').addClass('prod-sgst-name').text(array[obj].name))
+					.append($('<a>').addClass('prod-sgst-link')
+						.attr('onclick', "window.open('" + array[obj].url + "')")
+							.append($('<span>').addClass('prod-sgst-name').text(array[obj].name)))
 					.append($('<span>').addClass('prod-sgst-price').text(" £" + array[obj].price.toFixed(2)))
 					.append($('<span>').addClass('prod-sgst-diff')
 						.text("You save £")

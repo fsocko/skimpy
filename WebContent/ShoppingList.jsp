@@ -67,10 +67,8 @@ if (session.getAttribute("username") == null) {
 %>
 		<div class="container-fluid">
 			<div class="col-sm-6">
-
-				<a href="#" onclick="window.open('<%=link.trim()%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
+				<a href="#" class="list-product-link" onclick="window.open('<%=link.trim()%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
 				</span></a>
-
 			</div>
 			<div class="col-sm-4">
 				<span class="list-product-price">£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
