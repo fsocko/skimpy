@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
 `UserID` int(11) NOT NULL,
   `UserName` text NOT NULL,
   `UserEmail` varchar(20) NOT NULL,
-  `UserPassword` varchar(20) NOT NULL,
+  `UserPassword` varchar(40) NOT NULL,
   `DateOfBirth` date NOT NULL,
   `Age` int(11) NOT NULL,
   `Height` double NOT NULL,
