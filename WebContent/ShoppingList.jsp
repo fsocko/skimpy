@@ -54,6 +54,14 @@ if (session.getAttribute("username") == null) {
 	    	 }
 	    	 
 	    	 
+	    	 String unit;
+				if (foodList.get(i).getUnit().toLowerCase().equals("null")){
+					unit = "g/ml";
+				}else{
+					unit = foodList.get(i).getUnit();
+					
+				}  
+	    	 
 	    	 
 	    	 total += java.lang.Math.round(massList.get(i)/mass)* foodList.get(i).getPrice();
 %>
@@ -68,7 +76,7 @@ if (session.getAttribute("username") == null) {
 				<span class="list-product-price">£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
 			</div>
 			<div class="col-sm-4">
-				<span><%=massList.get(i)%></span>
+				<span><%=massList.get(i)%>  <%=unit %></span>
 			</div>
 			<button id="button_<%= i %>" class="optimise btn btn-block btn-success" style="width:100px"	type="button"
 				onclick="findOffers('<%=foodList.get(i).getDBID()%>', '<%=foodList.get(i).getSupermarket()%>', <%= moneyDecimal.format(foodList.get(i).getPrice())%>, this.id)">
