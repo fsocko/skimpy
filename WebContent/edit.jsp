@@ -15,6 +15,10 @@
     <script type="text/javascript">
 	function showValue(newValue)
 	{
+		if(newValue == 0){
+			document.getElementById("range").innerHTML= "No exercise"
+		}
+		
 		if(newValue == 1){
 			document.getElementById("range").innerHTML= "Desk job with little exercise"
 		}
@@ -183,11 +187,9 @@
 	            <div class="row">
 	              <div class="col-sm-12">
 	                <div class="media">
-	                  <a class="pull-left" href="#">    <img class="media-object" src="https://builder.divshot.com/img/placeholder-64x64.gif">  </a>
 	                  <div class="media-body">
 	                    <div class="row">
 	                      <div class="col-sm-8">
-	                        <a> Upload Picture </a><br>
 	                        <a href = "change_password.jsp"> Change Password </a>
 	                      </div>
 	                      <div class="col-sm-4">
@@ -240,8 +242,8 @@
 	                    <%-- <input type="range" min="1" max="5" value="<%=session.getAttribute("exerciseNo") %>" step="1" onchange="showValue(this.value)" />
 	                      <span id="range">"showValue(<%=session.getAttribute("exerciseNo") %>)"</span> --%>
 	                      <div class="birthday-drop">
-	                        <select name="exercise" class="form-control" >
-	                          <option value="<%=session.getAttribute("exerciseNo") %>" selected><%=session.getAttribute("exercise") %></option>
+	                        <select name="exercise" class="form-control">
+	                          <option value="<%=session.getAttribute("exerciseNo") %>" selected><%=session.getAttribute("exercise") %></option>						  
 							  <option value="1">Desk job with little exercise</option>
                               <option value="2">1-3hrs/week of light exercise</option>
                               <option value="3">3-5hrs/week of moderate exercise</option>
@@ -462,6 +464,33 @@
             }
       });
     });
+    
+    
+    $("#height").keydown(function(event) {
+		// Allow only backspace and delete
+		if ( event.keyCode == 46 || event.keyCode == 8 ) {
+			// let it happen, don't do anything
+		}
+		else {
+			// Ensure that it is a number and stop the keypress
+			if (event.keyCode < 48 || event.keyCode > 57 ) {
+				event.preventDefault();	
+			}	
+		}
+	});
+    
+    $("#weight").keydown(function(event) {
+		// Allow only backspace and delete
+		if ( event.keyCode == 46 || event.keyCode == 8 ) {
+			// let it happen, don't do anything
+		}
+		else {
+			// Ensure that it is a number and stop the keypress
+			if (event.keyCode < 48 || event.keyCode > 57 ) {
+				event.preventDefault();	
+			}	
+		}
+	});
 
     </script>
   
