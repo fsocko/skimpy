@@ -1,6 +1,5 @@
 <%@ page import="java.util.*"%>
 <%@ page import="BusinessLogic.*"%>
-<%@ page import="interfc.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Arrays.*"%>
 <%@ page language="java" contentType="text/html"%>
