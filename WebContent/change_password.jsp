@@ -1,6 +1,6 @@
 <!doctype html>
-<% String pageTitle = "Edit Recipe"; %>
-<%@include file="header.jsp" %>
+<% String pageTitle = "Change Password"; %>
+<%-- <%@include file="header.jsp" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="BusinessLogic.*" %>
 <html>

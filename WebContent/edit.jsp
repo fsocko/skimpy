@@ -1,5 +1,5 @@
  <!doctype html>
-<% String pageTitle = ""; %>
+<% String pageTitle = "Edit Details"; %>
 <% String currentPage = ""; %>
 <%@include file="header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -182,12 +182,9 @@
           	<form action="editdets.jsp" method="post" id="myForm">
 	            <div class="row">
 	              <div class="col-sm-12">
-	                <div class="media">
-	                  <a class="pull-left" href="#">    <img class="media-object" src="https://builder.divshot.com/img/placeholder-64x64.gif">  </a>
-	                  <div class="media-body">
+	                
 	                    <div class="row">
 	                      <div class="col-sm-8">
-	                        <a> Upload Picture </a><br>
 	                        <a href = "change_password.jsp"> Change Password </a>
 	                      </div>
 	                      <div class="col-sm-4">
