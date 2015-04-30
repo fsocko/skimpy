@@ -68,7 +68,7 @@ if (session.getAttribute("username") == null) {
 		<div class="container-fluid">
 			<div class="col-sm-6">
 
-				<a href="#" onclick="window.open('<%=link%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
+				<a href="#" onclick="window.open('<%=link.trim()%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
 				</span></a>
 
 			</div>

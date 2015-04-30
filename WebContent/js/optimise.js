@@ -44,8 +44,11 @@ function fillOffers(array, refPrice, clickedId) {
 			);
 	}
 	else {
-		$(divId).append($('<div>').addClass("descr")
-			.text("There are no cheaper products which could replace chosen product - your choice is optimal."));
+		$(divId).append($('<a>').addClass('button-dismiss')
+					.append($('<i>').addClass('fa fa-times'))
+					.append($('<span>').addClass('button-label').text(" Dismiss")))
+				.append($('<div>').addClass("descr")
+					.text("There are no cheaper products which could replace chosen product - your choice is optimal."));
 	}
 }
 
