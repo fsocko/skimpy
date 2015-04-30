@@ -42,7 +42,6 @@ if(request.getSession(false) == null){
 						for(int i = 0; i < 7; i++){
 			    			boolean flag = (boolean)session.getAttribute("hasMealPlan");
 							if(!flag){
-								System.out.println("First Condition");
 			    			%>
 				           		<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
@@ -75,7 +74,6 @@ if(request.getSession(false) == null){
 							else {
 								if(((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j) != null){
 									String name = ((MealPlanner)session.getAttribute("mealPlan")).getMeal(i,j).getName();
-									System.out.println("Second Condition");
 							%>
 								<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
@@ -110,7 +108,6 @@ if(request.getSession(false) == null){
 								<%
 								}
 								else{
-									System.out.println("Third Condition");
 								%>
 								<td style="text-align: center;">
 									<div id="cell<%=i%><%=j %>">
