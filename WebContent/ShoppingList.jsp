@@ -38,6 +38,7 @@ if (session.getAttribute("username") == null) {
  	    
 	 	for (int i = 0; i < foodList.size(); i++){
 	 		 String link;
+	 		 double mass;
 	    	 if (foodList.get(i).getSupermarket().equals("T")) {
 	    		 link = "http://www.tesco.com/groceries/product/details/?id=" + foodList.get(i).getShopID();
 	    	 } else if (foodList.get(i).getSupermarket().equals("S")) {
@@ -46,7 +47,17 @@ if (session.getAttribute("username") == null) {
 	    		 link = foodList.get(i).getShopID();
 	    	 }
 	    	 
-	    	 total += foodList.get(i).getPrice();
+	    	 if(foodList.get(i).getMass()==0 || foodList.get(i).getUnit()==null ){
+	    		 mass = 100;
+	    	 }else{
+	    		 mass = foodList.get(i).getMass();
+	    	 }
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 
+	    	 total += java.lang.Math.round(massList.get(i)/mass)* foodList.get(i).getPrice();
 %>
 		<div class="container-fluid">
 			<div class="col-sm-6">
