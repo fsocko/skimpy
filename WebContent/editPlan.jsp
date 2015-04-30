@@ -30,10 +30,11 @@ if (meals != null){
 	 %>
  
 <div class="container-fluid">
-<div class="col-sm-8">
+<div class="well">
+<div class="row">
     <div>
 	<form action="savedPlan.jsp" method="POST">
-	<table>
+	<table class="table">
 	<tr><th style="text-align:center;">Monday</th>
 	<th style="text-align:center;">Tuesday</th>
 	<th style="text-align:center;">Wednesday</th>
@@ -157,6 +158,6 @@ if (meals != null){
 			</div>
     	</div>
     </div>
-
+</div>
 </body>
 </html>
