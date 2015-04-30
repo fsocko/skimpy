@@ -53,6 +53,7 @@
  	 nutritionUpdate.setMealPlan(plan);
  	 session.setAttribute("sessionNutrition", nutritionUpdate);
  	 session.setAttribute("mealPlan", plan);
+ 	 session.setAttribute("hasMealPlan", new Boolean(true));
  	 
  	 writeX.writeMealPlans(plans, getServletContext().getRealPath("") + "/mealplans.xml");
 
