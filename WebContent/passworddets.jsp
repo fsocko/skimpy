@@ -19,13 +19,15 @@ DBConnect con = new DBConnect();
 Person user = con.pullUser(String.valueOf(session.getAttribute("ID")));
 
 String oldPassword = request.getParameter("old password");
+String oldPasswordHash = PasswordHash.getSecurePassword(oldPassword);
 String newPassword = request.getParameter("new password");
 String confirmPassword = request.getParameter("confirm password");
 
 String password = user.getPassword();
-if(oldPassword.equals(password) && newPassword.equals(confirmPassword)){
-	user.setPassword(newPassword);
-	session.setAttribute("password", newPassword);
+if(oldPasswordHash.equals(password) && newPassword.equals(confirmPassword)){
+	String newPasswordHash = PasswordHash.getSecurePassword(newPassword);
+	user.setPassword(newPasswordHash);
+	session.setAttribute("password", newPasswordHash);
 }
 
 con.updateUser(user);

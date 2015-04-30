@@ -24,6 +24,7 @@ ArrayList<MealPlanner> readmeals = new ArrayList<MealPlanner>();
 
 String email = request.getParameter("email");
 String password = request.getParameter("password");
+String passwordHash = PasswordHash.getSecurePassword(password);
 
 int sessionID = con.getIDfromEmail(email);
 sessionUser = con.pullUser(String.valueOf(sessionID));
@@ -31,9 +32,9 @@ sessionUser = con.pullUser(String.valueOf(sessionID));
 session.setAttribute("sessionUser", sessionUser);
 
 
-if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
+if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || passwordHash.equals("")) )){
 	try{
-		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && password.equals(sessionUser.getPassword())){
+		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && passwordHash.equals(sessionUser.getPassword())){
 			session.setAttribute("username", sessionUser.getName());
 			session.setAttribute("email", sessionUser.getEmail());
 			session.setAttribute("password", sessionUser.getPassword());
