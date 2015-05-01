@@ -1,2 +1,2 @@
-cd ../binary
-java -cp ".;../library/*" ProductExtractor.ScraperMainInterface
+cd ..
+java -cp ".;/library/*" ProductExtractor.ScraperMainInterface
