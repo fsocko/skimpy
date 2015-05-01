@@ -86,10 +86,17 @@ if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || 
 								}
 				
 					else{
+						
+						NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
 						session.setAttribute("hasMealPlan", new Boolean(false));
-						session.setAttribute("sessionNutrition", null );
+						session.setAttribute("sessionNutrition", newNutrition );
 			   			}
 			 	 } 
+			}else{
+				NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
+				session.setAttribute("hasMealPlan", new Boolean(false));
+				session.setAttribute("sessionNutrition", newNutrition );
+				
 			}
 			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("home.jsp");

@@ -72,7 +72,7 @@ if(session.getAttribute("username") == null){
 							%>
 								<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
-				           			   	<div class="result">
+				           			   	<div class="result" style="display:none;">
 											<span class = "product">
 												<select class="form-control" id="ing<%=i%><%=j%>">
 													<option selected></option>
@@ -85,7 +85,7 @@ if(session.getAttribute("username") == null){
 												%>
 												</select>
 											</span>
-											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
+											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden" value="<%=name%>">
 									  	</div>
 										<div id="add-item">
 											<div class="result-entry">

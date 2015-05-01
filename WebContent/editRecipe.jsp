@@ -83,7 +83,7 @@ label.error {
                      				<span class="list-product-price">£ <%=themeal.getIngredients().get(i).getPrice()%>
                       				</span>
                       				<span class="button-remove"><i class="fa fa-times"></i></span>
-                      				<span class="list-product-mass">Serving size: <input class="serving size" name="mass"
+                      				<span class="list-product-mass">Mass: <input class="serving size" name="mass"
                        		id="mass" value="<%=themeal.getMasses().get(i)%>"> <%=unit.toLowerCase() %>
                        				</span>
                      				<span class="shopID"><%=themeal.getIngredients().get(i).getDBID()%></span>
