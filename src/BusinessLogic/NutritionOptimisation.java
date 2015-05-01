@@ -54,7 +54,7 @@ public class NutritionOptimisation extends HttpServlet{
 		if(percentage == 0){
 			percentage = 1;
 		}
-		System.out.println("Value of percentage: " + String.valueOf(percentage));
+		
 		return String.valueOf(percentage);
 	}
 	
