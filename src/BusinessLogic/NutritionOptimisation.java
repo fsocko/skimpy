@@ -34,36 +34,24 @@ public class NutritionOptimisation extends HttpServlet{
 		int subtract = 0;
 		
 		
-		double temp;
+		int temp = 0;
 		
 		for(int i = 0; i < 7; i++){
-			temp = calorieInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = proteinInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = carbInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = sugarInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = fatInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = saturateInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = fibreInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = saltInfo(i);
-			if(checkMacro(temp))
-				subtract++;
+			temp += Integer.parseInt(percentBar(calorieInfo(i)));
+			temp += Integer.parseInt(percentBar(proteinInfo(i)));
+			temp += Integer.parseInt(percentBar(carbInfo(i)));
+			temp += Integer.parseInt(percentBar(sugarInfo(i)));
+			temp += Integer.parseInt(percentBar(fatInfo(i)));
+			temp += Integer.parseInt(percentBar(saturateInfo(i)));
+			temp += Integer.parseInt(percentBar(fibreInfo(i)));
+			temp += Integer.parseInt(percentBar(saltInfo(i)));
+			
 		}
+		
+		
+		
 		int subtractPercent = subtract/49 * 100;
-		percentage -= subtractPercent;
+		percentage = (temp / 4900) * 100;
 		
 		
 		
