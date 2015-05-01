@@ -248,7 +248,7 @@ table, th, td {
 	position: relative;
 	float: right;
 	width: 60%;	
-	background-color:#FF3333 ;
+	/* background-color:#FF3333 ; */
 }
 
 #change-button{
