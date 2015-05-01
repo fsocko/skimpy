@@ -5,13 +5,7 @@
 
 <%@page import="BusinessLogic.*"%>
 <%@page import="java.util.ArrayList" %>
-<%@page import="java.util.List" %>
-<%@page import="java.io.FileWriter" %>
-<%@page import="java.util.Arrays" %>
 <%@ page language="java" contentType="text/html" %>
-<%@page import="java.io.OutputStreamWriter"%>
-<%@page import="java.io.Writer"%>
-<%@page import="java.nio.charset.Charset"%>
 <%@include file="header.jsp" %>
 
 <html>
@@ -28,10 +22,21 @@
 			return;
 		}
 
+        DBConnect con = new DBConnect();
+ 
+        XMLParser writeX = new XMLParser();
+	    ArrayList<Meal> readmeals = new ArrayList<Meal>();
+	    ArrayList<MealPlanner> plans = new ArrayList<MealPlanner>();
+	    String path = getServletContext().getRealPath("");
+	    int userID = (Integer)session.getAttribute("ID");
+	    MealPlanner sessionplan = (MealPlanner)session.getAttribute("mealPlan");
+ 
+ 
  	    String MealName = request.getParameter("mealname");
-	    String  Shops =  request.getParameter("supermarket");
+	    
 	    int servings = Integer.valueOf(request.getParameter("servings"));
 	    
+	    String  Shops =  request.getParameter("supermarket");
 	    ArrayList<String> shopList = new ArrayList<String>();
 	    
 	    if(Shops!=""){
@@ -40,6 +45,7 @@
 	    	
 	     }
 	    }
+	    
 	    String ShopIds =  request.getParameter("ingred");
 	    ArrayList<String> idList = new ArrayList<String>();
 	    
@@ -74,48 +80,63 @@
 	   		 }
 	    }
         
-        String masses = java.util.Arrays.deepToString(Servings);
+        //String masses = java.util.Arrays.deepToString(Servings);
 
-        DBConnect con = new DBConnect();
+        
     	
     		ArrayList<Food> f_ingredients = new ArrayList<Food>();
     		for (int i =0; i<shopList.size();i++){
     			
-    		  f_ingredients.add(con.pullFood(shopList.get(i), idList.get(i)));
+    		  		f_ingredients.add(con.pullFood(shopList.get(i), idList.get(i)));
     		  }
     		
     		
     		Meal currentMeal = new Meal(MealName, f_ingredients, massList, servings );
-    		ArrayList<Meal> meals = new ArrayList<Meal>();
-    		meals.add(currentMeal);
-    		
-    		XMLParser writeX = new XMLParser();
-    		ArrayList<Meal> readmeals = new ArrayList<Meal>();
-    		
-    		if (writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml")!=null){
-    		readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-    		
-    		Meal exists = null;
-    		 if( writeX.getMeal(readmeals, MealName) != null){
-    			 exists= writeX.getMeal(readmeals, MealName);
-    			 readmeals.remove(exists);
-    		 }
     		
     		
-    	    readmeals.add(currentMeal);
-    	    writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");
-    	    }
+    		
+    		
+    		
+    		if (writeX.readMeals(path + "/meals.xml")!=null){
+    			readmeals = writeX.readMeals(path + "/meals.xml");
+    		
+    			Meal exists = null;
+    			
+    			if( writeX.getMeal(readmeals, MealName) != null){
+    			 		exists= writeX.getMeal(readmeals, MealName);
+    			 		readmeals.remove(exists);
+    			 	}
+    		
+    		
+    	    		readmeals.add(currentMeal);
+    	    		writeX.writeMeals(readmeals, path + "/meals.xml");
+    	    	}
+    		
     		else{
-    		writeX.writeMeals(meals, getServletContext().getRealPath("") + "/meals.xml");
-    		};
+    			readmeals.add(currentMeal);
+    			writeX.writeMeals(readmeals, path + "/meals.xml");
+    			};
     	    
     	    
+    			boolean flag = (boolean)session.getAttribute("hasMealPlan");
+    			if(flag){
+    				 for(int i=0; i<3; i++){
+    					   for(int j=0; j<7; j++){
+    						   
+    						   if(sessionplan.getMeal(j,i) != null){
+    							   String name  = sessionplan.getMeal(j,i).getName();
+    			   		           if(name.equals(currentMeal.getName())){
+    			   			
+    			   			       sessionplan.add(currentMeal, j, i);
+    			   		
+    		    			} 
+    		  			}
+    		  		} 
+    	  		 }
+    		}
     	    
-    	    String path = getServletContext().getRealPath("");
     	    
-    	    
-    	    
-    	    String currentname= currentMeal.getName(); 
+    	    //String currentname= currentMeal.getName(); 
     	    %>
 
  	

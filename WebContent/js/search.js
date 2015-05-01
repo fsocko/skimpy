@@ -170,7 +170,7 @@ $(document).ready(function(){
 						$('<span>').addClass('button-remove')
 							.append($('<i>').addClass('fa').addClass('fa-times')))
 					.append(
-						$('<span>').addClass('list-product-mass').text('Serving size: ')
+						$('<span>').addClass('list-product-mass').text('Mass: ')
 							.append($('<input name="mass" id ="mass">').addClass('serving-size')
 								.attr('placeholder', $(this).closest('.result-entry').find('.product-mass').text()))
 								.append(" " + $(this).closest('.result-entry').find('.unitDB').text()))

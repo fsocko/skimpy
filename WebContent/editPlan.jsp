@@ -46,24 +46,22 @@ if(session.getAttribute("username") == null){
 			    			%>
 				           		<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
-										<span class = "product">
-											<select class="form-control" id="ing<%=i%><%=j%>">
-												<option selected></option>
-												<%
-												for(Meal m : meals){
-												%>
+				           			   	<div class="result">
+											<span class = "product">
+												<select class="form-control" id="ing<%=i%><%=j%>">
+													<option selected></option>
+														<%
+															for(Meal m : meals){
+																					%>
 													<option><%= m.getName()%></option>
 												<%
 												}
 												%>
-											</select>
-										</span>
-									</div>
-									<div class="col-sm-3">
-										<span class="button-add-plan">
-											<i class="fa fa-plus"></i>
-										</span>
-										<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
+												</select>
+											</span>
+											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
+									  	</div>
+										<div id="add-item"></div>
 									</div>
 								</td>	
 							<%
@@ -74,54 +72,57 @@ if(session.getAttribute("username") == null){
 							%>
 								<td style="text-align: center;">
 				           			<div id="cell<%=i%><%=j %>">
-										<div class="result" style="display:none;">
-											<span class="product">
-												<select class="select" id="ing<%=i%><%=j %>"> 
+				           			   	<div class="result" style="display:none;">
+											<span class = "product">
+												<select class="form-control" id="ing<%=i%><%=j%>">
 													<option selected></option>
-													<%
-													for(Meal m : meals){
-													%>
-														<option><%= m.getName()%></option>
-													<%
-													}
-													%>
+														<%
+															for(Meal m : meals){
+																					%>
+													<option><%= m.getName()%></option>
+												<%
+												}
+												%>
 												</select>
 											</span>
-											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden" value="<%= name%>">
-										</div>
+											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden" value="<%=name%>">
+									  	</div>
 										<div id="add-item">
 											<div class="result-entry">
-												<span class="product-name-plan"><%= name%></span>
-												<span class="button-remove-plan">
-													<i class="fa fa-times"></i>
-												</span>
+													<span class="product-name-plan"><%= name%></span>
+													<span class="button-remove-plan">
+															<i class="fa fa-times"></i>
+													</span>
 											</div>
 										</div>
 									</div>
 								</td>	
+												
+											
 								<%
 								}
 								else{
 								%>
 								<td style="text-align: center;">
-									<div id="cell<%=i%><%=j %>">
-										<div class="result">
-											<span class="product">
-												<select class="select" id="ing<%=i%><%=j %>"> 
-													<option selected></option> 
-													<%
-													for(Meal m : meals){
-													%>
-														<option> <%=m.getName()%></option>
-													<%
-													}
-													%>
+				           			<div id="cell<%=i%><%=j %>">
+				           			   	<div class="result">
+											<span class = "product">
+												<select class="form-control" id="ing<%=i%><%=j%>">
+													<option selected></option>
+														<%
+															for(Meal m : meals){
+																					%>
+													<option><%= m.getName()%></option>
+												<%
+												}
+												%>
 												</select>
-											</span> 
-											<input name="meal<%=i%><%=j%>" id="meal" class="meal" type="hidden">
-										</div>
+											</span>
+											<input name="meal<%=i%><%=j %>" id="meal" class="meal" type="hidden">
+									  	</div>
+										<div id="add-item"></div>
 									</div>
-								</td>
+								</td>	
 								<%
 								}
 								%>  	

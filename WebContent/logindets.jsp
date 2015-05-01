@@ -30,7 +30,7 @@ sessionUser = con.pullUser(String.valueOf(sessionID));
 
 session.setAttribute("sessionUser", sessionUser);
 
-if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || password.equals("")) )){
+if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || passwordHash.equals("")) )){
 	try{
 		if(email.toLowerCase().equals(sessionUser.getEmail().toLowerCase()) && passwordHash.equals(sessionUser.getPassword())){
 			session.setAttribute("username", sessionUser.getName());
@@ -86,10 +86,17 @@ if((!(email.equals(null) || email.equals("")) && !(password.equals(null) || pass
 								}
 				
 					else{
+						
+						NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
 						session.setAttribute("hasMealPlan", new Boolean(false));
-						session.setAttribute("sessionNutrition", null );
+						session.setAttribute("sessionNutrition", newNutrition );
 			   			}
 			 	 } 
+			}else{
+				NutritionOptimisation newNutrition = new NutritionOptimisation(sessionUser, sessionPlan);
+				session.setAttribute("hasMealPlan", new Boolean(false));
+				session.setAttribute("sessionNutrition", newNutrition );
+				
 			}
 			session.setMaxInactiveInterval(3000);
 			response.sendRedirect("home.jsp");

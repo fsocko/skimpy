@@ -854,7 +854,9 @@
 		} 
 		else{
 		%>
-		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+		<div class="col-sm-8">
+			<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
+		</div>	
 		<%
 		} 
 		%>

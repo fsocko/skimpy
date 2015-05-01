@@ -15,7 +15,9 @@ if (session.getAttribute("username") == null) {
 }
 %>
 <div class="container-fluid">
-	<div class="col-sm-8">
+ 	<div class="well">
+ 		<div class="row">
+			<div class="col-sm-8">
 
 <%
 	int userId = (Integer)session.getAttribute("ID");
@@ -86,21 +88,17 @@ if (session.getAttribute("username") == null) {
 <%
 		}
 %>
-	<h2>Total: £<span id="total-amount"><%= moneyDecimal.format(total) %></span></h2>
+		<h2>Total: £<span id="total-amount"><%= moneyDecimal.format(total) %></span></h2>
 <%
 	} else {
 %>
-		<p>
-			<button class="btn btn-block btn-success btn-lg" style="width: 150px"
-				onclick="document.location.href='editPlan.jsp'">Create a
-				Meal Plan</button>
-		</p>
+		<a href = "editPlan.jsp" class="btn btn-success btn-lg">Create a Meal Plan</a>
 	<%
      	}
      %>
-
-	</div>
-</div>
-
-</body>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
