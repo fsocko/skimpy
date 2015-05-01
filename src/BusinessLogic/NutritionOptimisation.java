@@ -51,7 +51,7 @@ public class NutritionOptimisation extends HttpServlet{
 		
 		
 		int subtractPercent = subtract/49 * 100;
-		percentage = (temp / 4900) * 100;
+		percentage = (temp / 5600) * 100;
 		
 		
 		
