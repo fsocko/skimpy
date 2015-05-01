@@ -75,12 +75,12 @@
 	    	
 	        		 massList.add(Double.parseDouble(s.replaceAll("[^.0-9]","").trim()));
 	    	
-	    			}
-		    	 }  
+	    		   }
+		    	}  
 	   		 }
-	    }
+	     }
         
-        //String masses = java.util.Arrays.deepToString(Servings);
+       
 
         
     	
@@ -129,14 +129,14 @@
     			   			
     			   			       sessionplan.add(currentMeal, j, i);
     			   		
-    		    			} 
-    		  			}
+    		    		  } 
+    		  		   }
     		  		} 
     	  		 }
-    		}
+    		  }
     	    
     	    
-    	    //String currentname= currentMeal.getName(); 
+    	    
     	    %>
 
  	
