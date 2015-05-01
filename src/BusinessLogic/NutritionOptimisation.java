@@ -30,8 +30,6 @@ public class NutritionOptimisation extends HttpServlet{
 		if(user == null || plan == null){
 			return "1";
 		}
-		int percentage = 100;
-		int subtract = 0;
 		
 		
 		int temp = 0;
@@ -49,16 +47,14 @@ public class NutritionOptimisation extends HttpServlet{
 		}
 		
 		
-		
-		int subtractPercent = subtract/49 * 100;
-		percentage = (temp / 5600) * 100;
+		int percentage = temp / 56;
 		
 		
 		
 		if(percentage == 0){
 			percentage = 1;
 		}
-		
+		System.out.println("Value of percentage: " + String.valueOf(percentage));
 		return String.valueOf(percentage);
 	}
 	
@@ -75,6 +71,7 @@ public class NutritionOptimisation extends HttpServlet{
 		if(value <= 1){
 			value = 1;
 		}
+		
 		return String.valueOf(value);
 	}
 	

@@ -83,7 +83,7 @@ if((!(email.equals(null) || email.equals("")) && !(passwordHash.equals(null) || 
 						session.setAttribute("mealPlan", p);
 						session.setAttribute("sessionNutrition", newNutrition);
 						
-								}
+					}
 				
 					else{
 						
