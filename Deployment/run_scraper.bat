@@ -1,2 +1,2 @@
-cd ..
-java -jar Deployment/fullscraper.jar
+cd ../binary
+java -cp ".;../library/*" ProductExtractor.ScraperMainInterface
