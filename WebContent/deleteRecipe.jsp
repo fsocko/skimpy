@@ -2,14 +2,8 @@
 <% String currentPage = "explorer"; %>
 
 <%@page import="BusinessLogic.*"%>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.util.List" %>
-<%@page import="java.io.FileWriter" %>
-<%@page import="java.util.Arrays" %>
+<%@page import="java.util.ArrayList" %>>
 <%@ page language="java" contentType="text/html" %>
-<%@page import="java.io.OutputStreamWriter"%>
-<%@page import="java.io.Writer"%>
-<%@page import="java.nio.charset.Charset"%>
 <%@include file="header.jsp" %>
 <%@page import="java.io.IOException" %>
 <%@page import="java.nio.file.Files" %>
@@ -35,12 +29,11 @@
 			}
 	
  	        String MealName = request.getParameter("mealname");
-	        System.out.println("DELETEMEAL" + MealName);
     		XMLParser writeX = new XMLParser();
-    		ArrayList<Meal> readmeals = new ArrayList<Meal>();
-    		readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
-    	    Meal exists= writeX.getMeal(readmeals, MealName);
+    		ArrayList<Meal> readmeals = writeX.readMeals(getServletContext().getRealPath("") + "/meals.xml");
+    		Meal exists= writeX.getMeal(readmeals, MealName);
     		readmeals.remove(exists);
+    		MealPlanner sessionplan = (MealPlanner)session.getAttribute("mealPlan");
     		
     		if (readmeals.size()<1){
     			Path p = Paths.get(getServletContext().getRealPath("") + "/meals.xml");
@@ -59,6 +52,25 @@
     		}else{
     		
     	    writeX.writeMeals(readmeals, getServletContext().getRealPath("") + "/meals.xml");}
+    		
+    		
+    		
+    		boolean flag = (boolean)session.getAttribute("hasMealPlan");
+			if(flag){
+				 for(int i=0; i<3; i++){
+					   for(int j=0; j<7; j++){
+						   
+						   if(sessionplan.getMeal(j,i) != null){
+							   String name  = sessionplan.getMeal(j,i).getName();
+			   		           if(name.equals(exists.getName())){
+			   			
+			   			       sessionplan.add(null, j, i);
+			   		
+		    			} 
+		  			}
+		  		} 
+	  		 }
+		}
     	    
     	
     	    %>
