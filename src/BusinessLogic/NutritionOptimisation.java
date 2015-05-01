@@ -30,47 +30,31 @@ public class NutritionOptimisation extends HttpServlet{
 		if(user == null || plan == null){
 			return "1";
 		}
-		int percentage = 100;
-		int subtract = 0;
 		
 		
-		double temp;
+		int temp = 0;
 		
 		for(int i = 0; i < 7; i++){
-			temp = calorieInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = proteinInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = carbInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = sugarInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = fatInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = saturateInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = fibreInfo(i);
-			if(checkMacro(temp))
-				subtract++;
-			temp = saltInfo(i);
-			if(checkMacro(temp))
-				subtract++;
+			temp += Integer.parseInt(percentBar(calorieInfo(i)));
+			temp += Integer.parseInt(percentBar(proteinInfo(i)));
+			temp += Integer.parseInt(percentBar(carbInfo(i)));
+			temp += Integer.parseInt(percentBar(sugarInfo(i)));
+			temp += Integer.parseInt(percentBar(fatInfo(i)));
+			temp += Integer.parseInt(percentBar(saturateInfo(i)));
+			temp += Integer.parseInt(percentBar(fibreInfo(i)));
+			temp += Integer.parseInt(percentBar(saltInfo(i)));
+			
 		}
-		int subtractPercent = subtract/49 * 100;
-		percentage -= subtractPercent;
+		
+		
+		int percentage = temp / 56;
 		
 		
 		
 		if(percentage == 0){
 			percentage = 1;
 		}
-		
+		System.out.println("Value of percentage: " + String.valueOf(percentage));
 		return String.valueOf(percentage);
 	}
 	
@@ -87,6 +71,7 @@ public class NutritionOptimisation extends HttpServlet{
 		if(value <= 1){
 			value = 1;
 		}
+		
 		return String.valueOf(value);
 	}
 	
