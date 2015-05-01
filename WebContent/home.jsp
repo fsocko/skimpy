@@ -92,7 +92,7 @@
 								<div class="progress">
 								<%
 								if((NutritionOptimisation)session.getAttribute("sessionNutrition")==null){%>
-									<div class="progress-bar" style="width:100%;"></div>
+									<div class="progress-bar" style="width:1%;"></div>
 									
 								<%}else{%>
 									<div class="progress-bar" style="width: <%=((NutritionOptimisation)session.getAttribute("sessionNutrition")).percent()%>%;"></div>
