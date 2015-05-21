@@ -85,4 +85,13 @@ $(document).ready(function() {
 			$(this).closest('.suggestions-box').empty();
 		}
 	);
+	
+	$('.container-fluid').on('click', '.button-remove-plan',
+			function() { 
+		    var removed_item_price = $(this).closest('#list-item').find('.list-product-price').text().replace("£","");
+		    var prev_total = $('#total-amount').text();
+		    var new_total = parseFloat(prev_total) - parseFloat(removed_item_price);
+		    $('#total-amount').text(new_total.toFixed(2));
+			$(this).closest('#list-item').remove();   
+		});
 });

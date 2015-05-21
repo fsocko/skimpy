@@ -145,7 +145,7 @@
 						<div class="col-sm-12">
 							<div class="row">
 								<div class="col-sm-12">
-									<h4>Meal Nutrition:</h4>
+									<h4>Meal Nutrition (for 1 person):</h4>
 								</div>
 								<div class="col-sm-12">
 									<div class="row">
@@ -153,49 +153,49 @@
 											<span class="label label-info">Calories</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealCal()) %> kcal</p>
+											<p><%=cleanDecimal.format(themeal.mealCal()/themeal.getServings()) %> kcal</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Protein</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealProt()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealProt()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Carbohydrates</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealCarb()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealCarb()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Sugar</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealSugar()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealSugar()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Fat</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealFat()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealFat()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Saturates</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealSat()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealSat()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Fibre</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealFibr()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealFibr()/themeal.getServings()) %> g</p>
 										</div>
 										<div class="col-sm-4">
 											<span class="label label-info">Salt</span>
 										</div>
 										<div class="col-sm-8">
-											<p><%=cleanDecimal.format(themeal.mealSalt()) %> g</p>
+											<p><%=cleanDecimal.format(themeal.mealSalt()/themeal.getServings()) %> g</p>
 										</div>
 									</div>
 								</div>
