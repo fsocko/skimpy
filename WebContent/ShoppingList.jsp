@@ -65,11 +65,14 @@ if (session.getAttribute("username") == null) {
 	    	 
 	    	 
 	    	 total += java.lang.Math.round(massList.get(i)/mass)* foodList.get(i).getPrice();
-%>
-		<div class="container-fluid">
+%>    <div class="container-fluid">
+		<div id="list-item">
 			<div class="col-sm-6">
 				<a href="#" class="list-product-link" onclick="window.open('<%=link.trim()%>')"><span class="list-product-name"><%=foodList.get(i).getName()%>
-				</span></a>
+				</span></a>	
+				<span class="button-remove-plan">
+					<i class="fa fa-times"></i>
+				</span>
 			</div>
 			<div class="col-sm-4">
 				<span class="list-product-price">£<%=moneyDecimal.format(foodList.get(i).getPrice())%></span>
@@ -84,6 +87,7 @@ if (session.getAttribute("username") == null) {
 			<div style="clear:both"></div>
 			<div class="suggestions-box col-sm-10" id="<%= i %>"></div>
 		</div>
+	 </div>	
 		
 <%
 		}
