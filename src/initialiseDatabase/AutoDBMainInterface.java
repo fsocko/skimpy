@@ -173,7 +173,7 @@ public class AutoDBMainInterface {
     			AutoDB adb = new AutoDB();
     			InputStreamReader cin = new InputStreamReader(System.in);
     			BufferedReader br = new BufferedReader(cin);
-    			System.out.println("Which table would you like to populate? This will wipe the table first. Only first character will be read.");
+    			System.out.println("Which table would you like to populate?\nThis will wipe the table first. Default is all tables.");
     			System.out.println("[a = asda, s = sains, t = tesco, q = exit]");
     			char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
     			switch (userInput) {
@@ -192,6 +192,15 @@ public class AutoDBMainInterface {
 					adb.initTable('t');
 					adb.pushToDB('t');
 					break;
+    			default:
+    			    	adb.initTable('a');
+				adb.pushToDB('a');
+				adb.initTable('s');
+				adb.pushToDB('s');    
+				adb.initTable('t');
+				adb.pushToDB('t');
+    			    	break;
+    			
     			}
     		}
     	} catch (Exception e) {
