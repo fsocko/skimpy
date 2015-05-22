@@ -23,7 +23,7 @@ public class ScraperMainInterface {
 				System.out.println("Enter the character beside the menu you would like to visit");
 				System.out.println("Only the first character will be read");
 				System.out.println();
-				System.out.println("a:> Initialize database from test data or SQL file");
+				System.out.println("a:> Initialize database from template or SQL file");
 				System.out.println("b:> Initialize a table");
 				System.out.println("c:> Populate database from data files");
 				System.out.println("d:> Run scrapers");
@@ -32,7 +32,7 @@ public class ScraperMainInterface {
 				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
 				case 'a':
-					System.out.println("Would you like to use a non-default SQL file? (y/n)");
+					System.out.println("Do you want to use a non-default SQL file? (y/n)");
 					char template = (br.readLine().toLowerCase() + " ").charAt(0);
 					if (template == 'y')
 					{
@@ -41,8 +41,8 @@ public class ScraperMainInterface {
 						String filePath = br.readLine();
 						File f = new File(filePath);
 						if (f.exists() && !f.isDirectory()) {
-							System.out.println("Initializing the database will delete everything in it");
-							System.out.println("Would you like to continue (y/n)?");
+						    	System.out.println("Initialising DB will erase all records and create default tables.");
+							System.out.println("Do you want to continue (y/n)?");
 							char createConfirm = (br.readLine().toLowerCase() + " ").charAt(0);
 							if (createConfirm == 'y') {
 								adb.initDB(filePath);
@@ -51,8 +51,8 @@ public class ScraperMainInterface {
 							System.out.println("File does not exist");
 						}
 					} else if (template == 'n') {
-						System.out.println("Initializing the database will delete everything in it");
-						System.out.println("Would you like to continue (y/n)?");
+						System.out.println("Initialising DB will erase all records and create default tables.");
+						System.out.println("Do you want to continue (y/n)?");
 						char initConfirm  = (br.readLine().toLowerCase() + " ").charAt(0);
 						if (initConfirm == 'y') {
 							adb.initDB();
@@ -85,7 +85,7 @@ public class ScraperMainInterface {
 				AutoDB adb = new AutoDB();
 				InputStreamReader cin = new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(cin);
-				System.out.println("Which website would you like to scrape? Any other option will cancel. Only reads the first character");
+				System.out.println("Which website do you want to scrape? Any other option will cancel. Only reads the first character");
 				System.out.println("[t = tesco, s = sainsburys, a = asda, x = all, q = quit]");
 				char userInput = (br.readLine().toLowerCase() + " ").charAt(0);
 				switch (userInput) {
@@ -95,7 +95,7 @@ public class ScraperMainInterface {
 					adb.pushToDB('t');
 					break;
 				case 's':
-					System.out.println("How many threads would you like to run?");
+					System.out.println("How many threads do you want to run?");
 					System.out.println("Default is 15");
 					int noThreads;
 					try {
@@ -108,7 +108,7 @@ public class ScraperMainInterface {
 					adb.pushToDB('s');
 					break;
 				case 'a':
-					System.out.println("How many threads would you like to run?");
+					System.out.println("How many threads do you want to run?");
 					System.out.println("Default is 5");
 					int noAThreads;
 					try {
@@ -121,7 +121,7 @@ public class ScraperMainInterface {
 					adb.pushToDB('a');
 					break;
 				case 'x':
-					System.out.println("How many threads would you like the Sainsburys scraper to run?");
+					System.out.println("How many threads do you want the Sainsburys scraper to run?");
 					System.out.println("Default is 15");
 					int allSThreads;
 					try {
@@ -130,7 +130,7 @@ public class ScraperMainInterface {
 						allSThreads = 15;
 					}
 					System.out.println();
-					System.out.println("How many threads would you like the Asda scraper to run?");
+					System.out.println("How many threads do you want the Asda scraper to run?");
 					System.out.println("Default is 5");
 					int allAThreads;
 					try {
