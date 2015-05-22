@@ -5,6 +5,9 @@
 <head>
 <title>Welcome!</title>
 <meta name="viewport" content="width=device-width">
+
+<link rel="icon" type="image/png" href="images/icon.png">
+
 <link rel="stylesheet"
 	href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script type="text/javascript"
