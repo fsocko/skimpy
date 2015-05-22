@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2015 at 12:50 AM
+-- Generation Time: May 23, 2015 at 01:03 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -46,20 +46,6 @@ CREATE TABLE IF NOT EXISTS `asda` (
   `Saturates` double DEFAULT NULL,
   `Salt` double DEFAULT NULL,
   `Fibre` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `portion_sizes`
---
-
-CREATE TABLE IF NOT EXISTS `portion_sizes` (
-  `ID` int(11) unsigned NOT NULL,
-  `FoodCat` varchar(50) NOT NULL,
-  `Item` varchar(600) NOT NULL,
-  `Mass` double DEFAULT NULL,
-  `Unit` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -148,12 +134,6 @@ ALTER TABLE `asda`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `portion_sizes`
---
-ALTER TABLE `portion_sizes`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `sains`
 --
 ALTER TABLE `sains`
@@ -179,11 +159,6 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `asda`
 --
 ALTER TABLE `asda`
-  MODIFY `ID` int(11) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `portion_sizes`
---
-ALTER TABLE `portion_sizes`
   MODIFY `ID` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sains`
