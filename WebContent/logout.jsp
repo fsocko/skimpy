@@ -8,6 +8,7 @@
 <meta http-equiv="Refresh" content="2;url=index.jsp">
  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <title>Logged Out</title>
+<link rel="icon" type="image/png" href="images/icon.png">
     <style type="text/css">
       .navbar {
         padding: 5px 10px;

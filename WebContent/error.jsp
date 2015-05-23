@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Login Error</title>
+<link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body>
 <center><p style="color:red">Sorry, your username and password cannot be found</p></center>

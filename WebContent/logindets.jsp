@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/home.jsp" />
 <title>Log In</title>
+<link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body>
 <% 

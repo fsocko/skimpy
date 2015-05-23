@@ -7,6 +7,7 @@
 <html>
 <head>
 <title>Shopping List</title>
+<link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <meta http-equiv="refresh" content="0; url=http://localhost:8080/Skimpy/usermealplan.jsp" />
 <body>
